@@ -1,0 +1,6 @@
+Pet_Name,Pet_ID,Pet_Job,Pet_Skill_ID,Pet_Eff_ID,,,
+String,int,int,int,int,,,
+,71001,1,,,,,
+,71002,1,,,,,
+,72003,2,,,,,
+,72004,2,,,,,

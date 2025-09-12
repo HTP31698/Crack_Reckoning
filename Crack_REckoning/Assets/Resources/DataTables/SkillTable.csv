@@ -1,0 +1,5 @@
+Skill_name,Skill_ID,Basic_Skill,Skill_itc,Skill_Basic_Damg,Skill_Cool Time
+string,int,int,int,int,float
+,31001,1,80,50,1
+,32002,2,75,40,0.75
+,32003,2,75,60,1.15

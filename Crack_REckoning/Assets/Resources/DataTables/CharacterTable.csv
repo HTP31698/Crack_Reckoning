@@ -1,0 +1,3 @@
+Ch_name,ID,Ch_job,Basic_Skills,Ch_Attack,Ch_Cri,Ch_CriDam
+String,int,int,int,int,float,int
+Ch,11001,1,,,0.05,2
