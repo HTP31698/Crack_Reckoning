@@ -1,0 +1,2 @@
+Item_name,Item_ID,Item_Type,Item_Use,Item_Min,Item_Max,
+String,int,int,int,int,int,
