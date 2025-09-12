@@ -1,4 +1,4 @@
-MonsterID,MonsterName,MonsterRange,MonsterHp,MonsterAttack,MonsterSpeed,MonsterAttackSpeed,MonsterWeakness,MonsterStrength,MonsterEffectID,MonsterExp,MonsterAnimator
+MonsterID,MonsterName,MonsterRange,MonsterHp,MonsterAttack,MonsterSpeed,MonsterAttackSpeed,MonsterWeakness,MonsterStrength,MonsterEffectID,MonsterExp,MonsterDec
 21001,Pig,0,100,10,0.2,0.5,,,,20,
 21002,Rat,0,80,8,0.3,0.7,,,,20,
 22003,ZorkFly,1,50,15,0.2,0.6,,,,20,
