@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,21 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private float posX;
     private float posZ;
+
+    public MonsterDataTable monsterDataTable;
+    private int id;
+    private string name;
+    private float range;
+    private int maxHp;
+    private int currentHp;
+    private int damage;
+    private float speed;
+    private float attackSpeed;
+    private MonseterWeakness monsetWeakness;
+    private MonseterStrength monseterStrength;
+    private int exp;
+
+    private MonsterData MonsterData;
 
     private void Start()
     {
