@@ -10,7 +10,6 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
     private float posX;
     private float posZ;
-    private bool isAttackAble;
 
     private void Start()
     {
@@ -26,7 +25,7 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         //Target Move
-        Vector3 movepos = new Vector3(posX, target.position.y, posZ);
+        Vector3 movepos = new Vector3(posX, target.position.y + agent.stoppingDistance, posZ);
         agent.SetDestination(movepos);
 
         //Target Attack

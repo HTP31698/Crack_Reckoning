@@ -6,7 +6,7 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dungeon_Mutant_Pig_Idle_0
+  m_Name: Pig
   m_Rect:
     serializedVersion: 2
     x: 0
