@@ -1,19 +1,21 @@
 using UnityEngine;
-enum MonseterWeakness
+enum MonsterWeakness
 {
     Fire,
     Water,
     Lightning,
 }
-enum MonseterStrength
+enum MonsterStrength
 {
     Fire,
     Water, 
     Lightning,
 };
 
+
 public class MonsterData
 {
+    [SerializeField]
     public int MonsterID { get; set; }
     public string MonsterName { get; set; }
     public float MonsterRange { get; set; }
@@ -21,8 +23,8 @@ public class MonsterData
     public int MonsterDamage { get; set; }
     public float MonsterSpeed { get; set; }
     public float MonsterAttackSpeed { get; set; }
-    public int MonsterWeakness { get; set; }
-    public int MonsterStrength { get; set; }
+    public int? MonsterWeakness { get; set; }
+    public int? MonsterStrength { get; set; }
 
     public int MonsterEffectID { get; set; }
 
