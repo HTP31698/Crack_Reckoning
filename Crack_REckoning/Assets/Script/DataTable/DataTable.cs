@@ -1,8 +1,9 @@
 using CsvHelper;
+using CsvHelper.TypeConversion;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
 
 public abstract class DataTable
 {
@@ -15,8 +16,15 @@ public abstract class DataTable
         using (var reader = new StringReader(csvText))
         using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
-            var records = csvReader.GetRecords<T>();
-            return records.ToList();
+            // 타입별 ClassMap 등록
+            if (typeof(T) == typeof(StageData))
+                csvReader.Context.RegisterClassMap<StageDataMap>();
+            else if (typeof(T) == typeof(MonsterData))
+                csvReader.Context.RegisterClassMap<MonsterDataMap>();
+            else
+                throw new System.Exception($"ClassMap이 등록되지 않은 타입: {typeof(T)}");
+
+            return csvReader.GetRecords<T>().ToList();
         }
     }
 }

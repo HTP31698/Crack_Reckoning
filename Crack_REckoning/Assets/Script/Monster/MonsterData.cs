@@ -1,4 +1,5 @@
 using UnityEngine;
+using CsvHelper.Configuration;
 enum MonsterWeakness
 {
     Fire,
@@ -26,10 +27,10 @@ public class MonsterData
     public int? MonsterWeakness { get; set; }
     public int? MonsterStrength { get; set; }
 
-    public int MonsterEffectID { get; set; }
+    public int? MonsterEffectID { get; set; }
 
     public int MonsterExp { get; set; }
-    public int MonsterDec { get; set; }
+    public int? MonsterDec { get; set; }
 
     public override string ToString()
     {
@@ -40,5 +41,23 @@ public class MonsterData
         => Resources.Load<Sprite>($"Sprite/{MonsterName}");
     public RuntimeAnimatorController AnimatorController
         => Resources.Load<RuntimeAnimatorController>($"Animator/{MonsterName}");
+}
 
+public class MonsterDataMap : ClassMap<MonsterData>
+{
+    public MonsterDataMap()
+    {
+        Map(m => m.MonsterID).Name("MonsterID");
+        Map(m => m.MonsterName).Name("MonsterName");
+        Map(m => m.MonsterRange).Name("MonsterRange");
+        Map(m => m.MonsterHp).Name("MonsterHp");
+        Map(m => m.MonsterDamage).Name("MonsterDamage");
+        Map(m => m.MonsterSpeed).Name("MonsterSpeed");
+        Map(m => m.MonsterAttackSpeed).Name("MonsterAttackSpeed");
+        Map(m => m.MonsterWeakness).Name("MonsterWeakness").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.MonsterStrength).Name("MonsterStrength").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.MonsterEffectID).Name("MonsterEffectID").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.MonsterExp).Name("MonsterExp");
+        Map(m => m.MonsterDec).Name("MonsterDec").Default(0).TypeConverterOption.NullValues("", " "); ;
+    }
 }

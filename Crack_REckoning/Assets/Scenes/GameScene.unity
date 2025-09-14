@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 1999743624}
   - component: {fileID: 1999743625}
   m_Layer: 0
-  m_Name: MonsterSpawner
+  m_Name: MonsterWaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,7 +821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 3764724017296986918, guid: 641c2bb60c5534f44b23328e37183e21, type: 3}
-  monsterId: 21001
   target: {fileID: 1456496486}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
