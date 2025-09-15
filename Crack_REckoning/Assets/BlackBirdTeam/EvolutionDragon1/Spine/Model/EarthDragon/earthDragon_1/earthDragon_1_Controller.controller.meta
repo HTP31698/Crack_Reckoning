@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1d0c3542e4c5bc74d9e46fff5a1d0687
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301521
+  packageName: Animated 2d Evolution Dragon Pack 1
+  packageVersion: 1.0.1
+  assetPath: Assets/BlackBirdTeam/EvolutionDragon1/Spine/Model/EarthDragon/earthDragon_1/earthDragon_1_Controller.controller
+  uploadId: 712517
