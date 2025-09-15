@@ -1,4 +1,3 @@
-캐릭터 이름,캐릭터 ID,기본 스킬,추가 스킬 ,추가 스킬 ,추가 스킬 ,추가 스킬 ,공격력,치명타 확률,치명타 데미지,최대 스킬 개수
-Ch_name,ID,Basic_Skills,Add_Skill,Add_Skill,Add_Skill,Add_Skill,Ch_Attack,Ch_Cri,Ch_CriDam,Skill_Max
+Chname,ID,BasicSkills,AddSkill,Add_Skill,AddSkill,AddSkill,ChAttack,ChCri,ChCriDam,SkillMax
 String,int,int,int,int,int,int,int,float,int,int
-Main_Ch,11001,31001,,,,,50,0.05,2,5
+MainCh,11001,31001,,,,,50,0.05,2,5
