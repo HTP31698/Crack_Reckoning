@@ -1,7 +1,7 @@
 MonsterID,MonsterName,MonsterRange,MonsterHp,MonsterAttack,MonsterSpeed,MonsterAttackSpeed,MonsterWeakness,MonsterStrength,MonsterEffectID,MonsterExp,MonsterDec
-21001,Pig,0,100,10,0.2,0.5,,,,20,
-21002,Rat,0,80,8,0.3,0.7,,,,20,
-22003,ZorkFly,1,50,15,0.2,0.6,,,,20,
-21004,LargeRat,0,,,,,,,,,
-21005,Piggy,0,,,,,,,,,
-21006,PigPants,0,,,,,,,,,
+21001,Pig,0,100,10,0.2,0.5,1,2,,20,
+21002,Rat,0,80,8,0.3,0.7,1,2,,20,
+22003,ZorkFly,1,50,15,0.2,0.6,5,2,,20,
+21004,LargeRat,0,130,10,0.3,0.7,1,2,,30,
+21005,Piggy,0,200,20,0.2,0.4,4,5,,50,
+21006,PigPants,0,160,16,0.2,0.5,1,2,,40,
