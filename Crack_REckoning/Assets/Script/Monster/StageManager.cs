@@ -62,7 +62,7 @@ public class StageManager : MonoBehaviour
         for (int wave = startWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;
-            currentStageData = StageDataTable.Get(currentStage, wave);
+            currentStageData = StageDataTable.Get(currentStage, currentWave);
 
             if (currentStageData.M1Num > 0)
                 yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));

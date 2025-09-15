@@ -67,7 +67,7 @@ public class Monster : MonoBehaviour
 
                 maxHp = MonsterData.MonsterHp;
                 currentHp = maxHp;
-                damage = MonsterData.MonsterDamage;
+                damage = MonsterData.MonsterAttack;
                 attackSpeed = MonsterData.MonsterAttackSpeed;
                 monsterWeakness = (MonsterWeakness)MonsterData.MonsterWeakness;
                 monsterStrength = (MonsterStrength)MonsterData.MonsterStrength;
