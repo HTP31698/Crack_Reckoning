@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Schema;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class StageManager : MonoBehaviour
@@ -12,9 +15,10 @@ public class StageManager : MonoBehaviour
     public GameObject monsterPrefab;
     public Transform target;
 
-    private int currentStageIndex = 0;
-    private int waveCount = 0;
-    private StageData currentStage;
+    private StageData currentStageData;
+    private int currentStage = 1;
+    private int currentWave = 1;
+    private Coroutine spawnCoroutine;
 
     private void Awake()
     {
@@ -25,43 +29,51 @@ public class StageManager : MonoBehaviour
     }
     private void Start()
     {
-        StartStage(currentStageIndex);
+        StartStage(currentStage, currentWave);
     }
-    private void StartStage(int stageIndex)
+    private void Update()
     {
-        if (waveCount > 21)
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("스테이지 순환 완료");
-            waveCount = 0;
+            Debug.Log($"{currentStageData.StageName}스킵");
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+            }
+            spawnCoroutine = StartCoroutine(SpawnWave(currentWave + 1)); // 스킵 시 다음 웨이브
+        }
+    }
+
+    private void StartStage(int stageNumber, int waveNumber)
+    {
+        if(currentWave > 20)
+        {
+            currentWave = 1;
             return;
         }
-        currentStage = StageDataTable.GetAtIndex(stageIndex);
-        StartCoroutine(SpawnWave());
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+
+        spawnCoroutine  = StartCoroutine(SpawnWave(currentWave));
     }
-
-    private IEnumerator SpawnWave()
+    private IEnumerator SpawnWave(int startWave)
     {
-        if (currentStage.M1Num > 0)
+        int totalWaves = 21;
+        for (int wave = startWave; wave <= totalWaves; wave++)
         {
-            StartCoroutine(SpawnMonsterGroup(currentStage.M1Id.GetValueOrDefault(), 
-                currentStage.M1Num.GetValueOrDefault()));
-        }
-        if (currentStage.M2Num > 0)
-        {
-            StartCoroutine(SpawnMonsterGroup(currentStage.M2Id.GetValueOrDefault(),
-                currentStage.M2Num.GetValueOrDefault()));
-        }
-        if (currentStage.M3Num > 0)
-        {
-            StartCoroutine(SpawnMonsterGroup(currentStage.M3Id.GetValueOrDefault(),
-                currentStage.M3Num.GetValueOrDefault()));
-        }
-        yield return new WaitForSeconds(currentStage.WaveTime.GetValueOrDefault());
+            currentWave = wave;
+            currentStageData = StageDataTable.Get(currentStage, wave);
 
-        Debug.Log($"Stage {currentStage.StageName} 완료!");
-        currentStageIndex++;
-        waveCount++;
-        StartStage(currentStageIndex); // 다음 스테이지 시작
+            if (currentStageData.M1Num > 0)
+                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
+            if (currentStageData.M2Num > 0)
+                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M2Id.GetValueOrDefault(), currentStageData.M2Num.GetValueOrDefault()));
+            if (currentStageData.M3Num > 0)
+                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M3Id.GetValueOrDefault(), currentStageData.M3Num.GetValueOrDefault()));
+            Debug.Log($"Wave {currentStageData.StageName} 몬스터 소환완료!");
+            yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
+
+        }
     }
 
     public IEnumerator SpawnMonsterGroup(int monsterid, int count)
@@ -75,7 +87,7 @@ public class StageManager : MonoBehaviour
 
     public void SpawnMonster(int monsterId)
     {
-        Vector3 spawnpos = new Vector3(Random.Range(-3.25f, 3.25f), 7, 0);
+        Vector3 spawnpos = new Vector3(Random.Range(-3f, 3f), 7, 0);
         GameObject obj = Instantiate(monsterPrefab, spawnpos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
         monster.Init(monsterDataTable, monsterId);

@@ -5,30 +5,35 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class StageDataTable : DataTable
 {
-    public List<StageData> stagelist = new List<StageData>();
+    public Dictionary<(int ,int), StageData> table = new Dictionary<(int ,int), StageData>();
 
     public override void Load(string filename)
     {
-        stagelist.Clear();
+        table.Clear();
+
         var path = string.Format(FormatPath, filename);
         var textAsset = Resources.Load<TextAsset>(path);
+        var list = LoadCSV<StageData>(textAsset.text);
 
-        if (textAsset == null)
+        foreach (var item in list)
         {
-            Debug.LogError($"CSV 파일 못 찾음: {path}");
-            return;
+            if (!table.ContainsKey((item.Stage, item.Wave)))
+            {
+                table.Add((item.Stage,item.Wave), item);
+            }
+            else
+            {
+                Debug.LogError("몬스터 아이디 중복!");
+            }
         }
-
-        stagelist = LoadCSV<StageData>(textAsset.text);
     }
 
-    public StageData GetAtIndex(int index)
+    public StageData Get(int id1, int id2)
     {
-        if (index < 0 || index >= stagelist.Count)
+        if (!table.ContainsKey((id1,id2)))
         {
-            Debug.LogWarning($"인덱스 범위 초과: {index}");
             return null;
         }
-        return stagelist[index];
+        return table[(id1,id2)];
     }
 }

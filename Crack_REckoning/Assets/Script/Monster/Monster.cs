@@ -1,4 +1,6 @@
 using JetBrains.Annotations;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +13,7 @@ public class Monster : MonoBehaviour
     public Transform target;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-
+    private War war;
 
     private NavMeshAgent agent;
     private float posX;
@@ -27,6 +29,7 @@ public class Monster : MonoBehaviour
     public int currentHp;
     public int damage;
     public float attackSpeed;
+    public float monsterLastAttack = 0;
     private MonsterWeakness monsterWeakness;
     private MonsterStrength monsterStrength;
     public int exp;
@@ -123,11 +126,27 @@ public class Monster : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        TakeDamage(1);
+        if (collision.CompareTag("War"))
+            StartCoroutine(AttackCoroutine(collision.GetComponent<War>()));
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("War"))
+            StopCoroutine(AttackCoroutine(collision.GetComponent<War>()));
+    }
+
+    private IEnumerator AttackCoroutine(War target)
+    {
+        while (true)
+        {
+            target.TakeDamage(damage);
+            yield return new WaitForSeconds(attackSpeed);
+        }
+    }
+
 
     private void TryAttack()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StageData
 {
+    public int Stage {  get; set; }
+    public int Wave { get; set; }
     public string StageName { get; set; }
     public int? SpawnNum { get; set; }
     public int? M1Id { get; set; }
@@ -21,7 +23,7 @@ public class StageData
 
     public override string ToString()
     {
-        return $"{StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {MainBossID} / {WaveTime} / {StageAddMHp} / {StageAddMAtt}";
+        return $"{Stage} / {StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {MainBossID} / {WaveTime} / {StageAddMHp} / {StageAddMAtt}";
     }
 }
 
@@ -29,6 +31,8 @@ public class StageDataMap : ClassMap<StageData>
 {
     public StageDataMap()
     {
+        Map(s => s.Stage).Name("Stage").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.Wave).Name("Wave").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.StageName).Name("StageName").Default(null).TypeConverterOption.NullValues("", " ");
         Map(s => s.SpawnNum).Name("SpawnNum").Default(0).TypeConverterOption.NullValues("", " ");
 
