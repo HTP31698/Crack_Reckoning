@@ -1,7 +1,6 @@
-스킬 ID,스킬 이름,구분,속성,사거리,기본 데미지,쿨타임,투사체 개수,공격 횟수,관통력,스킬 피해 범위,강화 적용 ID,효과 ID
-Skill_ID,Skill_name,Skill_Sortation,Skill_Type,Skill_itc,Skill_Basic_Damg,Skill_Cool Time,,,,,,
+SkillID,Skillname,SkillSortation,SkillType,Skillitc,SkillBasicDamg,SkillCoolTime,,,,,,
 int,string,int,int,float,int,float,int,int,int,float,int,int
-31001,파이어볼,1,1,5,55,1,1,1,1,1,,41001
-31002,단검 투척,1,5,5,50,0.75,1,1,1,1,,
-31003,검기,1,5,5,70,1.15,1,1,1,1,,
-32004,벼락,2,4,5,80,1.1,1,1,1,1,,41003
+31001,Fireball,1,1,5,55,1,1,1,1,1,,41001
+31002,Daggerthrow,1,5,5,50,0.75,1,1,1,1,,
+31003,blackness,1,5,5,70,1.15,1,1,1,1,,
+32004,athunderbolt,2,4,5,80,1.1,1,1,1,1,,41003
