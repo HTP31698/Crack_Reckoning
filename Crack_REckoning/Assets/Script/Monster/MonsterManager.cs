@@ -61,7 +61,7 @@ public class MonsterManager : MonoBehaviour
         {
             for(int i = 0; i <currentStage.M3Num;i++)
             {
-                SpawnMonster(currentStage.M3Num.GetValueOrDefault());
+                SpawnMonster(currentStage.M3Id.GetValueOrDefault());
                 Debug.Log("3¼ß");
                 yield return new WaitForSeconds(0.4f);
             }
