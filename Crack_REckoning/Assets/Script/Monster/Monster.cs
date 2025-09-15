@@ -23,13 +23,13 @@ public class Monster : MonoBehaviour
     [SerializeField] private int id;
 
     private string monsterName;
-    private int maxHp;
-    private int currentHp;
-    private int damage;
-    private float attackSpeed;
+    public int maxHp;
+    public int currentHp;
+    public int damage;
+    public float attackSpeed;
     private MonsterWeakness monsterWeakness;
     private MonsterStrength monsterStrength;
-    private int exp;
+    public int exp;
     private Sprite sprite;
     private RuntimeAnimatorController controller;
 
@@ -122,6 +122,11 @@ public class Monster : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        TakeDamage(1);
     }
 
     private void TryAttack()

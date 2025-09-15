@@ -1,5 +1,5 @@
 StageName,SpawnNum,M1Id,M1Num,M2Id,M2Num,M3Id,M3Num,MiniBossID,MiniBossNum,MainBossID,WaveTime,StageAddMHp,StageAddMAtt
-Stage 1-1,10,21001,10,21002,3,,,,,,10,,
+Stage 1-1,10,21001,10,21002,7,,,,,,10,,
 Stage 1-2,10,21001,10,,,,,,,,10,,
 Stage 1-3,10,21001,10,, ,,,,,,10,,
 Stage 1-4,10,21001,10,,,,,,,,10,,

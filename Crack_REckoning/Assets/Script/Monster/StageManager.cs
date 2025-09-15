@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MonsterManager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
     private static readonly string MonsterTable = "MonsterTable";
     private static readonly string StageTable = "StageTable";
@@ -13,6 +13,7 @@ public class MonsterManager : MonoBehaviour
     public Transform target;
 
     private int currentStageIndex = 0;
+    private int waveCount = 0;
     private StageData currentStage;
 
     private void Awake()
@@ -28,9 +29,10 @@ public class MonsterManager : MonoBehaviour
     }
     private void StartStage(int stageIndex)
     {
-        if (stageIndex > 21)
+        if (waveCount > 21)
         {
-            Debug.Log("모든 스테이지 클리어!");
+            Debug.Log("스테이지 순환 완료");
+            waveCount = 0;
             return;
         }
         currentStage = StageDataTable.GetAtIndex(stageIndex);
@@ -39,38 +41,36 @@ public class MonsterManager : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
-        if(currentStage.M1Num > 0)
+        if (currentStage.M1Num > 0)
         {
-            for (int i = 0; i < currentStage.M1Num; i++)
-            {
-                SpawnMonster(currentStage.M1Id.GetValueOrDefault());
-                Debug.Log("1솬");
-                yield return new WaitForSeconds(0.4f);
-            }
+            StartCoroutine(SpawnMonsterGroup(currentStage.M1Id.GetValueOrDefault(), 
+                currentStage.M1Num.GetValueOrDefault()));
         }
-        if(currentStage.M2Num > 0)
+        if (currentStage.M2Num > 0)
         {
-            for(int i = 0;i < currentStage.M2Num;i++)
-            {
-                SpawnMonster(currentStage.M2Id.GetValueOrDefault());
-                Debug.Log("2솬");
-                yield return new WaitForSeconds(0.4f);
-            }
+            StartCoroutine(SpawnMonsterGroup(currentStage.M2Id.GetValueOrDefault(),
+                currentStage.M2Num.GetValueOrDefault()));
         }
-        if(currentStage.M3Num > 0)
+        if (currentStage.M3Num > 0)
         {
-            for(int i = 0; i <currentStage.M3Num;i++)
-            {
-                SpawnMonster(currentStage.M3Id.GetValueOrDefault());
-                Debug.Log("3솬");
-                yield return new WaitForSeconds(0.4f);
-            }
+            StartCoroutine(SpawnMonsterGroup(currentStage.M3Id.GetValueOrDefault(),
+                currentStage.M3Num.GetValueOrDefault()));
         }
         yield return new WaitForSeconds(currentStage.WaveTime.GetValueOrDefault());
 
         Debug.Log($"Stage {currentStage.StageName} 완료!");
         currentStageIndex++;
+        waveCount++;
         StartStage(currentStageIndex); // 다음 스테이지 시작
+    }
+
+    public IEnumerator SpawnMonsterGroup(int monsterid, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            SpawnMonster(monsterid);
+            yield return new WaitForSeconds(0.4f);
+        }
     }
 
     public void SpawnMonster(int monsterId)
