@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     private static readonly string MonsterTable = "MonsterTable";
 
     [SerializeField]
-    public Transform target;
+    private Transform target;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private War war;
