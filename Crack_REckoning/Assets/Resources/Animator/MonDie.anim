@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MonDie
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,20 +18,21 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
-    - time: 0.000000
+  - serializedVersion: 2
+    curve:
+    - time: 0
       value: {fileID: 21300000, guid: 6ce6c500a3360b54d82dc93ed0b60d41, type: 3}
     - time: 0.066667
       value: {fileID: 21300000, guid: 007630d6ec68aae40ac6984cd36f5aff, type: 3}
     - time: 0.133333
       value: {fileID: 21300000, guid: 38f0e44808c3eb345b4b91000fb13f48, type: 3}
-    - time: 0.200000
+    - time: 0.2
       value: {fileID: 21300000, guid: eee1574c0970be345aa08171e67a9821, type: 3}
     - time: 0.266667
       value: {fileID: 21300000, guid: d3bcab3ee40072d48a619322555a1329, type: 3}
     - time: 0.333333
       value: {fileID: 21300000, guid: 83f9dec8bb066e54d80ff1c8371cc0b2, type: 3}
-    - time: 0.400000
+    - time: 0.4
       value: {fileID: 21300000, guid: 790af3de1e9073443a9c502a5c9daf78, type: 3}
     - time: 0.466667
       value: {fileID: 21300000, guid: 8a7fba6eba7391c488318a833e8c8bf0, type: 3}
@@ -41,6 +42,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 15
   m_WrapMode: 0
   m_Bounds:
@@ -55,6 +57,8 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: 6ce6c500a3360b54d82dc93ed0b60d41, type: 3}
     - {fileID: 21300000, guid: 007630d6ec68aae40ac6984cd36f5aff, type: 3}
@@ -70,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.600000
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

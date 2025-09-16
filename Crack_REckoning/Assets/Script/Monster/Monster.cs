@@ -1,13 +1,14 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
     private static readonly string Attack = "Attack";
-    private static readonly string die = "Die";
+    private static readonly string IsDead = "IsDead";
 
     [SerializeField]
     public Transform target;
@@ -167,12 +168,16 @@ public class Monster : MonoBehaviour
     }
     public void Die()
     {
-        animator.SetTrigger(die);
+        animator.SetTrigger(IsDead);
         agent.isStopped = true;
-
-        //add player Exp
-
+        StartCoroutine(DestroyGameObject());
+    }
+    
+    public IEnumerator DestroyGameObject()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);
         Destroy(gameObject);
+        Debug.Log("DieMonster");
     }
 
     public void SetTarget (Transform Target)
