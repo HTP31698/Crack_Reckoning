@@ -19,7 +19,7 @@ public class Monster : MonoBehaviour
     private float posX;
     private float posZ;
 
-    public MonsterDataTable monsterDataTable;
+    private MonsterDataTable monsterDataTable;
     private MonsterData MonsterData;
 
     [SerializeField] private int id;

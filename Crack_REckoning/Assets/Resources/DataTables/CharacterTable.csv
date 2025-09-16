@@ -1,3 +1,2 @@
-Chname,ID,BasicSkills,AddSkill,Add_Skill,AddSkill,AddSkill,ChAttack,ChCri,ChCriDam,SkillMax
-String,int,int,int,int,int,int,int,float,int,int
-MainCh,11001,31001,,,,,50,0.05,2,5
+ChID,ChName,BasicSkill,ChAttack,ChCri,ChCriDam
+11001,MainCh,31001,50,5,1.5

@@ -1,5 +1,4 @@
 SkillID,SkillPickID,SkillPickName,SkillDamageNumChange,IncreasingSkillDamageRange,ReduceSkillCT,IncreasedProjectile,IncreaseNumAttack,PeneTratingPower,NewSkillID,EffectID
-int,int,String,float,float,float,int,int,int,int,int
 31001,1,FireballDamageIncrease,1.6,,,,,,,
 31001,2,ReduceFireballCoolTime,1.25,,0.3,,,,,
 31001,3,IncreasingFireballLuce,0.9,,,1,,,,
