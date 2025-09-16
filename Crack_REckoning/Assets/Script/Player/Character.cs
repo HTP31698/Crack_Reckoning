@@ -25,9 +25,22 @@ public class Character : MonoBehaviour
     {
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            UseSkill();
+        }
+    }
 
     public void UseSkill()
     {
+        Monster target = MonsterManager.nearMonster(gameObject.transform.position);
+        if(target != null)
+        {
+            target.TakeDamage(100);
+            Debug.Log($"Ω∫≈≥¿Ã{target.name}");
+        }
     }
 
     public void AddSkill()

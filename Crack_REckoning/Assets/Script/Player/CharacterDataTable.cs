@@ -20,7 +20,7 @@ public class CharacterDataTable : DataTable
             }
             else
             {
-                Debug.LogError("몬스터 아이디 중복!");
+                Debug.LogError("캐릭터 아이디 중복!");
             }
         }
     }

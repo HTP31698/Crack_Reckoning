@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour
 
     [SerializeField] private int id;
 
-    private string monsterName;
+    public string monsterName;
     public int maxHp;
     public int currentHp;
     public int damage;
@@ -38,6 +38,15 @@ public class Monster : MonoBehaviour
 
 
     private float lastAttackTime = 0f;
+
+    private void OnEnable()
+    {
+        MonsterManager.AddMonster(this);
+    }
+    private void OnDisable()
+    {
+        MonsterManager.RemoveMonster(this);
+    }
 
     public void Init(MonsterDataTable table, int id)
     {
@@ -81,17 +90,7 @@ public class Monster : MonoBehaviour
 
                 if (animator != null && controller != null)
                     animator.runtimeAnimatorController = controller;
-                else if (controller == null)
-                    Debug.LogError($"AnimatorController가 없습니다! ID:{id}");
             }
-            else
-            {
-                Debug.LogError($"MonsterData가 없습니다! ID:{id}");
-            }
-        }
-        else
-        {
-            Debug.LogError("MonsterDataTable이 null입니다!");
         }
 
         posX = transform.position.x;
