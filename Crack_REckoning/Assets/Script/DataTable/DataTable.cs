@@ -21,6 +21,12 @@ public abstract class DataTable
                 csvReader.Context.RegisterClassMap<StageDataMap>();
             else if (typeof(T) == typeof(MonsterData))
                 csvReader.Context.RegisterClassMap<MonsterDataMap>();
+            else if (typeof(T) == typeof(SkillData))
+                csvReader.Context.RegisterClassMap<SkillDataMap>();
+            else if (typeof(T) == typeof(SkillSelectionData))
+                csvReader.Context.RegisterClassMap<SkillSelectionDataMap>();
+            else if (typeof(T) == typeof(CharacterData))
+                csvReader.Context.RegisterClassMap<CharacterDataMap>();
             else
                 throw new System.Exception($"ClassMap이 등록되지 않은 타입: {typeof(T)}");
 

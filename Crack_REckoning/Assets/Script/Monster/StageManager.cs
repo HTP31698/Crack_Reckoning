@@ -10,8 +10,6 @@ public class StageManager : MonoBehaviour
 {
     private static readonly string MonsterTable = "MonsterTable";
     private static readonly string StageTable = "StageTable";
-    private MonsterDataTable monsterDataTable;
-    private StageDataTable StageDataTable;
     public GameObject monsterPrefab;
     public Transform target;
 
@@ -20,13 +18,7 @@ public class StageManager : MonoBehaviour
     private int currentWave = 1;
     private Coroutine spawnCoroutine;
 
-    private void Awake()
-    {
-        monsterDataTable = new MonsterDataTable();
-        monsterDataTable.Load(MonsterTable);
-        StageDataTable = new StageDataTable();
-        StageDataTable.Load(StageTable);
-    }
+
     private void Start()
     {
         StartStage(currentStage, currentWave);
@@ -62,7 +54,7 @@ public class StageManager : MonoBehaviour
         for (int wave = startWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;
-            currentStageData = StageDataTable.Get(currentStage, currentWave);
+            currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
 
             if (currentStageData.M1Num > 0)
                 yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
@@ -88,9 +80,10 @@ public class StageManager : MonoBehaviour
     public void SpawnMonster(int monsterId)
     {
         Vector3 spawnpos = new Vector3(Random.Range(-3f, 3f), 7, 0);
+        var monsterTable = DataTableManager.Get<MonsterTable>(MonsterTable);
         GameObject obj = Instantiate(monsterPrefab, spawnpos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
-        monster.Init(monsterDataTable, monsterId);
+        monster.Init(monsterTable, monsterId);
         monster.SetTarget(target);
     }
 

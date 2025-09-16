@@ -5,14 +5,14 @@ public class Character : MonoBehaviour
 {
     private static readonly string CharacterTable = "CharacterTable";
 
-    public GameObject[] skills = new GameObject[5];
+    public GameObject skillprefaps;
     private int skillCount = 1;
 
-    private CharacterDataTable characterDataTable;
     private CharacterData characterData;
-    //skillSelectionDataTable
+    private SkillData skillData;
+    private SkillSelectionData skillSelectionData;
 
-    private int id;
+    private int[] ids = new int[5];
     private string characterName;
     private int basicSkill;
     private int characterAttack;
@@ -27,23 +27,34 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        //IEnumerator Coroutine으로 나중에 시간마다 스킬 사용하게끔? Add로 스킬 추가하고
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            UseSkill();
+            UseSkill(basicSkill);
+        }
+        if (Input.GetKeyDown(KeyCode.W) && skillCount < 5)
+        {
+            skillCount++;
+            AddSkill(basicSkill);
         }
     }
 
-    public void UseSkill()
+    public void UseSkill(int id)
     {
         Monster target = MonsterManager.nearMonster(gameObject.transform.position);
-        if(target != null)
+        if (target != null)
         {
-            target.TakeDamage(100);
-            Debug.Log($"스킬이{target.name}");
+            GameObject obj = Instantiate(skillprefaps,
+                gameObject.transform.position, target.transform.rotation);
+            Skill skill = obj.GetComponent<Skill>();
+            //skill.Init();
+            //skill.SetTarget();
+
         }
     }
 
-    public void AddSkill()
-    { 
+    public void AddSkill(int id)
+    {
+
     }
 }

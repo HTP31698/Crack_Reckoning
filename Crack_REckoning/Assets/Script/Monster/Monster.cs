@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour
     private float posX;
     private float posZ;
 
-    private MonsterDataTable monsterDataTable;
+    private MonsterTable monsterDataTable;
     private MonsterData MonsterData;
 
     [SerializeField] private int id;
@@ -49,7 +49,7 @@ public class Monster : MonoBehaviour
         MonsterManager.RemoveMonster(this);
     }
 
-    public void Init(MonsterDataTable table, int id)
+    public void Init(MonsterTable table, int id)
     {
         monsterDataTable = table;
         this.id = id;

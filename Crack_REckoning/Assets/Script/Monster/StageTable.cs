@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class StageDataTable : DataTable
+public class StageTable : DataTable
 {
     public Dictionary<(int ,int), StageData> table = new Dictionary<(int ,int), StageData>();
 

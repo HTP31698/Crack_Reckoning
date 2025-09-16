@@ -3,63 +3,78 @@ using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public static class DataTableManger
+public static class DataTableManager
 {
     private static readonly Dictionary<string, DataTable> tables =
         new Dictionary<string, DataTable>();
 
-    static DataTableManger()
+    static DataTableManager()
     {
         Init();
     }
 
     private static void Init()
     {
-#if UNITY_EDITOR
-        //foreach (var id in DataTableIds.StringTableIds)
-        //{
-        //    var table = new StringTable();
-        //    table.Load(id);
-        //    tables.Add(id, table);
-        //}
-#else
-        //var stringTable = new StringTable();
-        //stringTable.Load(DataTableIds.String);
-        //tables.Add(DataTableIds.String, stringTable);
-#endif
+        var monsterTable = new MonsterTable();
+        monsterTable.Load(DataTableIds.Monster);
+        tables.Add(DataTableIds.Monster, monsterTable);
 
-        //var itemTable = new ItemTable();
-        //itemTable.Load(DataTableIds.Item);
-        //tables.Add(DataTableIds.Item, itemTable);
+        var stageTable = new StageTable();
+        stageTable.Load(DataTableIds.Stage);
+        tables.Add(DataTableIds.Stage, stageTable);
 
-        //var diffyTable = new DifficultyTable();
-        //diffyTable.Load(DataTableIds.Difficulty);
-        //dtables.Add(DataTableIds.Difficulty, diffyTable);
+        var characterTable = new CharacterTable();
+        characterTable.Load(DataTableIds.Character);
+        tables.Add(DataTableIds.Character, characterTable);
+
+        var skillTable = new SkillTable();
+        skillTable.Load(DataTableIds.Skill);
+        tables.Add(DataTableIds.Skill, skillTable);
+
+        var skillSelectionTable = new SkillSelectionTable();
+        skillSelectionTable.Load(DataTableIds.SkillSelection);
+        tables.Add(DataTableIds.SkillSelection, skillSelectionTable);
     }
 
-    //public static StringTable StringTable
-    //{
-    //    get
-    //    {
-    //        return Get<StringTable>(DataTableIds.String);
-    //    }
-    //}
+    public static MonsterTable MonsterTable
+    {
+        get
+        {
+            return Get<MonsterTable>(DataTableIds.Monster);
+        }
+    }
 
-    //public static ItemTable ItemTable
-    //{
-    //    get
-    //    {
-    //        return Get<ItemTable>(DataTableIds.Item);
-    //    }
-    //}
+    public static StageTable StageTable
+    {
+        get
+        {
+            return Get<StageTable>(DataTableIds.Stage);
+        }
+    }
 
-    //public static DifficultyTable DifficultyTable
-    //{
-    //    get
-    //    {
-    //        return Get<DifficultyTable>(DataTableIds.Difficulty);
-    //    }
-    //}
+    public static CharacterTable CharacterTable
+    {
+        get
+        {
+            return Get<CharacterTable>(DataTableIds.Character);
+        }
+    }
+
+    public static SkillTable SkillTable
+    {
+        get
+        {
+            return Get<SkillTable>(DataTableIds.Skill);
+        }
+    }
+
+    public static SkillSelectionTable SkillSelectionTable
+    {
+        get
+        {
+            return Get<SkillSelectionTable>(DataTableIds.SkillSelection);
+        }
+    }
 
     public static T Get<T>(string id) where T : DataTable
     {

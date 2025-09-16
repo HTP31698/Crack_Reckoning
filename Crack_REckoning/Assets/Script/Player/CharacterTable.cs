@@ -1,31 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillDataTable : DataTable
+public class CharacterTable : DataTable
 {
-    Dictionary<int, SkillData> table = new Dictionary<int, SkillData>();
+    Dictionary<int, CharacterData> table = new Dictionary<int, CharacterData>();
     public override void Load(string filename)
     {
         table.Clear();
 
         var path = string.Format(FormatPath, filename);
         var textAsset = Resources.Load<TextAsset>(path);
-        var list = LoadCSV<SkillData>(textAsset.text);
+        var list = LoadCSV<CharacterData>(textAsset.text);
 
         foreach (var item in list)
         {
-            if (!table.ContainsKey(item.SkillID))
+            if (!table.ContainsKey(item.ChID))
             {
-                table.Add(item.SkillID, item);
+                table.Add(item.ChID, item);
             }
             else
             {
-                Debug.LogError("스킬 아이디 중복");
+                Debug.LogError("캐릭터 아이디 중복!");
             }
         }
     }
 
-    public SkillData Get(int id)
+    public CharacterData Get(int id)
     {
         if (!table.ContainsKey(id))
         {

@@ -1,3 +1,2 @@
-Chname,ID,BasicSkills,AddSkill1,AddSkill2,AddSkill3,AddSkill4,ChAttack,ChCri,ChCriDam,SkillMax
-String,int,int,int,int,int,int,int,float,int,int
-메인 캐릭터,11001,31001,,,,,50,0.05,2,5
+ChID,ChName,BasicSkill,ChAttack,ChCri,ChCriDam
+11001,메인 캐릭터,31001,50,5,2

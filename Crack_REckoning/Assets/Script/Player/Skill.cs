@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    SkillDataTable skillDataTable;
+    SkillTable skillDataTable;
     SkillData skillData;
 
 
