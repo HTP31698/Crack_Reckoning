@@ -38,9 +38,9 @@ public class MonsterData
     }
 
     public Sprite sprite
-        => Resources.Load<Sprite>($"Sprite/{MonsterName}");
+        => Resources.Load<Sprite>($"Sprite/{MonsterID}");
     public RuntimeAnimatorController AnimatorController
-        => Resources.Load<RuntimeAnimatorController>($"Animator/{MonsterName}");
+        => Resources.Load<RuntimeAnimatorController>($"Animator/{MonsterID}");
 }
 
 public class MonsterDataMap : ClassMap<MonsterData>

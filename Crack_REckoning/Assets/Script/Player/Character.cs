@@ -1,10 +1,12 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Character : MonoBehaviour
 {
     private static readonly string CharacterTable = "CharacterTable";
 
-    public GameObject[] skills;
+    public GameObject[] skills = new GameObject[5];
+    private int skillCount = 1;
 
     private CharacterDataTable characterDataTable;
     private CharacterData characterData;
@@ -23,18 +25,12 @@ public class Character : MonoBehaviour
     {
     }
 
-    public void Init()
-    {
 
+    public void UseSkill()
+    {
     }
 
-    public void InitPlayerData()
-    {
-
-    }
-
-    public void FireBall()
-    {
-        
+    public void AddSkill()
+    { 
     }
 }
