@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bed247d2eef305647a0d40ff1869c615
+guid: 9d34bed0f4d7cba458763dc8ee60560f
 DefaultImporter:
   externalObjects: {}
   userData: 
@@ -7,8 +7,8 @@ DefaultImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 270322
-  packageName: Super Pixel Projectiles Pack 1
+  productId: 263582
+  packageName: Super Pixel Impact FX Pack 1
   packageVersion: 1.0
   assetPath: Assets/Super Pixel Projectiles Pack 1/Scenes/SampleScene.unity
-  uploadId: 626723
+  uploadId: 608444
