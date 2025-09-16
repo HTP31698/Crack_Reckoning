@@ -1,4 +1,3 @@
-Ä³¸¯ÅÍ ÀÌ¸§,Ä³¸¯ÅÍ ID,±âº» ½ºÅ³,Ãß°¡ ½ºÅ³ ,Ãß°¡ ½ºÅ³ ,Ãß°¡ ½ºÅ³ ,Ãß°¡ ½ºÅ³ ,°ø°İ·Â,Ä¡¸íÅ¸ È®·ü,Ä¡¸íÅ¸ µ¥¹ÌÁö,ÃÖ´ë ½ºÅ³ °³¼ö
-Ch_name,ID,Basic_Skills,Add_Skill,Add_Skill,Add_Skill,Add_Skill,Ch_Attack,Ch_Cri,Ch_CriDam,Skill_Max
+Chname,ID,BasicSkills,AddSkill1,AddSkill2,AddSkill3,AddSkill4,ChAttack,ChCri,ChCriDam,SkillMax
 String,int,int,int,int,int,int,int,float,int,int
-Main_Ch,11001,31001,,,,,50,0.05,2,5
+ë©”ì¸ ìºë¦­í„°,11001,31001,,,,,50,0.05,2,5

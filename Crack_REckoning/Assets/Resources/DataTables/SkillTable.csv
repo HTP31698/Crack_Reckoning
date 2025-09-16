@@ -1,7 +1,6 @@
-½ºÅ³ ID,½ºÅ³ ÀÌ¸§,±¸ºĞ,¼Ó¼º,»ç°Å¸®,±âº» µ¥¹ÌÁö,ÄğÅ¸ÀÓ,Åõ»çÃ¼ °³¼ö,°ø°İ È½¼ö,°üÅë·Â,½ºÅ³ ÇÇÇØ ¹üÀ§,°­È­ Àû¿ë ID,È¿°ú ID
-Skill_ID,Skill_name,Skill_Sortation,Skill_Type,Skill_itc,Skill_Basic_Damg,Skill_Cool Time,,,,,,
+SkillID,SkillName,SkillSortation,SkillType,Skillitc,SkillBasicDamg,SkillCool Time,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,ApplyEnforceID,EffectID
 int,string,int,int,float,int,float,int,int,int,float,int,int
-31001,ÆÄÀÌ¾îº¼,1,1,5,55,1,1,1,1,1,,41001
-31002,´Ü°Ë ÅõÃ´,1,5,5,50,0.75,1,1,1,1,,
-31003,°Ë±â,1,5,5,70,1.15,1,1,1,1,,
-32004,º­¶ô,2,4,5,80,1.1,1,1,1,1,,41003
+31001,íŒŒì´ì–´ë³¼,1,1,5,55,1,1,1,1,1,,41001
+31002,ë‹¨ê²€ íˆ¬ì²™,1,5,5,50,0.75,1,1,1,1,,
+31003,ê²€ê¸°,1,5,5,70,1.15,1,1,1,1,,
+32004,ë²¼ë½,2,4,5,80,1.1,1,1,1,1,,41003
