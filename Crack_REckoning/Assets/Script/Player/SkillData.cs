@@ -1,28 +1,28 @@
 using CsvHelper.Configuration;
 using UnityEngine;
 
-enum SkillSortationID
+public enum SkillSortationID
 {
     BasicSkill,
     StageSkill,
     PetSkill,
 }
 
-enum SkillTypeID
+public enum SkillTypeID
 {
-    fire,
-    water,
-    ice,
-    lightning,
-    physical,
+    Fire,
+    Water,
+    Ice,
+    Lightning,
+    Physical,
 }
 
 public class SkillData
 {
     public int SkillID { get; set; }
     public string SkillName { get; set; }
-    public int SkillSortation { get; set; }
-    public int SkillType { get; set; }
+    public SkillSortationID SkillSortation { get; set; }
+    public SkillTypeID SkillType { get; set; }
     public float SkillRange { get; set; }
     public int SkillDamage { get; set; }
     public float SkillCoolTime { get; set; }
@@ -31,6 +31,16 @@ public class SkillData
     public int PenetratingPower { get; set; }
     public float SkillDamageRange { get; set; }
     public int? EffectID { get; set; }
+
+    public override string ToString()
+    {
+        return $"{SkillID} / {SkillName} / {SkillSortation} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {EffectID}";
+    }
+
+    public Sprite sprite
+        => Resources.Load<Sprite>($"Sprite/{SkillID}");
+    public RuntimeAnimatorController AnimatorController
+        => Resources.Load<RuntimeAnimatorController>($"Animator/{SkillID}");
 }
 
 public class SkillDataMap : ClassMap<SkillData>

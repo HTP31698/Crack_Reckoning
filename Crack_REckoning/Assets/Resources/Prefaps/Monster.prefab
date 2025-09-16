@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5122996109460904298}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Monster
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,4 +223,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   id: 0
+  monsterName: 
+  maxHp: 0
+  currentHp: 0
   damage: 0
+  attackSpeed: 0
+  monsterLastAttack: 0
+  exp: 0

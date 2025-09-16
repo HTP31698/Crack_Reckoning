@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class StageManager : MonoBehaviour
 {
-    private static readonly string MonsterTable = "MonsterTable";
     private static readonly string StageTable = "StageTable";
     public GameObject monsterPrefab;
     public Transform target;
@@ -80,10 +79,9 @@ public class StageManager : MonoBehaviour
     public void SpawnMonster(int monsterId)
     {
         Vector3 spawnpos = new Vector3(Random.Range(-3f, 3f), 7, 0);
-        var monsterTable = DataTableManager.Get<MonsterTable>(MonsterTable);
         GameObject obj = Instantiate(monsterPrefab, spawnpos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
-        monster.Init(monsterTable, monsterId);
+        monster.Init(monsterId);
         monster.SetTarget(target);
     }
 

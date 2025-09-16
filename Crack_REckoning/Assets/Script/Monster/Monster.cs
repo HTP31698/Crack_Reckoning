@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
 {
     private static readonly string Attack = "Attack";
     private static readonly string IsDead = "IsDead";
+    private static readonly string MonsterTable = "MonsterTable";
 
     [SerializeField]
     public Transform target;
@@ -20,19 +21,19 @@ public class Monster : MonoBehaviour
     private float posX;
     private float posZ;
 
-    private MonsterTable monsterDataTable;
+    private MonsterTable monsterTable;
     private MonsterData MonsterData;
 
-    [SerializeField] private int id;
-
+    [SerializeField] 
+    private int id;
     public string monsterName;
     public int maxHp;
     public int currentHp;
     public int damage;
     public float attackSpeed;
     public float monsterLastAttack = 0;
-    private MonsterWeakness monsterWeakness;
-    private MonsterStrength monsterStrength;
+    private SkillTypeID monsterWeakness;
+    private SkillTypeID monsterStrength;
     public int exp;
     private Sprite sprite;
     private RuntimeAnimatorController controller;
@@ -48,55 +49,6 @@ public class Monster : MonoBehaviour
     {
         MonsterManager.RemoveMonster(this);
     }
-
-    public void Init(MonsterTable table, int id)
-    {
-        monsterDataTable = table;
-        this.id = id;
-        InitMonsterData();
-    }
-    private void InitMonsterData()
-    {
-        // 컴포넌트가 null이면 강제로 가져오기
-        if (agent == null) agent = GetComponent<NavMeshAgent>();
-        if (animator == null) animator = GetComponent<Animator>();
-        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (monsterDataTable != null)
-        {
-            MonsterData = monsterDataTable.Get(id);
-            if (MonsterData != null)
-            {
-                monsterName = MonsterData.MonsterName;
-
-                if (agent != null)
-                {
-                    agent.stoppingDistance = MonsterData.MonsterRange;
-                    agent.speed = MonsterData.MonsterSpeed;
-                }
-
-                maxHp = MonsterData.MonsterHp;
-                currentHp = maxHp;
-                damage = MonsterData.MonsterAttack;
-                attackSpeed = MonsterData.MonsterAttackSpeed;
-                monsterWeakness = (MonsterWeakness)MonsterData.MonsterWeakness;
-                monsterStrength = (MonsterStrength)MonsterData.MonsterStrength;
-                exp = MonsterData.MonsterExp;
-
-                controller = MonsterData.AnimatorController;
-                sprite = MonsterData.sprite;
-
-                if (spriteRenderer != null && sprite != null)
-                    spriteRenderer.sprite = sprite;
-
-                if (animator != null && controller != null)
-                    animator.runtimeAnimatorController = controller;
-            }
-        }
-
-        posX = transform.position.x;
-        posZ = transform.position.z;
-    }
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -106,7 +58,6 @@ public class Monster : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
-
     private void Update()
     {
         if (target == null) return;
@@ -146,7 +97,54 @@ public class Monster : MonoBehaviour
             yield return new WaitForSeconds(attackSpeed);
         }
     }
+    public void Init(int id)
+    {
+        this.id = id;
+        monsterTable = DataTableManager.Get<MonsterTable>(MonsterTable);
+        InitMonsterData();
+    }
+    private void InitMonsterData()
+    {
+        // 컴포넌트가 null이면 강제로 가져오기
+        if (agent == null) agent = GetComponent<NavMeshAgent>();
+        if (animator == null) animator = GetComponent<Animator>();
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (monsterTable != null)
+        {
+            MonsterData = monsterTable.Get(id);
+            if (MonsterData != null)
+            {
+                monsterName = MonsterData.MonsterName;
+
+                if (agent != null)
+                {
+                    agent.stoppingDistance = MonsterData.MonsterRange;
+                    agent.speed = MonsterData.MonsterSpeed;
+                }
+
+                maxHp = MonsterData.MonsterHp;
+                currentHp = maxHp;
+                damage = MonsterData.MonsterAttack;
+                attackSpeed = MonsterData.MonsterAttackSpeed;
+                monsterWeakness = MonsterData.MonsterWeakness.GetValueOrDefault();
+                monsterStrength = MonsterData.MonsterStrength.GetValueOrDefault();
+                exp = MonsterData.MonsterExp;
+
+                controller = MonsterData.AnimatorController;
+                sprite = MonsterData.sprite;
+
+                if (spriteRenderer != null && sprite != null)
+                    spriteRenderer.sprite = sprite;
+
+                if (animator != null && controller != null)
+                    animator.runtimeAnimatorController = controller;
+            }
+        }
+
+        posX = transform.position.x;
+        posZ = transform.position.z;
+    }
 
     private void TryAttack()
     {
@@ -177,7 +175,6 @@ public class Monster : MonoBehaviour
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);
         Destroy(gameObject);
-        Debug.Log("DieMonster");
     }
 
     public void SetTarget (Transform Target)

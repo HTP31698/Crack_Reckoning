@@ -1,18 +1,5 @@
 using UnityEngine;
 using CsvHelper.Configuration;
-enum MonsterWeakness
-{
-    Fire,
-    Water,
-    Lightning,
-}
-enum MonsterStrength
-{
-    Fire,
-    Water, 
-    Lightning,
-};
-
 
 public class MonsterData
 {
@@ -24,8 +11,8 @@ public class MonsterData
     public int MonsterAttack { get; set; }
     public float MonsterSpeed { get; set; }
     public float MonsterAttackSpeed { get; set; }
-    public int? MonsterWeakness { get; set; }
-    public int? MonsterStrength { get; set; }
+    public SkillTypeID? MonsterWeakness { get; set; }
+    public SkillTypeID? MonsterStrength { get; set; }
 
     public int? MonsterEffectID { get; set; }
 
