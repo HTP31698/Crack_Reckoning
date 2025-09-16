@@ -17,6 +17,12 @@ public enum SkillTypeID
     Physical,
 }
 
+public enum AttackTypeID
+{
+    Projectile,
+    Area,
+}
+
 public class SkillData
 {
     public int SkillID { get; set; }
@@ -32,9 +38,11 @@ public class SkillData
     public float SkillDamageRange { get; set; }
     public int? EffectID { get; set; }
 
+    public AttackTypeID AttackType { get; set; }
+
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillSortation} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {EffectID}";
+        return $"{SkillID} / {SkillName} / {SkillSortation} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {EffectID} / {AttackType}";
     }
 
     public Sprite sprite
@@ -59,5 +67,6 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.PenetratingPower).Name("PenetratingPower");
         Map(s => s.SkillDamageRange).Name("SkillDamageRange");
         Map(s => s.EffectID).Name("EffectID").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.AttackType).Name("AttackType");
     }
 }

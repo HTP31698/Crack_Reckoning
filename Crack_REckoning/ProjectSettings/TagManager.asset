@@ -7,11 +7,12 @@ TagManager:
   - War
   - Skill
   - Monster
+  - Undefined
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Monster
   - Water
   - UI
   - 
@@ -43,6 +44,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: War
+    uniqueID: 2322452787
+    locked: 0
+  - name: Monster
+    uniqueID: 4245890301
+    locked: 0
+  - name: Skill
+    uniqueID: 1900413273
     locked: 0
   m_RenderingLayers:
   - Default
