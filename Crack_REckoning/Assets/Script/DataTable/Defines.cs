@@ -14,9 +14,14 @@ public static class DataTableIds
     public static readonly string Character = "CharacterTable";
     public static readonly string Skill = "SkillTable";
     public static readonly string SkillSelection = "SkillSelectionTable";
-
 }
 
+public static class PlaySetting
+{
+    public static int playerID;
+    public static int SelectStage;
+    public static int PlayerBasicSkillID;
+}
 
 //public static class Variables
 //{
