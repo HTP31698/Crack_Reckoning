@@ -41,7 +41,6 @@ public class Character : MonoBehaviour
         AddSkill(BasicSkill);
         AddSkill(31002);
         AddSkill(31003);
-        AddSkill(31003);
         AddSkill(32004);
     }
 
