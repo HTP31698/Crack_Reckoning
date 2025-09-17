@@ -1,15 +1,15 @@
 SkillID,SkillName,SkillSortation,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,EffectID,AttackType
-31001,파이어볼,BasicSkill,Fire,10,55,1,1,1,1,0.1,41001,Projectile
-31002,단검 투척,BasicSkill,Physical,7,50,0.75,1,1,1,0.1,,Projectile
-31003,검기,BasicSkill,Physical,5,70,1.15,1,1,1,0.1,,Projectile
-32004,벼락,StageSkill,Lightning,5,80,1.1,1,1,1,0.1,41003,Area
-32005,탄도미,StageSkill,Physical,3.5,55,1,1,1,1,0.1,,Projectile
-32006,얼음 운석,StageSkill,Ice,3.5,50,0.75,1,1,1,0.1,,Projectile
-32007,화염 운석,StageSkill,Fire,3.5,70,1.15,1,1,1,0.1,,Projectile
-32008,워터 스피어,StageSkill,Water,3.5,80,1.1,1,1,1,0.1,,Projectile
-32009,워터 볼,StageSkill,Water,3.5,55,1,1,1,1,0.1,,Projectile
-32010,썬더 볼,StageSkill,Lightning,3.5,50,0.75,1,1,1,0.1,,Projectile
-32011,용오름,StageSkill,Physical,3.5,70,1.15,1,1,1,0.1,,Area
-32012,아이스메이든,StageSkill,Ice,3.5,80,1.1,1,1,1,0.1,,Area
-32013,폭풍,StageSkill,Physical,3.5,70,1.15,1,1,1,0.1,,Area
-32014,바람수리검,StageSkill,Physical,3.5,80,1.1,1,1,1,0.1,,Projectile
+31001,파이어볼,BasicSkill,Fire,7,60,4,1,1,1,0.1,41001,Projectile
+31002,단검 투척,BasicSkill,Physical,6,50,2.5,1,1,1,0.1,,Projectile
+31003,검기,BasicSkill,Physical,5,100,5,1,1,1,0.1,,Projectile
+32004,벼락,StageSkill,Lightning,6,50,2,1,1,1,0.1,41003,Area
+32005,탄도미,StageSkill,Physical,7,65,4,1,1,1,0.1,,Projectile
+32006,얼음 운석,StageSkill,Ice,6,65,3.5,1,1,1,0.1,,Projectile
+32007,화염 운석,StageSkill,Fire,6,65,3.5,1,1,1,0.1,,Projectile
+32008,워터 스피어,StageSkill,Water,7,75,5,1,1,1,0.1,,Projectile
+32009,워터 볼,StageSkill,Water,5,80,5,1,1,1,0.1,,Projectile
+32010,썬더 볼,StageSkill,Lightning,5,80,5,1,1,1,0.1,,Projectile
+32011,용오름,StageSkill,Physical,7,55,2.5,1,1,1,0.1,,Area
+32012,아이스메이든,StageSkill,Ice,7,55,2.5,1,1,1,0.1,,Area
+32013,폭풍,StageSkill,Physical,7,55,2.5,1,1,1,0.1,,Area
+32014,바람수리검,StageSkill,Physical,6,55,2.7,1,1,1,0.1,,Projectile
