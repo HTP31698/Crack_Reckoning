@@ -11,8 +11,9 @@ using static UnityEngine.GraphicsBuffer;
 public class Character : MonoBehaviour
 {
     private static readonly string CharacterTable = "CharacterTable";
-
+    private static readonly string LevelUpTable = "LevelUpTable";
     private CharacterData characterData;
+    private LevelUpData levelUpData;
 
     private List<bool> skillReady;
 
@@ -23,7 +24,7 @@ public class Character : MonoBehaviour
     public int CharacterCri { get; private set; }
     public float CharacterCriDamage { get; private set; }
 
-    private int skillActive = 0;
+    public int skillActiveCount { get; private set; } = 0;
     private int level = 1;
     public int expToNextLevel { get; private set; }
     private int currentExp = 0;
@@ -39,7 +40,6 @@ public class Character : MonoBehaviour
         Init(11001);
         SkillIDs = new List<int>();
 
-        // 스킬 상태 초기화
         skillReady = new List<bool>();
         for (int i = 0; i < 5; i++)
             skillReady.Add(false);
@@ -63,8 +63,10 @@ public class Character : MonoBehaviour
     {
         this.Id = id;
         var table = DataTableManager.Get<CharacterTable>(CharacterTable);
+        ExpToNextLevel(level);
+
         characterData = table.Get(id);
-        text.text = currentExp.ToString();
+        text.text = $"{currentExp} / {expToNextLevel}\nlevel : {level}";
 
         if (characterData != null)
         {
@@ -73,6 +75,15 @@ public class Character : MonoBehaviour
             CharacterAttack = characterData.ChAttack;
             CharacterCri = characterData.ChCri;
             CharacterCriDamage = characterData.ChCriDam;
+        }
+    }
+    public void ExpToNextLevel(int level)
+    {
+        var leveltable = DataTableManager.Get<LevelUpTable>(LevelUpTable);
+        levelUpData = leveltable.Get(level);
+        if (levelUpData != null)
+        {
+            expToNextLevel = levelUpData.LvExp;
         }
     }
     private IEnumerator AutoUseSkill(int index)
@@ -114,11 +125,11 @@ public class Character : MonoBehaviour
     }
     public void AddSkill(int newSkillId)
     {
-        if (skillActive < 5)
+        if (skillActiveCount < 5)
         {
             SkillIDs.Add(newSkillId);
-            skillReady[skillActive] = true;
-            ++skillActive;
+            skillReady[skillActiveCount] = true;
+            ++skillActiveCount;
         }
         else
         {
@@ -128,11 +139,30 @@ public class Character : MonoBehaviour
     public void AddExp(int amount)
     {
         currentExp += amount;
-        if(currentExp >= expToNextLevel)
+        while(currentExp >= expToNextLevel)
         {
             currentExp -= expToNextLevel;
-            level++;
+            LevelUp();
         }
-        text.text = currentExp.ToString();
+        text.text = $"{currentExp} / {expToNextLevel}\nlevel : {level}";
+    }
+
+    public void LevelUp()
+    {
+        if (level > 30)
+        {
+            level = 30;
+            return;
+        }
+        else
+        {
+            level++;
+            ExpToNextLevel(level);
+        }
+    }
+
+    public List<int> GetSkillIdList()
+    {
+        return SkillIDs;
     }
 }

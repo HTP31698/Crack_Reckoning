@@ -34,6 +34,10 @@ public static class DataTableManager
         var skillSelectionTable = new SkillSelectionTable();
         skillSelectionTable.Load(DataTableIds.SkillSelection);
         tables.Add(DataTableIds.SkillSelection, skillSelectionTable);
+
+        var levelUpTable = new LevelUpTable();
+        levelUpTable.Load(DataTableIds.LevelUpTable);
+        tables.Add(DataTableIds.LevelUpTable, levelUpTable);
     }
 
     public static MonsterTable MonsterTable
@@ -73,6 +77,14 @@ public static class DataTableManager
         get
         {
             return Get<SkillSelectionTable>(DataTableIds.SkillSelection);
+        }
+    }
+
+    public static LevelUpTable LevelUpTable
+    {
+        get
+        {
+            return Get<LevelUpTable>(DataTableIds.LevelUpTable);
         }
     }
 

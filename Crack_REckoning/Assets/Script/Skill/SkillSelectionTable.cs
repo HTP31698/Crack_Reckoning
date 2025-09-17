@@ -21,7 +21,7 @@ public class SkillSelectionTable : DataTable
             }
             else
             {
-                Debug.LogError("캐릭터 아이디 중복!");
+                Debug.LogError("스킬 선택 중복!");
             }
         }
     }
