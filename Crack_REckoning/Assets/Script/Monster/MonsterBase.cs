@@ -28,6 +28,8 @@ public abstract class MonsterBase : MonoBehaviour
 
     protected Coroutine attackCoroutine;
 
+    public bool isdead { get; set; } = false;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -95,6 +97,7 @@ public abstract class MonsterBase : MonoBehaviour
     {
         if (animator != null && animator.runtimeAnimatorController != null)
             animator.SetTrigger(IsDead);
+        isdead = true;
         agent.isStopped = true;
         StartCoroutine(DestroyGameObject());
     }

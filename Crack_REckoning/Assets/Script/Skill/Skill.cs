@@ -26,12 +26,12 @@ public class Skill : MonoBehaviour
     public SkillSortationID SkillSortationID { get; private set; }
     public SkillTypeID SkillTypeID { get; private set; }
     public float SkillRange { get; private set; }
-    public int SkillDamage { get; private set; }
-    public float SkillCoolTime { get; private set; }
-    public int ProjectilesNum { get; private set; }
-    public int AttackNum { get; private set; }
-    public int PenetratingPower { get; private set; }
-    public float SkillDamageRange { get; private set; }
+    public int SkillDamage { get;  set; }
+    public float SkillCoolTime { get;  set; }
+    public int ProjectilesNum { get; set; }
+    public int AttackNum { get;  set; }
+    public int PenetratingPower { get;  set; }
+    public float SkillDamageRange { get;  set; }
     public int EffectID { get; private set; }
     public AttackTypeID AttackType { get; private set; }
 
@@ -51,35 +51,35 @@ public class Skill : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (AttackType != AttackTypeID.Projectile)
-        {
-            return;
-        }
+        if (AttackType != AttackTypeID.Projectile) return;
+
         if (dir != Vector2.zero)
         {
-            Vector2 currentPos = rb.position;
-            Vector2 nextPos = currentPos + dir * Speed * Time.fixedDeltaTime;
-
-            RaycastHit2D hit = Physics2D.Raycast(currentPos, dir, (nextPos - currentPos).magnitude, LayerMask.GetMask("Monster"));
-            if (hit.collider != null)
+            for (int i = 0; i < ProjectilesNum; i++)
             {
-                MonsterBase m = hit.collider.GetComponent<MonsterBase>();
-                if (m != null)
+                Vector2 spawnOffset = new Vector2(i * 0.2f, 0); // 투사체 위치 약간씩 차이나게
+                Vector2 currentPos = rb.position + spawnOffset;
+                Vector2 nextPos = currentPos + dir * Speed * Time.fixedDeltaTime;
+
+                RaycastHit2D[] hits = Physics2D.RaycastAll(currentPos, dir, (nextPos - currentPos).magnitude, LayerMask.GetMask("Monster"));
+                foreach (var hit in hits)
                 {
-                    TryAttack(m);
-                    Destroy(gameObject);
-                    return;
+                    MonsterBase m = hit.collider.GetComponent<MonsterBase>();
+                    if (m != null && !m.isdead)
+                    {
+                        TryAttack(m);
+                        PenetratingPower--;
+                        if (PenetratingPower <= 0) Destroy(gameObject);
+                    }
                 }
-            }
+                rb.MovePosition(nextPos);
 
-            rb.MovePosition(nextPos);
-            if (nextPos.y > 7)
-            {
-                Destroy(gameObject);
-                return;
+                if (nextPos.y > 7)
+                    Destroy(gameObject);
             }
         }
     }
+
     private void TryAttack(MonsterBase m)
     {
         int rand = Random.Range(0, 100);

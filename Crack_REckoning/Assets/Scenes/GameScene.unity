@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 386598547}
   - component: {fileID: 386598546}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,6 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8df69ac93798644bf8bf7372096de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 1842625280}
   text: {fileID: 1825011524}
 --- !u!1 &924984239
 GameObject:
@@ -1091,10 +1092,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
+  m_sharedMaterial: {fileID: -588646269269904486, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1227,10 +1228,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
+  m_sharedMaterial: {fileID: -588646269269904486, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1318,7 +1319,7 @@ GameObject:
   - component: {fileID: 1171640017}
   - component: {fileID: 1171640016}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,7 +1394,7 @@ GameObject:
   - component: {fileID: 1193999325}
   - component: {fileID: 1193999324}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2427,10 +2428,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
+  m_sharedMaterial: {fileID: -588646269269904486, guid: a669c9ed762608b4f9291f7d605542e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

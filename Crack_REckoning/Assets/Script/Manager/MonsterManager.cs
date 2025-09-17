@@ -6,6 +6,7 @@ public class MonsterManager
 {
     private static List<MonsterBase> monsters = new List<MonsterBase>();
 
+
     public static void AddMonster(MonsterBase m)
     {
         if (!monsters.Contains(m))
