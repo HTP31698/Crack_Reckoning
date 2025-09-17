@@ -156,11 +156,12 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, Character attacker)
     {
         currentHp -= amount;
         if(currentHp <= 0)
         {
+            attacker.AddExp(exp);
             Die();
         }
     }

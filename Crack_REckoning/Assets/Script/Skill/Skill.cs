@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.TextCore.Text;
 using UnityEngine.U2D;
 
 public class Skill : MonoBehaviour
@@ -14,6 +15,7 @@ public class Skill : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private Character character;
 
 
     private SkillTable skillTable;
@@ -84,12 +86,12 @@ public class Skill : MonoBehaviour
         if (rand < characterCri)
         {
             float cri = (SkillDamage + characterAttack) * characterCriDamage;
-            m.TakeDamage((int)cri);
+            m.TakeDamage((int)cri, character);
         }
         else
         {
             int nocri = SkillDamage + characterAttack;
-            m.TakeDamage(nocri);
+            m.TakeDamage(nocri, character);
         }
     }
 
@@ -135,8 +137,9 @@ public class Skill : MonoBehaviour
         }
     }
 
-    public void SetCharacter(int atk, int cri, float cridmg)
+    public void SetCharacter(Character character, int atk, int cri, float cridmg)
     {
+        this.character = character;
         characterAttack = atk;
         characterCri = cri;
         characterCriDamage = cridmg;

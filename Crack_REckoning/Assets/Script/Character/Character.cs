@@ -3,6 +3,7 @@ using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -23,9 +24,14 @@ public class Character : MonoBehaviour
     public float CharacterCriDamage { get; private set; }
 
     private int skillActive = 0;
+    private int level = 1;
+    public int expToNextLevel { get; private set; }
+    private int currentExp = 0;
+
     private float distance;
 
     private List<int> SkillIDs;
+    public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -58,6 +64,7 @@ public class Character : MonoBehaviour
         this.Id = id;
         var table = DataTableManager.Get<CharacterTable>(CharacterTable);
         characterData = table.Get(id);
+        text.text = currentExp.ToString();
 
         if (characterData != null)
         {
@@ -93,7 +100,7 @@ public class Character : MonoBehaviour
             Skill skill = obj.GetComponent<Skill>();
             skill.Init(SkillIDs[index]);
             skill.SetTarget(target.transform.position);
-            skill.SetCharacter(CharacterAttack, CharacterCri, CharacterCriDamage);
+            skill.SetCharacter(this, CharacterAttack, CharacterCri, CharacterCriDamage);
             switch (skill.AttackType)
             {
                 case AttackTypeID.Projectile:
@@ -105,8 +112,6 @@ public class Character : MonoBehaviour
             Debug.Log($"{CharacterName}이(가) 스킬 {skill.SkillName} 사용!");
         }
     }
-
-
     public void AddSkill(int newSkillId)
     {
         if (skillActive < 5)
@@ -119,5 +124,15 @@ public class Character : MonoBehaviour
         {
             return;
         }
+    }
+    public void AddExp(int amount)
+    {
+        currentExp += amount;
+        if(currentExp >= expToNextLevel)
+        {
+            currentExp -= expToNextLevel;
+            level++;
+        }
+        text.text = currentExp.ToString();
     }
 }
