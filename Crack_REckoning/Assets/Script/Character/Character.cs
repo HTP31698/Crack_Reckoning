@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
     private IEnumerator AutoUseSkill(int index)
     {
         var skillData = DataTableManager.Get<SkillTable>("SkillTable").Get(SkillIDs[index]);
-        Monster monster = MonsterManager.nearMonster(transform.position);
+        MonsterBase monster = MonsterManager.nearMonster(transform.position);
         if (monster != null)
         {
             distance = Vector3.Distance(transform.position, monster.transform.position);
@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
             }
         }
     }
-    private void UseSkill(Monster target, int index)
+    private void UseSkill(MonsterBase target, int index)
     {
         if (target != null)
         {
@@ -120,7 +120,6 @@ public class Character : MonoBehaviour
                     skill.CastAreaDamage();
                     break;
             }
-            Debug.Log($"{CharacterName}이(가) 스킬 {skill.SkillName} 사용!");
         }
     }
     public void AddSkill(int newSkillId)

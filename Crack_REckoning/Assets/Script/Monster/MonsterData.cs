@@ -3,7 +3,6 @@ using CsvHelper.Configuration;
 
 public class MonsterData
 {
-    [SerializeField]
     public int MonsterID { get; set; }
     public string MonsterName { get; set; }
     public float MonsterRange { get; set; }

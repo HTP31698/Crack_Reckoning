@@ -38,6 +38,10 @@ public static class DataTableManager
         var levelUpTable = new LevelUpTable();
         levelUpTable.Load(DataTableIds.LevelUpTable);
         tables.Add(DataTableIds.LevelUpTable, levelUpTable);
+
+        var bossTable = new BossTable();
+        bossTable.Load(DataTableIds.BossTable);
+        tables.Add(DataTableIds.BossTable, bossTable);
     }
 
     public static MonsterTable MonsterTable
@@ -85,6 +89,14 @@ public static class DataTableManager
         get
         {
             return Get<LevelUpTable>(DataTableIds.LevelUpTable);
+        }
+    }
+
+    public static BossTable BossTable
+    {
+        get
+        {
+            return Get<BossTable>(DataTableIds.BossTable);
         }
     }
 

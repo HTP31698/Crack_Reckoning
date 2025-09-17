@@ -8,6 +8,7 @@ public static class DataTableIds
     public static readonly string Skill = "SkillTable";
     public static readonly string SkillSelection = "SkillSelectionTable";
     public static readonly string LevelUpTable = "LevelUpTable";
+    public static readonly string BossTable = "BossTable";
 }
 
 public static class PlaySetting

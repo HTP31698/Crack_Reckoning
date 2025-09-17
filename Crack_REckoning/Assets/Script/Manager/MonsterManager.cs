@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MonsterManager
 {
-    private static List<Monster> monsters = new List<Monster>();
+    private static List<MonsterBase> monsters = new List<MonsterBase>();
 
-    public static void AddMonster(Monster m)
+    public static void AddMonster(MonsterBase m)
     {
         if (!monsters.Contains(m))
         {
@@ -14,7 +14,7 @@ public class MonsterManager
         }
     }
 
-    public static void RemoveMonster(Monster m)
+    public static void RemoveMonster(MonsterBase m)
     {
         if (monsters.Contains(m))
         {
@@ -22,12 +22,12 @@ public class MonsterManager
         }
     }
 
-    public static Monster nearMonster(Vector3 fromPosition, float maxRange = Mathf.Infinity)
+    public static MonsterBase nearMonster(Vector3 fromPosition, float maxRange = Mathf.Infinity)
     {
-        Monster closemonster = null;
+        MonsterBase closemonster = null;
         float closemonterSqr = maxRange * maxRange;
 
-        foreach (Monster m in monsters)
+        foreach (MonsterBase m in monsters)
         {
             if (m == null)
                 continue;

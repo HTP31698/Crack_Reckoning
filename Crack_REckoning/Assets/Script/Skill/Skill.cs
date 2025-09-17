@@ -63,7 +63,7 @@ public class Skill : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(currentPos, dir, (nextPos - currentPos).magnitude, LayerMask.GetMask("Monster"));
             if (hit.collider != null)
             {
-                Monster m = hit.collider.GetComponent<Monster>();
+                MonsterBase m = hit.collider.GetComponent<MonsterBase>();
                 if (m != null)
                 {
                     TryAttack(m);
@@ -80,7 +80,7 @@ public class Skill : MonoBehaviour
             }
         }
     }
-    private void TryAttack(Monster m)
+    private void TryAttack(MonsterBase m)
     {
         int rand = Random.Range(0, 100);
         if (rand < characterCri)
@@ -165,7 +165,7 @@ public class Skill : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(damagePosition, SkillDamageRange, LayerMask.GetMask("Monster"));
         foreach (var hit in hits)
         {
-            Monster m = hit.GetComponent<Monster>();
+            MonsterBase m = hit.GetComponent<MonsterBase>();
             if (m != null)
             {
                 TryAttack(m);

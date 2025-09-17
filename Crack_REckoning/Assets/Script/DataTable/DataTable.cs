@@ -29,6 +29,8 @@ public abstract class DataTable
                 csvReader.Context.RegisterClassMap<CharacterDataMap>();
             else if (typeof(T) == typeof(LevelUpData))
                 csvReader.Context.RegisterClassMap<LevelUpDataMap>();
+            else if (typeof(T) == typeof(BossData))
+                csvReader.Context.RegisterClassMap<BossDataMap>();
             else
                 throw new System.Exception($"ClassMap이 등록되지 않은 타입: {typeof(T)}");
 

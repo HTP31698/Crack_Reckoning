@@ -9,12 +9,17 @@ using UnityEngine.UIElements;
 public class StageManager : MonoBehaviour
 {
     private static readonly string StageTable = "StageTable";
+    private static readonly string PrefabMonster = "Prefabs/Monster";
+    private static readonly string PrefabBoss = "Prefabs/Boss";
     public Transform target;
 
     private StageData currentStageData;
     private int currentStage = 1;
     private int currentWave = 1;
     private Coroutine spawnCoroutine;
+
+    private float StageAddMHp;
+    private float StageAddMAtt;
 
 
     private void Start()
@@ -48,11 +53,13 @@ public class StageManager : MonoBehaviour
     }
     private IEnumerator SpawnWave(int startWave)
     {
-        int totalWaves = 21;
+        int totalWaves = 20;
         for (int wave = startWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;
             currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
+            StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
+            StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
 
             if (currentStageData.M1Num > 0)
                 StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
@@ -60,9 +67,13 @@ public class StageManager : MonoBehaviour
                 StartCoroutine(SpawnMonsterGroup(currentStageData.M2Id.GetValueOrDefault(), currentStageData.M2Num.GetValueOrDefault()));
             if (currentStageData.M3Num > 0)
                 StartCoroutine(SpawnMonsterGroup(currentStageData.M3Id.GetValueOrDefault(), currentStageData.M3Num.GetValueOrDefault()));
-            Debug.Log($"Wave {currentStageData.StageName} 몬스터 소환완료!");
-            yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
 
+            if (currentStageData.MiniBossID.HasValue && currentStageData.MiniBossNum.GetValueOrDefault() > 0)
+                StartCoroutine(SpawnBossGroup(currentStageData.MiniBossID.Value, currentStageData.MiniBossNum.Value));
+
+            if (currentStageData.MainBossID > 0)
+                SpawnBoss(currentStageData.MainBossID.Value);
+            yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
         }
     }
 
@@ -70,18 +81,43 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            SpawnMonster(monsterid);
-            yield return new WaitForSeconds(0.4f);
+            SpawnMonster(monsterid, StageAddMHp, StageAddMAtt);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
-    public void SpawnMonster(int monsterId)
+    public void SpawnMonster(int monsterId, float addHp, float addAtt)
     {
-        Vector3 spawnpos = new Vector3(Random.Range(-3f, 3f), 7, 0);
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"), spawnpos, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(Random.Range(-3f, 3f), 7, 0);
+        GameObject obj = Instantiate(Resources.Load<GameObject>(PrefabMonster), spawnPos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
         monster.Init(monsterId);
         monster.SetTarget(target);
+
+        // 스테이지 보정
+        monster.maxHp = (int)(monster.maxHp * addHp);
+        monster.currentHp = monster.maxHp;
+        monster.damage = (int)(monster.damage * addAtt);
     }
+
+    public IEnumerator SpawnBossGroup(int bossId, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            SpawnBoss(bossId);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void SpawnBoss(int bossId)
+    {
+        Vector3 spawnPos = new Vector3(0, 7, 0);
+        GameObject obj = Instantiate(Resources.Load<GameObject>(PrefabBoss), spawnPos, Quaternion.identity);
+        Boss boss = obj.GetComponent<Boss>();
+        boss.Init(bossId);
+        boss.SetTarget(target);
+    }
+
+
 
 }
