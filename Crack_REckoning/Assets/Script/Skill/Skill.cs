@@ -46,11 +46,14 @@ public class Skill : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer.sortingOrder = 2;
     }
     private void FixedUpdate()
     {
-        if (dir != Vector2.zero && AttackType == AttackTypeID.Projectile)
+        if (AttackType != AttackTypeID.Projectile)
+        {
+            return;
+        }
+        if (dir != Vector2.zero)
         {
             Vector2 currentPos = rb.position;
             Vector2 nextPos = currentPos + dir * Speed * Time.fixedDeltaTime;
@@ -68,7 +71,7 @@ public class Skill : MonoBehaviour
             }
 
             rb.MovePosition(nextPos);
-            if(nextPos.y > 7)
+            if (nextPos.y > 7)
             {
                 Destroy(gameObject);
                 return;
@@ -82,13 +85,11 @@ public class Skill : MonoBehaviour
         {
             float cri = (SkillDamage + characterAttack) * characterCriDamage;
             m.TakeDamage((int)cri);
-            Destroy(gameObject);
         }
         else
         {
             int nocri = SkillDamage + characterAttack;
             m.TakeDamage(nocri);
-            Destroy(gameObject);
         }
     }
 
@@ -143,23 +144,29 @@ public class Skill : MonoBehaviour
     public void SetTarget(Vector3 target)
     {
         targetpos = target;
-        dir = ((Vector2)targetpos - rb.position).normalized;
-        if(AttackType == AttackTypeID.Projectile)
+        if (AttackType == AttackTypeID.Projectile)
         {
+            dir = ((Vector2)targetpos - rb.position).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+        else
+        {
+            dir = Vector2.zero;
         }
     }
     public void CastAreaDamage()
     {
-        Vector2 damagePosition = (Vector2)transform.position + new Vector2(0, -spriteRenderer.bounds.size.y / 2);
         gameObject.transform.position = targetpos;
+        Vector2 damagePosition = (Vector2)transform.position + new Vector2(0, -spriteRenderer.bounds.size.y * 0.9f);
         Collider2D[] hits = Physics2D.OverlapCircleAll(damagePosition, SkillDamageRange, LayerMask.GetMask("Monster"));
         foreach (var hit in hits)
         {
             Monster m = hit.GetComponent<Monster>();
             if (m != null)
-                m.TakeDamage(SkillDamage); // 필요하면 캐릭터 공격력/크리 적용
+            {
+                TryAttack(m);
+            }
         }
         Destroy(gameObject, 1f);
     }

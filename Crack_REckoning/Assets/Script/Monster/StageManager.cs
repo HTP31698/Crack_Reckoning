@@ -9,7 +9,6 @@ using UnityEngine.UIElements;
 public class StageManager : MonoBehaviour
 {
     private static readonly string StageTable = "StageTable";
-    public GameObject monsterPrefab;
     public Transform target;
 
     private StageData currentStageData;
@@ -79,7 +78,7 @@ public class StageManager : MonoBehaviour
     public void SpawnMonster(int monsterId)
     {
         Vector3 spawnpos = new Vector3(Random.Range(-3f, 3f), 7, 0);
-        GameObject obj = Instantiate(monsterPrefab, spawnpos, Quaternion.identity);
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"), spawnpos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
         monster.Init(monsterId);
         monster.SetTarget(target);
