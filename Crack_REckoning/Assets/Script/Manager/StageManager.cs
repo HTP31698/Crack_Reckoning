@@ -36,7 +36,7 @@ public class StageManager : MonoBehaviour
 
     private void StartStage(int stageNumber, int waveNumber)
     {
-        if(currentWave > 20)
+        if (currentWave > 20)
         {
             currentWave = 1;
             return;
@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
         if (spawnCoroutine != null)
             StopCoroutine(spawnCoroutine);
 
-        spawnCoroutine  = StartCoroutine(SpawnWave(currentWave));
+        spawnCoroutine = StartCoroutine(SpawnWave(currentWave));
     }
     private IEnumerator SpawnWave(int startWave)
     {
@@ -55,11 +55,11 @@ public class StageManager : MonoBehaviour
             currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
 
             if (currentStageData.M1Num > 0)
-                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
+                StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
             if (currentStageData.M2Num > 0)
-                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M2Id.GetValueOrDefault(), currentStageData.M2Num.GetValueOrDefault()));
+                StartCoroutine(SpawnMonsterGroup(currentStageData.M2Id.GetValueOrDefault(), currentStageData.M2Num.GetValueOrDefault()));
             if (currentStageData.M3Num > 0)
-                yield return StartCoroutine(SpawnMonsterGroup(currentStageData.M3Id.GetValueOrDefault(), currentStageData.M3Num.GetValueOrDefault()));
+                StartCoroutine(SpawnMonsterGroup(currentStageData.M3Id.GetValueOrDefault(), currentStageData.M3Num.GetValueOrDefault()));
             Debug.Log($"Wave {currentStageData.StageName} 몬스터 소환완료!");
             yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
 
