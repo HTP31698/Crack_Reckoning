@@ -1,4 +1,4 @@
 BossName,BossID,BossRange,BossHp,BossAttack,BossSpeed,BossAttackSpeed,BossWeakness,BossStrength,BossEffectID,LvUp
-돼지,821001,0,300,50,0.1,0.3,Fire,Water,,1
-왕쥐,821002,0,450,80,0.1,0.3,Fire,Water,,1
-푸른바지돼지,921003,0,650,100,0.1,0.3,Fire,Water,,0
+,821001,0,300,50,0.1,0.3,Fire,Water,,1
+,821002,0,450,80,0.1,0.3,Fire,Water,,1
+,921003,0,650,100,0.1,0.3,Fire,Water,,0
