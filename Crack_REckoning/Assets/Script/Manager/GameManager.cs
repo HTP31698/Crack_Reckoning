@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < Buttons.Length; i++)
         {
-            Buttons[i].gameObject.SetActive(false);
+            Buttons[i].gameObject.SetActive(true);
             int index = i;
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
         }
