@@ -7,6 +7,8 @@ public class Monster : MonsterBase
     private MonsterData monsterData;
     private int exp;
 
+    public Sprite getSprite { get; private set; }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Delete))
@@ -40,6 +42,7 @@ public class Monster : MonsterBase
 
         controller = monsterData.AnimatorController;
         sprite = monsterData.sprite;
+        getSprite = monsterData.sprite;
 
         if (spriteRenderer != null && sprite != null)
             spriteRenderer.sprite = sprite;

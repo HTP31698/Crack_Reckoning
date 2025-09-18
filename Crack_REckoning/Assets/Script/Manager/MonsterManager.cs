@@ -42,4 +42,15 @@ public class MonsterManager
 
         return closemonster;
     }
+    // 랜덤으로 살아있는 몬스터 반환
+    public static MonsterBase GetRandomMonster()
+    {
+        List<MonsterBase> aliveMonsters = monsters.FindAll(m => !m.isdead);
+
+        if (aliveMonsters.Count == 0)
+            return null;
+
+        int randIndex = Random.Range(0, aliveMonsters.Count);
+        return aliveMonsters[randIndex];
+    }
 }

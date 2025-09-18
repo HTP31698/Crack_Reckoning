@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5276074384520799203}
   - component: {fileID: 3701431473865937092}
   m_Layer: 5
-  m_Name: SkillSelect
+  m_Name: SkillSelectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

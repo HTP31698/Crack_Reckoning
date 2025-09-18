@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Schema;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class StageManager : MonoBehaviour
     private float StageAddMHp;
     private float StageAddMAtt;
 
+    public TextMeshProUGUI stageName;
+    public Image[] monsterSlots;
+
+    // 몬스터 이미지 슬롯 배열로 관리
+
+
+    // 현재 웨이브 몬스터 ID 저장
+    private List<int> currentMonsterIds = new List<int>();
 
     private void Start()
     {
@@ -58,11 +67,22 @@ public class StageManager : MonoBehaviour
         {
             currentWave = wave;
             currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
+
+            stageName.text = currentStageData.StageName;
+
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
             StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
 
+            // UI 갱신
+            currentMonsterIds.Clear();
+            if (currentStageData.M1Num > 0) currentMonsterIds.Add(currentStageData.M1Id ?? 0);
+            if (currentStageData.M2Num > 0) currentMonsterIds.Add(currentStageData.M2Id ?? 0);
+            if (currentStageData.M3Num > 0) currentMonsterIds.Add(currentStageData.M3Id ?? 0);
+            UpdateMonsterUI(currentMonsterIds);
+
             if (currentStageData.M1Num > 0)
                 StartCoroutine(SpawnMonsterGroup(currentStageData.M1Id.GetValueOrDefault(), currentStageData.M1Num.GetValueOrDefault()));
+
             if (currentStageData.M2Num > 0)
                 StartCoroutine(SpawnMonsterGroup(currentStageData.M2Id.GetValueOrDefault(), currentStageData.M2Num.GetValueOrDefault()));
             if (currentStageData.M3Num > 0)
@@ -95,8 +115,8 @@ public class StageManager : MonoBehaviour
         monster.Init(monsterId);
         monster.SetTarget(target);
 
-        // 스테이지 보정
-        monster.maxHp = (int)(monster.maxHp * addHp);
+            // 스테이지 보정
+            monster.maxHp = (int)(monster.maxHp * addHp);
         monster.currentHp = monster.maxHp;
         monster.damage = (int)(monster.damage * addAtt);
     }
@@ -119,33 +139,49 @@ public class StageManager : MonoBehaviour
         boss.SetTarget(target);
     }
 
-    private float GetSpawnPositionX(string prefabPath)
+    private float GetSpawnPositionX(string prefabPath, float prefabZ = 0f)
     {
         Rect safe = Screen.safeArea;
-
-        // SafeArea → 월드 좌표 변환 (Z는 카메라와 오브젝트 위치에 맞춰줌)
-        float zDist = Mathf.Abs(Camera.main.transform.position.z);
+        float zDist = Mathf.Abs(Camera.main.transform.position.z - prefabZ);
         Vector3 bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMin, safe.yMin, zDist));
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMax, safe.yMax, zDist));
 
-        // 프리팹 크기 계산
         GameObject prefab = Resources.Load<GameObject>(prefabPath);
-        float halfWidth = 0f;
-
-        if (prefab != null)
+        if (prefab == null)
         {
-            GameObject temp = Instantiate(prefab);
-            SpriteRenderer sr = temp.GetComponentInChildren<SpriteRenderer>();
-            if (sr != null)
-                halfWidth = sr.bounds.extents.x;
-            Destroy(temp); // 임시 오브젝트 삭제
+            Debug.LogError($"Prefab 못찾음: {prefabPath}");
+            return (bottomLeft.x + topRight.x) / 2f; // 화면 중앙 리턴
         }
 
-        // 화면 안쪽에서만 랜덤
-        float margin = 0.15f;
-        float x = Random.Range(bottomLeft.x + halfWidth + margin, topRight.x - halfWidth - margin);
-        return x;
+        SpriteRenderer sr = prefab.GetComponentInChildren<SpriteRenderer>();
+        float halfWidth = 0f;
+        if (sr != null && sr.sprite != null)
+            halfWidth = sr.sprite.bounds.extents.x * prefab.transform.localScale.x;
+
+        float margin = (topRight.x - bottomLeft.x) * 0.05f;
+        return Random.Range(bottomLeft.x + halfWidth + margin,
+                            topRight.x - halfWidth - margin);
     }
 
 
+    private void UpdateMonsterUI(List<int> monsterIds)
+    {
+        for (int i = 0; i < monsterSlots.Length; i++)
+        {
+            if (i < monsterIds.Count && monsterIds[i] > 0)
+            {
+                Sprite monsterSprite = null;
+                var monsterData = DataTableManager.Get<MonsterTable>("MonsterTable").Get(monsterIds[i]);
+                if (monsterData != null) monsterSprite = monsterData.sprite;
+                monsterSlots[i].rectTransform.sizeDelta = new Vector2(240, 240);
+                monsterSlots[i].sprite = monsterSprite;
+                monsterSlots[i].enabled = monsterSprite != null;
+            }
+            else
+            {
+                monsterSlots[i].sprite = null;
+                monsterSlots[i].enabled = false;
+            }
+        }
+    }
 }
