@@ -234,33 +234,26 @@ public class Character : MonoBehaviour
         if (skillData.IncreasingSkillDamageRange.GetValueOrDefault() > 0)
         {
             s.SkillDamageRange += skillData.IncreasingSkillDamageRange.Value;
-            Debug.Log($"{s.SkillDamageRange}");
         }
         // 쿨타임
         if (skillData.ReduceSkillCT.GetValueOrDefault() > 0)
         {
             s.SkillCoolTime = Mathf.Max(0.1f, s.SkillCoolTime - skillData.ReduceSkillCT.Value);
-            Debug.Log($"{s.SkillCoolTime}");
         }
         // 투사체 수
         if (skillData.IncreasedProjectile.GetValueOrDefault() > 0)
         {
             s.ProjectilesNum += skillData.IncreasedProjectile.Value;
-            Debug.Log($"{s.ProjectilesNum}");
         }
         // 공격 횟수
         if (skillData.IncreaseNumAttack.GetValueOrDefault() > 0)
         {
             s.AttackNum += skillData.IncreaseNumAttack.Value;
-            Debug.Log($"{s.AttackNum}");
         }
         // 관통력
         if (skillData.PeneTratingPower.GetValueOrDefault() > 0)
         {
             s.PenetratingPower += skillData.PeneTratingPower.Value;
-            Debug.Log($"{s.PenetratingPower}");
         }
-
-        Debug.Log($"스킬 {s.SkillName} 강화 적용 완료!");
     }
 }

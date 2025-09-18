@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
             if (skillTable.Get(id).SkillSortation == SkillSortationID.StageSkill)
                 StageSkillList.Add(id);
         }
+        StageSkillList.Add(character.BasicSkill);
     }
 
     // 레벨업 시 호출
@@ -65,13 +66,11 @@ public class GameManager : MonoBehaviour
 
             if (characterSkillList.Contains(randSkill))
             {
-                // 기존 스킬 강화 후보
                 if (!pendingSkillOptions.Contains(randSkill))
                     pendingSkillOptions.Add(randSkill);
             }
             else
             {
-                // 새로운 스킬은 5개 미만일 때만 후보 가능
                 if (characterSkillList.Count < 5 && !pendingSkillOptions.Contains(randSkill))
                     pendingSkillOptions.Add(randSkill);
             }
