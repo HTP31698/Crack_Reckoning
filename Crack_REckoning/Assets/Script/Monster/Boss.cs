@@ -6,7 +6,6 @@ public class Boss : MonsterBase
     private BossTable bossTable;
     private BossData bossData;
     private bool IsMiniBoss;
-    private bool IsBoss;
 
     public void Update()
     {
@@ -37,7 +36,6 @@ public class Boss : MonsterBase
         damage = bossData.BossAttack;
         attackSpeed = bossData.BossAttackSpeed;
         IsMiniBoss = bossData.IsMiniBoss;
-        IsBoss = bossData.IsBoss;
 
         // TODO: Boss 전용 애니메이터, 스프라이트 할당
         controller = bossData.AnimatorController;
@@ -57,10 +55,6 @@ public class Boss : MonsterBase
         if (IsMiniBoss)
         {
             attacker.LevelUp();
-        }
-        else if(IsBoss)
-        {
-            //Clear
         }
     }
 }
