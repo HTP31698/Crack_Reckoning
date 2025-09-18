@@ -56,6 +56,10 @@ public class Character : MonoBehaviour
             if (skillReady[i])
                 StartCoroutine(AutoUseSkill(i));
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LevelUp();
+        }
     }
 
     public void Init(int id)
@@ -89,26 +93,34 @@ public class Character : MonoBehaviour
     {
         var skillData = DataTableManager.Get<SkillTable>("SkillTable").Get(SkillIDs[index]);
         MonsterBase monster = MonsterManager.nearMonster(transform.position);
+
         if (monster != null)
         {
-            distance = Vector3.Distance(transform.position, monster.transform.position);
+            float distance = Vector3.Distance(transform.position, monster.transform.position);
+
             if (skillData.SkillRange >= distance)
             {
                 skillReady[index] = false;
-                UseSkill(monster, index);
+
+                for (int atk = 0; atk < skillData.AttackNum; atk++)
+                {
+                    UseSkill(monster, index);
+                    yield return new WaitForSeconds(0.2f);
+                }
+
                 yield return new WaitForSeconds(skillData.SkillCoolTime);
                 skillReady[index] = true;
             }
         }
     }
+
     private void UseSkill(MonsterBase target, int index)
     {
         if (target == null) return;
 
-        // 스킬 데이터 (강화 포함)
         var skillData = DataTableManager.Get<SkillTable>("SkillTable").Get(SkillIDs[index]);
 
-        // 사거리 내 모든 몬스터 가져오기
+        // 사거리 내 모든 몬스터
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, skillData.SkillRange, LayerMask.GetMask("Monster"));
         List<MonsterBase> validTargets = new List<MonsterBase>();
         foreach (var hit in hits)
@@ -118,44 +130,46 @@ public class Character : MonoBehaviour
                 validTargets.Add(m);
         }
 
-        // 발사할 투사체 수
-        int projectileCount = Mathf.Min(skillData.ProjectilesNum, validTargets.Count);
-
-        // 이미 선택된 타겟 저장 (중복 방지)
-        HashSet<MonsterBase> usedTargets = new HashSet<MonsterBase>();
-
-        for (int i = 0; i < projectileCount; i++)
+        if (validTargets.Count == 0)
         {
-            // 랜덤 타겟 선택 (중복 제거)
+            // 사거리 내 몬스터가 없으면 기본 target 사용
+            validTargets.Add(target);
+        }
+
+
+        List<MonsterBase> tempTargets = new List<MonsterBase>(validTargets);
+
+        for (int i = 0; i < skillData.ProjectilesNum; i++)
+        {
             MonsterBase chosenTarget = null;
-            if (validTargets.Count > 0)
+            if (tempTargets.Count > 0)
             {
-                int randIndex = Random.Range(0, validTargets.Count);
-                chosenTarget = validTargets[randIndex];
-                validTargets.RemoveAt(randIndex); // 중복 방지
+                int randIndex = Random.Range(0, tempTargets.Count);
+                chosenTarget = tempTargets[randIndex];
+                tempTargets.RemoveAt(randIndex);
             }
 
-            // 투사체 생성
-            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Skill"),
-                transform.position, Quaternion.identity);
+            float spread = 0.2f;
+            Vector3 spawnPos = transform.position + new Vector3((i - (skillData.ProjectilesNum - 1) / 2f) * spread, 0, 0);
 
+            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Skill"), spawnPos, Quaternion.identity);
             Skill skill = obj.GetComponent<Skill>();
             skill.Init(SkillIDs[index]);
             skill.SetCharacter(this, CharacterAttack, CharacterCri, CharacterCriDamage);
 
-            if (chosenTarget != null)
-                skill.SetTarget(chosenTarget.transform.position);
-            else
-                skill.SetTarget(target.transform.position); // fallback (없으면 원래 타겟)
+            Vector3 targetPos = chosenTarget != null ? chosenTarget.transform.position : target.transform.position;
+            Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
+            skill.SetTargetPosition(targetPos);
+            skill.SetTargetDirection(dir);
 
-            // 강화 수치 적용
-            skill.ProjectilesNum = skillData.ProjectilesNum;
-            skill.PenetratingPower = skillData.PenetratingPower;
-
+            // 범위 공격이면 즉시 처리
             if (skill.AttackType == AttackTypeID.Area)
                 skill.CastAreaDamage();
         }
+
     }
+
+
 
 
     public void AddSkill(int newSkillId)
@@ -174,7 +188,7 @@ public class Character : MonoBehaviour
     public void AddExp(int amount)
     {
         currentExp += amount;
-        while(currentExp >= expToNextLevel)
+        while (currentExp >= expToNextLevel)
         {
             currentExp -= expToNextLevel;
             LevelUp();
@@ -212,27 +226,40 @@ public class Character : MonoBehaviour
 
         // 데미지
         if (skillData.SkillDamageNumChange > 0)
+        {
             s.SkillDamage = (int)(s.SkillDamage * skillData.SkillDamageNumChange);
-
+            Debug.Log($"{s.SkillDamage}");
+        }
         // 범위
-        if (skillData.IncreasingSkillDamageRange.HasValue)
+        if (skillData.IncreasingSkillDamageRange.GetValueOrDefault() > 0)
+        {
             s.SkillDamageRange += skillData.IncreasingSkillDamageRange.Value;
-
+            Debug.Log($"{s.SkillDamageRange}");
+        }
         // 쿨타임
-        if (skillData.ReduceSkillCT.HasValue)
+        if (skillData.ReduceSkillCT.GetValueOrDefault() > 0)
+        {
             s.SkillCoolTime = Mathf.Max(0.1f, s.SkillCoolTime - skillData.ReduceSkillCT.Value);
-
+            Debug.Log($"{s.SkillCoolTime}");
+        }
         // 투사체 수
-        if (skillData.IncreasedProjectile.HasValue)
+        if (skillData.IncreasedProjectile.GetValueOrDefault() > 0)
+        {
             s.ProjectilesNum += skillData.IncreasedProjectile.Value;
-
+            Debug.Log($"{s.ProjectilesNum}");
+        }
         // 공격 횟수
-        if (skillData.IncreaseNumAttack.HasValue)
+        if (skillData.IncreaseNumAttack.GetValueOrDefault() > 0)
+        {
             s.AttackNum += skillData.IncreaseNumAttack.Value;
-
+            Debug.Log($"{s.AttackNum}");
+        }
         // 관통력
-        if (skillData.PeneTratingPower.HasValue)
+        if (skillData.PeneTratingPower.GetValueOrDefault() > 0)
+        {
             s.PenetratingPower += skillData.PeneTratingPower.Value;
+            Debug.Log($"{s.PenetratingPower}");
+        }
 
         Debug.Log($"스킬 {s.SkillName} 강화 적용 완료!");
     }

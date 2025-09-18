@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private List<int> StageSkillList;          // 스테이지에서 나올 수 있는 스킬 ID 목록
     private List<int> pendingSkillOptions;     // 현재 레벨업 선택 후보 스킬
 
+    private float TimeSet = 1f;
+
+
     private void Awake()
     {
         StageSkillList = new List<int>();
@@ -21,6 +24,20 @@ public class GameManager : MonoBehaviour
             Buttons[i].gameObject.SetActive(false);
             int index = i; // 캡처용
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TimeSet = 2f;
+            Time.timeScale = TimeSet;
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            TimeSet = 1f;
+            Time.timeScale = TimeSet;
         }
     }
 
@@ -129,7 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = TimeSet;
     }
 }
 

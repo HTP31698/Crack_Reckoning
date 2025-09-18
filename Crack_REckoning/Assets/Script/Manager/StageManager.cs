@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
     }
     private IEnumerator SpawnWave(int startWave)
     {
-        int totalWaves = 20;
+        int totalWaves = 21;
         for (int wave = startWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;

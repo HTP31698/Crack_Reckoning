@@ -26,12 +26,12 @@ public class Skill : MonoBehaviour
     public SkillSortationID SkillSortationID { get; private set; }
     public SkillTypeID SkillTypeID { get; private set; }
     public float SkillRange { get; private set; }
-    public int SkillDamage { get;  set; }
-    public float SkillCoolTime { get;  set; }
+    public int SkillDamage { get; set; }
+    public float SkillCoolTime { get; set; }
     public int ProjectilesNum { get; set; }
-    public int AttackNum { get;  set; }
-    public int PenetratingPower { get;  set; }
-    public float SkillDamageRange { get;  set; }
+    public int AttackNum { get; set; }
+    public int PenetratingPower { get; set; }
+    public float SkillDamageRange { get; set; }
     public int EffectID { get; private set; }
     public AttackTypeID AttackType { get; private set; }
 
@@ -51,33 +51,27 @@ public class Skill : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (AttackType != AttackTypeID.Projectile) return;
+        if (AttackType != AttackTypeID.Projectile || dir == Vector2.zero) return;
 
-        if (dir != Vector2.zero)
+        Vector2 nextPos = rb.position + dir * Speed * Time.fixedDeltaTime;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(rb.position, dir, (nextPos - rb.position).magnitude, LayerMask.GetMask("Monster"));
+
+        foreach (var hit in hits)
         {
-            for (int i = 0; i < ProjectilesNum; i++)
+            MonsterBase m = hit.collider.GetComponent<MonsterBase>();
+            if (m != null && !m.isdead)
             {
-                Vector2 spawnOffset = new Vector2(i * 0.2f, 0); // 투사체 위치 약간씩 차이나게
-                Vector2 currentPos = rb.position + spawnOffset;
-                Vector2 nextPos = currentPos + dir * Speed * Time.fixedDeltaTime;
-
-                RaycastHit2D[] hits = Physics2D.RaycastAll(currentPos, dir, (nextPos - currentPos).magnitude, LayerMask.GetMask("Monster"));
-                foreach (var hit in hits)
-                {
-                    MonsterBase m = hit.collider.GetComponent<MonsterBase>();
-                    if (m != null && !m.isdead)
-                    {
-                        TryAttack(m);
-                        PenetratingPower--;
-                        if (PenetratingPower <= 0) Destroy(gameObject);
-                    }
-                }
-                rb.MovePosition(nextPos);
-
-                if (nextPos.y > 7)
-                    Destroy(gameObject);
+                TryAttack(m);
+                PenetratingPower--;
+                if (PenetratingPower <= 0) Destroy(gameObject);
             }
         }
+
+        rb.MovePosition(nextPos);
+
+        // 화면 밖이나 조건 충족 시 파괴
+        if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
+            Destroy(gameObject);
     }
 
     private void TryAttack(MonsterBase m)
@@ -144,23 +138,21 @@ public class Skill : MonoBehaviour
         characterCri = cri;
         characterCriDamage = cridmg;
     }
-    public void SetTarget(Vector3 target)
+    public void SetTargetDirection(Vector2 direction)
     {
-        targetpos = target;
-        if (AttackType == AttackTypeID.Projectile)
-        {
-            dir = ((Vector2)targetpos - rb.position).normalized;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-        else
-        {
-            dir = Vector2.zero;
-        }
+        dir = direction.normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        targetpos = position;
     }
     public void CastAreaDamage()
     {
         gameObject.transform.position = targetpos;
+        gameObject.transform.rotation = Quaternion .identity;
         Vector2 damagePosition = (Vector2)transform.position + new Vector2(0, -spriteRenderer.bounds.size.y * 0.9f);
         Collider2D[] hits = Physics2D.OverlapCircleAll(damagePosition, SkillDamageRange, LayerMask.GetMask("Monster"));
         foreach (var hit in hits)
