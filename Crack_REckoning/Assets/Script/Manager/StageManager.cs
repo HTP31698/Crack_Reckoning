@@ -88,7 +88,8 @@ public class StageManager : MonoBehaviour
 
     public void SpawnMonster(int monsterId, float addHp, float addAtt)
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-3f, 3f), 7, 0);
+        float posx = GetSpawnPositionX(PrefabMonster);
+        Vector3 spawnPos = new Vector3(posx, 7, 0);
         GameObject obj = Instantiate(Resources.Load<GameObject>(PrefabMonster), spawnPos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
         monster.Init(monsterId);
@@ -118,6 +119,33 @@ public class StageManager : MonoBehaviour
         boss.SetTarget(target);
     }
 
+    private float GetSpawnPositionX(string prefabPath)
+    {
+        Rect safe = Screen.safeArea;
+
+        // SafeArea → 월드 좌표 변환 (Z는 카메라와 오브젝트 위치에 맞춰줌)
+        float zDist = Mathf.Abs(Camera.main.transform.position.z);
+        Vector3 bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMin, safe.yMin, zDist));
+        Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMax, safe.yMax, zDist));
+
+        // 프리팹 크기 계산
+        GameObject prefab = Resources.Load<GameObject>(prefabPath);
+        float halfWidth = 0f;
+
+        if (prefab != null)
+        {
+            GameObject temp = Instantiate(prefab);
+            SpriteRenderer sr = temp.GetComponentInChildren<SpriteRenderer>();
+            if (sr != null)
+                halfWidth = sr.bounds.extents.x;
+            Destroy(temp); // 임시 오브젝트 삭제
+        }
+
+        // 화면 안쪽에서만 랜덤
+        float margin = 0.15f;
+        float x = Random.Range(bottomLeft.x + halfWidth + margin, topRight.x - halfWidth - margin);
+        return x;
+    }
 
 
 }

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 2d9197e8ace0c4f4bb9640268b39f997
+guid: bd2ba7c0dcc3a0b4c84b62cb7f28bd60
 AssetOrigin:
   serializedVersion: 1
   productId: 305147
   packageName: 2D Pixel Quest Vol.3 - The UI/GUI
   packageVersion: 3.0.3
-  assetPath: Assets/2D Pixel Quest Vol.3 - The UI-GUI/Sprites/Panels/Panels/F_UI_Banner_A4.png
+  assetPath: Assets/2D Pixel Quest Vol.3 - The UI-GUI/Sprites/Panels/Panels/F_UI_Banner_A1.png
   uploadId: 762207
 TextureImporter:
   internalIDToNameTable: []
@@ -56,7 +56,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 34, y: 28, z: 35, w: 31}
+  spriteBorder: {x: 32, y: 25, z: 33, w: 31}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -128,6 +128,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1

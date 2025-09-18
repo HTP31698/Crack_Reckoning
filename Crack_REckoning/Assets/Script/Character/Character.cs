@@ -132,7 +132,6 @@ public class Character : MonoBehaviour
 
         if (validTargets.Count == 0)
         {
-            // 사거리 내 몬스터가 없으면 기본 target 사용
             validTargets.Add(target);
         }
 
@@ -162,7 +161,6 @@ public class Character : MonoBehaviour
             skill.SetTargetPosition(targetPos);
             skill.SetTargetDirection(dir);
 
-            // 범위 공격이면 즉시 처리
             if (skill.AttackType == AttackTypeID.Area)
                 skill.CastAreaDamage();
         }
@@ -218,7 +216,6 @@ public class Character : MonoBehaviour
 
     public void IncreaseSkill(int skillId, SkillSelectionData skillData)
     {
-        // 현재 스킬 데이터를 가져옴
         var skillTable = DataTableManager.Get<SkillTable>("SkillTable");
         SkillData s = skillTable.Get(skillId);
 

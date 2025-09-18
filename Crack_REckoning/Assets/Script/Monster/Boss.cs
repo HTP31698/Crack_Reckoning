@@ -37,7 +37,6 @@ public class Boss : MonsterBase
         attackSpeed = bossData.BossAttackSpeed;
         IsMiniBoss = bossData.IsMiniBoss;
 
-        // TODO: Boss 전용 애니메이터, 스프라이트 할당
         controller = bossData.AnimatorController;
         sprite = bossData.sprite;
 

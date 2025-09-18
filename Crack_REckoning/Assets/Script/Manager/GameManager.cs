@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Character character;
-    public Button[] Buttons; // 3개 버튼
-    private List<int> StageSkillList;          // 스테이지에서 나올 수 있는 스킬 ID 목록
-    private List<int> pendingSkillOptions;     // 현재 레벨업 선택 후보 스킬
+    public Button[] Buttons;
+    private List<int> StageSkillList;
+    private List<int> pendingSkillOptions;
 
     private float TimeSet = 1f;
 
@@ -18,11 +18,10 @@ public class GameManager : MonoBehaviour
         StageSkillList = new List<int>();
         StageSkillListInit();
 
-        // 버튼 숨김 + 클릭 이벤트 연결
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].gameObject.SetActive(false);
-            int index = i; // 캡처용
+            int index = i;
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
         }
     }
@@ -87,7 +86,6 @@ public class GameManager : MonoBehaviour
             int skillId = pendingSkillOptions[i];
             SkillData s = DataTableManager.Get<SkillTable>("SkillTable").Get(skillId);
 
-            // pickId 결정: 기존 스킬이면 1~5 랜덤, 새 스킬이면 0
             int pickId = characterSkillList.Contains(skillId) ? Random.Range(1, 6) : 0;
             SkillSelectionData ss = null;
             if (pickId > 0)
@@ -95,7 +93,7 @@ public class GameManager : MonoBehaviour
 
             // 텍스트 & 이미지
             if (tmpText != null)
-                tmpText.text = (ss != null) ? ss.SkillPickName : s.SkillName; // 새 스킬이면 그냥 이름
+                tmpText.text = (ss != null) ? ss.SkillPickName : s.SkillName;
             if (img != null)
                 img.sprite = s.sprite;
 
@@ -118,23 +116,19 @@ public class GameManager : MonoBehaviour
 
         if (characterSkillList.Contains(skillId))
         {
-            // 기존 스킬 강화
-            int pickId = Random.Range(1, 6); // CSV에는 1~5
+            int pickId = Random.Range(1, 6);
             SkillSelectionData skillData = selectionTable.Get(skillId, pickId);
             if (skillData != null)
                 character.IncreaseSkill(skillId, skillData);
         }
         else
         {
-            // 스킬 슬롯이 5개 미만일 때만 추가
             if (characterSkillList.Count < 5)
                 character.AddSkill(skillId);
         }
 
-        // 버튼 숨기고 게임 재개
         foreach (var btn in Buttons)
             btn.gameObject.SetActive(false);
-
         ResumeGame();
     }
 
