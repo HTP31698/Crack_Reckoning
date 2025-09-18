@@ -8,26 +8,31 @@ using UnityEngine.UI;
 
 public class War : MonoBehaviour
 {
-    public TextMeshProUGUI hptext;
-    private Monster monster;
+    public Slider warHpSlider;
 
     private int currentHp;
     private int maxHp;
 
-    public void Start()
+    public void Awake()
     {
         maxHp = 3000;
         currentHp = maxHp;
-        hptext.text = currentHp.ToString();
+    }
+
+    protected void OnEnable()
+    {
+        warHpSlider.gameObject.SetActive(true);
+        warHpSlider.value = (float)currentHp / maxHp;
     }
 
     public void TakeDamage(int amount)
     {
         currentHp -= amount;
+        warHpSlider.value = (float)currentHp / maxHp;
         if (currentHp < 0)
         {
             currentHp = 0;
+            warHpSlider.value = (float)currentHp / maxHp;
         }
-        hptext.text = currentHp.ToString();
     }
 }

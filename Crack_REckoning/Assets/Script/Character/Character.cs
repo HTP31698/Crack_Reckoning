@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
@@ -34,7 +35,7 @@ public class Character : MonoBehaviour
     private float distance;
 
     private List<int> SkillIDs;
-    public TextMeshProUGUI text;
+    public Slider expSlider;
 
     private void Awake()
     {
@@ -69,8 +70,7 @@ public class Character : MonoBehaviour
         ExpToNextLevel(level);
 
         characterData = table.Get(id);
-        text.text = $"{currentExp} / {expToNextLevel}\nlevel : {level}";
-
+        expSlider.value = (float)currentExp/expToNextLevel;
         if (characterData != null)
         {
             CharacterName = characterData.ChName;
@@ -191,7 +191,7 @@ public class Character : MonoBehaviour
             currentExp -= expToNextLevel;
             LevelUp();
         }
-        text.text = $"{currentExp} / {expToNextLevel}\nlevel : {level}";
+        expSlider.value = (float)currentExp / expToNextLevel;
     }
 
     public void LevelUp()
@@ -225,7 +225,6 @@ public class Character : MonoBehaviour
         if (skillData.SkillDamageNumChange > 0)
         {
             s.SkillDamage = (int)(s.SkillDamage * skillData.SkillDamageNumChange);
-            Debug.Log($"{s.SkillDamage}");
         }
         // ¹üÀ§
         if (skillData.IncreasingSkillDamageRange.GetValueOrDefault() > 0)
