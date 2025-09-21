@@ -41,6 +41,8 @@ public class Character : MonoBehaviour
 
     public Slider expSlider;
 
+    public bool isUseSkill { get; set; } = false;
+
     private void Awake()
     {
         SkillIDs = new List<int>();
@@ -207,14 +209,16 @@ public class Character : MonoBehaviour
         if (target == null) yield break;
 
         skillReady[index] = false;
-
+        isUseSkill = true;
         for (int atk = 0; atk < skillData.AttackNum; atk++)
         {
             UseSkill(target, index, priority); // 우선 타깃을 넘겨줌
             yield return new WaitForSeconds(0.2f);
         }
 
+
         yield return new WaitForSeconds(skillData.SkillCoolTime);
+        isUseSkill = false;
         skillReady[index] = true;
     }
 

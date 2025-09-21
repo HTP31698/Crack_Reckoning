@@ -1,11 +1,17 @@
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static readonly string SkillSelectionTable = "SkillSelectionTable";
+    private static readonly string SkillTable = "SkillTable";
+    private static readonly string Icon = "Icon";
+
     public Character character;
     public Button[] Buttons;
     public Toggle toggle;
@@ -19,12 +25,26 @@ public class GameManager : MonoBehaviour
     public Button TryagainButton;
     public Button GiveupButton;
 
+    public TextMeshProUGUI timerText;
+    private float timer = 0f;
+
     private float TimeSet = 1f;
     bool isStop = false;
+
+    public Slider[] sliderSkills;
+    private Dictionary<int, int> skillIndex;
+    private Dictionary<int, int> enforceLevel;
+    private float[] coolTimer;
+    private float[] skillCool;
 
     private void Awake()
     {
         StageSkillList = new List<int>();
+        skillIndex = new Dictionary<int, int>();
+        enforceLevel = new Dictionary<int, int>();
+        coolTimer = new float[sliderSkills.Length];
+        skillCool = new float[sliderSkills.Length];
+
         StageSkillListInit();
 
         for (int i = 0; i < 3; i++)
@@ -33,6 +53,11 @@ public class GameManager : MonoBehaviour
             int index = i;
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
         }
+        for (int i = 1; i < sliderSkills.Length; i++)
+        {
+            sliderSkills[i].gameObject.SetActive(false);
+        }
+        SetSkillStat(0, PlaySetting.PlayerBasicSkillID);
 
         SettingsWindow.gameObject.SetActive(false);
         SettingButton.onClick.AddListener(OnSetButtonClick);
@@ -52,11 +77,94 @@ public class GameManager : MonoBehaviour
             TimeSet = 2f;
             Time.timeScale = TimeSet;
         }
+
+        timer += Time.deltaTime;
+        int minutes = (int)(timer / 60);
+        int seconds = (int)(timer % 60);
+        timerText.text = $"{minutes:D2}:{seconds:D2}";
+
+        if (coolTimer != null && skillCool != null && sliderSkills != null && !character.isUseSkill)
+        {
+            int n = Mathf.Min(sliderSkills.Length, coolTimer.Length, skillCool.Length);
+
+            float delta = Time.deltaTime;
+
+            for (int i = 0; i < n; i++)
+            {
+                var slider = sliderSkills[i];
+                if (slider == null || !slider.gameObject.activeInHierarchy)
+                    continue;
+
+                float total = skillCool[i];
+                if (total <= 0f)
+                {
+                    coolTimer[i] = 0f;
+                    slider.value = 1f;
+                    continue;
+                }
+                coolTimer[i] += delta;
+
+                if (coolTimer[i] >= total)
+                {
+                    coolTimer[i] = 0f;
+                }
+                slider.value = Mathf.Clamp01(coolTimer[i] / total);
+            }
+        }
+    }
+
+   private void SetSkillStat(int index, int id)
+    {
+        SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
+        sliderSkills[index].gameObject.SetActive(true);
+        var bg = sliderSkills[index].transform.Find("Background").GetComponent<Image>();
+        if (bg != null)
+        {
+            bg.sprite = s.sprite;
+        }
+        var fill = sliderSkills[index].fillRect.GetComponent<Image>();
+        if (fill != null)
+        {
+            fill.sprite = s.sprite;
+        }
+        skillIndex[id] = index;
+        if (!enforceLevel.ContainsKey(id)) enforceLevel[id] = 0;
+
+        // UI 텍스트 반영
+        var text = sliderSkills[index].transform.Find("Enforce")?.GetComponent<TextMeshProUGUI>();
+        if (text != null) text.text = $"+{enforceLevel[id]}";
+
+        // 쿨타임 값 세팅 (슬롯 기준으로 관리)
+        coolTimer[index] = 0f;
+        skillCool[index] = s.SkillCoolTime;
+
+        sliderSkills[index].value = (skillCool[index] > 0f) ? coolTimer[index] / skillCool[index] : 0f;
+
+    }
+
+    private void UpdateSkillStat(int id)
+    {
+        SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
+        skillCool[skillIndex[id]] = s.SkillCoolTime;
+
+        sliderSkills[skillIndex[id]].value = (skillCool[skillIndex[id]] > 0f) ? 
+            coolTimer[skillIndex[id]] / skillCool[skillIndex[id]] : 0f;
+
+        if (!skillIndex.TryGetValue(id, out int index))
+            return;
+
+        // 레벨 증가
+        if (!enforceLevel.ContainsKey(id)) enforceLevel[id] = 0;
+        enforceLevel[id]++;
+
+        // UI 갱신
+        var text = sliderSkills[index].transform.Find("Enforce")?.GetComponent<TextMeshProUGUI>();
+        if (text != null) text.text = $"+{enforceLevel[id]}";
     }
 
     private void StageSkillListInit()
     {
-        var skillTable = DataTableManager.Get<SkillTable>("SkillTable");
+        var skillTable = DataTableManager.Get<SkillTable>(SkillTable);
         StageSkillList.Clear();
         foreach (var id in skillTable.GetIdList())
         {
@@ -66,14 +174,12 @@ public class GameManager : MonoBehaviour
         StageSkillList.Add(character.BasicSkill);
     }
 
-    // 레벨업 시 호출
     public void ShowLevelUpSkills()
     {
         var characterSkillList = character.GetSkillIdList();
         pendingSkillOptions = new List<int>();
-        pendingPickIds = new List<int>();        // ★ pickId를 함께 저장
+        pendingPickIds = new List<int>();
 
-        // 후보 3개 생성
         while (pendingSkillOptions.Count < 3)
         {
             int randSkill = StageSkillList[Random.Range(0, StageSkillList.Count)];
@@ -90,37 +196,31 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 버튼 UI 업데이트
         for (int i = 0; i < 3; i++)
         {
             Buttons[i].gameObject.SetActive(true);
 
             TMP_Text tmpText = Buttons[i].GetComponentInChildren<TMP_Text>();
-            Image img = Buttons[i].transform.Find("Icon").GetComponent<Image>();
+            Image img = Buttons[i].transform.Find(Icon).GetComponent<Image>();
 
             int skillId = pendingSkillOptions[i];
-            SkillData s = DataTableManager.Get<SkillTable>("SkillTable").Get(skillId);
+            SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(skillId);
 
-            // ★ 여기서 '표시용 pickId'를 결정하고 저장해 둔다.
             int pickId;
             SkillSelectionData ss = null;
 
             if (characterSkillList.Contains(skillId))
             {
-                // Unity int Random.Range(min, max)에서 max는 '제외'니까 1~5 범위
                 pickId = Random.Range(1, 6);
-                ss = DataTableManager.Get<SkillSelectionTable>("SkillSelectionTable").Get(skillId, pickId);
+                ss = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable).Get(skillId, pickId);
             }
             else
             {
-                // 미소유면 pickId = 0 (스킬 추가 선택지)
                 pickId = 0;
             }
 
-            // ★ 화면에 보여준 선택이 무엇인지 기억
             pendingPickIds.Add(pickId);
 
-            // 텍스트 & 이미지
             if (tmpText != null)
                 tmpText.text = (ss != null) ? ss.SkillPickName : s.SkillName;
             if (img != null)
@@ -143,7 +243,7 @@ public class GameManager : MonoBehaviour
         int pickId = (pendingPickIds != null && index < pendingPickIds.Count) ? pendingPickIds[index] : 0;
 
         var characterSkillList = character.GetSkillIdList();
-        var selectionTable = DataTableManager.Get<SkillSelectionTable>("SkillSelectionTable");
+        var selectionTable = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable);
 
         if (characterSkillList.Contains(skillId))
         {
@@ -153,13 +253,17 @@ public class GameManager : MonoBehaviour
                 if (skillData != null)
                 {
                     character.IncreaseSkill(skillId, skillData);
+                    UpdateSkillStat(skillId);
                 }
             }
         }
         else
         {
             if (characterSkillList.Count < 5)
+            {
                 character.AddSkill(skillId);
+                SetSkillStat(characterSkillList.Count, skillId);
+            }
         }
 
         foreach (var btn in Buttons)

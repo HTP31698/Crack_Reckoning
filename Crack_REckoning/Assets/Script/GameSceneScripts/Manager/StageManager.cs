@@ -27,13 +27,10 @@ public class StageManager : MonoBehaviour
     private float StageAddMHp;
     private float StageAddMAtt;
 
-    public TextMeshProUGUI stageName;
+    public TextMeshProUGUI settingStageName;
+    public TextMeshProUGUI StageName;
     public Image[] monsterSlots;
 
-    // 몬스터 이미지 슬롯 배열로 관리
-
-
-    // 현재 웨이브 몬스터 ID 저장
     private List<int> currentMonsterIds = new List<int>();
 
     private void Awake()
@@ -67,8 +64,8 @@ public class StageManager : MonoBehaviour
             currentWave = wave;
             currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
 
-            stageName.text = currentStageData.StageName;
-
+            settingStageName.text = currentStageData.StageName;
+            StageName.text = currentStageData.StageName;
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
             StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
 

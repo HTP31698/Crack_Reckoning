@@ -13,9 +13,9 @@ public static class DataTableIds
 
 public static class PlaySetting
 {
-    public static int playerID;
+    public static int playerID = 11001;
     public static int SelectStage;
-    public static int PlayerBasicSkillID;
+    public static int PlayerBasicSkillID = 31001;
     public static bool IsPlaying;
     public static void Reset()
     {
