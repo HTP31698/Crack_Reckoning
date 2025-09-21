@@ -1,10 +1,12 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.TextCore.Text;
 using UnityEngine.U2D;
+using Random = UnityEngine.Random;
 
 public class Skill : MonoBehaviour
 {
@@ -86,18 +88,26 @@ public class Skill : MonoBehaviour
 
     private void TryAttack(MonsterBase m)
     {
-        int rand = Random.Range(0, 100);
-        if (rand < characterCri)
+        bool isCritical = Random.Range(0, 100) < characterCri;
+        float typeMultiplier = 1f;
+        if (m.strength == SkillTypeID)
         {
-            float cri = (SkillDamage + characterAttack) * characterCriDamage;
-            m.TakeDamage((int)cri, character);
+            typeMultiplier = 0.5f;
         }
-        else
+        else if (m.weakness == SkillTypeID)
         {
-            int nocri = SkillDamage + characterAttack;
-            m.TakeDamage(nocri, character);
+            typeMultiplier = 1.5f;
         }
+
+        float damage = (SkillDamage + characterAttack)
+                       * typeMultiplier
+                       * (isCritical ? characterCriDamage : 1f);
+
+        m.TakeDamage((int)damage, character);
+        Debug.Log($"몬스터 피: {m.currentHp}데미지 배율 : {typeMultiplier} " +
+            $"/데미지: {damage} /크리:{isCritical} / 스킬 이름:{SkillName}");
     }
+
     public void Init(int id)
     {
         this.Id = id;

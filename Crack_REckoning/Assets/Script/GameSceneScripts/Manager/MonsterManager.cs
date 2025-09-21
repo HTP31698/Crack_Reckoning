@@ -84,4 +84,27 @@ public class MonsterManager
         int idx = Random.Range(0, list.Count);
         return list[idx];
     }
+
+    public static MonsterBase GetAttackingWithin(Vector3 from, float range)
+    {
+        float rangeSqr = range * range;
+        MonsterBase best = null;
+        float bestSqr = float.MaxValue;
+
+        foreach (var m in monsters)
+        {
+            if (m == null || m.isdead) continue;
+            if (!m.isattack) continue;
+
+            float sqr = (m.transform.position - from).sqrMagnitude;
+            if (sqr > rangeSqr) continue;
+
+            if (sqr < bestSqr)
+            {
+                bestSqr = sqr;
+                best = m;
+            }
+        }
+        return best;
+    }
 }

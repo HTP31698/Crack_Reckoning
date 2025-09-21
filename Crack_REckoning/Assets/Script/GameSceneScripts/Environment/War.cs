@@ -22,17 +22,17 @@ public class War : MonoBehaviour
     protected void OnEnable()
     {
         warHpSlider.gameObject.SetActive(true);
-        warHpSlider.value = (float)currentHp / maxHp;
+        warHpSlider.value = (float)currentHp / (float)maxHp;
     }
 
     public void TakeDamage(int amount)
     {
         currentHp -= amount;
-        warHpSlider.value = (float)currentHp / maxHp;
+        warHpSlider.value = (float)currentHp / (float)maxHp;
         if (currentHp < 0)
         {
             currentHp = 0;
-            warHpSlider.value = (float)currentHp / maxHp;
+            warHpSlider.value = (float)currentHp / (float)maxHp;
         }
     }
 }

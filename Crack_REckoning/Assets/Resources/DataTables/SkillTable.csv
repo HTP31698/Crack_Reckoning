@@ -1,5 +1,5 @@
 SkillID,SkillName,SkillSortation,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,EffectID,AttackType
-31001,파이어볼,BasicSkill,Fire,7,60,4,1,1,1,0.1,41001,Projectile
+31001,파이어볼,BasicSkill,Fire,7,60,4,1,1,2,0.1,41001,Projectile
 31002,단검 투척,BasicSkill,Physical,6,50,2.5,1,1,1,0.1,,Projectile
 31003,검기,BasicSkill,Physical,5,100,5,1,1,1,0.1,,Projectile
 32004,벼락,StageSkill,Lightning,6,30,2,1,1,1,0.7,41003,Area

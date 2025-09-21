@@ -5,12 +5,12 @@ public class Boss : MonsterBase
     private static readonly string BossTable = "BossTable";
     private BossTable bossTable;
     private BossData bossData;
-    private bool IsMiniBoss;
-
+    private bool IsBoss;
 
     public override void Init(int id)
     {
         this.id = id;
+        
         bossTable = DataTableManager.Get<BossTable>(BossTable);
         InitData();
     }
@@ -28,7 +28,9 @@ public class Boss : MonsterBase
         currentHp = maxHp;
         damage = bossData.BossAttack;
         attackSpeed = bossData.BossAttackSpeed;
-        IsMiniBoss = bossData.IsMiniBoss;
+        IsBoss = bossData.IsBoss;
+        weakness = bossData.BossWeakness.GetValueOrDefault();
+        strength = bossData.BossStrength.GetValueOrDefault();
 
         controller = bossData.AnimatorController;
         sprite = bossData.sprite;
@@ -44,7 +46,7 @@ public class Boss : MonsterBase
 
     protected override void OnDeath(Character attacker)
     {
-        if (IsMiniBoss)
+        if (IsBoss)
         {
             attacker.LevelUp();
         }

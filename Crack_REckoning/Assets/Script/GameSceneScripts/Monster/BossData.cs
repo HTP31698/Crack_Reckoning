@@ -15,11 +15,11 @@ public class BossData
 
     public int? BossEffectID { get; set; }
 
-    public bool IsMiniBoss { get; set; }
+    public bool IsBoss { get; set; }
 
     public override string ToString()
     {
-        return $"{BossID} / {BossName} / {BossRange} / {BossHp} / {BossAttack} / {BossSpeed} / {BossAttackSpeed} / {BossWeakness} / {BossStrength} / {BossEffectID} / {IsMiniBoss}";
+        return $"{BossID} / {BossName} / {BossRange} / {BossHp} / {BossAttack} / {BossSpeed} / {BossAttackSpeed} / {BossWeakness} / {BossStrength} / {BossEffectID} / {IsBoss}";
     }
 
     public Sprite sprite
@@ -42,6 +42,6 @@ public class BossDataMap : ClassMap<BossData>
         Map(m => m.BossWeakness).Name("BossWeakness").Default(0).TypeConverterOption.NullValues("", " "); ;
         Map(m => m.BossStrength).Name("BossStrength").Default(0).TypeConverterOption.NullValues("", " "); ;
         Map(m => m.BossEffectID).Name("BossEffectID").Default(0).TypeConverterOption.NullValues("", " "); ;
-        Map(m => m.IsMiniBoss).Name("IsMiniBoss");
+        Map(m => m.IsBoss).Name("IsBoss");
     }
 }

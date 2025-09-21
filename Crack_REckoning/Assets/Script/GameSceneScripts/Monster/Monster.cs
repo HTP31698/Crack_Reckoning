@@ -30,6 +30,8 @@ public class Monster : MonsterBase
         damage = monsterData.MonsterAttack;
         attackSpeed = monsterData.MonsterAttackSpeed;
         exp = monsterData.MonsterExp;
+        weakness = monsterData.MonsterWeakness.GetValueOrDefault();
+        strength = monsterData.MonsterStrength.GetValueOrDefault();
 
         controller = monsterData.AnimatorController;
         sprite = monsterData.sprite;

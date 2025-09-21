@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
 
     private readonly Dictionary<int, SkillData> skillInstances = new();
 
-    // Ä³¸¯ÅÍ ±âº» ¼Ó¼º
+    // ìºë¦­í„° ê¸°ë³¸ ì†ì„±
     public int Id { get; private set; }
     public string CharacterName { get; private set; }
     public int BasicSkill { get; private set; }
@@ -56,7 +56,7 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        // ¸ğµç ÁØºñµÈ ½ºÅ³ ÀÚµ¿ »ç¿ë
+        // ëª¨ë“  ì¤€ë¹„ëœ ìŠ¤í‚¬ ìë™ ì‚¬ìš©
         for (int i = 0; i < SkillIDs.Count; i++)
         {
             if (i < skillReady.Count && skillReady[i])
@@ -177,29 +177,40 @@ public class Character : MonoBehaviour
         var skillData = GetSkillForUse(skillId);
         if (skillData == null) yield break;
 
-        // ¡å »ç°Å¸® ¾È¿¡ ¸ó½ºÅÍ°¡ ÇÑ ¸¶¸®¶óµµ ÀÖÀ¸¸é ¹ß»ç
-        bool anyInRange = Physics2D.OverlapCircleAll(
-            transform.position,
-            skillData.SkillRange,
-            LayerMask.GetMask("Monster")
-        ).Any(col =>
+        bool anyInRange = false;
+
+        // 1) ì§€ì • ë°˜ê²½(skillData.SkillRange) ì•ˆì˜ ëª¨ë“  Collider2D ê°€ì ¸ì˜¤ê¸°
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            transform.position,          // ì›ì˜ ì¤‘ì‹¬ = ë‚´ ìœ„ì¹˜
+            skillData.SkillRange,        // ì›ì˜ ë°˜ì§€ë¦„ = ìŠ¤í‚¬ ì‚¬ê±°ë¦¬
+            LayerMask.GetMask("Monster") // "Monster" ë ˆì´ì–´ë§Œ ê²€ì‚¬
+        );
+        foreach (Collider2D col in hits)
         {
-            var m = col.GetComponent<MonsterBase>();
-            return m != null && !m.isdead;
-        });
+            // colliderì— MonsterBase ì»´í¬ë„ŒíŠ¸ê°€ ë¶™ì–´ìˆëŠ”ì§€ ì°¾ê¸°
+            MonsterBase m = col.GetComponent<MonsterBase>();
 
-        if (!anyInRange)
-            yield break;
+            // mì´ ì‹¤ì œ ëª¬ìŠ¤í„°ì´ê³  ì£½ì§€ ì•Šì•˜ë‹¤ë©´
+            if (m != null && !m.isdead)
+            {
+                anyInRange = true; // ì‚´ì•„ìˆëŠ” ëª¬ìŠ¤í„° ë°œê²¬!
+                break;            // í•˜ë‚˜ë§Œ ì°¾ìœ¼ë©´ ë˜ë‹ˆê¹Œ ë°”ë¡œ ë°˜ë³µ ì¢…ë£Œ
+            }
+        }
+        if (!anyInRange) yield break;
 
-        // ¹ß»ç´Â ¿©ÀüÈ÷ "·£´ı Å¸°Ù" ±âÁØ
-        MonsterBase target = MonsterManager.GetRandomMonster();
+        // ìµœìš°ì„ : ì‚¬ê±°ë¦¬ ë‚´ ê³µê²© ì¤‘ ëª¬ìŠ¤í„°
+        MonsterBase priority = MonsterManager.GetAttackingWithin(transform.position, skillData.SkillRange);
+
+        // í´ë°±: ê¸°ì¡´ ëœë¤
+        MonsterBase target = priority ?? MonsterManager.GetRandomMonster();
         if (target == null) yield break;
 
         skillReady[index] = false;
 
         for (int atk = 0; atk < skillData.AttackNum; atk++)
         {
-            UseSkill(target, index);   // ¡ç ¹ß»çÃ¼¸¶´Ù »ç°Å¸® ³»¿¡¼­ ·£´ı Å¸°Ù »ÌÀ½
+            UseSkill(target, index, priority); // ìš°ì„  íƒ€ê¹ƒì„ ë„˜ê²¨ì¤Œ
             yield return new WaitForSeconds(0.2f);
         }
 
@@ -207,7 +218,7 @@ public class Character : MonoBehaviour
         skillReady[index] = true;
     }
 
-    private void UseSkill(MonsterBase target, int index)
+    private void UseSkill(MonsterBase target, int index, MonsterBase priorityTarget)
     {
         if (target == null) return;
 
@@ -219,22 +230,33 @@ public class Character : MonoBehaviour
 
         for (int i = 0; i < skillData.ProjectilesNum; i++)
         {
-            MonsterBase chosen = MonsterManager.GetRandomAliveWithin(
-                transform.position,
-                skillData.SkillRange,
-                chosenThisSkill
-            );
+            MonsterBase chosen = null;
 
-            if (chosen == null)
+            if (i == 0 && priorityTarget != null && !priorityTarget.isdead)
             {
+                // ì²« ë°œì€ ë°˜ë“œì‹œ ìš°ì„  íƒ€ê¹ƒ(= ê³µê²© ì¤‘ì¸ ëª¬ìŠ¤í„°)
+                chosen = priorityTarget;
+            }
+            else
+            {
+                // ì´í›„ ë°œì‚¬ì²´ëŠ” ê¸°ì¡´ ë¶„ì‚° ë¡œì§
                 chosen = MonsterManager.GetRandomAliveWithin(
                     transform.position,
                     skillData.SkillRange,
-                    null
+                    chosenThisSkill
                 );
-            }
 
-            if (chosen == null) chosen = target;
+                if (chosen == null)
+                {
+                    chosen = MonsterManager.GetRandomAliveWithin(
+                        transform.position,
+                        skillData.SkillRange,
+                        null
+                    );
+                }
+
+                if (chosen == null) chosen = target;
+            }
 
             Vector3 spawnPos = transform.position
                              + new Vector3((i - (skillData.ProjectilesNum - 1) / 2f) * 0.2f, 0, 0);
@@ -243,13 +265,14 @@ public class Character : MonoBehaviour
             Skill skill = obj.GetComponent<Skill>();
             if (skill != null)
             {
-                // °­È­°¡ ¹İ¿µµÈ ³» »çº» µ¥ÀÌÅÍ »ç¿ë
                 skill.InitWithData(skillId, skillData);
                 skill.SetCharacter(this, CharacterAttack, CharacterCri, CharacterCriDamage);
 
+                // ë„ ì•ˆì „ + ìš°ì„  íƒ€ê¹ƒ/ì„ íƒ íƒ€ê¹ƒ ì¢Œí‘œ
                 Vector3 targetPos = (chosen != null ? chosen.transform.position : target.transform.position);
-                Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
 
+                // (ì›ë˜ í•˜ë˜) ë°©í–¥ ê³„ì‚°
+                Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
 
@@ -261,4 +284,5 @@ public class Character : MonoBehaviour
                 chosenThisSkill.Add(chosen);
         }
     }
+
 }
