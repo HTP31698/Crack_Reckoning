@@ -9,15 +9,6 @@ public class Monster : MonsterBase
 
     public Sprite getSprite { get; private set; }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Destroy(gameObject);
-            Debug.Log("일반 몹 삭제");
-        }
-    }
-
     public override void Init(int id)
     {
         this.id = id;

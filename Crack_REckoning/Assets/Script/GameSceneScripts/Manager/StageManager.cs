@@ -12,7 +12,12 @@ public class StageManager : MonoBehaviour
     private static readonly string StageTable = "StageTable";
     private static readonly string PrefabMonster = "Prefabs/Monster";
     private static readonly string PrefabBoss = "Prefabs/Boss";
+    private static readonly string MonsterTable = "MonsterTable";
+
     public Transform target;
+
+    private GameObject monsterPrefab;
+    private GameObject bossPrefab;
 
     private StageData currentStageData;
     private int currentStage = 1;
@@ -31,21 +36,15 @@ public class StageManager : MonoBehaviour
     // 현재 웨이브 몬스터 ID 저장
     private List<int> currentMonsterIds = new List<int>();
 
+    private void Awake()
+    {
+        monsterPrefab = Resources.Load<GameObject>(PrefabMonster);
+        bossPrefab = Resources.Load<GameObject>(PrefabBoss);
+    }
+
     private void Start()
     {
         StartStage(currentStage, currentWave);
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log($"{currentStageData.StageName}스킵");
-            if (spawnCoroutine != null)
-            {
-                StopCoroutine(spawnCoroutine);
-            }
-            spawnCoroutine = StartCoroutine(SpawnWave(currentWave + 1)); // 스킵 시 다음 웨이브
-        }
     }
 
     private void StartStage(int stageNumber, int waveNumber)
@@ -62,7 +61,7 @@ public class StageManager : MonoBehaviour
     }
     private IEnumerator SpawnWave(int startWave)
     {
-        int totalWaves = 21;
+        int totalWaves = 20;
         for (int wave = startWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;
@@ -108,9 +107,9 @@ public class StageManager : MonoBehaviour
 
     public void SpawnMonster(int monsterId, float addHp, float addAtt)
     {
-        float posx = GetSpawnPositionX(PrefabMonster);
+        float posx = GetSpawnPositionX(monsterPrefab);
         Vector3 spawnPos = new Vector3(posx, 7, 0);
-        GameObject obj = Instantiate(Resources.Load<GameObject>(PrefabMonster), spawnPos, Quaternion.identity);
+        GameObject obj = Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
         Monster monster = obj.GetComponent<Monster>();
         monster.Init(monsterId);
         monster.SetTarget(target);
@@ -133,25 +132,21 @@ public class StageManager : MonoBehaviour
     public void SpawnBoss(int bossId)
     {
         Vector3 spawnPos = new Vector3(0, 7, 0);
-        GameObject obj = Instantiate(Resources.Load<GameObject>(PrefabBoss), spawnPos, Quaternion.identity);
+        GameObject obj = Instantiate(bossPrefab, spawnPos, Quaternion.identity);
         Boss boss = obj.GetComponent<Boss>();
         boss.Init(bossId);
         boss.SetTarget(target);
     }
 
-    private float GetSpawnPositionX(string prefabPath, float prefabZ = 0f)
+    private float GetSpawnPositionX(GameObject prefab, float prefabZ = 0f)
     {
         Rect safe = Screen.safeArea;
         float zDist = Mathf.Abs(Camera.main.transform.position.z - prefabZ);
         Vector3 bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMin, safe.yMin, zDist));
         Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(safe.xMax, safe.yMax, zDist));
 
-        GameObject prefab = Resources.Load<GameObject>(prefabPath);
         if (prefab == null)
-        {
-            Debug.LogError($"Prefab 못찾음: {prefabPath}");
-            return (bottomLeft.x + topRight.x) / 2f; // 화면 중앙 리턴
-        }
+            return (bottomLeft.x + topRight.x) / 2f;
 
         SpriteRenderer sr = prefab.GetComponentInChildren<SpriteRenderer>();
         float halfWidth = 0f;
@@ -171,7 +166,7 @@ public class StageManager : MonoBehaviour
             if (i < monsterIds.Count && monsterIds[i] > 0)
             {
                 Sprite monsterSprite = null;
-                var monsterData = DataTableManager.Get<MonsterTable>("MonsterTable").Get(monsterIds[i]);
+                var monsterData = DataTableManager.Get<MonsterTable>(MonsterTable).Get(monsterIds[i]);
                 if (monsterData != null) monsterSprite = monsterData.sprite;
                 monsterSlots[i].rectTransform.sizeDelta = new Vector2(240, 240);
                 monsterSlots[i].sprite = monsterSprite;

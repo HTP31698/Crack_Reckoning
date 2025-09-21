@@ -7,14 +7,7 @@ public class Boss : MonsterBase
     private BossData bossData;
     private bool IsMiniBoss;
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.End))
-        {
-            Destroy(gameObject);
-            Debug.Log("º¸½º ¸÷ »èÁ¦");
-        }
-    }
+
     public override void Init(int id)
     {
         this.id = id;

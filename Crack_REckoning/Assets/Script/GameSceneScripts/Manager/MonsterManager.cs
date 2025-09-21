@@ -1,0 +1,87 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonsterManager
+{
+    private static List<MonsterBase> monsters = new List<MonsterBase>();
+
+    private static readonly List<MonsterBase> aliveBuf = new List<MonsterBase>(400);
+    private static readonly List<MonsterBase> poolBuf = new List<MonsterBase>(400);
+    private static readonly List<MonsterBase> fallBuf = new List<MonsterBase>(400);
+
+    public static void AddMonster(MonsterBase m)
+    {
+        if (m != null && !monsters.Contains(m))
+            monsters.Add(m);
+    }
+
+    public static void RemoveMonster(MonsterBase m)
+    {
+        if (m != null)
+            monsters.Remove(m);
+    }
+
+    public static MonsterBase nearMonster(Vector3 fromPosition, float maxRange = Mathf.Infinity)
+    {
+        MonsterBase closest = null;
+        float bestSqr = maxRange * maxRange;
+
+        foreach (MonsterBase m in monsters)
+        {
+            if (m == null || m.isdead) continue;
+
+            float sqrDist = (m.transform.position - fromPosition).sqrMagnitude;
+            if (sqrDist < bestSqr)
+            {
+                bestSqr = sqrDist;
+                closest = m;
+            }
+        }
+        return closest;
+    }
+
+    public static MonsterBase GetRandomMonster()
+    {
+        aliveBuf.Clear();
+        foreach (var m in monsters)
+        {
+            if (m != null && !m.isdead)
+                aliveBuf.Add(m);
+        }
+
+        if (aliveBuf.Count == 0) return null;
+        int randIndex = Random.Range(0, aliveBuf.Count);
+        return aliveBuf[randIndex];
+    }
+
+    public static MonsterBase GetNearestAliveWithin(Vector3 fromPosition, float range)
+    {
+        return nearMonster(fromPosition, range);
+    }
+
+    public static MonsterBase GetRandomAliveWithin(Vector3 fromPosition, float range, HashSet<MonsterBase> exclude = null)
+    {
+        float rangeSqr = range * range;
+        poolBuf.Clear();
+        fallBuf.Clear();
+
+        foreach (var m in monsters)
+        {
+            if (m == null || m.isdead) continue;
+            float sqrDist = (m.transform.position - fromPosition).sqrMagnitude;
+            if (sqrDist <= rangeSqr)
+            {
+                if (exclude != null && exclude.Contains(m))
+                    fallBuf.Add(m);
+                else
+                    poolBuf.Add(m);
+            }
+        }
+
+        List<MonsterBase> list = (poolBuf.Count > 0) ? poolBuf : fallBuf;
+        if (list.Count == 0) return null;
+
+        int idx = Random.Range(0, list.Count);
+        return list[idx];
+    }
+}

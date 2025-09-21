@@ -49,6 +49,23 @@ public class SkillData
         => Resources.Load<Sprite>($"Sprites/{SkillID}");
     public RuntimeAnimatorController AnimatorController
         => Resources.Load<RuntimeAnimatorController>($"Animator/{SkillID}");
+
+    public SkillData Clone() => new SkillData
+    {
+        SkillID = SkillID,
+        SkillName = SkillName,
+        SkillSortation = SkillSortation,
+        SkillType = SkillType,
+        SkillRange = SkillRange,
+        SkillDamage = SkillDamage,
+        SkillCoolTime = SkillCoolTime,
+        ProjectilesNum = ProjectilesNum,
+        AttackNum = AttackNum,
+        PenetratingPower = PenetratingPower,
+        SkillDamageRange = SkillDamageRange,
+        EffectID = EffectID,
+        AttackType = AttackType
+    };
 }
 
 public class SkillDataMap : ClassMap<SkillData>

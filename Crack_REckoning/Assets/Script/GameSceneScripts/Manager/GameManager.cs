@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public Button[] Buttons;
     public Toggle toggle;
     private List<int> StageSkillList;
+
     private List<int> pendingSkillOptions;
+    private List<int> pendingPickIds;
 
     public GameObject SettingsWindow;
     public Button SettingButton;
@@ -20,17 +22,18 @@ public class GameManager : MonoBehaviour
     private float TimeSet = 1f;
     bool isStop = false;
 
-
     private void Awake()
     {
         StageSkillList = new List<int>();
         StageSkillListInit();
+
         for (int i = 0; i < 3; i++)
         {
             Buttons[i].gameObject.SetActive(false);
             int index = i;
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
         }
+
         SettingsWindow.gameObject.SetActive(false);
         SettingButton.onClick.AddListener(OnSetButtonClick);
         TryagainButton.onClick.AddListener(OffsetButtonClick);
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         var characterSkillList = character.GetSkillIdList();
         pendingSkillOptions = new List<int>();
+        pendingPickIds = new List<int>();        // ★ pickId를 함께 저장
 
         // 후보 3개 생성
         while (pendingSkillOptions.Count < 3)
@@ -97,10 +101,24 @@ public class GameManager : MonoBehaviour
             int skillId = pendingSkillOptions[i];
             SkillData s = DataTableManager.Get<SkillTable>("SkillTable").Get(skillId);
 
-            int pickId = characterSkillList.Contains(skillId) ? Random.Range(1, 6) : 0;
+            // ★ 여기서 '표시용 pickId'를 결정하고 저장해 둔다.
+            int pickId;
             SkillSelectionData ss = null;
-            if (pickId > 0)
+
+            if (characterSkillList.Contains(skillId))
+            {
+                // Unity int Random.Range(min, max)에서 max는 '제외'니까 1~5 범위
+                pickId = Random.Range(1, 6);
                 ss = DataTableManager.Get<SkillSelectionTable>("SkillSelectionTable").Get(skillId, pickId);
+            }
+            else
+            {
+                // 미소유면 pickId = 0 (스킬 추가 선택지)
+                pickId = 0;
+            }
+
+            // ★ 화면에 보여준 선택이 무엇인지 기억
+            pendingPickIds.Add(pickId);
 
             // 텍스트 & 이미지
             if (tmpText != null)
@@ -113,24 +131,30 @@ public class GameManager : MonoBehaviour
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
         }
 
-
         PauseGame();
     }
 
     private void OnSkillButtonClick(int index)
     {
-        if (index >= pendingSkillOptions.Count) return;
+        if (index >= pendingSkillOptions.Count)
+            return;
 
         int skillId = pendingSkillOptions[index];
+        int pickId = (pendingPickIds != null && index < pendingPickIds.Count) ? pendingPickIds[index] : 0;
+
         var characterSkillList = character.GetSkillIdList();
         var selectionTable = DataTableManager.Get<SkillSelectionTable>("SkillSelectionTable");
 
         if (characterSkillList.Contains(skillId))
         {
-            int pickId = Random.Range(1, 6);
-            SkillSelectionData skillData = selectionTable.Get(skillId, pickId);
-            if (skillData != null)
-                character.IncreaseSkill(skillId, skillData);
+            if (pickId > 0)
+            {
+                SkillSelectionData skillData = selectionTable.Get(skillId, pickId);
+                if (skillData != null)
+                {
+                    character.IncreaseSkill(skillId, skillData);
+                }
+            }
         }
         else
         {
@@ -171,4 +195,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = TimeSet;
     }
 }
+
 
