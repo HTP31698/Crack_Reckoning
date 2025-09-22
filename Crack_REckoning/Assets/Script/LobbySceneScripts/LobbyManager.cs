@@ -4,28 +4,45 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
-    public GameObject MainWindow;
+    public GameObject HomeWindow;
     public GameObject StageSelctWindow;
 
     public Button StageChallengeButton;
     public Button Stage1Button;
 
+    public Button CharacterButton;
+    public Button SkillButton;
+    public Button HomeButton;
+    public Button PetButton;
+    public Button EnforceButton;
+
 
     public void Awake()
     {
-        MainWindow.SetActive(true);
+        HomeWindow.SetActive(true);
         StageSelctWindow.SetActive(false);
 
         StageChallengeButton.onClick.AddListener(StageChallengeButtonClick);
         Stage1Button.onClick.AddListener(Stage1ButtonClick);
+
+        HomeButton.onClick.AddListener(HomeButtonClick);
+
     }
 
 
     public void StageChallengeButtonClick()
     {
-        MainWindow.SetActive(false);
+        HomeWindow.SetActive(false);
         StageSelctWindow.SetActive(true);
     }
+
+    public void HomeButtonClick()
+    {
+        HomeWindow.SetActive(true);
+        StageSelctWindow.SetActive(false);
+    }
+
+
 
 
     public void Stage1ButtonClick()
