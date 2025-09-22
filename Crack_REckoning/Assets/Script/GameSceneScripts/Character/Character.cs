@@ -52,8 +52,9 @@ public class Character : MonoBehaviour
 
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
-        Init(11001); 
-        AddSkill(BasicSkill); 
+        Init(11001);
+        PlaySetting.PlayerBasicSkillID = BasicSkill;
+        AddSkill(BasicSkill);
     }
 
     private void Update()

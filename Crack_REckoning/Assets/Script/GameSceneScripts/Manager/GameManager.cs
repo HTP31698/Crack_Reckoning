@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
     private static readonly string SkillSelectionTable = "SkillSelectionTable";
     private static readonly string SkillTable = "SkillTable";
     private static readonly string Icon = "Icon";
+    private static readonly string Background = "Background";
+    private static readonly string Enforce = "Enforce";
 
     public Character character;
+    public StageManager stageManager;
+
     public Button[] Buttons;
     public Toggle toggle;
     private List<int> StageSkillList;
@@ -25,6 +29,10 @@ public class GameManager : MonoBehaviour
     public Button TryagainButton;
     public Button GiveupButton;
 
+    public Button NextStageButton;
+    public Button RetryStageButton;
+    public Button ExitStageButton;
+
     public TextMeshProUGUI timerText;
     private float timer = 0f;
 
@@ -34,16 +42,12 @@ public class GameManager : MonoBehaviour
     public Slider[] sliderSkills;
     private Dictionary<int, int> skillIndex;
     private Dictionary<int, int> enforceLevel;
-    private float[] coolTimer;
-    private float[] skillCool;
 
     private void Awake()
     {
         StageSkillList = new List<int>();
         skillIndex = new Dictionary<int, int>();
         enforceLevel = new Dictionary<int, int>();
-        coolTimer = new float[sliderSkills.Length];
-        skillCool = new float[sliderSkills.Length];
 
         StageSkillListInit();
 
@@ -60,9 +64,14 @@ public class GameManager : MonoBehaviour
         SetSkillStat(0, PlaySetting.PlayerBasicSkillID);
 
         SettingsWindow.gameObject.SetActive(false);
+
         SettingButton.onClick.AddListener(OnSetButtonClick);
         TryagainButton.onClick.AddListener(OffsetButtonClick);
-        GiveupButton.onClick.AddListener(GiveupButtonClick);
+        GiveupButton.onClick.AddListener(FailedWindowPause);
+
+        NextStageButton.onClick.AddListener(NextStageButtonClick);
+        RetryStageButton.onClick.AddListener(RetryButtonClick);
+        ExitStageButton.onClick.AddListener(ExitStageButtonClick);
     }
 
     public void Update()
@@ -83,32 +92,16 @@ public class GameManager : MonoBehaviour
         int seconds = (int)(timer % 60);
         timerText.text = $"{minutes:D2}:{seconds:D2}";
 
-        if (coolTimer != null && skillCool != null && sliderSkills != null && !character.isUseSkill)
+        if (stageManager.currentWave == 20)
         {
-            int n = Mathf.Min(sliderSkills.Length, coolTimer.Length, skillCool.Length);
-
-            float delta = Time.deltaTime;
-
-            for (int i = 0; i < n; i++)
+            if (!stageManager.wave20Spawned && MonsterManager.HasMonster())
             {
-                var slider = sliderSkills[i];
-                if (slider == null || !slider.gameObject.activeInHierarchy)
-                    continue;
+                stageManager.wave20Spawned = true; // 몬스터가 생성된 걸 확인
+            }
 
-                float total = skillCool[i];
-                if (total <= 0f)
-                {
-                    coolTimer[i] = 0f;
-                    slider.value = 1f;
-                    continue;
-                }
-                coolTimer[i] += delta;
-
-                if (coolTimer[i] >= total)
-                {
-                    coolTimer[i] = 0f;
-                }
-                slider.value = Mathf.Clamp01(coolTimer[i] / total);
+            if (stageManager.wave20Spawned && !MonsterManager.HasMonster())
+            {
+                ClearWindowPause(); // 몬스터 다 잡았을 때만 클리어
             }
         }
     }
@@ -117,7 +110,7 @@ public class GameManager : MonoBehaviour
     {
         SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
         sliderSkills[index].gameObject.SetActive(true);
-        var bg = sliderSkills[index].transform.Find("Background").GetComponent<Image>();
+        var bg = sliderSkills[index].transform.Find(Background).GetComponent<Image>();
         if (bg != null)
         {
             bg.sprite = s.sprite;
@@ -130,25 +123,14 @@ public class GameManager : MonoBehaviour
         skillIndex[id] = index;
         if (!enforceLevel.ContainsKey(id)) enforceLevel[id] = 0;
 
-        // UI 텍스트 반영
-        var text = sliderSkills[index].transform.Find("Enforce")?.GetComponent<TextMeshProUGUI>();
+        var text = sliderSkills[index].transform.Find(Enforce)?.GetComponent<TextMeshProUGUI>();
         if (text != null) text.text = $"+{enforceLevel[id]}";
-
-        // 쿨타임 값 세팅 (슬롯 기준으로 관리)
-        coolTimer[index] = 0f;
-        skillCool[index] = s.SkillCoolTime;
-
-        sliderSkills[index].value = (skillCool[index] > 0f) ? coolTimer[index] / skillCool[index] : 0f;
 
     }
 
     private void UpdateSkillStat(int id)
     {
         SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
-        skillCool[skillIndex[id]] = s.SkillCoolTime;
-
-        sliderSkills[skillIndex[id]].value = (skillCool[skillIndex[id]] > 0f) ? 
-            coolTimer[skillIndex[id]] / skillCool[skillIndex[id]] : 0f;
 
         if (!skillIndex.TryGetValue(id, out int index))
             return;
@@ -281,8 +263,41 @@ public class GameManager : MonoBehaviour
         SettingsWindow.gameObject.SetActive(false);
         ResumeGame();
     }
-    private void GiveupButtonClick()
+    private void ClearWindowPause()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            Buttons[i].gameObject.SetActive(false);
+        }
+        stageManager.ShowClearWindow();
+        PauseGame();
+    }
+    private void FailedWindowPause()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Buttons[i].gameObject.SetActive(false);
+        }
+        stageManager.ShowFailedWindow();
+        PauseGame();
+    }
+
+    private void RetryButtonClick()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    private void NextStageButtonClick()
+    {
+        PlaySetting.SelectStage++;
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    private void ExitStageButtonClick()
+    {
+        PlaySetting.SelectStage--;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

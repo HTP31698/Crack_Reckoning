@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -106,5 +107,17 @@ public class MonsterManager
             }
         }
         return best;
+    }
+
+    public static bool HasMonster()
+    {
+        foreach (var m in monsters)
+        {
+            if (m == null || m.isdead) continue;
+
+            return true;
+        }
+
+        return false;
     }
 }

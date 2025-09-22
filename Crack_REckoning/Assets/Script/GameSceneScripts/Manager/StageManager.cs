@@ -20,8 +20,8 @@ public class StageManager : MonoBehaviour
     private GameObject bossPrefab;
 
     private StageData currentStageData;
-    private int currentStage = 1;
-    private int currentWave = 1;
+    public int currentStage { get; private set; }
+    public int currentWave { get; private set; }
     private Coroutine spawnCoroutine;
 
     private float StageAddMHp;
@@ -29,7 +29,12 @@ public class StageManager : MonoBehaviour
 
     public TextMeshProUGUI settingStageName;
     public TextMeshProUGUI StageName;
+    public TextMeshProUGUI ClearOrFailed;
+    public TextMeshProUGUI ClearWindowCurrentStageName;
     public Image[] monsterSlots;
+
+    public GameObject ClearWindow;
+    public bool wave20Spawned { get; set; } = false;
 
     private List<int> currentMonsterIds = new List<int>();
 
@@ -37,10 +42,13 @@ public class StageManager : MonoBehaviour
     {
         monsterPrefab = Resources.Load<GameObject>(PrefabMonster);
         bossPrefab = Resources.Load<GameObject>(PrefabBoss);
+        ClearWindow.gameObject.SetActive(false);
     }
 
     private void Start()
     {
+        currentStage = PlaySetting.SelectStage;
+        currentWave = 1;
         StartStage(currentStage, currentWave);
     }
 
@@ -66,6 +74,7 @@ public class StageManager : MonoBehaviour
 
             settingStageName.text = currentStageData.StageName;
             StageName.text = currentStageData.StageName;
+            ClearWindowCurrentStageName.text = currentStageData.StageName;
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
             StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
 
@@ -175,5 +184,15 @@ public class StageManager : MonoBehaviour
                 monsterSlots[i].enabled = false;
             }
         }
+    }
+    public void ShowClearWindow()
+    {
+        ClearOrFailed.text = "Stage Clear!!!";
+        ClearWindow.gameObject.SetActive(true);
+    }
+    public void ShowFailedWindow()
+    {
+        ClearOrFailed.text = "Stage Failed...";
+        ClearWindow.gameObject.SetActive(true);
     }
 }

@@ -24,7 +24,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376679735265369060}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25906733, y: 0.25906733, z: 0.25906733}
   m_ConstrainProportionsScale: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6357432389699129709}
   m_HandleRect: {fileID: 0}
@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6573396025999571013, guid: a060d27617121844cb28cab7c99ee2fc, type: 3}
       propertyPath: m_Name
-      value: StageNameText
+      value: Enforce
       objectReference: {fileID: 0}
     - target: {fileID: 7393522335612561451, guid: a060d27617121844cb28cab7c99ee2fc, type: 3}
       propertyPath: m_Pivot.x

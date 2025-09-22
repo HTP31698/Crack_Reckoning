@@ -5,7 +5,7 @@ public class Boss : MonsterBase
     private static readonly string BossTable = "BossTable";
     private BossTable bossTable;
     private BossData bossData;
-    private bool IsBoss;
+    public bool IsBoss { get; set; }
 
     public override void Init(int id)
     {

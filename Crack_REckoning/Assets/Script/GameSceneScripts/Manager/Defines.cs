@@ -13,10 +13,11 @@ public static class DataTableIds
 
 public static class PlaySetting
 {
-    public static int playerID = 11001;
-    public static int SelectStage;
-    public static int PlayerBasicSkillID = 31001;
-    public static bool IsPlaying;
+    public static int playerID { get; set; }
+    public static int SelectStage { get; set; } = 1;
+    public static int PlayerBasicSkillID { get; set; }
+    public static bool IsPlaying { get; set; }
+    public static int gold { get; set; }
     public static void Reset()
     {
         playerID = 0;
