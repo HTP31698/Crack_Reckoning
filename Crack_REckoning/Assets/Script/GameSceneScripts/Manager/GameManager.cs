@@ -297,9 +297,16 @@ public class GameManager : MonoBehaviour
 
     private void ExitStageButtonClick()
     {
-        PlaySetting.SelectStage--;
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        // 씬 경로로 빌드 인덱스 확인 (프로젝트 실제 경로)
+        const string scenePath = "Assets/Scenes/LobbyScene.unity";
+        int index = SceneUtility.GetBuildIndexByScenePath(scenePath);
+
+        if (index < 0)
+        {
+            Debug.LogError($"Scene not in Build Settings: {scenePath}");
+            return;
+        }
+        SceneManager.LoadScene(index);
     }
 
     public void PauseGame()
