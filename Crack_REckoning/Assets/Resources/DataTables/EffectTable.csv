@@ -1,7 +1,7 @@
 EffectID,EffectName,EffSor,Faint,Slow,lgnition,DefenseNum,ResurrecionNum,AttackBuff,CoolTimeReset,UpSkillDamage,DownCoolTime,AddProjectilePower,AddPenetrationPower,UpCriProBability,UpCriticalDamage,AddSkillID,DownSkillDamage
 41001,점화 효과,1,,,3,,,,,,,,,,,,
-41002,슬로우 효과,1,,2,,,,,,,,,,,,,
-41003,기절 효과,1,1.5,,,1,,,,,,,,,,,
+41002,슬로우 효과,1,,3,,,,,,,,,,,,,
+41003,기절 효과,1,2,,,1,,,,,,,,,,,
 42004,투사체 방어 효과,2,,,,,,,,,,,,,,,
 42005,부활 효과,2,,,,,1,,,,,,,,,,
 43006,공격력 버프,3,,,,,,0.5,,,,,,,,,
