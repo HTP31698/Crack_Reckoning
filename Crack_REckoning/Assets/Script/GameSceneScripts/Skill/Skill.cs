@@ -26,7 +26,6 @@ public class Skill : MonoBehaviour
 
     public int Id { get; private set; }
     public string SkillName { get; private set; }
-    public SkillSortationID SkillSortationID { get; private set; }
     public SkillTypeID SkillTypeID { get; private set; }
     public float SkillRange { get; private set; }
     public int SkillDamage { get; set; }
@@ -35,7 +34,6 @@ public class Skill : MonoBehaviour
     public int AttackNum { get; set; }
     public int PenetratingPower { get; set; }
     public float SkillDamageRange { get; set; }
-    public int EffectID { get; private set; }
     public AttackTypeID AttackType { get; private set; }
 
     public Sprite sprite { get; private set; }
@@ -147,7 +145,6 @@ public class Skill : MonoBehaviour
     {
         Id = data.SkillID;
         SkillName = data.SkillName;
-        SkillSortationID = data.SkillSortation;
         SkillTypeID = data.SkillType;
         SkillRange = data.SkillRange;
         SkillDamage = data.SkillDamage;
@@ -156,7 +153,6 @@ public class Skill : MonoBehaviour
         AttackNum = data.AttackNum;
         PenetratingPower = data.PenetratingPower;
         SkillDamageRange = data.SkillDamageRange;
-        EffectID = data.EffectID.GetValueOrDefault();
         AttackType = data.AttackType;
 
         // 비주얼 리소스
@@ -170,10 +166,9 @@ public class Skill : MonoBehaviour
             animator.runtimeAnimatorController = controller;
     }
 
-    public void SetCharacter(Character character, int atk, int cri, float cridmg)
+    public void SetCharacter(Character character, int cri, float cridmg)
     {
         this.character = character;
-        characterAttack = atk;
         characterCri = cri;
         characterCriDamage = cridmg;
     }

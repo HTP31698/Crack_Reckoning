@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,10 @@ public class LobbyManager : MonoBehaviour
     public Button HomeButton;
     public Button PetButton;
     public Button EnforceButton;
+
+    public TextMeshProUGUI Gold;
+
+    public int gold = 0;
 
 
     public void Awake()
@@ -47,7 +52,7 @@ public class LobbyManager : MonoBehaviour
 
     public void Stage1ButtonClick()
     {
-        PlaySetting.SelectStage = 1;
+        PlaySetting.SetSelectStage(1);
 
         // 씬 경로로 빌드 인덱스 확인 (프로젝트 실제 경로)
         const string scenePath = "Assets/Scenes/GameScene.unity";

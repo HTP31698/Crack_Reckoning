@@ -12,7 +12,6 @@ public class SkillSelectionData
     public int? IncreasedProjectile { get; set; }
     public int? IncreaseNumAttack { get; set; }
     public int? PeneTratingPower { get; set; }
-    public int? EffectID { get; set; }
 }
 
 public class SkillSelectionDataMap : ClassMap<SkillSelectionData>
@@ -28,6 +27,5 @@ public class SkillSelectionDataMap : ClassMap<SkillSelectionData>
         Map(s => s.IncreasedProjectile).Name("IncreasedProjectile").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.IncreaseNumAttack).Name("IncreaseNumAttack").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.PeneTratingPower).Name("PeneTratingPower").Default(0).TypeConverterOption.NullValues("", " ");
-        Map(s => s.EffectID).Name("EffectID").Default(0).TypeConverterOption.NullValues("", " ");
     }
 }

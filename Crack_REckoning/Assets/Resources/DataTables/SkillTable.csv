@@ -1,295 +1,295 @@
-SkillID,SkillName,SkillSortation,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,EffectID,AttackType
-31001,파이어볼,BasicSkill,Fire,6,35,4,1,1,1,0.1,41001,Projectile
-3100101,파이어볼 +1,BasicSkill,Fire,7,65,5,1,1,1,0.1,41001,Projectile
-3100102,파이어볼 +2,BasicSkill,Fire,7,70,5,1,1,1,0.1,41001,Projectile
-3100103,파이어볼 +3,BasicSkill,Fire,7,75,5,1,1,1,0.1,41001,Projectile
-3100104,파이어볼 +4,BasicSkill,Fire,7,80,5,1,1,1,0.1,41001,Projectile
-3100105,파이어볼 +5,BasicSkill,Fire,7,100,5,1,1,1,0.1,41001,Projectile
-3100106,파이어볼 +6,BasicSkill,Fire,7,130,5,1,1,1,0.1,41001,Projectile
-3100107,파이어볼 +7,BasicSkill,Fire,7,170,5,1,1,1,0.1,41001,Projectile
-3100108,파이어볼 +8,BasicSkill,Fire,7,230,5,1,1,1,0.1,41001,Projectile
-3100109,파이어볼 +9,BasicSkill,Fire,7,300,5,1,1,1,0.1,41001,Projectile
-3100110,파이어볼 +10,BasicSkill,Fire,7,400,5,1,1,1,0.1,41001,Projectile
-3100111,파이어볼 +11,BasicSkill,Fire,7,550,5,1,1,1,0.1,41001,Projectile
-3100112,파이어볼 +12,BasicSkill,Fire,7,700,5,1,1,1,0.1,41001,Projectile
-3100113,파이어볼 +13,BasicSkill,Fire,7,900,5,1,1,1,0.1,41001,Projectile
-3100114,파이어볼 +14,BasicSkill,Fire,7,1200,5,1,1,1,0.1,41001,Projectile
-3100115,파이어볼 +15,BasicSkill,Fire,7,1500,5,1,1,1,0.1,41001,Projectile
-3100116,파이어볼 +16,BasicSkill,Fire,7,1800,5,1,1,1,0.1,41001,Projectile
-3100117,파이어볼 +17,BasicSkill,Fire,7,2100,5,1,1,1,0.1,41001,Projectile
-3100118,파이어볼 +18,BasicSkill,Fire,7,3000,5,1,1,1,0.1,41001,Projectile
-3100119,파이어볼 +19,BasicSkill,Fire,7,4000,5,1,1,1,0.1,41001,Projectile
-3100120,파이어볼 +20,BasicSkill,Fire,7,5000,5,1,1,1,0.1,41001,Projectile
-31002,단검 투척,BasicSkill,Physical,7,25,3.5,1,1,1,0.1,,Projectile
-3100201,단검 투척 +1,BasicSkill,Physical,6,65,5,1,1,1,0.1,,Projectile
-3100202,단검 투척 +2,BasicSkill,Physical,6,70,5,1,1,1,0.1,,Projectile
-3100203,단검 투척 +3,BasicSkill,Physical,6,75,5,1,1,1,0.1,,Projectile
-3100204,단검 투척 +4,BasicSkill,Physical,6,80,5,1,1,1,0.1,,Projectile
-3100205,단검 투척 +5,BasicSkill,Physical,6,100,5,1,1,1,0.1,,Projectile
-3100206,단검 투척 +6,BasicSkill,Physical,6,130,5,1,1,1,0.1,,Projectile
-3100207,단검 투척 +7,BasicSkill,Physical,6,170,5,1,1,1,0.1,,Projectile
-3100208,단검 투척 +8,BasicSkill,Physical,6,230,5,1,1,1,0.1,,Projectile
-3100209,단검 투척 +9,BasicSkill,Physical,6,300,5,1,1,1,0.1,,Projectile
-3100210,단검 투척 +10,BasicSkill,Physical,6,400,5,1,1,1,0.1,,Projectile
-3100211,단검 투척 +11,BasicSkill,Physical,6,550,5,1,1,1,0.1,,Projectile
-3100212,단검 투척 +12,BasicSkill,Physical,6,700,5,1,1,1,0.1,,Projectile
-3100213,단검 투척 +13,BasicSkill,Physical,6,900,5,1,1,1,0.1,,Projectile
-3100214,단검 투척 +14,BasicSkill,Physical,6,1200,5,1,1,1,0.1,,Projectile
-3100215,단검 투척 +15,BasicSkill,Physical,6,1500,5,1,1,1,0.1,,Projectile
-3100216,단검 투척 +16,BasicSkill,Physical,6,1800,5,1,1,1,0.1,,Projectile
-3100217,단검 투척 +17,BasicSkill,Physical,6,2100,5,1,1,1,0.1,,Projectile
-3100218,단검 투척 +18,BasicSkill,Physical,6,3000,5,1,1,1,0.1,,Projectile
-3100219,단검 투척 +19,BasicSkill,Physical,6,4000,5,1,1,1,0.1,,Projectile
-3100220,단검 투척 +20,BasicSkill,Physical,6,5000,5,1,1,1,0.1,,Projectile
-31003,검기,BasicSkill,Physical,5,60,5,1,1,1,0.1,,Projectile
-3100301,검기 +1,BasicSkill,Physical,5,65,5,1,1,1,0.1,,Projectile
-3100302,검기 +2,BasicSkill,Physical,5,70,5,1,1,1,0.1,,Projectile
-3100303,검기 +3,BasicSkill,Physical,5,75,5,1,1,1,0.1,,Projectile
-3100304,검기 +4,BasicSkill,Physical,5,80,5,1,1,1,0.1,,Projectile
-3100305,검기 +5,BasicSkill,Physical,5,100,5,1,1,1,0.1,,Projectile
-3100306,검기 +6,BasicSkill,Physical,5,130,5,1,1,1,0.1,,Projectile
-3100307,검기 +7,BasicSkill,Physical,5,170,5,1,1,1,0.1,,Projectile
-3100308,검기 +8,BasicSkill,Physical,5,230,5,1,1,1,0.1,,Projectile
-3100309,검기 +9,BasicSkill,Physical,5,300,5,1,1,1,0.1,,Projectile
-3100310,검기 +10,BasicSkill,Physical,5,400,5,1,1,1,0.1,,Projectile
-3100311,검기 +11,BasicSkill,Physical,5,550,5,1,1,1,0.1,,Projectile
-3100312,검기 +12,BasicSkill,Physical,5,700,5,1,1,1,0.1,,Projectile
-3100313,검기 +13,BasicSkill,Physical,5,900,5,1,1,1,0.1,,Projectile
-3100314,검기 +14,BasicSkill,Physical,5,1200,5,1,1,1,0.1,,Projectile
-3100315,검기 +15,BasicSkill,Physical,5,1500,5,1,1,1,0.1,,Projectile
-3100316,검기 +16,BasicSkill,Physical,5,1800,5,1,1,1,0.1,,Projectile
-3100317,검기 +17,BasicSkill,Physical,5,2100,5,1,1,1,0.1,,Projectile
-3100318,검기 +18,BasicSkill,Physical,5,3000,5,1,1,1,0.1,,Projectile
-3100319,검기 +19,BasicSkill,Physical,5,4000,5,1,1,1,0.1,,Projectile
-3100320,검기 +20,BasicSkill,Physical,5,5000,5,1,1,1,0.1,,Projectile
-32004,벼락,StageSkill,Lightning,2,30,4.5,1,1,1,0.7,41003,Area
-3200401,벼락 +1,StageSkill,Lightning,6,65,5,1,1,1,0.7,41003,Area
-3200402,벼락 +2,StageSkill,Lightning,6,70,5,1,1,1,0.7,41003,Area
-3200403,벼락 +3,StageSkill,Lightning,6,75,5,1,1,1,0.7,41003,Area
-3200404,벼락 +4,StageSkill,Lightning,6,80,5,1,1,1,0.7,41003,Area
-3200405,벼락 +5,StageSkill,Lightning,6,100,5,1,1,1,0.7,41003,Area
-3200406,벼락 +6,StageSkill,Lightning,6,130,5,1,1,1,0.7,41003,Area
-3200407,벼락 +7,StageSkill,Lightning,6,170,5,1,1,1,0.7,41003,Area
-3200408,벼락 +8,StageSkill,Lightning,6,230,5,1,1,1,0.7,41003,Area
-3200409,벼락 +9,StageSkill,Lightning,6,300,5,1,1,1,0.7,41003,Area
-3200410,벼락 +10,StageSkill,Lightning,6,400,5,1,1,1,0.7,41003,Area
-3200411,벼락 +11,StageSkill,Lightning,6,550,5,1,1,1,0.7,41003,Area
-3200412,벼락 +12,StageSkill,Lightning,6,700,5,1,1,1,0.7,41003,Area
-3200413,벼락 +13,StageSkill,Lightning,6,900,5,1,1,1,0.7,41003,Area
-3200414,벼락 +14,StageSkill,Lightning,6,1200,5,1,1,1,0.7,41003,Area
-3200415,벼락 +15,StageSkill,Lightning,6,1500,5,1,1,1,0.7,41003,Area
-3200416,벼락 +16,StageSkill,Lightning,6,1800,5,1,1,1,0.7,41003,Area
-3200417,벼락 +17,StageSkill,Lightning,6,2100,5,1,1,1,0.7,41003,Area
-3200418,벼락 +18,StageSkill,Lightning,6,3000,5,1,1,1,0.7,41003,Area
-3200419,벼락 +19,StageSkill,Lightning,6,4000,5,1,1,1,0.7,41003,Area
-3200420,벼락 +20,StageSkill,Lightning,6,5000,5,1,1,1,0.7,41003,Area
-32005,탄도미,StageSkill,Physical,6,50,4.5,1,1,1,0.1,,Projectile
-3200501,탄도미 +1,StageSkill,Physical,7,65,4,1,1,1,0.1,,Projectile
-3200502,탄도미 +2,StageSkill,Physical,7,70,4,1,1,1,0.1,,Projectile
-3200503,탄도미 +3,StageSkill,Physical,7,75,4,1,1,1,0.1,,Projectile
-3200504,탄도미 +4,StageSkill,Physical,7,80,4,1,1,1,0.1,,Projectile
-3200505,탄도미 +5,StageSkill,Physical,7,100,4,1,1,1,0.1,,Projectile
-3200506,탄도미 +6,StageSkill,Physical,7,130,4,1,1,1,0.1,,Projectile
-3200507,탄도미 +7,StageSkill,Physical,7,170,4,1,1,1,0.1,,Projectile
-3200508,탄도미 +8,StageSkill,Physical,7,230,4,1,1,1,0.1,,Projectile
-3200509,탄도미 +9,StageSkill,Physical,7,300,4,1,1,1,0.1,,Projectile
-3200510,탄도미 +10,StageSkill,Physical,7,400,4,1,1,1,0.1,,Projectile
-3200511,탄도미 +11,StageSkill,Physical,7,550,4,1,1,1,0.1,,Projectile
-3200512,탄도미 +12,StageSkill,Physical,7,700,4,1,1,1,0.1,,Projectile
-3200513,탄도미 +13,StageSkill,Physical,7,900,4,1,1,1,0.1,,Projectile
-3200514,탄도미 +14,StageSkill,Physical,7,1200,4,1,1,1,0.1,,Projectile
-3200515,탄도미 +15,StageSkill,Physical,7,1500,4,1,1,1,0.1,,Projectile
-3200516,탄도미 +16,StageSkill,Physical,7,1800,4,1,1,1,0.1,,Projectile
-3200517,탄도미 +17,StageSkill,Physical,7,2100,4,1,1,1,0.1,,Projectile
-3200518,탄도미 +18,StageSkill,Physical,7,3000,4,1,1,1,0.1,,Projectile
-3200519,탄도미 +19,StageSkill,Physical,7,4000,4,1,1,1,0.1,,Projectile
-3200520,탄도미 +20,StageSkill,Physical,7,5000,4,1,1,1,0.1,,Projectile
-32006,얼음 운석,StageSkill,Ice,5,40,4,1,1,1,0.1,41002,Projectile
-3200601,얼음 운석 +1,StageSkill,Ice,6,65,3.5,1,1,1,0.1,41002,Projectile
-3200602,얼음 운석 +2,StageSkill,Ice,6,70,3.5,1,1,1,0.1,41002,Projectile
-3200603,얼음 운석 +3,StageSkill,Ice,6,75,3.5,1,1,1,0.1,41002,Projectile
-3200604,얼음 운석 +4,StageSkill,Ice,6,80,3.5,1,1,1,0.1,41002,Projectile
-3200605,얼음 운석 +5,StageSkill,Ice,6,100,3.5,1,1,1,0.1,41002,Projectile
-3200606,얼음 운석 +6,StageSkill,Ice,6,130,3.5,1,1,1,0.1,41002,Projectile
-3200607,얼음 운석 +7,StageSkill,Ice,6,170,3.5,1,1,1,0.1,41002,Projectile
-3200608,얼음 운석 +8,StageSkill,Ice,6,230,3.5,1,1,1,0.1,41002,Projectile
-3200609,얼음 운석 +9,StageSkill,Ice,6,300,3.5,1,1,1,0.1,41002,Projectile
-3200610,얼음 운석 +10,StageSkill,Ice,6,400,3.5,1,1,1,0.1,41002,Projectile
-3200611,얼음 운석 +11,StageSkill,Ice,6,550,3.5,1,1,1,0.1,41002,Projectile
-3200612,얼음 운석 +12,StageSkill,Ice,6,700,3.5,1,1,1,0.1,41002,Projectile
-3200613,얼음 운석 +13,StageSkill,Ice,6,900,3.5,1,1,1,0.1,41002,Projectile
-3200614,얼음 운석 +14,StageSkill,Ice,6,1200,3.5,1,1,1,0.1,41002,Projectile
-3200615,얼음 운석 +15,StageSkill,Ice,6,1500,3.5,1,1,1,0.1,41002,Projectile
-3200616,얼음 운석 +16,StageSkill,Ice,6,1800,3.5,1,1,1,0.1,41002,Projectile
-3200617,얼음 운석 +17,StageSkill,Ice,6,2100,3.5,1,1,1,0.1,41002,Projectile
-3200618,얼음 운석 +18,StageSkill,Ice,6,3000,3.5,1,1,1,0.1,41002,Projectile
-3200619,얼음 운석 +19,StageSkill,Ice,6,4000,3.5,1,1,1,0.1,41002,Projectile
-3200620,얼음 운석 +20,StageSkill,Ice,6,5000,3.5,1,1,1,0.1,41002,Projectile
-32007,화염 운석,StageSkill,Fire,5,40,4,1,1,1,0.1,41001,Projectile
-3200701,화염 운석 +1,StageSkill,Fire,6,65,3.5,1,1,1,0.1,41001,Projectile
-3200702,화염 운석 +2,StageSkill,Fire,6,70,3.5,1,1,1,0.1,41001,Projectile
-3200703,화염 운석 +3,StageSkill,Fire,6,75,3.5,1,1,1,0.1,41001,Projectile
-3200704,화염 운석 +4,StageSkill,Fire,6,80,3.5,1,1,1,0.1,41001,Projectile
-3200705,화염 운석 +5,StageSkill,Fire,6,100,3.5,1,1,1,0.1,41001,Projectile
-3200706,화염 운석 +6,StageSkill,Fire,6,130,3.5,1,1,1,0.1,41001,Projectile
-3200707,화염 운석 +7,StageSkill,Fire,6,170,3.5,1,1,1,0.1,41001,Projectile
-3200708,화염 운석 +8,StageSkill,Fire,6,230,3.5,1,1,1,0.1,41001,Projectile
-3200709,화염 운석 +9,StageSkill,Fire,6,300,3.5,1,1,1,0.1,41001,Projectile
-3200710,화염 운석 +10,StageSkill,Fire,6,400,3.5,1,1,1,0.1,41001,Projectile
-3200711,화염 운석 +11,StageSkill,Fire,6,550,3.5,1,1,1,0.1,41001,Projectile
-3200712,화염 운석 +12,StageSkill,Fire,6,700,3.5,1,1,1,0.1,41001,Projectile
-3200713,화염 운석 +13,StageSkill,Fire,6,900,3.5,1,1,1,0.1,41001,Projectile
-3200714,화염 운석 +14,StageSkill,Fire,6,1200,3.5,1,1,1,0.1,41001,Projectile
-3200715,화염 운석 +15,StageSkill,Fire,6,1500,3.5,1,1,1,0.1,41001,Projectile
-3200716,화염 운석 +16,StageSkill,Fire,6,1800,3.5,1,1,1,0.1,41001,Projectile
-3200717,화염 운석 +17,StageSkill,Fire,6,2100,3.5,1,1,1,0.1,41001,Projectile
-3200718,화염 운석 +18,StageSkill,Fire,6,3000,3.5,1,1,1,0.1,41001,Projectile
-3200719,화염 운석 +19,StageSkill,Fire,6,4000,3.5,1,1,1,0.1,41001,Projectile
-3200720,화염 운석 +20,StageSkill,Fire,6,5000,3.5,1,1,1,0.1,41001,Projectile
-32008,워터 스피어,StageSkill,Water,6,40,4,1,1,2,0.1,,Projectile
-3200801,워터 스피어 +1,StageSkill,Water,7,65,5,1,1,2,0.1,,Projectile
-3200802,워터 스피어 +2,StageSkill,Water,7,70,5,1,1,2,0.1,,Projectile
-3200803,워터 스피어 +3,StageSkill,Water,7,75,5,1,1,2,0.1,,Projectile
-3200804,워터 스피어 +4,StageSkill,Water,7,80,5,1,1,2,0.1,,Projectile
-3200805,워터 스피어 +5,StageSkill,Water,7,100,5,1,1,2,0.1,,Projectile
-3200806,워터 스피어 +6,StageSkill,Water,7,130,5,1,1,2,0.1,,Projectile
-3200807,워터 스피어 +7,StageSkill,Water,7,170,5,1,1,2,0.1,,Projectile
-3200808,워터 스피어 +8,StageSkill,Water,7,230,5,1,1,2,0.1,,Projectile
-3200809,워터 스피어 +9,StageSkill,Water,7,300,5,1,1,2,0.1,,Projectile
-3200810,워터 스피어 +10,StageSkill,Water,7,400,5,1,1,2,0.1,,Projectile
-3200811,워터 스피어 +11,StageSkill,Water,7,550,5,1,1,2,0.1,,Projectile
-3200812,워터 스피어 +12,StageSkill,Water,7,700,5,1,1,2,0.1,,Projectile
-3200813,워터 스피어 +13,StageSkill,Water,7,900,5,1,1,2,0.1,,Projectile
-3200814,워터 스피어 +14,StageSkill,Water,7,1200,5,1,1,2,0.1,,Projectile
-3200815,워터 스피어 +15,StageSkill,Water,7,1500,5,1,1,2,0.1,,Projectile
-3200816,워터 스피어 +16,StageSkill,Water,7,1800,5,1,1,2,0.1,,Projectile
-3200817,워터 스피어 +17,StageSkill,Water,7,2100,5,1,1,2,0.1,,Projectile
-3200818,워터 스피어 +18,StageSkill,Water,7,3000,5,1,1,2,0.1,,Projectile
-3200819,워터 스피어 +19,StageSkill,Water,7,4000,5,1,1,2,0.1,,Projectile
-3200820,워터 스피어 +20,StageSkill,Water,7,5000,5,1,1,2,0.1,,Projectile
-32009,워터 볼,StageSkill,Water,5,40,4,1,1,1,0.1,41002,Projectile
-3200901,워터 볼 +1,StageSkill,Water,5,65,5,1,1,1,0.1,41002,Projectile
-3200902,워터 볼 +2,StageSkill,Water,5,70,5,1,1,1,0.1,41002,Projectile
-3200903,워터 볼 +3,StageSkill,Water,5,75,5,1,1,1,0.1,41002,Projectile
-3200904,워터 볼 +4,StageSkill,Water,5,80,5,1,1,1,0.1,41002,Projectile
-3200905,워터 볼 +5,StageSkill,Water,5,100,5,1,1,1,0.1,41002,Projectile
-3200906,워터 볼 +6,StageSkill,Water,5,130,5,1,1,1,0.1,41002,Projectile
-3200907,워터 볼 +7,StageSkill,Water,5,170,5,1,1,1,0.1,41002,Projectile
-3200908,워터 볼 +8,StageSkill,Water,5,230,5,1,1,1,0.1,41002,Projectile
-3200909,워터 볼 +9,StageSkill,Water,5,300,5,1,1,1,0.1,41002,Projectile
-3200910,워터 볼 +10,StageSkill,Water,5,400,5,1,1,1,0.1,41002,Projectile
-3200911,워터 볼 +11,StageSkill,Water,5,550,5,1,1,1,0.1,41002,Projectile
-3200912,워터 볼 +12,StageSkill,Water,5,700,5,1,1,1,0.1,41002,Projectile
-3200913,워터 볼 +13,StageSkill,Water,5,900,5,1,1,1,0.1,41002,Projectile
-3200914,워터 볼 +14,StageSkill,Water,5,1200,5,1,1,1,0.1,41002,Projectile
-3200915,워터 볼 +15,StageSkill,Water,5,1500,5,1,1,1,0.1,41002,Projectile
-3200916,워터 볼 +16,StageSkill,Water,5,1800,5,1,1,1,0.1,41002,Projectile
-3200917,워터 볼 +17,StageSkill,Water,5,2100,5,1,1,1,0.1,41002,Projectile
-3200918,워터 볼 +18,StageSkill,Water,5,3000,5,1,1,1,0.1,41002,Projectile
-3200919,워터 볼 +19,StageSkill,Water,5,4000,5,1,1,1,0.1,41002,Projectile
-3200920,워터 볼 +20,StageSkill,Water,5,5000,5,1,1,1,0.1,41002,Projectile
-32010,썬더 볼,StageSkill,Lightning,5,40,4,1,1,1,0.1,41003,Projectile
-3201001,썬더 볼 +1,StageSkill,Lightning,5,65,5,1,1,1,0.1,41003,Projectile
-3201002,썬더 볼 +2,StageSkill,Lightning,5,70,5,1,1,1,0.1,41003,Projectile
-3201003,썬더 볼 +3,StageSkill,Lightning,5,75,5,1,1,1,0.1,41003,Projectile
-3201004,썬더 볼 +4,StageSkill,Lightning,5,80,5,1,1,1,0.1,41003,Projectile
-3201005,썬더 볼 +5,StageSkill,Lightning,5,100,5,1,1,1,0.1,41003,Projectile
-3201006,썬더 볼 +6,StageSkill,Lightning,5,130,5,1,1,1,0.1,41003,Projectile
-3201007,썬더 볼 +7,StageSkill,Lightning,5,170,5,1,1,1,0.1,41003,Projectile
-3201008,썬더 볼 +8,StageSkill,Lightning,5,230,5,1,1,1,0.1,41003,Projectile
-3201009,썬더 볼 +9,StageSkill,Lightning,5,300,5,1,1,1,0.1,41003,Projectile
-3201010,썬더 볼 +10,StageSkill,Lightning,5,400,5,1,1,1,0.1,41003,Projectile
-3201011,썬더 볼 +11,StageSkill,Lightning,5,550,5,1,1,1,0.1,41003,Projectile
-3201012,썬더 볼 +12,StageSkill,Lightning,5,700,5,1,1,1,0.1,41003,Projectile
-3201013,썬더 볼 +13,StageSkill,Lightning,5,900,5,1,1,1,0.1,41003,Projectile
-3201014,썬더 볼 +14,StageSkill,Lightning,5,1200,5,1,1,1,0.1,41003,Projectile
-3201015,썬더 볼 +15,StageSkill,Lightning,5,1500,5,1,1,1,0.1,41003,Projectile
-3201016,썬더 볼 +16,StageSkill,Lightning,5,1800,5,1,1,1,0.1,41003,Projectile
-3201017,썬더 볼 +17,StageSkill,Lightning,5,2100,5,1,1,1,0.1,41003,Projectile
-3201018,썬더 볼 +18,StageSkill,Lightning,5,3000,5,1,1,1,0.1,41003,Projectile
-3201019,썬더 볼 +19,StageSkill,Lightning,5,4000,5,1,1,1,0.1,41003,Projectile
-320120,썬더 볼 +20,StageSkill,Lightning,5,5000,5,1,1,1,0.1,41003,Projectile
-32011,용오름,StageSkill,Physical,4,35,4,1,1,1,0.5,,Area
-3201101,용오름 +1,StageSkill,Physical,7,65,2.5,1,1,1,0.5,,Area
-3201102,용오름 +2,StageSkill,Physical,7,70,2.5,1,1,1,0.5,,Area
-3201103,용오름 +3,StageSkill,Physical,7,75,2.5,1,1,1,0.5,,Area
-3201104,용오름 +4,StageSkill,Physical,7,80,2.5,1,1,1,0.5,,Area
-3201105,용오름 +5,StageSkill,Physical,7,100,2.5,1,1,1,0.5,,Area
-3201106,용오름 +6,StageSkill,Physical,7,130,2.5,1,1,1,0.5,,Area
-3201107,용오름 +7,StageSkill,Physical,7,170,2.5,1,1,1,0.5,,Area
-3201108,용오름 +8,StageSkill,Physical,7,230,2.5,1,1,1,0.5,,Area
-3201109,용오름 +9,StageSkill,Physical,7,300,2.5,1,1,1,0.5,,Area
-3201110,용오름 +10,StageSkill,Physical,7,400,2.5,1,1,1,0.5,,Area
-3201111,용오름 +11,StageSkill,Physical,7,550,2.5,1,1,1,0.5,,Area
-3201112,용오름 +12,StageSkill,Physical,7,700,2.5,1,1,1,0.5,,Area
-3201113,용오름 +13,StageSkill,Physical,7,900,2.5,1,1,1,0.5,,Area
-3201114,용오름 +14,StageSkill,Physical,7,1200,2.5,1,1,1,0.5,,Area
-3201115,용오름 +15,StageSkill,Physical,7,1500,2.5,1,1,1,0.5,,Area
-3201116,용오름 +16,StageSkill,Physical,7,1800,2.5,1,1,1,0.5,,Area
-3201117,용오름 +17,StageSkill,Physical,7,2100,2.5,1,1,1,0.5,,Area
-3201118,용오름 +18,StageSkill,Physical,7,3000,2.5,1,1,1,0.5,,Area
-3201119,용오름 +19,StageSkill,Physical,7,4000,2.5,1,1,1,0.5,,Area
-3201120,용오름 +20,StageSkill,Physical,7,5000,2.5,1,1,1,0.5,,Area
-32012,아이스메이든,StageSkill,Ice,4,30,4,1,1,1,0.7,41002,Area
-3201201,아이스메이든 +1,StageSkill,Ice,7,65,2.5,1,1,1,0.7,41002,Area
-3201202,아이스메이든 +2,StageSkill,Ice,7,70,2.5,1,1,1,0.7,41002,Area
-3201203,아이스메이든 +3,StageSkill,Ice,7,75,2.5,1,1,1,0.7,41002,Area
-3201204,아이스메이든 +4,StageSkill,Ice,7,80,2.5,1,1,1,0.7,41002,Area
-3201205,아이스메이든 +5,StageSkill,Ice,7,100,2.5,1,1,1,0.7,41002,Area
-3201206,아이스메이든 +6,StageSkill,Ice,7,130,2.5,1,1,1,0.7,41002,Area
-3201207,아이스메이든 +7,StageSkill,Ice,7,170,2.5,1,1,1,0.7,41002,Area
-3201208,아이스메이든 +8,StageSkill,Ice,7,230,2.5,1,1,1,0.7,41002,Area
-3201209,아이스메이든 +9,StageSkill,Ice,7,300,2.5,1,1,1,0.7,41002,Area
-3201210,아이스메이든 +10,StageSkill,Ice,7,400,2.5,1,1,1,0.7,41002,Area
-3201211,아이스메이든 +11,StageSkill,Ice,7,550,2.5,1,1,1,0.7,41002,Area
-3201212,아이스메이든 +12,StageSkill,Ice,7,700,2.5,1,1,1,0.7,41002,Area
-3201213,아이스메이든 +13,StageSkill,Ice,7,900,2.5,1,1,1,0.7,41002,Area
-3201214,아이스메이든 +14,StageSkill,Ice,7,1200,2.5,1,1,1,0.7,41002,Area
-3201215,아이스메이든 +15,StageSkill,Ice,7,1500,2.5,1,1,1,0.7,41002,Area
-3201216,아이스메이든 +16,StageSkill,Ice,7,1800,2.5,1,1,1,0.7,41002,Area
-3201217,아이스메이든 +17,StageSkill,Ice,7,2100,2.5,1,1,1,0.7,41002,Area
-3201218,아이스메이든 +18,StageSkill,Ice,7,3000,2.5,1,1,1,0.7,41002,Area
-3201219,아이스메이든 +19,StageSkill,Ice,7,4000,2.5,1,1,1,0.7,41002,Area
-3201220,아이스메이든 +20,StageSkill,Ice,7,5000,2.5,1,1,1,0.7,41002,Area
-32013,폭풍,StageSkill,Physical,4,35,4,1,1,1,0.5,,Area
-3201301,폭풍 +1,StageSkill,Physical,7,65,2.5,1,1,1,0.5,,Area
-3201302,폭풍 +2,StageSkill,Physical,7,70,2.5,1,1,1,0.5,,Area
-3201303,폭풍 +3,StageSkill,Physical,7,75,2.5,1,1,1,0.5,,Area
-3201304,폭풍 +4,StageSkill,Physical,7,80,2.5,1,1,1,0.5,,Area
-3201305,폭풍 +5,StageSkill,Physical,7,100,2.5,1,1,1,0.5,,Area
-3201306,폭풍 +6,StageSkill,Physical,7,130,2.5,1,1,1,0.5,,Area
-3201307,폭풍 +7,StageSkill,Physical,7,170,2.5,1,1,1,0.5,,Area
-3201308,폭풍 +8,StageSkill,Physical,7,230,2.5,1,1,1,0.5,,Area
-3201309,폭풍 +9,StageSkill,Physical,7,300,2.5,1,1,1,0.5,,Area
-3201310,폭풍 +10,StageSkill,Physical,7,400,2.5,1,1,1,0.5,,Area
-3201311,폭풍 +11,StageSkill,Physical,7,550,2.5,1,1,1,0.5,,Area
-3201312,폭풍 +12,StageSkill,Physical,7,700,2.5,1,1,1,0.5,,Area
-3201313,폭풍 +13,StageSkill,Physical,7,900,2.5,1,1,1,0.5,,Area
-3201314,폭풍 +14,StageSkill,Physical,7,1200,2.5,1,1,1,0.5,,Area
-3201315,폭풍 +15,StageSkill,Physical,7,1500,2.5,1,1,1,0.5,,Area
-3201316,폭풍 +16,StageSkill,Physical,7,1800,2.5,1,1,1,0.5,,Area
-3201317,폭풍 +17,StageSkill,Physical,7,2100,2.5,1,1,1,0.5,,Area
-3201318,폭풍 +18,StageSkill,Physical,7,3000,2.5,1,1,1,0.5,,Area
-3201319,폭풍 +19,StageSkill,Physical,7,4000,2.5,1,1,1,0.5,,Area
-3201320,폭풍 +20,StageSkill,Physical,7,5000,2.5,1,1,1,0.5,,Area
-32014,바람수리검,StageSkill,Physical,6,45,4,1,1,1,0.1,,Projectile
-3201401,바람수리검 +1,StageSkill,Physical,6,65,2.7,1,1,1,0.1,,Projectile
-3201402,바람수리검 +2,StageSkill,Physical,6,70,2.7,1,1,1,0.1,,Projectile
-3201403,바람수리검 +3,StageSkill,Physical,6,75,2.7,1,1,1,0.1,,Projectile
-3201404,바람수리검 +4,StageSkill,Physical,6,80,2.7,1,1,1,0.1,,Projectile
-3201405,바람수리검 +5,StageSkill,Physical,6,100,2.7,1,1,1,0.1,,Projectile
-3201406,바람수리검 +6,StageSkill,Physical,6,130,2.7,1,1,1,0.1,,Projectile
-3201407,바람수리검 +7,StageSkill,Physical,6,170,2.7,1,1,1,0.1,,Projectile
-3201408,바람수리검 +8,StageSkill,Physical,6,230,2.7,1,1,1,0.1,,Projectile
-3201409,바람수리검 +9,StageSkill,Physical,6,300,2.7,1,1,1,0.1,,Projectile
-3201410,바람수리검 +10,StageSkill,Physical,6,400,2.7,1,1,1,0.1,,Projectile
-3201411,바람수리검 +11,StageSkill,Physical,6,550,2.7,1,1,1,0.1,,Projectile
-3201412,바람수리검 +12,StageSkill,Physical,6,700,2.7,1,1,1,0.1,,Projectile
-3201413,바람수리검 +13,StageSkill,Physical,6,900,2.7,1,1,1,0.1,,Projectile
-3201414,바람수리검 +14,StageSkill,Physical,6,1200,2.7,1,1,1,0.1,,Projectile
-3201415,바람수리검 +15,StageSkill,Physical,6,1500,2.7,1,1,1,0.1,,Projectile
-3201416,바람수리검 +16,StageSkill,Physical,6,1800,2.7,1,1,1,0.1,,Projectile
-3201417,바람수리검 +17,StageSkill,Physical,6,2100,2.7,1,1,1,0.1,,Projectile
-3201418,바람수리검 +18,StageSkill,Physical,6,3000,2.7,1,1,1,0.1,,Projectile
-3201419,바람수리검 +19,StageSkill,Physical,6,4000,2.7,1,1,1,0.1,,Projectile
-3201420,바람수리검 +20,StageSkill,Physical,6,5000,2.7,1,1,1,0.1,,Projectile
+SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,AttackType
+31001,파이어볼,Fire,6,35,4,1,1,1,0.1,Projectile
+3100101,파이어볼 +1,Fire,7,65,5,1,1,1,0.1,Projectile
+3100102,파이어볼 +2,Fire,7,70,5,1,1,1,0.1,Projectile
+3100103,파이어볼 +3,Fire,7,75,5,1,1,1,0.1,Projectile
+3100104,파이어볼 +4,Fire,7,80,5,1,1,1,0.1,Projectile
+3100105,파이어볼 +5,Fire,7,100,5,1,1,1,0.1,Projectile
+3100106,파이어볼 +6,Fire,7,130,5,1,1,1,0.1,Projectile
+3100107,파이어볼 +7,Fire,7,170,5,1,1,1,0.1,Projectile
+3100108,파이어볼 +8,Fire,7,230,5,1,1,1,0.1,Projectile
+3100109,파이어볼 +9,Fire,7,300,5,1,1,1,0.1,Projectile
+3100110,파이어볼 +10,Fire,7,400,5,1,1,1,0.1,Projectile
+3100111,파이어볼 +11,Fire,7,550,5,1,1,1,0.1,Projectile
+3100112,파이어볼 +12,Fire,7,700,5,1,1,1,0.1,Projectile
+3100113,파이어볼 +13,Fire,7,900,5,1,1,1,0.1,Projectile
+3100114,파이어볼 +14,Fire,7,1200,5,1,1,1,0.1,Projectile
+3100115,파이어볼 +15,Fire,7,1500,5,1,1,1,0.1,Projectile
+3100116,파이어볼 +16,Fire,7,1800,5,1,1,1,0.1,Projectile
+3100117,파이어볼 +17,Fire,7,2100,5,1,1,1,0.1,Projectile
+3100118,파이어볼 +18,Fire,7,3000,5,1,1,1,0.1,Projectile
+3100119,파이어볼 +19,Fire,7,4000,5,1,1,1,0.1,Projectile
+3100120,파이어볼 +20,Fire,7,5000,5,1,1,1,0.1,Projectile
+31002,단검 투척,Physical,7,25,3.5,1,1,1,0.1,Projectile
+3100201,단검 투척 +1,Physical,6,65,5,1,1,1,0.1,Projectile
+3100202,단검 투척 +2,Physical,6,70,5,1,1,1,0.1,Projectile
+3100203,단검 투척 +3,Physical,6,75,5,1,1,1,0.1,Projectile
+3100204,단검 투척 +4,Physical,6,80,5,1,1,1,0.1,Projectile
+3100205,단검 투척 +5,Physical,6,100,5,1,1,1,0.1,Projectile
+3100206,단검 투척 +6,Physical,6,130,5,1,1,1,0.1,Projectile
+3100207,단검 투척 +7,Physical,6,170,5,1,1,1,0.1,Projectile
+3100208,단검 투척 +8,Physical,6,230,5,1,1,1,0.1,Projectile
+3100209,단검 투척 +9,Physical,6,300,5,1,1,1,0.1,Projectile
+3100210,단검 투척 +10,Physical,6,400,5,1,1,1,0.1,Projectile
+3100211,단검 투척 +11,Physical,6,550,5,1,1,1,0.1,Projectile
+3100212,단검 투척 +12,Physical,6,700,5,1,1,1,0.1,Projectile
+3100213,단검 투척 +13,Physical,6,900,5,1,1,1,0.1,Projectile
+3100214,단검 투척 +14,Physical,6,1200,5,1,1,1,0.1,Projectile
+3100215,단검 투척 +15,Physical,6,1500,5,1,1,1,0.1,Projectile
+3100216,단검 투척 +16,Physical,6,1800,5,1,1,1,0.1,Projectile
+3100217,단검 투척 +17,Physical,6,2100,5,1,1,1,0.1,Projectile
+3100218,단검 투척 +18,Physical,6,3000,5,1,1,1,0.1,Projectile
+3100219,단검 투척 +19,Physical,6,4000,5,1,1,1,0.1,Projectile
+3100220,단검 투척 +20,Physical,6,5000,5,1,1,1,0.1,Projectile
+31003,검기,Physical,5,60,5,1,1,1,0.1,Projectile
+3100301,검기 +1,Physical,5,65,5,1,1,1,0.1,Projectile
+3100302,검기 +2,Physical,5,70,5,1,1,1,0.1,Projectile
+3100303,검기 +3,Physical,5,75,5,1,1,1,0.1,Projectile
+3100304,검기 +4,Physical,5,80,5,1,1,1,0.1,Projectile
+3100305,검기 +5,Physical,5,100,5,1,1,1,0.1,Projectile
+3100306,검기 +6,Physical,5,130,5,1,1,1,0.1,Projectile
+3100307,검기 +7,Physical,5,170,5,1,1,1,0.1,Projectile
+3100308,검기 +8,Physical,5,230,5,1,1,1,0.1,Projectile
+3100309,검기 +9,Physical,5,300,5,1,1,1,0.1,Projectile
+3100310,검기 +10,Physical,5,400,5,1,1,1,0.1,Projectile
+3100311,검기 +11,Physical,5,550,5,1,1,1,0.1,Projectile
+3100312,검기 +12,Physical,5,700,5,1,1,1,0.1,Projectile
+3100313,검기 +13,Physical,5,900,5,1,1,1,0.1,Projectile
+3100314,검기 +14,Physical,5,1200,5,1,1,1,0.1,Projectile
+3100315,검기 +15,Physical,5,1500,5,1,1,1,0.1,Projectile
+3100316,검기 +16,Physical,5,1800,5,1,1,1,0.1,Projectile
+3100317,검기 +17,Physical,5,2100,5,1,1,1,0.1,Projectile
+3100318,검기 +18,Physical,5,3000,5,1,1,1,0.1,Projectile
+3100319,검기 +19,Physical,5,4000,5,1,1,1,0.1,Projectile
+3100320,검기 +20,Physical,5,5000,5,1,1,1,0.1,Projectile
+32004,벼락,Lightning,2,30,4.5,1,1,1,0.7,Area
+3200401,벼락 +1,Lightning,6,65,5,1,1,1,0.7,Area
+3200402,벼락 +2,Lightning,6,70,5,1,1,1,0.7,Area
+3200403,벼락 +3,Lightning,6,75,5,1,1,1,0.7,Area
+3200404,벼락 +4,Lightning,6,80,5,1,1,1,0.7,Area
+3200405,벼락 +5,Lightning,6,100,5,1,1,1,0.7,Area
+3200406,벼락 +6,Lightning,6,130,5,1,1,1,0.7,Area
+3200407,벼락 +7,Lightning,6,170,5,1,1,1,0.7,Area
+3200408,벼락 +8,Lightning,6,230,5,1,1,1,0.7,Area
+3200409,벼락 +9,Lightning,6,300,5,1,1,1,0.7,Area
+3200410,벼락 +10,Lightning,6,400,5,1,1,1,0.7,Area
+3200411,벼락 +11,Lightning,6,550,5,1,1,1,0.7,Area
+3200412,벼락 +12,Lightning,6,700,5,1,1,1,0.7,Area
+3200413,벼락 +13,Lightning,6,900,5,1,1,1,0.7,Area
+3200414,벼락 +14,Lightning,6,1200,5,1,1,1,0.7,Area
+3200415,벼락 +15,Lightning,6,1500,5,1,1,1,0.7,Area
+3200416,벼락 +16,Lightning,6,1800,5,1,1,1,0.7,Area
+3200417,벼락 +17,Lightning,6,2100,5,1,1,1,0.7,Area
+3200418,벼락 +18,Lightning,6,3000,5,1,1,1,0.7,Area
+3200419,벼락 +19,Lightning,6,4000,5,1,1,1,0.7,Area
+3200420,벼락 +20,Lightning,6,5000,5,1,1,1,0.7,Area
+32005,탄도미,Physical,6,50,4.5,1,1,1,0.1,Projectile
+3200501,탄도미 +1,Physical,7,65,4,1,1,1,0.1,Projectile
+3200502,탄도미 +2,Physical,7,70,4,1,1,1,0.1,Projectile
+3200503,탄도미 +3,Physical,7,75,4,1,1,1,0.1,Projectile
+3200504,탄도미 +4,Physical,7,80,4,1,1,1,0.1,Projectile
+3200505,탄도미 +5,Physical,7,100,4,1,1,1,0.1,Projectile
+3200506,탄도미 +6,Physical,7,130,4,1,1,1,0.1,Projectile
+3200507,탄도미 +7,Physical,7,170,4,1,1,1,0.1,Projectile
+3200508,탄도미 +8,Physical,7,230,4,1,1,1,0.1,Projectile
+3200509,탄도미 +9,Physical,7,300,4,1,1,1,0.1,Projectile
+3200510,탄도미 +10,Physical,7,400,4,1,1,1,0.1,Projectile
+3200511,탄도미 +11,Physical,7,550,4,1,1,1,0.1,Projectile
+3200512,탄도미 +12,Physical,7,700,4,1,1,1,0.1,Projectile
+3200513,탄도미 +13,Physical,7,900,4,1,1,1,0.1,Projectile
+3200514,탄도미 +14,Physical,7,1200,4,1,1,1,0.1,Projectile
+3200515,탄도미 +15,Physical,7,1500,4,1,1,1,0.1,Projectile
+3200516,탄도미 +16,Physical,7,1800,4,1,1,1,0.1,Projectile
+3200517,탄도미 +17,Physical,7,2100,4,1,1,1,0.1,Projectile
+3200518,탄도미 +18,Physical,7,3000,4,1,1,1,0.1,Projectile
+3200519,탄도미 +19,Physical,7,4000,4,1,1,1,0.1,Projectile
+3200520,탄도미 +20,Physical,7,5000,4,1,1,1,0.1,Projectile
+32006,얼음 운석,Ice,5,40,4,1,1,1,0.1,Projectile
+3200601,얼음 운석 +1,Ice,6,65,3.5,1,1,1,0.1,Projectile
+3200602,얼음 운석 +2,Ice,6,70,3.5,1,1,1,0.1,Projectile
+3200603,얼음 운석 +3,Ice,6,75,3.5,1,1,1,0.1,Projectile
+3200604,얼음 운석 +4,Ice,6,80,3.5,1,1,1,0.1,Projectile
+3200605,얼음 운석 +5,Ice,6,100,3.5,1,1,1,0.1,Projectile
+3200606,얼음 운석 +6,Ice,6,130,3.5,1,1,1,0.1,Projectile
+3200607,얼음 운석 +7,Ice,6,170,3.5,1,1,1,0.1,Projectile
+3200608,얼음 운석 +8,Ice,6,230,3.5,1,1,1,0.1,Projectile
+3200609,얼음 운석 +9,Ice,6,300,3.5,1,1,1,0.1,Projectile
+3200610,얼음 운석 +10,Ice,6,400,3.5,1,1,1,0.1,Projectile
+3200611,얼음 운석 +11,Ice,6,550,3.5,1,1,1,0.1,Projectile
+3200612,얼음 운석 +12,Ice,6,700,3.5,1,1,1,0.1,Projectile
+3200613,얼음 운석 +13,Ice,6,900,3.5,1,1,1,0.1,Projectile
+3200614,얼음 운석 +14,Ice,6,1200,3.5,1,1,1,0.1,Projectile
+3200615,얼음 운석 +15,Ice,6,1500,3.5,1,1,1,0.1,Projectile
+3200616,얼음 운석 +16,Ice,6,1800,3.5,1,1,1,0.1,Projectile
+3200617,얼음 운석 +17,Ice,6,2100,3.5,1,1,1,0.1,Projectile
+3200618,얼음 운석 +18,Ice,6,3000,3.5,1,1,1,0.1,Projectile
+3200619,얼음 운석 +19,Ice,6,4000,3.5,1,1,1,0.1,Projectile
+3200620,얼음 운석 +20,Ice,6,5000,3.5,1,1,1,0.1,Projectile
+32007,화염 운석,Fire,5,40,4,1,1,1,0.1,Projectile
+3200701,화염 운석 +1,Fire,6,65,3.5,1,1,1,0.1,Projectile
+3200702,화염 운석 +2,Fire,6,70,3.5,1,1,1,0.1,Projectile
+3200703,화염 운석 +3,Fire,6,75,3.5,1,1,1,0.1,Projectile
+3200704,화염 운석 +4,Fire,6,80,3.5,1,1,1,0.1,Projectile
+3200705,화염 운석 +5,Fire,6,100,3.5,1,1,1,0.1,Projectile
+3200706,화염 운석 +6,Fire,6,130,3.5,1,1,1,0.1,Projectile
+3200707,화염 운석 +7,Fire,6,170,3.5,1,1,1,0.1,Projectile
+3200708,화염 운석 +8,Fire,6,230,3.5,1,1,1,0.1,Projectile
+3200709,화염 운석 +9,Fire,6,300,3.5,1,1,1,0.1,Projectile
+3200710,화염 운석 +10,Fire,6,400,3.5,1,1,1,0.1,Projectile
+3200711,화염 운석 +11,Fire,6,550,3.5,1,1,1,0.1,Projectile
+3200712,화염 운석 +12,Fire,6,700,3.5,1,1,1,0.1,Projectile
+3200713,화염 운석 +13,Fire,6,900,3.5,1,1,1,0.1,Projectile
+3200714,화염 운석 +14,Fire,6,1200,3.5,1,1,1,0.1,Projectile
+3200715,화염 운석 +15,Fire,6,1500,3.5,1,1,1,0.1,Projectile
+3200716,화염 운석 +16,Fire,6,1800,3.5,1,1,1,0.1,Projectile
+3200717,화염 운석 +17,Fire,6,2100,3.5,1,1,1,0.1,Projectile
+3200718,화염 운석 +18,Fire,6,3000,3.5,1,1,1,0.1,Projectile
+3200719,화염 운석 +19,Fire,6,4000,3.5,1,1,1,0.1,Projectile
+3200720,화염 운석 +20,Fire,6,5000,3.5,1,1,1,0.1,Projectile
+32008,워터 스피어,Water,6,40,4,1,1,2,0.1,Projectile
+3200801,워터 스피어 +1,Water,7,65,5,1,1,2,0.1,Projectile
+3200802,워터 스피어 +2,Water,7,70,5,1,1,2,0.1,Projectile
+3200803,워터 스피어 +3,Water,7,75,5,1,1,2,0.1,Projectile
+3200804,워터 스피어 +4,Water,7,80,5,1,1,2,0.1,Projectile
+3200805,워터 스피어 +5,Water,7,100,5,1,1,2,0.1,Projectile
+3200806,워터 스피어 +6,Water,7,130,5,1,1,2,0.1,Projectile
+3200807,워터 스피어 +7,Water,7,170,5,1,1,2,0.1,Projectile
+3200808,워터 스피어 +8,Water,7,230,5,1,1,2,0.1,Projectile
+3200809,워터 스피어 +9,Water,7,300,5,1,1,2,0.1,Projectile
+3200810,워터 스피어 +10,Water,7,400,5,1,1,2,0.1,Projectile
+3200811,워터 스피어 +11,Water,7,550,5,1,1,2,0.1,Projectile
+3200812,워터 스피어 +12,Water,7,700,5,1,1,2,0.1,Projectile
+3200813,워터 스피어 +13,Water,7,900,5,1,1,2,0.1,Projectile
+3200814,워터 스피어 +14,Water,7,1200,5,1,1,2,0.1,Projectile
+3200815,워터 스피어 +15,Water,7,1500,5,1,1,2,0.1,Projectile
+3200816,워터 스피어 +16,Water,7,1800,5,1,1,2,0.1,Projectile
+3200817,워터 스피어 +17,Water,7,2100,5,1,1,2,0.1,Projectile
+3200818,워터 스피어 +18,Water,7,3000,5,1,1,2,0.1,Projectile
+3200819,워터 스피어 +19,Water,7,4000,5,1,1,2,0.1,Projectile
+3200820,워터 스피어 +20,Water,7,5000,5,1,1,2,0.1,Projectile
+32009,워터 볼,Water,5,40,4,1,1,1,0.1,Projectile
+3200901,워터 볼 +1,Water,5,65,5,1,1,1,0.1,Projectile
+3200902,워터 볼 +2,Water,5,70,5,1,1,1,0.1,Projectile
+3200903,워터 볼 +3,Water,5,75,5,1,1,1,0.1,Projectile
+3200904,워터 볼 +4,Water,5,80,5,1,1,1,0.1,Projectile
+3200905,워터 볼 +5,Water,5,100,5,1,1,1,0.1,Projectile
+3200906,워터 볼 +6,Water,5,130,5,1,1,1,0.1,Projectile
+3200907,워터 볼 +7,Water,5,170,5,1,1,1,0.1,Projectile
+3200908,워터 볼 +8,Water,5,230,5,1,1,1,0.1,Projectile
+3200909,워터 볼 +9,Water,5,300,5,1,1,1,0.1,Projectile
+3200910,워터 볼 +10,Water,5,400,5,1,1,1,0.1,Projectile
+3200911,워터 볼 +11,Water,5,550,5,1,1,1,0.1,Projectile
+3200912,워터 볼 +12,Water,5,700,5,1,1,1,0.1,Projectile
+3200913,워터 볼 +13,Water,5,900,5,1,1,1,0.1,Projectile
+3200914,워터 볼 +14,Water,5,1200,5,1,1,1,0.1,Projectile
+3200915,워터 볼 +15,Water,5,1500,5,1,1,1,0.1,Projectile
+3200916,워터 볼 +16,Water,5,1800,5,1,1,1,0.1,Projectile
+3200917,워터 볼 +17,Water,5,2100,5,1,1,1,0.1,Projectile
+3200918,워터 볼 +18,Water,5,3000,5,1,1,1,0.1,Projectile
+3200919,워터 볼 +19,Water,5,4000,5,1,1,1,0.1,Projectile
+3200920,워터 볼 +20,Water,5,5000,5,1,1,1,0.1,Projectile
+32010,썬더 볼,Lightning,5,40,4,1,1,1,0.1,Projectile
+3201001,썬더 볼 +1,Lightning,5,65,5,1,1,1,0.1,Projectile
+3201002,썬더 볼 +2,Lightning,5,70,5,1,1,1,0.1,Projectile
+3201003,썬더 볼 +3,Lightning,5,75,5,1,1,1,0.1,Projectile
+3201004,썬더 볼 +4,Lightning,5,80,5,1,1,1,0.1,Projectile
+3201005,썬더 볼 +5,Lightning,5,100,5,1,1,1,0.1,Projectile
+3201006,썬더 볼 +6,Lightning,5,130,5,1,1,1,0.1,Projectile
+3201007,썬더 볼 +7,Lightning,5,170,5,1,1,1,0.1,Projectile
+3201008,썬더 볼 +8,Lightning,5,230,5,1,1,1,0.1,Projectile
+3201009,썬더 볼 +9,Lightning,5,300,5,1,1,1,0.1,Projectile
+3201010,썬더 볼 +10,Lightning,5,400,5,1,1,1,0.1,Projectile
+3201011,썬더 볼 +11,Lightning,5,550,5,1,1,1,0.1,Projectile
+3201012,썬더 볼 +12,Lightning,5,700,5,1,1,1,0.1,Projectile
+3201013,썬더 볼 +13,Lightning,5,900,5,1,1,1,0.1,Projectile
+3201014,썬더 볼 +14,Lightning,5,1200,5,1,1,1,0.1,Projectile
+3201015,썬더 볼 +15,Lightning,5,1500,5,1,1,1,0.1,Projectile
+3201016,썬더 볼 +16,Lightning,5,1800,5,1,1,1,0.1,Projectile
+3201017,썬더 볼 +17,Lightning,5,2100,5,1,1,1,0.1,Projectile
+3201018,썬더 볼 +18,Lightning,5,3000,5,1,1,1,0.1,Projectile
+3201019,썬더 볼 +19,Lightning,5,4000,5,1,1,1,0.1,Projectile
+320120,썬더 볼 +20,Lightning,5,5000,5,1,1,1,0.1,Projectile
+32011,용오름,Physical,4,35,4,1,1,1,0.5,Area
+3201101,용오름 +1,Physical,7,65,2.5,1,1,1,0.5,Area
+3201102,용오름 +2,Physical,7,70,2.5,1,1,1,0.5,Area
+3201103,용오름 +3,Physical,7,75,2.5,1,1,1,0.5,Area
+3201104,용오름 +4,Physical,7,80,2.5,1,1,1,0.5,Area
+3201105,용오름 +5,Physical,7,100,2.5,1,1,1,0.5,Area
+3201106,용오름 +6,Physical,7,130,2.5,1,1,1,0.5,Area
+3201107,용오름 +7,Physical,7,170,2.5,1,1,1,0.5,Area
+3201108,용오름 +8,Physical,7,230,2.5,1,1,1,0.5,Area
+3201109,용오름 +9,Physical,7,300,2.5,1,1,1,0.5,Area
+3201110,용오름 +10,Physical,7,400,2.5,1,1,1,0.5,Area
+3201111,용오름 +11,Physical,7,550,2.5,1,1,1,0.5,Area
+3201112,용오름 +12,Physical,7,700,2.5,1,1,1,0.5,Area
+3201113,용오름 +13,Physical,7,900,2.5,1,1,1,0.5,Area
+3201114,용오름 +14,Physical,7,1200,2.5,1,1,1,0.5,Area
+3201115,용오름 +15,Physical,7,1500,2.5,1,1,1,0.5,Area
+3201116,용오름 +16,Physical,7,1800,2.5,1,1,1,0.5,Area
+3201117,용오름 +17,Physical,7,2100,2.5,1,1,1,0.5,Area
+3201118,용오름 +18,Physical,7,3000,2.5,1,1,1,0.5,Area
+3201119,용오름 +19,Physical,7,4000,2.5,1,1,1,0.5,Area
+3201120,용오름 +20,Physical,7,5000,2.5,1,1,1,0.5,Area
+32012,아이스메이든,Ice,4,30,4,1,1,1,0.7,Area
+3201201,아이스메이든 +1,Ice,7,65,2.5,1,1,1,0.7,Area
+3201202,아이스메이든 +2,Ice,7,70,2.5,1,1,1,0.7,Area
+3201203,아이스메이든 +3,Ice,7,75,2.5,1,1,1,0.7,Area
+3201204,아이스메이든 +4,Ice,7,80,2.5,1,1,1,0.7,Area
+3201205,아이스메이든 +5,Ice,7,100,2.5,1,1,1,0.7,Area
+3201206,아이스메이든 +6,Ice,7,130,2.5,1,1,1,0.7,Area
+3201207,아이스메이든 +7,Ice,7,170,2.5,1,1,1,0.7,Area
+3201208,아이스메이든 +8,Ice,7,230,2.5,1,1,1,0.7,Area
+3201209,아이스메이든 +9,Ice,7,300,2.5,1,1,1,0.7,Area
+3201210,아이스메이든 +10,Ice,7,400,2.5,1,1,1,0.7,Area
+3201211,아이스메이든 +11,Ice,7,550,2.5,1,1,1,0.7,Area
+3201212,아이스메이든 +12,Ice,7,700,2.5,1,1,1,0.7,Area
+3201213,아이스메이든 +13,Ice,7,900,2.5,1,1,1,0.7,Area
+3201214,아이스메이든 +14,Ice,7,1200,2.5,1,1,1,0.7,Area
+3201215,아이스메이든 +15,Ice,7,1500,2.5,1,1,1,0.7,Area
+3201216,아이스메이든 +16,Ice,7,1800,2.5,1,1,1,0.7,Area
+3201217,아이스메이든 +17,Ice,7,2100,2.5,1,1,1,0.7,Area
+3201218,아이스메이든 +18,Ice,7,3000,2.5,1,1,1,0.7,Area
+3201219,아이스메이든 +19,Ice,7,4000,2.5,1,1,1,0.7,Area
+3201220,아이스메이든 +20,Ice,7,5000,2.5,1,1,1,0.7,Area
+32013,폭풍,Physical,4,35,4,1,1,1,0.5,Area
+3201301,폭풍 +1,Physical,7,65,2.5,1,1,1,0.5,Area
+3201302,폭풍 +2,Physical,7,70,2.5,1,1,1,0.5,Area
+3201303,폭풍 +3,Physical,7,75,2.5,1,1,1,0.5,Area
+3201304,폭풍 +4,Physical,7,80,2.5,1,1,1,0.5,Area
+3201305,폭풍 +5,Physical,7,100,2.5,1,1,1,0.5,Area
+3201306,폭풍 +6,Physical,7,130,2.5,1,1,1,0.5,Area
+3201307,폭풍 +7,Physical,7,170,2.5,1,1,1,0.5,Area
+3201308,폭풍 +8,Physical,7,230,2.5,1,1,1,0.5,Area
+3201309,폭풍 +9,Physical,7,300,2.5,1,1,1,0.5,Area
+3201310,폭풍 +10,Physical,7,400,2.5,1,1,1,0.5,Area
+3201311,폭풍 +11,Physical,7,550,2.5,1,1,1,0.5,Area
+3201312,폭풍 +12,Physical,7,700,2.5,1,1,1,0.5,Area
+3201313,폭풍 +13,Physical,7,900,2.5,1,1,1,0.5,Area
+3201314,폭풍 +14,Physical,7,1200,2.5,1,1,1,0.5,Area
+3201315,폭풍 +15,Physical,7,1500,2.5,1,1,1,0.5,Area
+3201316,폭풍 +16,Physical,7,1800,2.5,1,1,1,0.5,Area
+3201317,폭풍 +17,Physical,7,2100,2.5,1,1,1,0.5,Area
+3201318,폭풍 +18,Physical,7,3000,2.5,1,1,1,0.5,Area
+3201319,폭풍 +19,Physical,7,4000,2.5,1,1,1,0.5,Area
+3201320,폭풍 +20,Physical,7,5000,2.5,1,1,1,0.5,Area
+32014,바람수리검,Physical,6,45,4,1,1,1,0.1,Projectile
+3201401,바람수리검 +1,Physical,6,65,2.7,1,1,1,0.1,Projectile
+3201402,바람수리검 +2,Physical,6,70,2.7,1,1,1,0.1,Projectile
+3201403,바람수리검 +3,Physical,6,75,2.7,1,1,1,0.1,Projectile
+3201404,바람수리검 +4,Physical,6,80,2.7,1,1,1,0.1,Projectile
+3201405,바람수리검 +5,Physical,6,100,2.7,1,1,1,0.1,Projectile
+3201406,바람수리검 +6,Physical,6,130,2.7,1,1,1,0.1,Projectile
+3201407,바람수리검 +7,Physical,6,170,2.7,1,1,1,0.1,Projectile
+3201408,바람수리검 +8,Physical,6,230,2.7,1,1,1,0.1,Projectile
+3201409,바람수리검 +9,Physical,6,300,2.7,1,1,1,0.1,Projectile
+3201410,바람수리검 +10,Physical,6,400,2.7,1,1,1,0.1,Projectile
+3201411,바람수리검 +11,Physical,6,550,2.7,1,1,1,0.1,Projectile
+3201412,바람수리검 +12,Physical,6,700,2.7,1,1,1,0.1,Projectile
+3201413,바람수리검 +13,Physical,6,900,2.7,1,1,1,0.1,Projectile
+3201414,바람수리검 +14,Physical,6,1200,2.7,1,1,1,0.1,Projectile
+3201415,바람수리검 +15,Physical,6,1500,2.7,1,1,1,0.1,Projectile
+3201416,바람수리검 +16,Physical,6,1800,2.7,1,1,1,0.1,Projectile
+3201417,바람수리검 +17,Physical,6,2100,2.7,1,1,1,0.1,Projectile
+3201418,바람수리검 +18,Physical,6,3000,2.7,1,1,1,0.1,Projectile
+3201419,바람수리검 +19,Physical,6,4000,2.7,1,1,1,0.1,Projectile
+3201420,바람수리검 +20,Physical,6,5000,2.7,1,1,1,0.1,Projectile

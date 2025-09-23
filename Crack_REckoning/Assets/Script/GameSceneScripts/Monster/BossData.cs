@@ -13,13 +13,11 @@ public class BossData
     public SkillTypeID? BossWeakness { get; set; }
     public SkillTypeID? BossStrength { get; set; }
 
-    public int? BossEffectID { get; set; }
-
     public bool IsBoss { get; set; }
 
     public override string ToString()
     {
-        return $"{BossID} / {BossName} / {BossRange} / {BossHp} / {BossAttack} / {BossSpeed} / {BossAttackSpeed} / {BossWeakness} / {BossStrength} / {BossEffectID} / {IsBoss}";
+        return $"{BossID} / {BossName} / {BossRange} / {BossHp} / {BossAttack} / {BossSpeed} / {BossAttackSpeed} / {BossWeakness} / {BossStrength} / {IsBoss}";
     }
 
     public Sprite sprite
@@ -39,9 +37,8 @@ public class BossDataMap : ClassMap<BossData>
         Map(m => m.BossAttack).Name("BossAttack");
         Map(m => m.BossSpeed).Name("BossSpeed");
         Map(m => m.BossAttackSpeed).Name("BossAttackSpeed");
-        Map(m => m.BossWeakness).Name("BossWeakness").Default(0).TypeConverterOption.NullValues("", " "); ;
-        Map(m => m.BossStrength).Name("BossStrength").Default(0).TypeConverterOption.NullValues("", " "); ;
-        Map(m => m.BossEffectID).Name("BossEffectID").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.BossWeakness).Name("BossWeakness").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(m => m.BossStrength).Name("BossStrength").Default(0).TypeConverterOption.NullValues("", " "); 
         Map(m => m.IsBoss).Name("IsBoss");
     }
 }

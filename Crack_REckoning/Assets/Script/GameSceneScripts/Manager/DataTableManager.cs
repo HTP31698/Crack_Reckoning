@@ -42,6 +42,10 @@ public static class DataTableManager
         var bossTable = new BossTable();
         bossTable.Load(DataTableIds.BossTable);
         tables.Add(DataTableIds.BossTable, bossTable);
+
+        var skillEnforceTable = new SkillEnforceTable();
+        skillEnforceTable.Load(DataTableIds.SkillEnforceTable);
+        tables.Add(DataTableIds.SkillEnforceTable, skillEnforceTable);
     }
 
     public static MonsterTable MonsterTable
@@ -97,6 +101,14 @@ public static class DataTableManager
         get
         {
             return Get<BossTable>(DataTableIds.BossTable);
+        }
+    }
+
+    public static SkillEnforceTable SkillEnforceTable
+    {
+        get
+        {
+            return Get<SkillEnforceTable>(DataTableIds.SkillEnforceTable);
         }
     }
 

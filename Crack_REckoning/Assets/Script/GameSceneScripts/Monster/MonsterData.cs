@@ -13,14 +13,12 @@ public class MonsterData
     public SkillTypeID? MonsterWeakness { get; set; }
     public SkillTypeID? MonsterStrength { get; set; }
 
-    public int? MonsterEffectID { get; set; }
-
     public int MonsterExp { get; set; }
     public int? MonsterDec { get; set; }
 
     public override string ToString()
     {
-        return $"{MonsterID} / {MonsterName} / {MonsterRange} / {MonsterHp} / {MonsterAttack} / {MonsterSpeed} / {MonsterAttackSpeed} / {MonsterWeakness} / {MonsterStrength} / {MonsterEffectID} / {MonsterExp} / {MonsterDec}";
+        return $"{MonsterID} / {MonsterName} / {MonsterRange} / {MonsterHp} / {MonsterAttack} / {MonsterSpeed} / {MonsterAttackSpeed} / {MonsterWeakness} / {MonsterStrength} / {MonsterExp} / {MonsterDec}";
     }
 
     public Sprite sprite
@@ -42,7 +40,6 @@ public class MonsterDataMap : ClassMap<MonsterData>
         Map(m => m.MonsterAttackSpeed).Name("MonsterAttackSpeed");
         Map(m => m.MonsterWeakness).Name("MonsterWeakness").Default(0).TypeConverterOption.NullValues("", " "); ;
         Map(m => m.MonsterStrength).Name("MonsterStrength").Default(0).TypeConverterOption.NullValues("", " "); ;
-        Map(m => m.MonsterEffectID).Name("MonsterEffectID").Default(0).TypeConverterOption.NullValues("", " "); ;
         Map(m => m.MonsterExp).Name("MonsterExp");
         Map(m => m.MonsterDec).Name("MonsterDec").Default(0).TypeConverterOption.NullValues("", " "); ;
     }

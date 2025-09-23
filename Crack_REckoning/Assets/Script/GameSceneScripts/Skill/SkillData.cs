@@ -1,13 +1,6 @@
 using CsvHelper.Configuration;
 using UnityEngine;
 
-public enum SkillSortationID
-{
-    BasicSkill,
-    StageSkill,
-    PetSkill,
-}
-
 public enum SkillTypeID
 {
     Fire,
@@ -27,7 +20,6 @@ public class SkillData
 {
     public int SkillID { get; set; }
     public string SkillName { get; set; }
-    public SkillSortationID SkillSortation { get; set; }
     public SkillTypeID SkillType { get; set; }
     public float SkillRange { get; set; }
     public int SkillDamage { get; set; }
@@ -36,13 +28,11 @@ public class SkillData
     public int AttackNum { get; set; }
     public int PenetratingPower { get; set; }
     public float SkillDamageRange { get; set; }
-    public int? EffectID { get; set; }
-
     public AttackTypeID AttackType { get; set; }
 
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillSortation} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {EffectID} / {AttackType}";
+        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType}";
     }
 
     public Sprite sprite
@@ -54,7 +44,6 @@ public class SkillData
     {
         SkillID = SkillID,
         SkillName = SkillName,
-        SkillSortation = SkillSortation,
         SkillType = SkillType,
         SkillRange = SkillRange,
         SkillDamage = SkillDamage,
@@ -63,7 +52,6 @@ public class SkillData
         AttackNum = AttackNum,
         PenetratingPower = PenetratingPower,
         SkillDamageRange = SkillDamageRange,
-        EffectID = EffectID,
         AttackType = AttackType
     };
 }
@@ -74,7 +62,6 @@ public class SkillDataMap : ClassMap<SkillData>
     {
         Map(s => s.SkillID).Name("SkillID");
         Map(s => s.SkillName).Name("SkillName");
-        Map(s => s.SkillSortation).Name("SkillSortation");
         Map(s => s.SkillType).Name("SkillType");
         Map(s => s.SkillRange).Name("SkillRange");
         Map(s => s.SkillDamage).Name("SkillDamage");
@@ -83,7 +70,6 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.AttackNum).Name("AttackNum");
         Map(s => s.PenetratingPower).Name("PenetratingPower");
         Map(s => s.SkillDamageRange).Name("SkillDamageRange");
-        Map(s => s.EffectID).Name("EffectID").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.AttackType).Name("AttackType");
     }
 }

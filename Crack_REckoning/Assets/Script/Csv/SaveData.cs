@@ -13,8 +13,11 @@ public abstract class SaveData
 [Serializable]
 public class SaveDataV1 : SaveData
 {
-    //public string PlayerName { get; set; } = string.Empty;
-    //public List<SaveItemData> ItemList = new List<SaveItemData>();
+    public int PlayerID { get; set; } = 0;
+    public int Gold { get; set; } = 0;
+    public List<int> OwnedSkillIds = new List<int>();
+    public List<int> EquipmentSkillIds = new List<int>();
+    public Dictionary<int, bool> StageClear = new Dictionary<int, bool>();
 
     public SaveDataV1()
     {

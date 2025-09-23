@@ -29,8 +29,6 @@ public class Character : MonoBehaviour
     // 캐릭터 기본 속성
     public int Id { get; private set; }
     public string CharacterName { get; private set; }
-    public int BasicSkill { get; private set; }
-    public int CharacterAttack { get; private set; }
     public int CharacterCri { get; private set; }
     public float CharacterCriDamage { get; private set; }
 
@@ -53,8 +51,7 @@ public class Character : MonoBehaviour
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
         Init(11001);
-        PlaySetting.PlayerBasicSkillID = BasicSkill;
-        AddSkill(BasicSkill);
+        AddSkill(31001);
     }
 
     private void Update()
@@ -77,8 +74,6 @@ public class Character : MonoBehaviour
         if (characterData != null)
         {
             CharacterName = characterData.ChName;
-            BasicSkill = characterData.BasicSkill;
-            CharacterAttack = characterData.ChAttack;
             CharacterCri = characterData.ChCri;
             CharacterCriDamage = characterData.ChCriDam;
         }
@@ -271,7 +266,7 @@ public class Character : MonoBehaviour
             if (skill != null)
             {
                 skill.InitWithData(skillId, skillData);
-                skill.SetCharacter(this, CharacterAttack, CharacterCri, CharacterCriDamage);
+                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
 
                 // 널 안전 + 우선 타깃/선택 타깃 좌표
                 Vector3 targetPos = (chosen != null ? chosen.transform.position : target.transform.position);

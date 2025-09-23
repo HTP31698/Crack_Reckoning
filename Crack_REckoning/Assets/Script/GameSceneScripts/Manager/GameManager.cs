@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             sliderSkills[i].gameObject.SetActive(false);
         }
-        SetSkillStat(0, PlaySetting.PlayerBasicSkillID);
+        SetSkillStat(0, 31001);
 
         SettingsWindow.gameObject.SetActive(false);
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   private void SetSkillStat(int index, int id)
+    private void SetSkillStat(int index, int id)
     {
         SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
         sliderSkills[index].gameObject.SetActive(true);
@@ -150,10 +150,9 @@ public class GameManager : MonoBehaviour
         StageSkillList.Clear();
         foreach (var id in skillTable.GetIdList())
         {
-            if (skillTable.Get(id).SkillSortation == SkillSortationID.StageSkill)
-                StageSkillList.Add(id);
+            StageSkillList.Add(id);
         }
-        StageSkillList.Add(character.BasicSkill);
+        StageSkillList.Add(31001);
     }
 
     public void ShowLevelUpSkills()
@@ -290,7 +289,7 @@ public class GameManager : MonoBehaviour
 
     private void NextStageButtonClick()
     {
-        PlaySetting.SelectStage++;
+        PlaySetting.SetSelectStage(PlaySetting.SelectStage + 1);
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
