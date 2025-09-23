@@ -155,29 +155,81 @@ public class GameManager : MonoBehaviour
         StageSkillList.Add(31001);
     }
 
+    // using들 위에 있다고 가정
+    // using System.Linq;
+
     public void ShowLevelUpSkills()
     {
-        var characterSkillList = character.GetSkillIdList();
+        // 현재 장착/보유 목록
+        var equipped = character.GetSkillIdList(); // 전투 중 장착(최대 5)
+        var data = SaveLoadManager.Data;
+
+        // 방어 코드
+        if (data == null || data.OwnedSkillIds == null || equipped == null)
+            return;
+
+        // 후보 분리
+        List<int> owned = data.OwnedSkillIds;
+        List<int> unlockables = new List<int>(); // 새로 장착 가능
+        List<int> upgradables = new List<int>(); // 업그레이드(이미 장착됨)
+
+        foreach (var id in owned)
+        {
+            if (id <= 0) continue;
+            if (equipped.Contains(id)) upgradables.Add(id);
+            else unlockables.Add(id);
+        }
+
         pendingSkillOptions = new List<int>();
         pendingPickIds = new List<int>();
 
-        while (pendingSkillOptions.Count < 3)
-        {
-            int randSkill = StageSkillList[Random.Range(0, StageSkillList.Count)];
+        int maxSlots = 5;
+        bool hasEmptySlot = equipped.Count < maxSlots;
 
-            if (characterSkillList.Contains(randSkill))
+        // 최대 3개 선택
+        int want = 3;
+
+        // 1) 슬롯 남으면 unlockables에서 랜덤 추가
+        if (hasEmptySlot && unlockables.Count > 0)
+        {
+            int take = Mathf.Min(want - pendingSkillOptions.Count, unlockables.Count);
+            for (int k = 0; k < take; k++)
             {
-                if (!pendingSkillOptions.Contains(randSkill))
-                    pendingSkillOptions.Add(randSkill);
-            }
-            else
-            {
-                if (characterSkillList.Count < 5 && !pendingSkillOptions.Contains(randSkill))
-                    pendingSkillOptions.Add(randSkill);
+                int idx = Random.Range(0, unlockables.Count);
+                int id = unlockables[idx];
+                if (!pendingSkillOptions.Contains(id))
+                {
+                    pendingSkillOptions.Add(id);
+                    pendingPickIds.Add(0); // 0 = 새 장착
+                }
+                unlockables.RemoveAt(idx);
+                if (pendingSkillOptions.Count >= want) break;
             }
         }
 
-        for (int i = 0; i < 3; i++)
+        // 2) 나머지는 업그레이드 후보에서 채우기
+        while (pendingSkillOptions.Count < want && upgradables.Count > 0)
+        {
+            int idx = Random.Range(0, upgradables.Count);
+            int id = upgradables[idx];
+            if (!pendingSkillOptions.Contains(id))
+            {
+                // 업그레이드는 pickId를 뽑아둔다 (테이블 범위에 맞춰 1..5 예시)
+                int pickId = Random.Range(1, 6);
+                pendingSkillOptions.Add(id);
+                pendingPickIds.Add(pickId);
+            }
+            upgradables.RemoveAt(idx);
+        }
+
+        // 후보가 하나도 없으면 종료
+        if (pendingSkillOptions.Count == 0) return;
+
+        // 버튼 세팅
+        for (int i = 0; i < Buttons.Length; i++)
+            Buttons[i].gameObject.SetActive(false);
+
+        for (int i = 0; i < pendingSkillOptions.Count && i < 3; i++)
         {
             Buttons[i].gameObject.SetActive(true);
 
@@ -185,27 +237,22 @@ public class GameManager : MonoBehaviour
             Image img = Buttons[i].transform.Find(Icon).GetComponent<Image>();
 
             int skillId = pendingSkillOptions[i];
+            int pickId = pendingPickIds[i];
+
             SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(skillId);
+            string label = s != null ? s.SkillName : $"Skill {skillId}";
 
-            int pickId;
-            SkillSelectionData ss = null;
-
-            if (characterSkillList.Contains(skillId))
+            if (pickId > 0)
             {
-                pickId = Random.Range(1, 6);
-                ss = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable).Get(skillId, pickId);
+                // 업그레이드면 Selection 이름 채우기
+                var ss = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable).Get(skillId, pickId);
+                if (ss != null && !string.IsNullOrEmpty(ss.SkillPickName))
+                    label = ss.SkillPickName;
             }
-            else
-            {
-                pickId = 0;
-            }
+            // 새 장착(pickId==0)일 때는 스킬 기본 이름 표시
 
-            pendingPickIds.Add(pickId);
-
-            if (tmpText != null)
-                tmpText.text = (ss != null) ? ss.SkillPickName : s.SkillName;
-            if (img != null)
-                img.sprite = s.sprite;
+            if (tmpText != null) tmpText.text = label;
+            if (img != null && s != null) img.sprite = s.sprite;
 
             int index = i;
             Buttons[i].onClick.RemoveAllListeners();
@@ -217,40 +264,48 @@ public class GameManager : MonoBehaviour
 
     private void OnSkillButtonClick(int index)
     {
-        if (index >= pendingSkillOptions.Count)
-            return;
+        if (index < 0 || index >= pendingSkillOptions.Count) return;
 
         int skillId = pendingSkillOptions[index];
         int pickId = (pendingPickIds != null && index < pendingPickIds.Count) ? pendingPickIds[index] : 0;
 
-        var characterSkillList = character.GetSkillIdList();
-        var selectionTable = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable);
+        var equipped = character.GetSkillIdList();
+        if (equipped == null) return;
 
-        if (characterSkillList.Contains(skillId))
+        if (pickId == 0)
         {
-            if (pickId > 0)
+            // 새로 장착 (슬롯 남을 때만)
+            if (equipped.Count < 5 && !equipped.Contains(skillId))
             {
-                SkillSelectionData skillData = selectionTable.Get(skillId, pickId);
-                if (skillData != null)
-                {
-                    character.IncreaseSkill(skillId, skillData);
-                    UpdateSkillStat(skillId);
-                }
+                character.AddSkill(skillId);
+                // 방금 추가된 스킬이 리스트 끝에 들어가므로 index = 기존 count (추가 전)
+                SetSkillStat(equipped.Count - 1, skillId);
+            }
+            else
+            {
+                // 슬롯이 없거나 이미 장착되어 있으면 무시
             }
         }
         else
         {
-            if (characterSkillList.Count < 5)
+            // 업그레이드 (이미 장착되어 있어야 함)
+            if (equipped.Contains(skillId))
             {
-                character.AddSkill(skillId);
-                SetSkillStat(characterSkillList.Count, skillId);
+                var selectionTable = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable);
+                var skillData = selectionTable.Get(skillId, pickId);
+                if (skillData != null)
+                {
+                    character.IncreaseSkill(skillId, skillData); // 인게임 임시 레벨업
+                    UpdateSkillStat(skillId);                    // UI +n 갱신
+                }
             }
         }
 
-        foreach (var btn in Buttons)
-            btn.gameObject.SetActive(false);
+        // 창 닫기
+        foreach (var btn in Buttons) btn.gameObject.SetActive(false);
         ResumeGame();
     }
+
 
     private void OnSetButtonClick()
     {

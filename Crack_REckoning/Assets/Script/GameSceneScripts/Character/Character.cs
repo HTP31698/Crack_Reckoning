@@ -50,8 +50,23 @@ public class Character : MonoBehaviour
 
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
-        Init(11001);
-        AddSkill(31001);
+        var data = SaveLoadManager.Data;
+        int playerId = (data != null && data.PlayerID > 0) ? data.PlayerID : 11001;
+        Init(playerId);
+
+        if (data != null && data.EquipmentSkillIds != null)
+        {
+            // 장착 목록대로 스킬 세팅 (0은 빈 슬롯)
+            foreach (var id in data.EquipmentSkillIds)
+            {
+                if (id > 0) AddSkill(id);
+            }
+        }
+        else
+        {
+            // 세이브가 없을 때 대비: 기본 한 개 정도는 안전하게
+            AddSkill(31001);
+        }
     }
 
     private void Update()
