@@ -1,7 +1,7 @@
 BossID,BossName,BossRange,BossHp,BossAttack,BossSpeed,BossAttackSpeed,BossWeakness,BossStrength,IsBoss
-821001,호박눈박쥐,0,300,50,0.1,0.3,Fire,Water,True
-821002,붉은 매,0,450,80,0.1,0.3,Fire,Water,True
-821003,아이스 스콜피온,0,650,100,0.1,0.3,Lightning,Fire,True
-821004,얼음여왕,1,600,85,0.1,0.4,Lightning,Water,True
-821005,눈사람,0,700,110,0.1,0.3,Fire,Ice,True
-821006,얼음 꽃,0,500,95,0.1,0.3,Fire,Ice,True
+821001,호박눈박쥐,0,500,50,0.1,0.3,Fire,Water,True
+821002,붉은 매,0,700,80,0.1,0.3,Fire,Water,True
+821003,아이스 스콜피온,0,1500,100,0.1,0.3,Lightning,Fire,True
+821004,얼음여왕,1,2000,85,0.1,0.4,Lightning,Water,True
+821005,눈사람,0,1100,110,0.1,0.3,Fire,Ice,True
+821006,얼음 꽃,0,900,95,0.1,0.3,Fire,Ice,True

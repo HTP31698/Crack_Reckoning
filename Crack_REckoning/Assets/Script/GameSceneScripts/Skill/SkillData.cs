@@ -36,7 +36,7 @@ public class SkillData
     }
 
     public Sprite sprite
-        => Resources.Load<Sprite>($"Sprites/{SkillID}");
+        => Resources.Load<Sprite>($"Sprite/{SkillID}");
     public RuntimeAnimatorController AnimatorController
         => Resources.Load<RuntimeAnimatorController>($"Animator/{SkillID}");
 

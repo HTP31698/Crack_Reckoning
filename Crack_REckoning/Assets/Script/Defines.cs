@@ -16,7 +16,7 @@ public static class PlaySetting
 {
     public static int PlayerID { get; private set; }
     public static int SelectStage { get; private set; }
-    public static int PlayerCurrentSkillID { get; private set; }
+    public static int CurrnetSelectSkillID { get; private set; }
     public static int Gold { get; private set; }
 
     public static void SetPlayerId(int playerID)
@@ -27,9 +27,9 @@ public static class PlaySetting
     {
         SelectStage = Stage;
     }
-    public static void SetPlayerCurrentSkillID(int playerCurrentSkillID)
+    public static void SetCurrnetSelectSkillID(int currnetSelectSkillID)
     {
-        PlayerCurrentSkillID = playerCurrentSkillID;
+        CurrnetSelectSkillID = currnetSelectSkillID;
     }
     public static void SetClearGold(int amount)
     {
@@ -40,7 +40,7 @@ public static class PlaySetting
     {
         PlayerID = 0;
         SelectStage = 0;
-        PlayerCurrentSkillID = 0;
+        CurrnetSelectSkillID = 0;
         Gold = 0;
     }
 }

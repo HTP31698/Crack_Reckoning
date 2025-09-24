@@ -1,5 +1,5 @@
 SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,AttackType
-31001,파이어볼,Fire,6,35,4,1,1,1,0.1,Projectile
+31001,파이어볼,Fire,7,80,3.5,1,1,1,0.1,Projectile
 3100101,파이어볼 +1,Fire,7,65,5,1,1,1,0.1,Projectile
 3100102,파이어볼 +2,Fire,7,70,5,1,1,1,0.1,Projectile
 3100103,파이어볼 +3,Fire,7,75,5,1,1,1,0.1,Projectile
@@ -20,28 +20,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3100118,파이어볼 +18,Fire,7,3000,5,1,1,1,0.1,Projectile
 3100119,파이어볼 +19,Fire,7,4000,5,1,1,1,0.1,Projectile
 3100120,파이어볼 +20,Fire,7,5000,5,1,1,1,0.1,Projectile
-31002,단검 투척,Physical,7,25,3.5,1,1,1,0.1,Projectile
-3100201,단검 투척 +1,Physical,6,65,5,1,1,1,0.1,Projectile
-3100202,단검 투척 +2,Physical,6,70,5,1,1,1,0.1,Projectile
-3100203,단검 투척 +3,Physical,6,75,5,1,1,1,0.1,Projectile
-3100204,단검 투척 +4,Physical,6,80,5,1,1,1,0.1,Projectile
-3100205,단검 투척 +5,Physical,6,100,5,1,1,1,0.1,Projectile
-3100206,단검 투척 +6,Physical,6,130,5,1,1,1,0.1,Projectile
-3100207,단검 투척 +7,Physical,6,170,5,1,1,1,0.1,Projectile
-3100208,단검 투척 +8,Physical,6,230,5,1,1,1,0.1,Projectile
-3100209,단검 투척 +9,Physical,6,300,5,1,1,1,0.1,Projectile
-3100210,단검 투척 +10,Physical,6,400,5,1,1,1,0.1,Projectile
-3100211,단검 투척 +11,Physical,6,550,5,1,1,1,0.1,Projectile
-3100212,단검 투척 +12,Physical,6,700,5,1,1,1,0.1,Projectile
-3100213,단검 투척 +13,Physical,6,900,5,1,1,1,0.1,Projectile
-3100214,단검 투척 +14,Physical,6,1200,5,1,1,1,0.1,Projectile
-3100215,단검 투척 +15,Physical,6,1500,5,1,1,1,0.1,Projectile
-3100216,단검 투척 +16,Physical,6,1800,5,1,1,1,0.1,Projectile
-3100217,단검 투척 +17,Physical,6,2100,5,1,1,1,0.1,Projectile
-3100218,단검 투척 +18,Physical,6,3000,5,1,1,1,0.1,Projectile
-3100219,단검 투척 +19,Physical,6,4000,5,1,1,1,0.1,Projectile
-3100220,단검 투척 +20,Physical,6,5000,5,1,1,1,0.1,Projectile
-31003,검기,Physical,5,60,5,1,1,1,0.1,Projectile
+31003,검기,Physical,7,80,3.5,1,1,1,0.1,Projectile
 3100301,검기 +1,Physical,5,65,5,1,1,1,0.1,Projectile
 3100302,검기 +2,Physical,5,70,5,1,1,1,0.1,Projectile
 3100303,검기 +3,Physical,5,75,5,1,1,1,0.1,Projectile
@@ -62,7 +41,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3100318,검기 +18,Physical,5,3000,5,1,1,1,0.1,Projectile
 3100319,검기 +19,Physical,5,4000,5,1,1,1,0.1,Projectile
 3100320,검기 +20,Physical,5,5000,5,1,1,1,0.1,Projectile
-32004,벼락,Lightning,2,30,4.5,1,1,1,0.7,Area
+32004,벼락,Lightning,6,50,3.5,1,1,1,0.7,Area
 3200401,벼락 +1,Lightning,6,65,5,1,1,1,0.7,Area
 3200402,벼락 +2,Lightning,6,70,5,1,1,1,0.7,Area
 3200403,벼락 +3,Lightning,6,75,5,1,1,1,0.7,Area
@@ -83,7 +62,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200418,벼락 +18,Lightning,6,3000,5,1,1,1,0.7,Area
 3200419,벼락 +19,Lightning,6,4000,5,1,1,1,0.7,Area
 3200420,벼락 +20,Lightning,6,5000,5,1,1,1,0.7,Area
-32005,탄도미,Physical,6,50,4.5,1,1,1,0.1,Projectile
+32005,탄도미,Physical,7,80,3.5,1,1,1,0.1,Projectile
 3200501,탄도미 +1,Physical,7,65,4,1,1,1,0.1,Projectile
 3200502,탄도미 +2,Physical,7,70,4,1,1,1,0.1,Projectile
 3200503,탄도미 +3,Physical,7,75,4,1,1,1,0.1,Projectile
@@ -104,7 +83,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200518,탄도미 +18,Physical,7,3000,4,1,1,1,0.1,Projectile
 3200519,탄도미 +19,Physical,7,4000,4,1,1,1,0.1,Projectile
 3200520,탄도미 +20,Physical,7,5000,4,1,1,1,0.1,Projectile
-32006,얼음 운석,Ice,5,40,4,1,1,1,0.1,Projectile
+32006,얼음 운석,Ice,7,80,3.5,1,1,1,0.1,Projectile
 3200601,얼음 운석 +1,Ice,6,65,3.5,1,1,1,0.1,Projectile
 3200602,얼음 운석 +2,Ice,6,70,3.5,1,1,1,0.1,Projectile
 3200603,얼음 운석 +3,Ice,6,75,3.5,1,1,1,0.1,Projectile
@@ -125,7 +104,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200618,얼음 운석 +18,Ice,6,3000,3.5,1,1,1,0.1,Projectile
 3200619,얼음 운석 +19,Ice,6,4000,3.5,1,1,1,0.1,Projectile
 3200620,얼음 운석 +20,Ice,6,5000,3.5,1,1,1,0.1,Projectile
-32007,화염 운석,Fire,5,40,4,1,1,1,0.1,Projectile
+32007,화염 운석,Fire,7,80,3.5,1,1,1,0.1,Projectile
 3200701,화염 운석 +1,Fire,6,65,3.5,1,1,1,0.1,Projectile
 3200702,화염 운석 +2,Fire,6,70,3.5,1,1,1,0.1,Projectile
 3200703,화염 운석 +3,Fire,6,75,3.5,1,1,1,0.1,Projectile
@@ -146,7 +125,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200718,화염 운석 +18,Fire,6,3000,3.5,1,1,1,0.1,Projectile
 3200719,화염 운석 +19,Fire,6,4000,3.5,1,1,1,0.1,Projectile
 3200720,화염 운석 +20,Fire,6,5000,3.5,1,1,1,0.1,Projectile
-32008,워터 스피어,Water,6,40,4,1,1,2,0.1,Projectile
+32008,워터 스피어,Water,7,80,3.5,1,1,2,0.1,Projectile
 3200801,워터 스피어 +1,Water,7,65,5,1,1,2,0.1,Projectile
 3200802,워터 스피어 +2,Water,7,70,5,1,1,2,0.1,Projectile
 3200803,워터 스피어 +3,Water,7,75,5,1,1,2,0.1,Projectile
@@ -167,7 +146,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200818,워터 스피어 +18,Water,7,3000,5,1,1,2,0.1,Projectile
 3200819,워터 스피어 +19,Water,7,4000,5,1,1,2,0.1,Projectile
 3200820,워터 스피어 +20,Water,7,5000,5,1,1,2,0.1,Projectile
-32009,워터 볼,Water,5,40,4,1,1,1,0.1,Projectile
+32009,워터 볼,Water,7,80,3.5,1,1,1,0.1,Projectile
 3200901,워터 볼 +1,Water,5,65,5,1,1,1,0.1,Projectile
 3200902,워터 볼 +2,Water,5,70,5,1,1,1,0.1,Projectile
 3200903,워터 볼 +3,Water,5,75,5,1,1,1,0.1,Projectile
@@ -188,7 +167,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3200918,워터 볼 +18,Water,5,3000,5,1,1,1,0.1,Projectile
 3200919,워터 볼 +19,Water,5,4000,5,1,1,1,0.1,Projectile
 3200920,워터 볼 +20,Water,5,5000,5,1,1,1,0.1,Projectile
-32010,썬더 볼,Lightning,5,40,4,1,1,1,0.1,Projectile
+32010,썬더 볼,Lightning,7,80,3.5,1,1,1,0.1,Projectile
 3201001,썬더 볼 +1,Lightning,5,65,5,1,1,1,0.1,Projectile
 3201002,썬더 볼 +2,Lightning,5,70,5,1,1,1,0.1,Projectile
 3201003,썬더 볼 +3,Lightning,5,75,5,1,1,1,0.1,Projectile
@@ -209,7 +188,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3201018,썬더 볼 +18,Lightning,5,3000,5,1,1,1,0.1,Projectile
 3201019,썬더 볼 +19,Lightning,5,4000,5,1,1,1,0.1,Projectile
 320120,썬더 볼 +20,Lightning,5,5000,5,1,1,1,0.1,Projectile
-32011,용오름,Physical,4,35,4,1,1,1,0.5,Area
+32011,용오름,Physical,6,50,3.5,1,1,1,0.5,Area
 3201101,용오름 +1,Physical,7,65,2.5,1,1,1,0.5,Area
 3201102,용오름 +2,Physical,7,70,2.5,1,1,1,0.5,Area
 3201103,용오름 +3,Physical,7,75,2.5,1,1,1,0.5,Area
@@ -230,7 +209,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3201118,용오름 +18,Physical,7,3000,2.5,1,1,1,0.5,Area
 3201119,용오름 +19,Physical,7,4000,2.5,1,1,1,0.5,Area
 3201120,용오름 +20,Physical,7,5000,2.5,1,1,1,0.5,Area
-32012,아이스메이든,Ice,4,30,4,1,1,1,0.7,Area
+32012,아이스메이든,Ice,6,50,3.5,1,1,1,0.7,Area
 3201201,아이스메이든 +1,Ice,7,65,2.5,1,1,1,0.7,Area
 3201202,아이스메이든 +2,Ice,7,70,2.5,1,1,1,0.7,Area
 3201203,아이스메이든 +3,Ice,7,75,2.5,1,1,1,0.7,Area
@@ -251,7 +230,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3201218,아이스메이든 +18,Ice,7,3000,2.5,1,1,1,0.7,Area
 3201219,아이스메이든 +19,Ice,7,4000,2.5,1,1,1,0.7,Area
 3201220,아이스메이든 +20,Ice,7,5000,2.5,1,1,1,0.7,Area
-32013,폭풍,Physical,4,35,4,1,1,1,0.5,Area
+32013,폭풍,Physical,6,50,3.5,1,1,1,0.5,Area
 3201301,폭풍 +1,Physical,7,65,2.5,1,1,1,0.5,Area
 3201302,폭풍 +2,Physical,7,70,2.5,1,1,1,0.5,Area
 3201303,폭풍 +3,Physical,7,75,2.5,1,1,1,0.5,Area
@@ -272,7 +251,7 @@ SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,
 3201318,폭풍 +18,Physical,7,3000,2.5,1,1,1,0.5,Area
 3201319,폭풍 +19,Physical,7,4000,2.5,1,1,1,0.5,Area
 3201320,폭풍 +20,Physical,7,5000,2.5,1,1,1,0.5,Area
-32014,바람수리검,Physical,6,45,4,1,1,1,0.1,Projectile
+32014,바람수리검,Physical,7,80,3.5,1,1,1,0.1,Projectile
 3201401,바람수리검 +1,Physical,6,65,2.7,1,1,1,0.1,Projectile
 3201402,바람수리검 +2,Physical,6,70,2.7,1,1,1,0.1,Projectile
 3201403,바람수리검 +3,Physical,6,75,2.7,1,1,1,0.1,Projectile

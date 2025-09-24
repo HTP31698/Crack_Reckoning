@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnforceSkill : MonoBehaviour
 {
+    public Button SelectSkillButton;
+    public Button SkillEnforceButton;
+
 
     public void TryEnforce(int currentId)
     {

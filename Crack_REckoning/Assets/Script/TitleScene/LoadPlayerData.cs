@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,7 @@ public class LoadPlayerData : MonoBehaviour
 
     private void Update()
     {
-        if(Input.touchCount == 1)
+        if (Input.touchCount == 1)
         {
             const string scenePath = "Assets/Scenes/LobbyScene.unity";
             int index = SceneUtility.GetBuildIndexByScenePath(scenePath);
@@ -36,6 +37,4 @@ public class LoadPlayerData : MonoBehaviour
             SceneManager.LoadScene(index);
         }
     }
-
-
 }

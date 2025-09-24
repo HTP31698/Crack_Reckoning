@@ -7,6 +7,7 @@ public class LobbyManager : MonoBehaviour
 {
     public GameObject HomeWindow;
     public GameObject StageSelctWindow;
+    public GameObject SkillWindow;
 
     public Button StageChallengeButton;
     public Button Stage1Button;
@@ -19,19 +20,21 @@ public class LobbyManager : MonoBehaviour
 
     public TextMeshProUGUI Gold;
 
-    public int gold = 0;
-
 
     public void Awake()
     {
         HomeWindow.SetActive(true);
         StageSelctWindow.SetActive(false);
+        SkillWindow.SetActive(false);
 
         StageChallengeButton.onClick.AddListener(StageChallengeButtonClick);
         Stage1Button.onClick.AddListener(Stage1ButtonClick);
 
-        HomeButton.onClick.AddListener(HomeButtonClick);
 
+        HomeButton.onClick.AddListener(HomeButtonClick);
+        SkillButton.onClick.AddListener(SkillButtonClick);
+
+        Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
 
 
@@ -39,14 +42,22 @@ public class LobbyManager : MonoBehaviour
     {
         HomeWindow.SetActive(false);
         StageSelctWindow.SetActive(true);
+        SkillWindow.SetActive(false);
     }
 
     public void HomeButtonClick()
     {
         HomeWindow.SetActive(true);
         StageSelctWindow.SetActive(false);
+        SkillWindow.SetActive(false);
     }
 
+    public void SkillButtonClick()
+    {
+        HomeWindow.SetActive(false);
+        StageSelctWindow.SetActive(false);
+        SkillWindow.SetActive(true);
+    }
 
 
 

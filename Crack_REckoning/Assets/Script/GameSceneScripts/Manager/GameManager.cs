@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             sliderSkills[i].gameObject.SetActive(false);
         }
-        SetSkillStat(0, 31001);
+        SetSkillStat(0, SaveLoadManager.Data.EquipmentSkillIds[0]);
 
         SettingsWindow.gameObject.SetActive(false);
 
@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 이 부분 나중에 종합했을때 수정해야함
     private void SetSkillStat(int index, int id)
     {
         SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
@@ -279,7 +280,7 @@ public class GameManager : MonoBehaviour
             {
                 character.AddSkill(skillId);
                 // 방금 추가된 스킬이 리스트 끝에 들어가므로 index = 기존 count (추가 전)
-                SetSkillStat(equipped.Count - 1, skillId);
+                SetSkillStat(equipped.Count, skillId);
             }
             else
             {
