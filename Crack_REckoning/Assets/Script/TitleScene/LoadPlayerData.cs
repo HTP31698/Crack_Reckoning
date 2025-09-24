@@ -12,7 +12,7 @@ public class LoadPlayerData : MonoBehaviour
             SaveLoadManager.Data.PlayerID = 11001;
             SaveLoadManager.Data.Gold = 0;
             SaveLoadManager.Data.OwnedSkillIds = skillTable.GetSkillsWithoutPlus();
-            SaveLoadManager.Data.EquipmentSkillIds.Add(31001);
+            SaveLoadManager.Data.EquipmentSkillIds.Add(3001);
             SaveLoadManager.Data.StageClear.Add(1, false);
             SaveLoadManager.Save(0);
         }
