@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         }
         else if (toggle.isOn && !isStop)
         {
-            TimeSet = 2f;
+            TimeSet = 3f;
             Time.timeScale = TimeSet;
         }
 

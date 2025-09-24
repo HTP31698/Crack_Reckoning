@@ -21,7 +21,7 @@ public class SkillTable : DataTable
             }
             else
             {
-                Debug.LogError($"{item.SkillID}스킬 아이디 중복");
+                Debug.LogError("스킬 아이디 중복");
             }
         }
     }
