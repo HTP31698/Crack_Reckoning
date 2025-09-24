@@ -5,11 +5,12 @@ public class LoadPlayerData : MonoBehaviour
 {
     private void Awake()
     {
-        if(!SaveLoadManager.Load(0))
+        if (!SaveLoadManager.Load(0))
         {
+            var skillTable = DataTableManager.SkillTable;
             SaveLoadManager.Data.PlayerID = 11001;
             SaveLoadManager.Data.Gold = 0;
-            SaveLoadManager.Data.OwnedSkillIds.Add(31001);
+            SaveLoadManager.Data.OwnedSkillIds = skillTable.GetSkillsWithoutPlus();
             SaveLoadManager.Data.EquipmentSkillIds.Add(31001);
             SaveLoadManager.Data.StageClear.Add(1, false);
             SaveLoadManager.Save(0);

@@ -39,4 +39,17 @@ public class SkillTable : DataTable
     {
         return table.Keys.ToList();
     }
+
+    public List<int> GetSkillsWithoutPlus()
+    {
+        var result = new List<int>();
+        foreach (var s in table.Values)
+        {
+            if (string.IsNullOrEmpty(s.SkillName) || s.SkillName.IndexOf('+') == -1)
+            {
+                result.Add(s.SkillID);
+            }
+        }
+        return result;
+    }
 }
