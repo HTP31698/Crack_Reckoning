@@ -54,7 +54,7 @@ public class Character : MonoBehaviour
 
         Init(11001);
         PlaySetting.PlayerBasicSkillID = BasicSkill;
-        AddSkill(BasicSkill);
+        AddSkill(31001);
     }
 
     private void Update()
