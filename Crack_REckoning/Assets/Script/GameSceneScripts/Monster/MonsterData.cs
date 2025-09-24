@@ -22,9 +22,9 @@ public class MonsterData
     }
 
     public Sprite sprite
-        => Resources.Load<Sprite>($"Sprites/{MonsterID}");
+        => Resources.Load<Sprite>($"MonsterSprites/{MonsterID}");
     public RuntimeAnimatorController AnimatorController
-        => Resources.Load<RuntimeAnimatorController>($"Animator/{MonsterID}");
+        => Resources.Load<RuntimeAnimatorController>($"MonsterAnimator/{MonsterID}");
 }
 
 public class MonsterDataMap : ClassMap<MonsterData>

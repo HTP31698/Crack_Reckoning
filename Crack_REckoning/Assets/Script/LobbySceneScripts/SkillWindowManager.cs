@@ -158,11 +158,14 @@ public class SkillWindowManager : MonoBehaviour
         {
             data.OwnedSkillIds[ownedIdx] = next;
 
-            int equipIdx = data.EquipmentSkillIds.IndexOf(currentId);
-            if (equipIdx >= 0) data.EquipmentSkillIds[equipIdx] = next;
-
-            _selectedSkillId = next; // 선택 ID만 갱신
-            Toast($"강화 성공! {row.EnhanceID} >> {next}");
+            // 2) 장착 목록에서 첫 슬롯만 교체 (없으면 아무 것도 안 함)
+            int equipIdx = data.EquipmentSkillIds.IndexOf(currentId); // 첫 번째만 찾음
+            if (equipIdx >= 0)
+            {
+                data.EquipmentSkillIds[equipIdx] = next;  // ← 여기서 딱 한 칸만 바꾼다!
+            }
+            _selectedSkillId = next; // 선택 ID 갱신(옵션)
+            Toast($"강화 성공! {row.EnhanceID} → {next}");
         }
         else
         {

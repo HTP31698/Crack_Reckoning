@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         skillIndex = new Dictionary<int, int>();
         enforceLevel = new Dictionary<int, int>();
 
-        StageSkillListInit();
+       
 
         for (int i = 0; i < 3; i++)
         {
@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
         {
             sliderSkills[i].gameObject.SetActive(false);
         }
-        SetSkillStat(0, SaveLoadManager.Data.EquipmentSkillIds[0]);
 
         SettingsWindow.gameObject.SetActive(false);
 
@@ -72,6 +71,11 @@ public class GameManager : MonoBehaviour
         NextStageButton.onClick.AddListener(NextStageButtonClick);
         RetryStageButton.onClick.AddListener(RetryButtonClick);
         ExitStageButton.onClick.AddListener(ExitStageButtonClick);
+    }
+
+    private void Start()
+    {
+        StageSkillListInit();
     }
 
     public void Update()
@@ -155,9 +159,6 @@ public class GameManager : MonoBehaviour
         }
         StageSkillList.Add(31001);
     }
-
-    // using들 위에 있다고 가정
-    // using System.Linq;
 
     public void ShowLevelUpSkills()
     {

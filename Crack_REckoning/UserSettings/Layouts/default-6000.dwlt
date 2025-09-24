@@ -350,8 +350,8 @@ MonoBehaviour:
     y: 425
     width: 1097
     height: 516
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -4802,8 +4802,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1097
-    y: 709
+    x: 1
+    y: 654
     width: 521
     height: 285
   m_SerializedDataModeController:
@@ -4838,8 +4838,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1097
-    y: 79
+    x: 1
+    y: 24
     width: 253
     height: 604
   m_SerializedDataModeController:
@@ -4904,8 +4904,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1620
-    y: 79
+    x: 1621
+    y: 24
     width: 299
     height: 915
   m_SerializedDataModeController:
@@ -4953,8 +4953,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1352
-    y: 79
+    x: 256
+    y: 24
     width: 266
     height: 604
   m_SerializedDataModeController:
@@ -4997,7 +4997,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b0230000
     m_LastClickedID: 9136
-    m_ExpandedIDs: 0000000094e7010096e7010098e701009ae701009ce701009ee70100a0e70100a2e70100a4e70100a6e70100a8e70100aae70100ace70100aee70100b0e70100b2e70100b4e70100b6e70100b8e70100bae70100bce70100bee70100c0e70100c2e70100c4e70100c6e70100c8e70100cae70100cce70100cee70100d0e70100d2e70100d4e70100d6e70100d8e70100dae70100dce70100dee70100e0e70100e2e70100e4e70100e6e70100e8e70100eae70100ece70100eee70100f0e70100f2e70100f4e70100f6e70100f8e70100fae70100fce70100fee7010000e8010002e8010004e8010006e80100
+    m_ExpandedIDs: 000000005ce401005ee4010060e4010062e4010064e4010066e4010068e401006ae401006ce401006ee4010070e4010072e4010074e4010076e4010078e401007ae401007ce401007ee4010080e4010082e4010084e4010086e4010088e401008ae401008ce401008ee4010090e4010092e4010094e4010096e4010098e401009ae401009ce401009ee40100a0e40100a2e40100a4e40100a6e40100a8e40100aae40100ace40100aee40100b0e40100b2e40100b4e40100b6e40100b8e40100bae40100bce40100bee40100c0e40100c2e40100c4e40100c6e40100c8e40100cae40100cce40100cee40100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5026,7 +5026,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 180}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000094e7010096e7010098e701009ae701009ce701009ee70100a0e70100a2e70100a4e70100a6e70100a8e70100aae70100ace70100aee70100b0e70100b2e70100b4e70100b6e70100b8e70100bae70100bce70100bee70100c0e70100c2e70100c4e70100c6e70100c8e70100cae70100cce70100cee70100d0e70100d2e70100d4e70100d6e70100d8e70100dae70100dce70100dee70100e0e70100e2e70100e4e70100e6e70100e8e70100eae70100ece70100eee70100f0e70100f2e70100f4e70100f6e70100f8e70100fae70100fce70100fee7010000e8010002e8010004e8010006e80100
+    m_ExpandedIDs: 000000005ce401005ee4010060e4010062e4010064e4010066e4010068e401006ae401006ce401006ee4010070e4010072e4010074e4010076e4010078e401007ae401007ce401007ee4010080e4010082e4010084e4010086e4010088e401008ae401008ce401008ee4010090e4010092e4010094e4010096e4010098e401009ae401009ce401009ee40100a0e40100a2e40100a4e40100a6e40100a8e40100aae40100ace40100aee40100b0e40100b2e40100b4e40100b6e40100b8e40100bae40100bce40100bee40100c0e40100c2e40100c4e40100c6e40100c8e40100cae40100cce40100cee40100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5106,7 +5106,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 1096
     height: 399
   m_SerializedDataModeController:
@@ -5675,7 +5675,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 504
+    y: 449
     width: 1096
     height: 490
   m_SerializedDataModeController:
@@ -5705,7 +5705,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: 0
+    controlPanelWidth: NaN
     controlPanelFoldoutKeys:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     controlPanelFoldoutValues: 00
@@ -5715,7 +5715,7 @@ MonoBehaviour:
     pluginStates:
     - '{}'
     - '{}'
-    scale: 19
+    scale: 10
     fitToScreenEnabled: 1
     rotationDegree: 0
     highlightSafeAreaEnabled: 0

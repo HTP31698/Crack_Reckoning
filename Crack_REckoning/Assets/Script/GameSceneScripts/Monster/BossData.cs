@@ -21,9 +21,9 @@ public class BossData
     }
 
     public Sprite sprite
-        => Resources.Load<Sprite>($"Sprites/{BossID}");
+        => Resources.Load<Sprite>($"MonsterSprite/{BossID}");
     public RuntimeAnimatorController AnimatorController
-        => Resources.Load<RuntimeAnimatorController>($"Animator/{BossID}");
+        => Resources.Load<RuntimeAnimatorController>($"MonsterAnimator/{BossID}");
 }
 
 public class BossDataMap : ClassMap<BossData>
