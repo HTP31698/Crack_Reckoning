@@ -187,10 +187,12 @@ public class StageManager : MonoBehaviour
     {
         ClearOrFailed.text = "Stage Clear!!!";
         ClearWindow.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
     public void ShowFailedWindow()
     {
         ClearOrFailed.text = "Stage Failed...";
         ClearWindow.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 }

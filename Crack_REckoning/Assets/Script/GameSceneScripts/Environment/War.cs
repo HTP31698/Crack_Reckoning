@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class War : MonoBehaviour
 {
     public Slider warHpSlider;
+    public StageManager stageManager;
 
     private int currentHp;
     private int maxHp;
@@ -33,6 +34,7 @@ public class War : MonoBehaviour
         {
             currentHp = 0;
             warHpSlider.value = (float)currentHp / (float)maxHp;
+            stageManager.ShowFailedWindow();
         }
     }
 }

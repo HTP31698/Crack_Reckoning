@@ -4268,6 +4268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warHpSlider: {fileID: 2076864397}
+  stageManager: {fileID: 1999743625}
 --- !u!1 &1479958043
 GameObject:
   m_ObjectHideFlags: 0
