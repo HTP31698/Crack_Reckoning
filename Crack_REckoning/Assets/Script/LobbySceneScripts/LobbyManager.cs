@@ -8,6 +8,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject HomeWindow;
     public GameObject StageSelctWindow;
     public GameObject SkillWindow;
+    public GameObject SkillEnforceWindow;
 
     public Button StageChallengeButton;
     public Button Stage1Button;
@@ -26,6 +27,7 @@ public class LobbyManager : MonoBehaviour
         HomeWindow.SetActive(true);
         StageSelctWindow.SetActive(false);
         SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
 
         StageChallengeButton.onClick.AddListener(StageChallengeButtonClick);
         Stage1Button.onClick.AddListener(Stage1ButtonClick);
@@ -43,6 +45,7 @@ public class LobbyManager : MonoBehaviour
         HomeWindow.SetActive(false);
         StageSelctWindow.SetActive(true);
         SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
     }
 
     public void HomeButtonClick()
@@ -50,6 +53,7 @@ public class LobbyManager : MonoBehaviour
         HomeWindow.SetActive(true);
         StageSelctWindow.SetActive(false);
         SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
     }
 
     public void SkillButtonClick()
@@ -57,6 +61,7 @@ public class LobbyManager : MonoBehaviour
         HomeWindow.SetActive(false);
         StageSelctWindow.SetActive(false);
         SkillWindow.SetActive(true);
+        SkillEnforceWindow.SetActive(false);
     }
 
 

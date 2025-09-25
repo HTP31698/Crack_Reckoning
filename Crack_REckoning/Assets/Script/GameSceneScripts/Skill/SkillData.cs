@@ -29,10 +29,12 @@ public class SkillData
     public int PenetratingPower { get; set; }
     public float SkillDamageRange { get; set; }
     public AttackTypeID AttackType { get; set; }
+    public string SkillDescription { get; set; }
 
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType}";
+        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription}";
+        ;
     }
 
     public Sprite sprite
@@ -71,5 +73,6 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.PenetratingPower).Name("PenetratingPower");
         Map(s => s.SkillDamageRange).Name("SkillDamageRange");
         Map(s => s.AttackType).Name("AttackType");
+        Map(s => s.SkillDescription).Name("SkillDescription");
     }
 }

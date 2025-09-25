@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 105fe6e2432ddf44f97466b88a4ed765
+guid: bde9e53239b2a2744b0eca8661fffe7a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Maplestory
+  - NeoDunggeunmo Pro
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
