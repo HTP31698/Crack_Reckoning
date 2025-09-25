@@ -16,14 +16,13 @@ public class StageData
     public int? M3Num { get; set; }
     public int? MiniBossID { get; set; }
     public int? MiniBossNum { get; set; }
-    public int? MainBossID { get; set; }
     public float? WaveTime { get; set; }
     public float? StageAddMHp { get; set; }
     public float? StageAddMAtt { get; set; }
 
     public override string ToString()
     {
-        return $"{Stage} / {StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {MainBossID} / {WaveTime} / {StageAddMHp} / {StageAddMAtt}";
+        return $"{Stage} / {StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {WaveTime} / {StageAddMHp} / {StageAddMAtt}";
     }
 }
 
@@ -48,7 +47,6 @@ public class StageDataMap : ClassMap<StageData>
         Map(s => s.MiniBossID).Name("MiniBossID").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.MiniBossNum).Name("MiniBossNum").Default(0).TypeConverterOption.NullValues("", " ");
 
-        Map(s => s.MainBossID).Name("MainBossID").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.WaveTime).Name("WaveTime").Default(0f).TypeConverterOption.NullValues("", " ");
         Map(s => s.StageAddMHp).Name("StageAddMHp").Default(0f).TypeConverterOption.NullValues("", " ");
         Map(s => s.StageAddMAtt).Name("StageAddMAtt").Default(0f).TypeConverterOption.NullValues("", " ");

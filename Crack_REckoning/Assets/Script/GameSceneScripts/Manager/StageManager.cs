@@ -96,8 +96,6 @@ public class StageManager : MonoBehaviour
             if (currentStageData.MiniBossID.HasValue && currentStageData.MiniBossNum.GetValueOrDefault() > 0)
                 StartCoroutine(SpawnBossGroup(currentStageData.MiniBossID.Value, currentStageData.MiniBossNum.Value));
 
-            if (currentStageData.MainBossID > 0)
-                SpawnBoss(currentStageData.MainBossID.Value);
             yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
         }
     }
