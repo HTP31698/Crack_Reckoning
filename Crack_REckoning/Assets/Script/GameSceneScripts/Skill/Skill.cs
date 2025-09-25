@@ -35,6 +35,7 @@ public class Skill : MonoBehaviour
     public int PenetratingPower { get; set; }
     public float SkillDamageRange { get; set; }
     public AttackTypeID AttackType { get; private set; }
+    public string SkillDescription { get; set; }
 
     public Sprite sprite { get; private set; }
     public RuntimeAnimatorController controller { get; private set; }
@@ -154,6 +155,7 @@ public class Skill : MonoBehaviour
         PenetratingPower = data.PenetratingPower;
         SkillDamageRange = data.SkillDamageRange;
         AttackType = data.AttackType;
+        SkillDescription = data.SkillDescription;
 
         // 비주얼 리소스
         controller = data.AnimatorController;

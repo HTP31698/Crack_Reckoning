@@ -1,4 +1,4 @@
-SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,AttackType,Description
+SkillID,SkillName,SkillType,SkillRange,SkillDamage,SkillCoolTime,ProjectilesNum,AttackNum,PenetratingPower,SkillDamageRange,AttackType,SkillDescription
 3001,파이어볼,Fire,7,80,3.5,1,1,1,0.1,Projectile,불 속성이며 파이어볼을 날린다.
 300101,파이어볼 +1,Fire,7,85,3.5,1,1,1,0.1,Projectile,불 속성이며 파이어볼을 날린다.
 300102,파이어볼 +2,Fire,7,90,3.5,1,1,1,0.1,Projectile,불 속성이며 파이어볼을 날린다.

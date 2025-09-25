@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Generic; // ★ 꼭 추가
+using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,19 @@ public class SkillWindowManager : MonoBehaviour
     public Button[] SkillSelectButtons;
     public Button ExitButton;
     public Button SkillEnforceButton;
+    public Button SkillEquipButton;
+
+    [Header("Texts")]
+    public TextMeshProUGUI SkillName;
+    public TextMeshProUGUI SkillDescription;
+    public TextMeshProUGUI[] SkillStats; // 0~5 사용
+    public TextMeshProUGUI EnforcePct;
+    public TextMeshProUGUI EnforceDamage;
+    public TextMeshProUGUI EnforceStat;
+    public TextMeshProUGUI EnforceCurrentGold;
+    public TextMeshProUGUI EnforceNeedGold;
+
+    public TextMeshProUGUI Gold;
 
     private SkillTable _skillTable;
     private List<int> _owned;
@@ -18,10 +33,8 @@ public class SkillWindowManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // 패널 열릴 때마다 초기화
-        SkillEnforceWindow.SetActive(false);
+        if (SkillEnforceWindow) SkillEnforceWindow.SetActive(false);
 
-        // 데이터 확보 (Awake보다 OnEnable이 안전한 편)
         _skillTable = DataTableManager.Get<SkillTable>("SkillTable");
         _owned = SaveLoadManager.Data != null ? SaveLoadManager.Data.OwnedSkillIds : null;
 
@@ -38,9 +51,10 @@ public class SkillWindowManager : MonoBehaviour
 
     private void OnDisable()
     {
-        // 리스너 정리 (중복 방지)
         if (ExitButton) ExitButton.onClick.RemoveAllListeners();
         if (SkillEnforceButton) SkillEnforceButton.onClick.RemoveAllListeners();
+        if (SkillEquipButton) SkillEquipButton.onClick.RemoveAllListeners();
+
         if (SkillSelectButtons != null)
         {
             foreach (var b in SkillSelectButtons)
@@ -52,7 +66,10 @@ public class SkillWindowManager : MonoBehaviour
     {
         if (!ExitButton) return;
         ExitButton.onClick.RemoveAllListeners();
-        ExitButton.onClick.AddListener(() => SkillEnforceWindow.SetActive(false));
+        ExitButton.onClick.AddListener(() =>
+        {
+            if (SkillEnforceWindow) SkillEnforceWindow.SetActive(false);
+        });
     }
 
     private void BindSkillButtons()
@@ -66,7 +83,7 @@ public class SkillWindowManager : MonoBehaviour
             var btn = SkillSelectButtons[i];
             if (btn == null || btn.image == null) continue;
 
-            int skillId = _owned[i];          // 캡처용 로컬 변수
+            int skillId = _owned[i];
 
             var sdata = _skillTable.Get(skillId);
             if (sdata == null || sdata.sprite == null)
@@ -81,12 +98,10 @@ public class SkillWindowManager : MonoBehaviour
             btn.image.sprite = sdata.sprite;
             btn.interactable = true;
 
-            // 중복 방지 후 리스너 등록
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(() => OnSkillSelected(skillId));
         }
 
-        // 남는 버튼 정리
         for (int i = fillCount; i < SkillSelectButtons.Length; i++)
         {
             var btn = SkillSelectButtons[i];
@@ -100,95 +115,175 @@ public class SkillWindowManager : MonoBehaviour
     private void OnSkillSelected(int id)
     {
         _selectedSkillId = id;
-        SkillEnforceWindow.SetActive(true);
+        if (SkillEnforceWindow) SkillEnforceWindow.SetActive(true);
 
-        // 강화 버튼 리스너 갱신 (항상 1개만 있도록)
+        // ★ 각 버튼 별도로 바인딩
         if (SkillEnforceButton)
         {
             SkillEnforceButton.onClick.RemoveAllListeners();
             SkillEnforceButton.onClick.AddListener(TryEnforceSelected);
         }
+        if (SkillEquipButton)
+        {
+            SkillEquipButton.onClick.RemoveAllListeners();
+            SkillEquipButton.onClick.AddListener(TryEquipSelected);
+        }
 
-        // 테스트용 골드 세팅이면 UI 전에 해두는 게 자연스러움
-        SaveLoadManager.Data.Gold = 99999999;
+        // 테스트 코드는 개발 중에만
+        // SaveLoadManager.Data.Gold = 99999999;
 
-        RefreshUI();
-        var sdata = _skillTable.Get(id);
-        if (sdata != null) Debug.Log($"스킬 선택: {sdata.SkillName} (id={id})");
+        RefreshUI(id);
     }
 
     private void TryEnforceSelected()
     {
-        if (_selectedSkillId < 0)
-        {
-            Toast("선택된 스킬이 없습니다.");
-            return;
-        }
-
         TryEnforce(_selectedSkillId);
+    }
+
+    private void TryEquipSelected()
+    {
+        TryEquipSkill(_selectedSkillId);
     }
 
     public void TryEnforce(int currentId)
     {
         var data = SaveLoadManager.Data;
-        if (data == null) { Toast("데이터 없음"); return; }
-
-        var table = DataTableManager.Get<SkillEnforceTable>(DataTableIds.SkillEnforceTable);
-        if (table == null) { Toast("강화 테이블 없음"); return; }
-
-        var row = table.Get(currentId);
-        if (row == null) { Toast("최대 강화입니다"); return; }
-
-        int next = row.ResultRewards;
-        int cost = row.GoldNum;
-        int pct = Mathf.Clamp(row.SuccessPercent, 0, 100);
+        if (data == null)
+        {
+            Debug.LogWarning("[SkillWindow] SaveLoadManager.Data is null");
+            return;
+        }
 
         if (data.OwnedSkillIds == null) data.OwnedSkillIds = new List<int>();
         if (data.EquipmentSkillIds == null) data.EquipmentSkillIds = new List<int>();
 
         int ownedIdx = data.OwnedSkillIds.IndexOf(currentId);
-        if (ownedIdx < 0) { Toast("보유하지 않은 스킬입니다."); return; }
+        if (ownedIdx < 0)
+        {
+            Debug.LogWarning($"[SkillWindow] 보유하지 않은 스킬 강화 시도: {currentId}");
+            return;
+        }
 
-        if (data.Gold < cost) { Toast("골드가 부족합니다."); return; }
+        var table = DataTableManager.Get<SkillEnforceTable>(DataTableIds.SkillEnforceTable);
+        if (table == null)
+        {
+            Debug.LogWarning("[SkillWindow] SkillEnforceTable not found");
+            return;
+        }
+
+        var row = table.Get(currentId);
+        if (row == null)
+        {
+            Debug.Log("[SkillWindow] 강화 최종 단계이거나 데이터 없음");
+            RefreshUI(currentId);
+            return;
+        }
+
+        int next = row.ResultRewards;
+        int cost = Mathf.Max(0, row.GoldNum);
+        int pct = Mathf.Clamp(row.SuccessPercent, 0, 100);
+
+        if (data.Gold < cost)
+        {
+            Debug.Log("골드 부족");
+            RefreshUI(currentId);
+            return;
+        }
+
+        // 비용 선차감 (대부분 게임이 이렇게 처리)
         data.Gold -= cost;
 
-        bool success = Random.Range(0, 100) < pct; // int 버전은 상한 미포함(0~99)
-
+        bool success = Random.Range(0, 100) < pct; // 0~99
         if (success)
         {
             data.OwnedSkillIds[ownedIdx] = next;
 
-            // 2) 장착 목록에서 첫 슬롯만 교체 (없으면 아무 것도 안 함)
-            int equipIdx = data.EquipmentSkillIds.IndexOf(currentId); // 첫 번째만 찾음
+            int equipIdx = data.EquipmentSkillIds.IndexOf(currentId);
             if (equipIdx >= 0)
-            {
-                data.EquipmentSkillIds[equipIdx] = next;  // ← 여기서 딱 한 칸만 바꾼다!
-            }
-            _selectedSkillId = next; // 선택 ID 갱신(옵션)
-            Toast($"강화 성공! {row.EnhanceID} → {next}");
+                data.EquipmentSkillIds[equipIdx] = next;
+
+            _selectedSkillId = next;
+            RefreshUI(next);
         }
         else
         {
-            Toast("강화 실패");
+            RefreshUI(currentId);
         }
 
-        // 장착 슬롯 보정(필요 시)
-        const int MaxSlots = 5;
-        while (data.EquipmentSkillIds.Count < MaxSlots) data.EquipmentSkillIds.Add(0);
-        if (data.EquipmentSkillIds.Count > MaxSlots)
-            data.EquipmentSkillIds.RemoveRange(MaxSlots, data.EquipmentSkillIds.Count - MaxSlots);
-
         SaveLoadManager.Save();
-
-        // 버튼/아이콘/골드 등 갱신
-        RefreshUI();
-
-        // ★ 재귀 금지: 여기서 다시 OnSkillSelected/리스너 추가하지 않음
-        // 필요하면 버튼 스프라이트만 갱신:
-        // BindSkillButtons(); // 스프라이트 전체 리바인딩이 필요할 때만 호출
     }
 
-    private void Toast(string msg) { Debug.Log("[Enforce] " + msg); }
-    private void RefreshUI() { /* 골드 텍스트/선택 아이콘/확률/비용 등 갱신 */ }
+    private void TryEquipSkill(int currentId)
+    {
+        var data = SaveLoadManager.Data;
+        if (data == null) return;
+
+        if (data.EquipmentSkillIds == null)
+            data.EquipmentSkillIds = new List<int>();
+
+        data.EquipmentSkillIds.Clear();
+        data.EquipmentSkillIds.Add(currentId);
+
+        SaveLoadManager.Save();
+        Debug.Log("장착 완료");
+    }
+
+    private void RefreshUI(int id)
+    {
+        var data = SaveLoadManager.Data;
+        if (data == null || _skillTable == null) return;
+
+        var sdata = _skillTable.Get(id);
+        if (sdata == null) return;
+
+        var table = DataTableManager.Get<SkillEnforceTable>(DataTableIds.SkillEnforceTable);
+        var endata = table != null ? table.Get(id) : null;
+        var hasNext = endata != null;
+        var nextsdata = hasNext ? _skillTable.Get(endata.ResultRewards) : null;
+
+        if (SkillName) SkillName.text = sdata.SkillName;
+        if (SkillDescription) SkillDescription.text = sdata.SkillDescription;
+
+        // SkillStats[0..5] 가드
+        if (SkillStats != null && SkillStats.Length >= 6)
+        {
+            SkillStats[0].text = $"공격력 {sdata.SkillDamage}";
+            SkillStats[1].text = $"쿨타임 {sdata.SkillCoolTime}";
+            SkillStats[2].text = $"투사체 개수 {sdata.ProjectilesNum}";
+            SkillStats[3].text = $"공격 횟수 {sdata.AttackNum}";
+            SkillStats[4].text = $"관통력 {sdata.PenetratingPower}";
+            SkillStats[5].text = (sdata.AttackType == AttackTypeID.Projectile) ? "투사체 공격" : "범위 공격";
+        }
+
+        if (hasNext && nextsdata != null)
+        {
+            if (EnforcePct) EnforcePct.text = $"{endata.SuccessPercent}%";
+            if (EnforceDamage) EnforceDamage.text = $"공격력 증가 {nextsdata.SkillDamage - sdata.SkillDamage}";
+
+            var sb = new StringBuilder();
+            if (nextsdata.SkillCoolTime < sdata.SkillCoolTime)
+                sb.AppendLine($"쿨타임 감소 {sdata.SkillCoolTime - nextsdata.SkillCoolTime}");
+            if (nextsdata.ProjectilesNum > sdata.ProjectilesNum)
+                sb.AppendLine($"투사체 증가 {nextsdata.ProjectilesNum - sdata.ProjectilesNum}");
+            if (nextsdata.AttackNum > sdata.AttackNum)
+                sb.AppendLine($"공격 횟수 증가 {nextsdata.AttackNum - sdata.AttackNum}");
+            if (nextsdata.PenetratingPower > sdata.PenetratingPower)
+                sb.AppendLine($"관통력 증가 {nextsdata.PenetratingPower - sdata.PenetratingPower}");
+
+            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "변화 없음";
+            if (EnforceNeedGold) EnforceNeedGold.text = $"/{endata.GoldNum}";
+        }
+        else
+        {
+            if (EnforcePct) EnforcePct.text = "-";
+            if (EnforceDamage) EnforceDamage.text = "최대 레벨";
+            if (EnforceStat) EnforceStat.text = "최대 레벨";
+            if (EnforceNeedGold) EnforceNeedGold.text = "";
+        }
+
+        if (EnforceCurrentGold) EnforceCurrentGold.text = $"{data.Gold}";
+        if (Gold) Gold.text = $"{data.Gold}";
+    }
 }
+
 

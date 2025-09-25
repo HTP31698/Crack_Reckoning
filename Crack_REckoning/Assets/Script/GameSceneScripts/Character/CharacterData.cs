@@ -7,6 +7,8 @@ public class CharacterData
     public string ChName { get; set; }
     public int ChCri { get; set; }
     public float ChCriDam { get; set; }
+
+
 }
 
 
