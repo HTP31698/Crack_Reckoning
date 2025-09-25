@@ -24,8 +24,9 @@ public class SkillWindowManager : MonoBehaviour
     public TextMeshProUGUI EnforceStat;
     public TextMeshProUGUI EnforceCurrentGold;
     public TextMeshProUGUI EnforceNeedGold;
-
     public TextMeshProUGUI Gold;
+
+    public Image SkillImage;
 
     private SkillTable _skillTable;
     private List<int> _owned;
@@ -241,6 +242,8 @@ public class SkillWindowManager : MonoBehaviour
         var hasNext = endata != null;
         var nextsdata = hasNext ? _skillTable.Get(endata.ResultRewards) : null;
 
+        SkillImage.sprite = sdata.sprite;
+
         if (SkillName) SkillName.text = sdata.SkillName;
         if (SkillDescription) SkillDescription.text = sdata.SkillDescription;
 
@@ -257,7 +260,7 @@ public class SkillWindowManager : MonoBehaviour
 
         if (hasNext && nextsdata != null)
         {
-            if (EnforcePct) EnforcePct.text = $"{endata.SuccessPercent}%";
+            if (EnforcePct) EnforcePct.text = $"강화 확률 : {endata.SuccessPercent}%";
             if (EnforceDamage) EnforceDamage.text = $"공격력 증가 {nextsdata.SkillDamage - sdata.SkillDamage}";
 
             var sb = new StringBuilder();
@@ -270,7 +273,7 @@ public class SkillWindowManager : MonoBehaviour
             if (nextsdata.PenetratingPower > sdata.PenetratingPower)
                 sb.AppendLine($"관통력 증가 {nextsdata.PenetratingPower - sdata.PenetratingPower}");
 
-            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "변화 없음";
+            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "추가 강화 효과 변화 없음";
             if (EnforceNeedGold) EnforceNeedGold.text = $"/{endata.GoldNum}";
         }
         else

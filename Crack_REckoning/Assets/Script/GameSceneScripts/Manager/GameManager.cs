@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StageSkillListInit();
+        SetSkillStat(0, SaveLoadManager.Data.EquipmentSkillIds[0]);
     }
 
     public void Update()
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
         }
         else if (toggle.isOn && !isStop)
         {
-            TimeSet = 3f;
+            TimeSet = 2f;
             Time.timeScale = TimeSet;
         }
 
@@ -110,7 +111,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 이 부분 나중에 종합했을때 수정해야함
     private void SetSkillStat(int index, int id)
     {
         SkillData s = DataTableManager.Get<SkillTable>(SkillTable).Get(id);
@@ -130,7 +130,6 @@ public class GameManager : MonoBehaviour
 
         var text = sliderSkills[index].transform.Find(Enforce)?.GetComponent<TextMeshProUGUI>();
         if (text != null) text.text = $"+{enforceLevel[id]}";
-
     }
 
     private void UpdateSkillStat(int id)
@@ -157,7 +156,7 @@ public class GameManager : MonoBehaviour
         {
             StageSkillList.Add(id);
         }
-        StageSkillList.Add(31001);
+        StageSkillList.Add(3001);
     }
 
     public void ShowLevelUpSkills()

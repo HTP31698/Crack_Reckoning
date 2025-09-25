@@ -1,9 +1,13 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadPlayerData : MonoBehaviour
 {
+    public TextMeshProUGUI title;
+    public float interval = 0.5f;
+
     private void Awake()
     {
         if (!SaveLoadManager.Load(0))
@@ -36,5 +40,20 @@ public class LoadPlayerData : MonoBehaviour
             }
             SceneManager.LoadScene(index);
         }
+        if (title)
+        {
+            float safe;
+            if (interval > 0f)
+                safe = interval;
+            else
+                safe = 0.001f;
+
+            int block = Mathf.FloorToInt(Time.unscaledTime / safe);
+            bool even = (block % 2) == 0;
+            title.enabled = even;
+        }
+
+
+
     }
 }
