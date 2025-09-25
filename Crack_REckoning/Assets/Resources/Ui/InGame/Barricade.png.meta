@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: cf76e2db770b41d499e048c9a696b84c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7877840947907775127
+    second: Barricade_0
+  - first:
+      213: 4890213120060851332
+    second: Barricade_1
+  - first:
+      213: 8533849991168237106
+    second: Barricade_2
+  - first:
+      213: 7188689858358236566
+    second: Barricade_3
+  - first:
+      213: 8253138721870422686
+    second: Barricade_4
+  - first:
+      213: 7012997316758116389
+    second: Barricade_5
+  - first:
+      213: 2162167443258712478
+    second: Barricade_6
+  - first:
+      213: 6430842447837538938
+    second: Barricade_7
+  - first:
+      213: 8642250103705473303
+    second: Barricade_8
+  - first:
+      213: -3921171091795217122
+    second: Barricade_9
+  - first:
+      213: 8461612699452766278
+    second: Barricade_10
+  - first:
+      213: 6275394695004768144
+    second: Barricade_11
+  - first:
+      213: 8530437759872455646
+    second: Barricade_12
+  - first:
+      213: -4356066579827717602
+    second: Barricade_13
+  - first:
+      213: -3977679879298899780
+    second: Barricade_14
+  - first:
+      213: -809359159553637306
+    second: Barricade_15
+  - first:
+      213: 4178810564164884204
+    second: Barricade_16
+  - first:
+      213: -7916204708818285583
+    second: Barricade_17
+  - first:
+      213: -3584089913183651123
+    second: Barricade_18
+  - first:
+      213: -8420072607852090330
+    second: Barricade_19
+  - first:
+      213: -8841085749978988411
+    second: Barricade_20
+  - first:
+      213: 508985079460174736
+    second: Barricade_21
+  - first:
+      213: -7418962609534823073
+    second: Barricade_22
+  - first:
+      213: -3008432615485565066
+    second: Barricade_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Barricade_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 815
+        width: 306
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ac1118a96b35d60800000000000000
+      internalID: 7877840947907775127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_1
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 816
+        width: 387
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4848e295ce68dd340800000000000000
+      internalID: 4890213120060851332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_2
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 823
+        width: 131
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e9d0a4a535e6670800000000000000
+      internalID: 8533849991168237106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_3
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 639
+        width: 298
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69555efb65b53c360800000000000000
+      internalID: 7188689858358236566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_4
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 639
+        width: 391
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e92ab17c0f9098270800000000000000
+      internalID: 8253138721870422686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_5
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 639
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 528922437eb235160800000000000000
+      internalID: 7012997316758116389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_6
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 639
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91a95085df810e10800000000000000
+      internalID: 2162167443258712478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_7
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 639
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a2cdd5221fe3950800000000000000
+      internalID: 6430842447837538938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_8
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 639
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71192734ea07fe770800000000000000
+      internalID: 8642250103705473303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_9
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 639
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15f302daa33599c0800000000000000
+      internalID: -3921171091795217122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_10
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 639
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648f0d92befad6570800000000000000
+      internalID: 8461612699452766278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_11
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 639
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09741250a3ea61750800000000000000
+      internalID: 6275394695004768144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_12
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 639
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3d6c742f3326670800000000000000
+      internalID: 8530437759872455646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_13
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 639
+        width: 154
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a0b6b66842c83c0800000000000000
+      internalID: -4356066579827717602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_14
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 466
+        width: 298
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb0ab2479317cc8c0800000000000000
+      internalID: -3977679879298899780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_15
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 531
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 644c81fe12494c4f0800000000000000
+      internalID: -809359159553637306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_16
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 463
+        width: 388
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce692bc511e1ef930800000000000000
+      internalID: 4178810564164884204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_17
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 467
+        width: 153
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fb8c9952cdf32290800000000000000
+      internalID: -7916204708818285583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_18
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 295
+        width: 298
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcab0a99631c24ec0800000000000000
+      internalID: -3584089913183651123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_19
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 295
+        width: 390
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62caaf91394e52b80800000000000000
+      internalID: -8420072607852090330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_20
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 295
+        width: 145
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5800cbb3a572e4580800000000000000
+      internalID: -8841085749978988411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_21
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 88
+        width: 298
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b9239ab37401700800000000000000
+      internalID: 508985079460174736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_22
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 64
+        width: 390
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5595c060dc8a0990800000000000000
+      internalID: -7418962609534823073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barricade_23
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 119
+        width: 160
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 677984fb976ef36d0800000000000000
+      internalID: -3008432615485565066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Barricade_0: 7877840947907775127
+      Barricade_1: 4890213120060851332
+      Barricade_10: 8461612699452766278
+      Barricade_11: 6275394695004768144
+      Barricade_12: 8530437759872455646
+      Barricade_13: -4356066579827717602
+      Barricade_14: -3977679879298899780
+      Barricade_15: -809359159553637306
+      Barricade_16: 4178810564164884204
+      Barricade_17: -7916204708818285583
+      Barricade_18: -3584089913183651123
+      Barricade_19: -8420072607852090330
+      Barricade_2: 8533849991168237106
+      Barricade_20: -8841085749978988411
+      Barricade_21: 508985079460174736
+      Barricade_22: -7418962609534823073
+      Barricade_23: -3008432615485565066
+      Barricade_3: 7188689858358236566
+      Barricade_4: 8253138721870422686
+      Barricade_5: 7012997316758116389
+      Barricade_6: 2162167443258712478
+      Barricade_7: 6430842447837538938
+      Barricade_8: 8642250103705473303
+      Barricade_9: -3921171091795217122
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

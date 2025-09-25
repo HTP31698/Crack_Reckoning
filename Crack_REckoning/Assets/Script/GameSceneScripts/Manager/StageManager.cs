@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Xml.Schema;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -15,6 +17,7 @@ public class StageManager : MonoBehaviour
     private static readonly string MonsterTable = "MonsterTable";
 
     public Transform target;
+    public GameManager gameManager;
 
     private GameObject monsterPrefab;
     private GameObject bossPrefab;
@@ -26,11 +29,20 @@ public class StageManager : MonoBehaviour
 
     private float StageAddMHp;
     private float StageAddMAtt;
+    private int ClearGoldMin;
+    private int ClearGoldMax;
+    private int FailGoldMin;
+    private int FailGoldMax;
 
+    [Header("Texts")]
     public TextMeshProUGUI settingStageName;
     public TextMeshProUGUI StageName;
     public TextMeshProUGUI ClearOrFailed;
     public TextMeshProUGUI ClearWindowCurrentStageName;
+
+    public TextMeshProUGUI Gold;
+
+    [Header("Images")]
     public Image[] monsterSlots;
 
     public GameObject ClearWindow;
@@ -77,6 +89,10 @@ public class StageManager : MonoBehaviour
             ClearWindowCurrentStageName.text = currentStageData.StageName;
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
             StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
+            ClearGoldMin = currentStageData.ClearGoldMin;
+            ClearGoldMax = currentStageData.ClearGoldMax;
+            FailGoldMin = currentStageData.FailGoldMin;
+            FailGoldMax = currentStageData.FailGoldMax;
 
             // UI 갱신
             currentMonsterIds.Clear();
@@ -118,8 +134,8 @@ public class StageManager : MonoBehaviour
         monster.Init(monsterId);
         monster.SetTarget(target);
 
-            // 스테이지 보정
-            monster.maxHp = (int)(monster.maxHp * addHp);
+        // 스테이지 보정
+        monster.maxHp = (int)(monster.maxHp * addHp);
         monster.currentHp = monster.maxHp;
         monster.damage = (int)(monster.damage * addAtt);
     }
@@ -128,18 +144,22 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            SpawnBoss(bossId);
+            SpawnBoss(bossId, StageAddMHp, StageAddMAtt);
             yield return new WaitForSeconds(1f);
         }
     }
 
-    public void SpawnBoss(int bossId)
+    public void SpawnBoss(int bossId, float addHp, float addAtt)
     {
         Vector3 spawnPos = new Vector3(0, 7, 0);
         GameObject obj = Instantiate(bossPrefab, spawnPos, Quaternion.identity);
         Boss boss = obj.GetComponent<Boss>();
         boss.Init(bossId);
         boss.SetTarget(target);
+
+        boss.maxHp = (int)(boss.maxHp * addHp);
+        boss.currentHp = boss.maxHp;
+        boss.damage = (int)(boss.damage * addAtt);
     }
 
     private float GetSpawnPositionX(GameObject prefab, float prefabZ = 0f)
@@ -186,13 +206,34 @@ public class StageManager : MonoBehaviour
     public void ShowClearWindow()
     {
         ClearOrFailed.text = "Stage Clear!!!";
+        gameManager.gameObject.SetActive(true);
         ClearWindow.gameObject.SetActive(true);
+
+        var data = SaveLoadManager.Data;
+        if(data != null)
+        {
+            int clear = Random.Range(ClearGoldMin, ClearGoldMax);
+            data.Gold += clear;
+            Gold.text = $"+{clear}";
+            SaveLoadManager.Save();
+        }
+
         Time.timeScale = 0;
     }
     public void ShowFailedWindow()
     {
         ClearOrFailed.text = "Stage Failed...";
+        gameManager.NextStageButton.gameObject.SetActive(false);
         ClearWindow.gameObject.SetActive(true);
+
+        var data = SaveLoadManager.Data;
+        if (data != null)
+        {
+            int Failed = Random.Range(FailGoldMin, FailGoldMax);
+            Gold.text = $"+{Failed}";
+            data.Gold += Failed;
+            SaveLoadManager.Save();
+        }
         Time.timeScale = 0;
     }
 }

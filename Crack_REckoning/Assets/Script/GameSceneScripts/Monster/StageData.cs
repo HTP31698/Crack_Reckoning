@@ -19,10 +19,16 @@ public class StageData
     public float? WaveTime { get; set; }
     public float? StageAddMHp { get; set; }
     public float? StageAddMAtt { get; set; }
+    
+    public int ClearGoldMin {  get; set; }
+    public int ClearGoldMax { get; set; }
+    public int FailGoldMin { get; set; }
+    public int FailGoldMax { get; set; }
+
 
     public override string ToString()
     {
-        return $"{Stage} / {StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {WaveTime} / {StageAddMHp} / {StageAddMAtt}";
+        return $"{Stage} / {StageName} / {SpawnNum} / {M1Id} / {M1Num} / {M2Id} / {M2Num} / {M3Id} / {M3Num} / {MiniBossID} / {MiniBossNum} / {WaveTime} / {StageAddMHp} / {StageAddMAtt} / {ClearGoldMin} / {ClearGoldMax} / {FailGoldMin} / {FailGoldMax}";
     }
 }
 
@@ -50,5 +56,10 @@ public class StageDataMap : ClassMap<StageData>
         Map(s => s.WaveTime).Name("WaveTime").Default(0f).TypeConverterOption.NullValues("", " ");
         Map(s => s.StageAddMHp).Name("StageAddMHp").Default(0f).TypeConverterOption.NullValues("", " ");
         Map(s => s.StageAddMAtt).Name("StageAddMAtt").Default(0f).TypeConverterOption.NullValues("", " ");
+
+        Map(s => s.ClearGoldMin).Name("ClearGoldMin");
+        Map(s => s.ClearGoldMax).Name("ClearGoldMax");
+        Map(s => s.FailGoldMin).Name("FailGoldMin");
+        Map(s => s.FailGoldMax).Name("FailGoldMax");
     }
 }
