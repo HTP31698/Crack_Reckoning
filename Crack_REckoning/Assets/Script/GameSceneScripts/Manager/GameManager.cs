@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -38,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private float TimeSet = 1f;
     bool isStop = false;
+    private bool isClear = false;
 
     public Slider[] sliderSkills;
     private Dictionary<int, int> skillIndex;
@@ -76,7 +76,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StageSkillListInit();
-        SetSkillStat(0, SaveLoadManager.Data.EquipmentSkillIds[0]);
+        var data = SaveLoadManager.Data;
+        if(data?.EquipmentSkillIds != null && data.EquipmentSkillIds.Count > 0)
+        {
+            SetSkillStat(0, SaveLoadManager.Data.EquipmentSkillIds[0]);
+        }
+        isClear = false;
     }
 
     public void Update()
@@ -104,9 +109,10 @@ public class GameManager : MonoBehaviour
                 stageManager.wave20Spawned = true; // 몬스터가 생성된 걸 확인
             }
 
-            if (stageManager.wave20Spawned && !MonsterManager.HasMonster())
+            if (stageManager.wave20Spawned && !MonsterManager.HasMonster() && !isClear)
             {
                 ClearWindowPause(); // 몬스터 다 잡았을 때만 클리어
+                return;
             }
         }
     }
@@ -320,6 +326,8 @@ public class GameManager : MonoBehaviour
     }
     private void ClearWindowPause()
     {
+        if (isClear) return;
+        isClear = true;
         for (int i = 0; i < 3; i++)
         {
             Buttons[i].gameObject.SetActive(false);
@@ -329,6 +337,8 @@ public class GameManager : MonoBehaviour
     }
     private void FailedWindowPause()
     {
+        if (isClear) return;
+        isClear = true;
         for (int i = 0; i < 3; i++)
         {
             Buttons[i].gameObject.SetActive(false);
@@ -339,12 +349,14 @@ public class GameManager : MonoBehaviour
 
     private void RetryButtonClick()
     {
+        Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
 
     private void NextStageButtonClick()
     {
+        Time.timeScale = 1f;
         PlaySetting.SetSelectStage(PlaySetting.SelectStage + 1);
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
@@ -352,6 +364,7 @@ public class GameManager : MonoBehaviour
 
     private void ExitStageButtonClick()
     {
+        Time.timeScale = 1f;
         // 씬 경로로 빌드 인덱스 확인 (프로젝트 실제 경로)
         const string scenePath = "Assets/Scenes/LobbyScene.unity";
         int index = SceneUtility.GetBuildIndexByScenePath(scenePath);

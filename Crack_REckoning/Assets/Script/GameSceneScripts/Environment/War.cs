@@ -1,9 +1,4 @@
-using JetBrains.Annotations;
-using System.Text;
-using System.Threading;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class War : MonoBehaviour
@@ -13,28 +8,41 @@ public class War : MonoBehaviour
 
     private int currentHp;
     private int maxHp;
+    private bool isDead;
 
-    public void Awake()
+    private void Awake()
     {
         maxHp = 3000;
         currentHp = maxHp;
+        isDead = false;
     }
 
-    protected void OnEnable()
+    private void OnEnable()
     {
-        warHpSlider.gameObject.SetActive(true);
-        warHpSlider.value = (float)currentHp / (float)maxHp;
+        if (warHpSlider != null)
+        {
+            warHpSlider.gameObject.SetActive(true);
+            warHpSlider.minValue = 0f;
+            warHpSlider.maxValue = 1f;
+            warHpSlider.value = (float)currentHp / maxHp;
+        }
     }
 
     public void TakeDamage(int amount)
     {
-        currentHp -= amount;
-        warHpSlider.value = (float)currentHp / (float)maxHp;
-        if (currentHp < 0)
+        if (isDead) return;
+
+        currentHp = Mathf.Max(0, currentHp - Mathf.Max(0, amount));
+        if (warHpSlider != null)
+            warHpSlider.value = (float)currentHp / maxHp;
+
+        if (currentHp <= 0)
         {
-            currentHp = 0;
-            warHpSlider.value = (float)currentHp / (float)maxHp;
-            stageManager.ShowFailedWindow();
+            isDead = true;
+            if (stageManager != null)
+                stageManager.ShowFailedWindow();
+            else
+                Debug.LogWarning("StageManager reference is missing in War.");
         }
     }
 }

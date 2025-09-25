@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 10c50d9360955af419d664b72d3c388e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6801465248607385870
+    second: GameSceneUi_0
+  - first:
+      213: -2988064677896327263
+    second: GameSceneUi_1
+  - first:
+      213: 1312868551023280222
+    second: GameSceneUi_2
+  - first:
+      213: -1178076198397467882
+    second: GameSceneUi_3
+  - first:
+      213: -4756723928836200583
+    second: GameSceneUi_4
+  - first:
+      213: -6915397885466601416
+    second: GameSceneUi_5
+  - first:
+      213: 6652942568033232898
+    second: GameSceneUi_6
+  - first:
+      213: 1858099933788283582
+    second: GameSceneUi_7
+  - first:
+      213: -510845342970426879
+    second: GameSceneUi_8
+  - first:
+      213: -2651399691026458339
+    second: GameSceneUi_9
+  - first:
+      213: -5391395303309298956
+    second: GameSceneUi_10
+  - first:
+      213: -6050658492053517293
+    second: GameSceneUi_11
+  - first:
+      213: 5589955599143097481
+    second: GameSceneUi_12
+  - first:
+      213: 7236373726261627490
+    second: GameSceneUi_13
+  - first:
+      213: -4166459198994979715
+    second: GameSceneUi_14
+  - first:
+      213: 1671825582461266776
+    second: GameSceneUi_15
+  - first:
+      213: -4930796350725521868
+    second: GameSceneUi_16
+  - first:
+      213: -3036176207816743739
+    second: GameSceneUi_17
+  - first:
+      213: -8034432498972804027
+    second: GameSceneUi_18
+  - first:
+      213: 2310585678729841685
+    second: GameSceneUi_19
+  - first:
+      213: 3721643603925797252
+    second: GameSceneUi_20
+  - first:
+      213: 8942922959133177553
+    second: GameSceneUi_21
+  - first:
+      213: 2737440477924960564
+    second: GameSceneUi_22
+  - first:
+      213: -2965689536085435321
+    second: GameSceneUi_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GameSceneUi_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 845
+        width: 219
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e09386f9b98a36e50800000000000000
+      internalID: 6801465248607385870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 904
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1afe814c1034886d0800000000000000
+      internalID: -2988064677896327263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_2
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 901
+        width: 128
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e504684cdfe383210800000000000000
+      internalID: 1312868551023280222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_3
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 903
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6132d2470f1a6afe0800000000000000
+      internalID: -1178076198397467882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_4
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 862
+        width: 362
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9772e17f9c8bcfdb0800000000000000
+      internalID: -4756723928836200583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_5
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 893
+        width: 47
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 838964433429700a0800000000000000
+      internalID: -6915397885466601416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_6
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 905
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20822be4400045c50800000000000000
+      internalID: 6652942568033232898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_7
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 859
+        width: 271
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2a0ae8b0c49c910800000000000000
+      internalID: 1858099933788283582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_8
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 865
+        width: 112
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ac51dfddc19e8f0800000000000000
+      internalID: -510845342970426879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_9
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 904
+        width: 22
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1999ca5706543bd0800000000000000
+      internalID: -2651399691026458339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_10
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 903
+        width: 77
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f23a86598aed25b0800000000000000
+      internalID: -5391395303309298956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_11
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 903
+        width: 94
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31c03f3c82eb70ca0800000000000000
+      internalID: -6050658492053517293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_12
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 905
+        width: 18
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98451252003839d40800000000000000
+      internalID: 5589955599143097481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_13
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 904
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a4bc76093cc6460800000000000000
+      internalID: 7236373726261627490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_14
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 886
+        width: 131
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74eeb0fe63cd26c0800000000000000
+      internalID: -4166459198994979715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_15
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 510
+        width: 331
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85ba3017284833710800000000000000
+      internalID: 1671825582461266776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_16
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 122
+        width: 334
+        height: 349
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e763fe7da429bb0800000000000000
+      internalID: -4930796350725521868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_17
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 477
+        width: 339
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4279943d55dd5d0800000000000000
+      internalID: -3036176207816743739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_18
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 0
+        width: 332
+        height: 476
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c3fded536ff7090800000000000000
+      internalID: -8034432498972804027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_19
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 0
+        width: 370
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c0ccbce69d01020800000000000000
+      internalID: 2310585678729841685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_20
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 478
+        width: 351
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4890a90c32fe5a330800000000000000
+      internalID: 3721643603925797252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_21
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 469
+        width: 390
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d671d8bc05ab1c70800000000000000
+      internalID: 8942922959133177553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_22
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 0
+        width: 412
+        height: 478
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4392e707c975df520800000000000000
+      internalID: 2737440477924960564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameSceneUi_23
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 94
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74cd88f6411c7d6d0800000000000000
+      internalID: -2965689536085435321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0a997c0a871f42e47ad6bb14d45946a7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GameSceneUi_0: 6801465248607385870
+      GameSceneUi_1: -2988064677896327263
+      GameSceneUi_10: -5391395303309298956
+      GameSceneUi_11: -6050658492053517293
+      GameSceneUi_12: 5589955599143097481
+      GameSceneUi_13: 7236373726261627490
+      GameSceneUi_14: -4166459198994979715
+      GameSceneUi_15: 1671825582461266776
+      GameSceneUi_16: -4930796350725521868
+      GameSceneUi_17: -3036176207816743739
+      GameSceneUi_18: -8034432498972804027
+      GameSceneUi_19: 2310585678729841685
+      GameSceneUi_2: 1312868551023280222
+      GameSceneUi_20: 3721643603925797252
+      GameSceneUi_21: 8942922959133177553
+      GameSceneUi_22: 2737440477924960564
+      GameSceneUi_23: -2965689536085435321
+      GameSceneUi_3: -1178076198397467882
+      GameSceneUi_4: -4756723928836200583
+      GameSceneUi_5: -6915397885466601416
+      GameSceneUi_6: 6652942568033232898
+      GameSceneUi_7: 1858099933788283582
+      GameSceneUi_8: -510845342970426879
+      GameSceneUi_9: -2651399691026458339
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

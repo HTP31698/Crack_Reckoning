@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: e96d3bc9daffa854a8be92da7213141c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5786915950462836805
+    second: hpexp_0
+  - first:
+      213: -1522927887753037922
+    second: hpexp_1
+  - first:
+      213: -8454869763580652653
+    second: hpexp_2
+  - first:
+      213: 2453003587362617365
+    second: hpexp_3
+  - first:
+      213: -3072937892995912523
+    second: hpexp_4
+  - first:
+      213: 6721011485997059130
+    second: hpexp_5
+  - first:
+      213: -8066230708731128217
+    second: hpexp_6
+  - first:
+      213: 4078517607416395862
+    second: hpexp_7
+  - first:
+      213: -2954261214508491755
+    second: hpexp_8
+  - first:
+      213: -1042316073861096525
+    second: hpexp_9
+  - first:
+      213: -3831634813110297735
+    second: hpexp_10
+  - first:
+      213: 5962395271066875188
+    second: hpexp_11
+  - first:
+      213: -8201836520174586493
+    second: hpexp_12
+  - first:
+      213: -95643904394397595
+    second: hpexp_13
+  - first:
+      213: -1845914029686789897
+    second: hpexp_14
+  - first:
+      213: 3608806103586577987
+    second: hpexp_15
+  - first:
+      213: 3428203101615135670
+    second: hpexp_16
+  - first:
+      213: -106522999412950791
+    second: hpexp_17
+  - first:
+      213: 1976533013582144641
+    second: hpexp_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hpexp_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 823
+        width: 686
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540216485614f4050800000000000000
+      internalID: 5786915950462836805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_1
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 816
+        width: 83
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97b1f7a7297ddae0800000000000000
+      internalID: -1522927887753037922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_2
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 587
+        width: 141
+        height: 392
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393959feeb44aaa80800000000000000
+      internalID: -8454869763580652653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_3
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 966
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518f18124c1da0220800000000000000
+      internalID: 2453003587362617365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 467
+        width: 697
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc2427744bba55d0800000000000000
+      internalID: -3072937892995912523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 624
+        width: 747
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ccc2a4654d54d50800000000000000
+      internalID: 6721011485997059130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_6
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 632
+        width: 87
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 766dbb938edfe0090800000000000000
+      internalID: -8066230708731128217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_7
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 462
+        width: 67
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 658fa30b72ec99830800000000000000
+      internalID: 4078517607416395862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_8
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 644
+        width: 47
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cd187e31b5007d0800000000000000
+      internalID: -2954261214508491755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_9
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 509
+        width: 66
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb54d1ad03f881f0800000000000000
+      internalID: -1042316073861096525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 201
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b5a87307c43dac0800000000000000
+      internalID: -3831634813110297735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 290
+        width: 692
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 435f86ea8eeaeb250800000000000000
+      internalID: 5962395271066875188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_12
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 135
+        width: 535
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385fa2dd3293d2e80800000000000000
+      internalID: -8201836520174586493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_13
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 230
+        width: 234
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568f3ad20643caef0800000000000000
+      internalID: -95643904394397595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_14
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 163
+        width: 74
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8eb9658fef166e0800000000000000
+      internalID: -1845914029686789897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_15
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 166
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e1a8be70e051230800000000000000
+      internalID: 3608806103586577987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_16
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 13
+        width: 196
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb99a9be8c639f20800000000000000
+      internalID: 3428203101615135670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_17
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 0
+        width: 534
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f8f49b75ed858ef0800000000000000
+      internalID: -106522999412950791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hpexp_18
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 0
+        width: 230
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1846561cd4e0e6b10800000000000000
+      internalID: 1976533013582144641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 15950ff8a7095df42b069f5e49999da3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      hpexp_0: 5786915950462836805
+      hpexp_1: -1522927887753037922
+      hpexp_10: -3831634813110297735
+      hpexp_11: 5962395271066875188
+      hpexp_12: -8201836520174586493
+      hpexp_13: -95643904394397595
+      hpexp_14: -1845914029686789897
+      hpexp_15: 3608806103586577987
+      hpexp_16: 3428203101615135670
+      hpexp_17: -106522999412950791
+      hpexp_18: 1976533013582144641
+      hpexp_2: -8454869763580652653
+      hpexp_3: 2453003587362617365
+      hpexp_4: -3072937892995912523
+      hpexp_5: 6721011485997059130
+      hpexp_6: -8066230708731128217
+      hpexp_7: 4078517607416395862
+      hpexp_8: -2954261214508491755
+      hpexp_9: -1042316073861096525
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
