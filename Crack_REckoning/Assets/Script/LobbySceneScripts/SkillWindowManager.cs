@@ -225,7 +225,7 @@ public class SkillWindowManager : MonoBehaviour
 
         SaveLoadManager.Save();
 
-        if (SkillEquipButton) SkillEquipButton.interactable = false;
+        RefreshUI(currentId);
     }
 
     private void RefreshUI(int id)
@@ -307,19 +307,17 @@ public class SkillWindowManager : MonoBehaviour
 
         if (Gold) Gold.text = $"{data.Gold}";
 
-        // 강화 버튼 활성/비활성
-        if (SkillEnforceButton)
+        if (SkillEnforceButton != null)
         {
             bool canEnhance = hasNext && data.Gold >= (endata?.GoldNum ?? int.MaxValue);
             SkillEnforceButton.interactable = canEnhance;
 
-            var cg = SkillEquipButton.GetComponent<CanvasGroup>();
+            var cg = SkillEnforceButton.GetComponent<CanvasGroup>();
             if (cg == null) cg = SkillEnforceButton.gameObject.AddComponent<CanvasGroup>();
-            cg.alpha = canEnhance ? 1f : 0.9f;
+            cg.alpha = canEnhance ? 1f : 0.4f;
         }
 
-        // 장착 버튼 활성/비활성 + 비활성 시 투명도 0.5
-        if (SkillEquipButton)
+        if (SkillEquipButton != null)
         {
             bool canEquip = (SaveLoadManager.Data?.EquipmentSkillIds == null)
                             || !SaveLoadManager.Data.EquipmentSkillIds.Contains(id);
@@ -328,7 +326,7 @@ public class SkillWindowManager : MonoBehaviour
 
             var cg = SkillEquipButton.GetComponent<CanvasGroup>();
             if (cg == null) cg = SkillEquipButton.gameObject.AddComponent<CanvasGroup>();
-            cg.alpha = canEquip ? 1f : 0.5f;
+            cg.alpha = canEquip ? 1f : 0.2f;
         }
     }
 

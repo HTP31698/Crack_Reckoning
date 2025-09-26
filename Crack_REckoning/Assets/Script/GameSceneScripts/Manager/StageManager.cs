@@ -218,7 +218,7 @@ public class StageManager : MonoBehaviour
             SaveLoadManager.Save();
         }
 
-        Time.timeScale = 0;
+        gameManager.PauseGame();
     }
     public void ShowFailedWindow()
     {
@@ -234,6 +234,6 @@ public class StageManager : MonoBehaviour
             data.Gold += Failed;
             SaveLoadManager.Save();
         }
-        Time.timeScale = 0;
+        gameManager.PauseGame();
     }
 }

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
 
     private float TimeSet = 1f;
-    bool isStop = false;
+    public bool isStop = false;
     private bool isClear = false;
 
     public Slider[] sliderSkills;
@@ -376,6 +376,14 @@ public class GameManager : MonoBehaviour
         }
         SceneManager.LoadScene(index);
     }
+    private bool IsLevelUpUIOpen()
+    {
+        // 레벨업 선택 버튼(0~2) 중 하나라도 켜져 있으면 레벨업 창이 열린 상태
+        for (int i = 0; i < 3 && i < Buttons.Length; i++)
+            if (Buttons[i].gameObject.activeSelf)
+                return true;
+        return false;
+    }
 
     public void PauseGame()
     {
@@ -385,6 +393,9 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if ((SettingsWindow != null && SettingsWindow.activeSelf) || IsLevelUpUIOpen() || isClear)
+            return;
+
         isStop = false;
         Time.timeScale = TimeSet;
     }
