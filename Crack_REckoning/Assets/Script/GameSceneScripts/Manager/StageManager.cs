@@ -59,7 +59,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        currentStage = PlaySetting.SelectStage;
+        currentStage = 15;
         currentWave = 1;
         StartStage(currentStage, currentWave);
     }
@@ -89,10 +89,10 @@ public class StageManager : MonoBehaviour
             ClearWindowCurrentStageName.text = currentStageData.StageName;
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
             StageAddMAtt = currentStageData.StageAddMAtt.GetValueOrDefault();
-            ClearGoldMin = currentStageData.ClearGoldMin;
-            ClearGoldMax = currentStageData.ClearGoldMax;
-            FailGoldMin = currentStageData.FailGoldMin;
-            FailGoldMax = currentStageData.FailGoldMax;
+            ClearGoldMin = currentStageData.ClearGoldMin.GetValueOrDefault();
+            ClearGoldMax = currentStageData.ClearGoldMax.GetValueOrDefault();
+            FailGoldMin = currentStageData.FailGoldMin.GetValueOrDefault();
+            FailGoldMax = currentStageData.FailGoldMax.GetValueOrDefault();
 
             // UI °»½Å
             currentMonsterIds.Clear();
