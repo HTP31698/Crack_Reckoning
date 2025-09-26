@@ -59,7 +59,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        currentStage = 15;
+        currentStage = PlaySetting.SelectStage;
         currentWave = 1;
         StartStage(currentStage, currentWave);
     }
