@@ -1,58 +1,10 @@
 fileFormatVersion: 2
-guid: 2514c676fe5c9b44482f1f28242b8ff5
+guid: 9eee74d4245d68b4f99c64aec579b840
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9086513653248188633
-    second: Stagepanel_0
-  - first:
-      213: 6426266443251157376
-    second: Stagepanel_1
-  - first:
-      213: 2743296533248582145
-    second: Stagepanel_2
-  - first:
-      213: -6347450450063052929
-    second: Stagepanel_3
-  - first:
-      213: -1452031044851821347
-    second: Stagepanel_4
-  - first:
-      213: 2739955442085814597
-    second: Stagepanel_5
-  - first:
-      213: 1637589731554429740
-    second: Stagepanel_6
-  - first:
-      213: 2145148183643977207
-    second: Stagepanel_7
-  - first:
-      213: 5616501684044258764
-    second: Stagepanel_8
-  - first:
-      213: -2434169986380652507
-    second: Stagepanel_9
-  - first:
-      213: 4271732965570987432
-    second: Stagepanel_10
-  - first:
-      213: 6438605589566917502
-    second: Stagepanel_11
-  - first:
-      213: -8441821274104321888
-    second: Stagepanel_12
-  - first:
-      213: -6459365389044948610
-    second: Stagepanel_13
-  - first:
-      213: 1245643219586222614
-    second: Stagepanel_14
-  - first:
-      213: 9156110283060401741
-    second: Stagepanel_15
-  - first:
-      213: -5410956006780803691
-    second: Stagepanel_16
+      213: 8795366620419746748
+    second: crack_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -174,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stagepanel_2
+      name: crack_0
       rect:
         serializedVersion: 2
-        x: 808
-        y: 485
-        width: 640
-        height: 490
+        x: 207
+        y: 15
+        width: 635
+        height: 988
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,52 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 102a7d199a5221620800000000000000
-      internalID: 2743296533248582145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stagepanel_14
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 528
-        width: 634
-        height: 446
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 61a8f4498e9694110800000000000000
-      internalID: 1245643219586222614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stagepanel_15
-      rect:
-        serializedVersion: 2
-        x: 456
-        y: 50
-        width: 628
-        height: 383
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d46dd129ac9011f70800000000000000
-      internalID: 9156110283060401741
+      spriteID: cbb6277675b6f0a70800000000000000
+      internalID: 8795366620419746748
       vertices: []
       indices: 
       edges: []
@@ -243,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8294b868394bf79458e3a74edd65038b
+    spriteID: a02a670d238121c428b7d2357cbd18ac
     internalID: 0
     vertices: []
     indices: 
@@ -253,23 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Stagepanel_0: -9086513653248188633
-      Stagepanel_1: 6426266443251157376
-      Stagepanel_10: 4271732965570987432
-      Stagepanel_11: 6438605589566917502
-      Stagepanel_12: -8441821274104321888
-      Stagepanel_13: -6459365389044948610
-      Stagepanel_14: 1245643219586222614
-      Stagepanel_15: 9156110283060401741
-      Stagepanel_16: -5410956006780803691
-      Stagepanel_2: 2743296533248582145
-      Stagepanel_3: -6347450450063052929
-      Stagepanel_4: -1452031044851821347
-      Stagepanel_5: 2739955442085814597
-      Stagepanel_6: 1637589731554429740
-      Stagepanel_7: 2145148183643977207
-      Stagepanel_8: 5616501684044258764
-      Stagepanel_9: -2434169986380652507
+      crack_0: 8795366620419746748
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

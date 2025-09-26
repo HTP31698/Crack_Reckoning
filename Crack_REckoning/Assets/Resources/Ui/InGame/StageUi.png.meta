@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: fcdae8fe2c6bbe945a0e51fed6fc0579
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1708882979370637596
+    second: StageUi_0
+  - first:
+      213: -6059351433031868374
+    second: StageUi_1
+  - first:
+      213: 6673522726076081259
+    second: StageUi_2
+  - first:
+      213: -3770247321139505729
+    second: StageUi_3
+  - first:
+      213: -758532047773722584
+    second: StageUi_4
+  - first:
+      213: 3520918698603275081
+    second: StageUi_5
+  - first:
+      213: -1866636358150485314
+    second: StageUi_6
+  - first:
+      213: 1628529638844971965
+    second: StageUi_7
+  - first:
+      213: -8762282374207293632
+    second: StageUi_8
+  - first:
+      213: -2362581986451416433
+    second: StageUi_9
+  - first:
+      213: -4826023126480752455
+    second: StageUi_10
+  - first:
+      213: 5427662761133246008
+    second: StageUi_11
+  - first:
+      213: 5361618464616148833
+    second: StageUi_12
+  - first:
+      213: 5973466565923959136
+    second: StageUi_13
+  - first:
+      213: -3946737899306321976
+    second: StageUi_14
+  - first:
+      213: 4617274585059127270
+    second: StageUi_15
+  - first:
+      213: -2147455063202755207
+    second: StageUi_16
+  - first:
+      213: -2881369028382556847
+    second: StageUi_17
+  - first:
+      213: -5753551623380511491
+    second: StageUi_18
+  - first:
+      213: 4446748257583771306
+    second: StageUi_19
+  - first:
+      213: 1616985759783926038
+    second: StageUi_20
+  - first:
+      213: 3964224186564496303
+    second: StageUi_21
+  - first:
+      213: 2267854230933617878
+    second: StageUi_22
+  - first:
+      213: 7720058297533185238
+    second: StageUi_23
+  - first:
+      213: 6458149816307876151
+    second: StageUi_24
+  - first:
+      213: 1764020816506500502
+    second: StageUi_25
+  - first:
+      213: -3895019504944757444
+    second: StageUi_26
+  - first:
+      213: 9190864332520940450
+    second: StageUi_27
+  - first:
+      213: -6355051122183953985
+    second: StageUi_28
+  - first:
+      213: 4416713327757979008
+    second: StageUi_29
+  - first:
+      213: -571503908003972208
+    second: StageUi_30
+  - first:
+      213: 234065033068306856
+    second: StageUi_31
+  - first:
+      213: 1864942305539929212
+    second: StageUi_32
+  - first:
+      213: -6297223831494515712
+    second: StageUi_33
+  - first:
+      213: 3883039432415613016
+    second: StageUi_34
+  - first:
+      213: -2636071292534749931
+    second: StageUi_35
+  - first:
+      213: 7879842337296077452
+    second: StageUi_36
+  - first:
+      213: 1060564000719946070
+    second: StageUi_37
+  - first:
+      213: 3973496835553245304
+    second: StageUi_38
+  - first:
+      213: -1737437722971335127
+    second: StageUi_39
+  - first:
+      213: 4965867074606115986
+    second: StageUi_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StageUi_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 814
+        width: 505
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9436749d6e0dcd030800000000000000
+      internalID: 3520918698603275081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageUi_21
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 74
+        width: 371
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fab4032f4e0c30730800000000000000
+      internalID: 3964224186564496303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageUi_22
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 75
+        width: 177
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc3a2d4869097f10800000000000000
+      internalID: 2267854230933617878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageUi_24
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 94
+        width: 205
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731094b8a05ff9950800000000000000
+      internalID: 6458149816307876151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageUi_39
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 296
+        width: 608
+        height: 490
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9261ee6a89163e7e0800000000000000
+      internalID: -1737437722971335127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageUi_40
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 294
+        width: 770
+        height: 487
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ca4b74bcd4ae440800000000000000
+      internalID: 4965867074606115986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2c3f553db7f7e1948b0104f239d7449e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      StageUi_0: 1708882979370637596
+      StageUi_1: -6059351433031868374
+      StageUi_10: -4826023126480752455
+      StageUi_11: 5427662761133246008
+      StageUi_12: 5361618464616148833
+      StageUi_13: 5973466565923959136
+      StageUi_14: -3946737899306321976
+      StageUi_15: 4617274585059127270
+      StageUi_16: -2147455063202755207
+      StageUi_17: -2881369028382556847
+      StageUi_18: -5753551623380511491
+      StageUi_19: 4446748257583771306
+      StageUi_2: 6673522726076081259
+      StageUi_20: 1616985759783926038
+      StageUi_21: 3964224186564496303
+      StageUi_22: 2267854230933617878
+      StageUi_23: 7720058297533185238
+      StageUi_24: 6458149816307876151
+      StageUi_25: 1764020816506500502
+      StageUi_26: -3895019504944757444
+      StageUi_27: 9190864332520940450
+      StageUi_28: -6355051122183953985
+      StageUi_29: 4416713327757979008
+      StageUi_3: -3770247321139505729
+      StageUi_30: -571503908003972208
+      StageUi_31: 234065033068306856
+      StageUi_32: 1864942305539929212
+      StageUi_33: -6297223831494515712
+      StageUi_34: 3883039432415613016
+      StageUi_35: -2636071292534749931
+      StageUi_36: 7879842337296077452
+      StageUi_37: 1060564000719946070
+      StageUi_38: 3973496835553245304
+      StageUi_39: -1737437722971335127
+      StageUi_4: -758532047773722584
+      StageUi_40: 4965867074606115986
+      StageUi_5: 3520918698603275081
+      StageUi_6: -1866636358150485314
+      StageUi_7: 1628529638844971965
+      StageUi_8: -8762282374207293632
+      StageUi_9: -2362581986451416433
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
