@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public static class DataTableIds
@@ -14,33 +15,22 @@ public static class DataTableIds
 
 public static class PlaySetting
 {
-    public static int PlayerID { get; private set; }
     public static int SelectStage { get; private set; }
-    public static int CurrnetSelectSkillID { get; private set; }
-    public static int Gold { get; private set; }
 
-    public static void SetPlayerId(int playerID)
-    {
-        PlayerID = playerID;
-    }
     public static void SetSelectStage(int Stage)
     {
         SelectStage = Stage;
     }
-    public static void SetCurrnetSelectSkillID(int currnetSelectSkillID)
-    {
-        CurrnetSelectSkillID = currnetSelectSkillID;
-    }
-    public static void SetClearGold(int amount)
-    {
-        Gold += amount;
+    public static void Reset()
+    { 
+        SelectStage = 0;
     }
 
-    public static void Reset()
+    public static bool GetStageClear(int index)
     {
-        PlayerID = 0;
-        SelectStage = 0;
-        CurrnetSelectSkillID = 0;
-        Gold = 0;
+        bool v;
+        if (SaveLoadManager.Data.StageClear.TryGetValue(index, out v))
+            return v;
+        return false;
     }
 }

@@ -18,7 +18,14 @@ public class LoadPlayerData : MonoBehaviour
             SaveLoadManager.Data.OwnedSkillIds = skillTable.GetSkillsWithoutPlus();
             SaveLoadManager.Data.EquipmentSkillIds.Add(3001);
             SaveLoadManager.Data.StageClear.Add(1, false);
+            for(int i = 0; i < 25; i++)
+            {
+                SaveLoadManager.Data.StageClear[i] = false;
+            }
+            SaveLoadManager.Data.CurrentCrack = 1;
+
             SaveLoadManager.Save(0);
+            
         }
         else
         {

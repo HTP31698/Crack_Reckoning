@@ -18,6 +18,7 @@ public class SaveDataV1 : SaveData
     public List<int> OwnedSkillIds = new List<int>();
     public List<int> EquipmentSkillIds = new List<int>();
     public Dictionary<int, bool> StageClear = new Dictionary<int, bool>();
+    public int CurrentCrack { get; set; } = 0;
 
     public SaveDataV1()
     {
