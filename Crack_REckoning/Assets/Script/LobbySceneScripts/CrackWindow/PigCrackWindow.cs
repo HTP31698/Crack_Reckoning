@@ -13,7 +13,7 @@ public class PigCrackWindow : MonoBehaviour
     {
         PigCrackOpen.onClick.AddListener(PigCrackOpenButtonClick);
         NextCrackButton.onClick.AddListener(NextCrackButtonClick);
-    }
+}
 
     private void PigCrackOpenButtonClick()
     {

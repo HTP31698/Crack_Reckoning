@@ -20,6 +20,13 @@ public class LobbyManager : MonoBehaviour
     public GameObject WolfCrackWindow;
     public GameObject MarionetteCrackWindow;
 
+    [Header("StageWindows")]
+    public GameObject PigStageWindow;
+    public GameObject SlimeStageWindow;
+    public GameObject ExtremColdStageWindow;
+    public GameObject WolfStageWindow;
+    public GameObject MarionetteStageWindow;
+
     [Header("Buttons")]
     public Button StageChallengeButton;
     public Button CharacterButton;
@@ -39,6 +46,7 @@ public class LobbyManager : MonoBehaviour
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
+        StageWindowSetFalse();
 
 
         StageChallengeButton.onClick.AddListener(StageChallengeButtonClick);
@@ -58,6 +66,7 @@ public class LobbyManager : MonoBehaviour
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
+        StageWindowSetFalse();
     }
 
     public void HomeButtonClick()
@@ -67,6 +76,7 @@ public class LobbyManager : MonoBehaviour
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
+        StageWindowSetFalse();
     }
 
     public void SkillButtonClick()
@@ -76,6 +86,7 @@ public class LobbyManager : MonoBehaviour
         SkillWindow.SetActive(true);
         SkillEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
+        StageWindowSetFalse();
     }
 
 
@@ -87,5 +98,14 @@ public class LobbyManager : MonoBehaviour
         ExtremColdCrackWindow.SetActive(false);
         WolfCrackWindow.SetActive(false);
         MarionetteCrackWindow.SetActive(false);
+    }
+
+    private void StageWindowSetFalse()
+    {
+        PigStageWindow.SetActive(false);
+        SlimeStageWindow.SetActive(false);
+        ExtremColdStageWindow.SetActive(false);
+        WolfStageWindow.SetActive(false);
+        MarionetteStageWindow.SetActive(false);
     }
 }

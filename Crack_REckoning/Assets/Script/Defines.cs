@@ -26,11 +26,10 @@ public static class PlaySetting
         SelectStage = 0;
     }
 
-    public static bool GetStageClear(int index)
+    public static void SetStageClear(int index)
     {
-        bool v;
-        if (SaveLoadManager.Data.StageClear.TryGetValue(index, out v))
-            return v;
-        return false;
+        var data = SaveLoadManager.Data;
+        data.StageClear[index] = true;
+        SaveLoadManager.Save();
     }
 }

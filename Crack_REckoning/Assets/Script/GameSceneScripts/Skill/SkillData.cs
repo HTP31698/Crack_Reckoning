@@ -7,13 +7,19 @@ public enum SkillTypeID
     Water,
     Ice,
     Lightning,
-    Physical,
+    Dark,
 }
 
 public enum AttackTypeID
 {
     Projectile,
     Area,
+    Explosion,
+    Laser,
+    Haeil,
+    IceSheet,
+    BlackHole,
+    Mine,
 }
 
 public class SkillData

@@ -1,46 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StageSelectWindow : MonoBehaviour
+public class PigStageWindow : MonoBehaviour
 {
     private const string GameScene = "GameScene";
 
-    private Animator animator;
-
     [Header("Buttons")]
     public Button[] StageButton;
+    public Button ExitButton;
 
-    private int CrackCount = 1;
     private int StageCount = 1;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         var data = SaveLoadManager.Data;
 
-
-        for(int i = 0; i < StageButton.Length; i++)
+        for (int i = 0; i <= 4; i++)
         {
             StageButton[i].interactable = false;
         }
-    }
 
-    private void OnEnable()
-    {
-        StartCoroutine(WaitAnimator());
-    }
-    private IEnumerator WaitAnimator()
-    {
-        var info = animator.GetCurrentAnimatorStateInfo(0);
-        while (info.normalizedTime < 1f)
-        {
-            yield return null;
-            info = animator.GetCurrentAnimatorStateInfo(0);
-        }
         SetupUI();
     }
 
@@ -51,16 +33,9 @@ public class StageSelectWindow : MonoBehaviour
         {
             if (GetStageClear(i)) StageCount++;
         }
-        if (GetStageClear(4)) CrackCount++;
-        if (GetStageClear(9)) CrackCount++;
-        if (GetStageClear(14)) CrackCount++;
-        if (GetStageClear(19)) CrackCount++;
 
         if (StageCount > StageButton.Length) StageCount = StageButton.Length;
         if (StageCount < 1) StageCount = 1;
-        if (CrackCount < 1) CrackCount = 1;
-
-        data.CurrentCrack = CrackCount;
 
         for (int i = 0; i < StageCount && i < StageButton.Length; i++)
         {
@@ -70,10 +45,9 @@ public class StageSelectWindow : MonoBehaviour
             StageButton[i].onClick.AddListener(() => StageButtonClick(idx));
         }
 
-        SaveLoadManager.Save();
+        ExitButton.onClick.RemoveAllListeners();
+        ExitButton.onClick.AddListener(ExitButtonClick);
     }
-
-
 
     private bool GetStageClear(int index)
     {
@@ -88,5 +62,10 @@ public class StageSelectWindow : MonoBehaviour
         PlaySetting.SetSelectStage(stage + 1);
 
         SceneManager.LoadScene(GameScene);
+    }
+
+    private void ExitButtonClick()
+    {
+        gameObject.SetActive(false);
     }
 }
