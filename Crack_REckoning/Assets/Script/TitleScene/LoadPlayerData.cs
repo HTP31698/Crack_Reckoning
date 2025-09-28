@@ -12,12 +12,14 @@ public class LoadPlayerData : MonoBehaviour
     {
         if (!SaveLoadManager.Load(0))
         {
-            var skillTable = DataTableManager.SkillTable;
             SaveLoadManager.Data.PlayerID = 11001;
             SaveLoadManager.Data.Gold = 0;
-            SaveLoadManager.Data.OwnedSkillIds = skillTable.GetSkillsWithoutPlus();
+            SaveLoadManager.Data.OwnedSkillIds.Add(3001);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3002);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3003);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3007);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3010);
             SaveLoadManager.Data.EquipmentSkillIds.Add(3001);
-            SaveLoadManager.Data.StageClear.Add(1, false);
             for(int i = 0; i < 25; i++)
             {
                 SaveLoadManager.Data.StageClear[i] = false;
