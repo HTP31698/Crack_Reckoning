@@ -51,8 +51,7 @@ public class Character : MonoBehaviour
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
         var data = SaveLoadManager.Data;
-        int playerId = (data != null && data.PlayerID > 0) ? data.PlayerID : 1001;
-        Init(playerId);
+        Init(data.PlayerID);
 
         if (data != null && data.EquipmentSkillIds != null)
         {
@@ -61,16 +60,10 @@ public class Character : MonoBehaviour
                 if (id > 0) AddSkill(id);
             }
         }
-        else
-        {
-            // 세이브가 없을 때 대비: 기본 한 개 정도는 안전하게
-            AddSkill(3001);
-        }
     }
 
     private void Update()
     {
-        // 모든 준비된 스킬 자동 사용
         for (int i = 0; i < SkillIDs.Count; i++)
         {
             if (i < skillReady.Count && skillReady[i])
@@ -151,6 +144,11 @@ public class Character : MonoBehaviour
 
         if (skillData.PeneTratingPower.GetValueOrDefault() > 0)
             s.PenetratingPower += skillData.PeneTratingPower.Value;
+
+        if(skillData.Duration.GetValueOrDefault() > 0)
+        {
+            s.Duration += skillData.Duration.Value;
+        }
     }
 
     public void AddExp(int amount)
@@ -191,51 +189,38 @@ public class Character : MonoBehaviour
 
         bool anyInRange = false;
 
-        // 1) 지정 반경(skillData.SkillRange) 안의 모든 Collider2D 가져오기
         Collider2D[] hits = Physics2D.OverlapCircleAll(
-            transform.position,          // 원의 중심 = 내 위치
-            skillData.SkillRange,        // 원의 반지름 = 스킬 사거리
-            LayerMask.GetMask("Monster") // "Monster" 레이어만 검사
+            transform.position,
+            skillData.SkillRange,
+            LayerMask.GetMask("Monster")
         );
         foreach (Collider2D col in hits)
         {
-            // collider에 MonsterBase 컴포넌트가 붙어있는지 찾기
             MonsterBase m = col.GetComponent<MonsterBase>();
-
-            // m이 실제 몬스터이고 죽지 않았다면
             if (m != null && !m.isdead)
             {
-                anyInRange = true; // 살아있는 몬스터 발견!
-                break;            // 하나만 찾으면 되니까 바로 반복 종료
+                anyInRange = true;
+                break;
             }
         }
         if (!anyInRange) yield break;
 
-        // 최우선: 사거리 내 공격 중 몬스터
         MonsterBase priority = MonsterManager.GetAttackingWithin(transform.position, skillData.SkillRange);
-
-        // 폴백: 기존 랜덤
-        MonsterBase target = priority ?? MonsterManager.GetRandomMonster();
-        if (target == null) yield break;
-
         skillReady[index] = false;
         isUseSkill = true;
         for (int atk = 0; atk < skillData.AttackNum; atk++)
         {
-            UseSkill(target, index, priority); // 우선 타깃을 넘겨줌
+            UseSkill(index, priority);
             yield return new WaitForSeconds(0.2f);
         }
-
 
         yield return new WaitForSeconds(skillData.SkillCoolTime);
         isUseSkill = false;
         skillReady[index] = true;
     }
 
-    private void UseSkill(MonsterBase target, int index, MonsterBase priorityTarget)
+    private void UseSkill(int index, MonsterBase priorityTarget = null)
     {
-        if (target == null) return;
-
         int skillId = SkillIDs[index];
         var skillData = GetSkillForUse(skillId);
         if (skillData == null) return;
@@ -248,12 +233,12 @@ public class Character : MonoBehaviour
 
             if (i == 0 && priorityTarget != null && !priorityTarget.isdead)
             {
-                // 첫 발은 반드시 우선 타깃(= 공격 중인 몬스터)
-                chosen = priorityTarget;
+                if (Vector2.Distance(transform.position, priorityTarget.transform.position) <= skillData.SkillRange)
+                    chosen = priorityTarget;
             }
-            else
+
+            if (chosen == null)
             {
-                // 이후 발사체는 기존 분산 로직
                 chosen = MonsterManager.GetRandomAliveWithin(
                     transform.position,
                     skillData.SkillRange,
@@ -269,11 +254,18 @@ public class Character : MonoBehaviour
                     );
                 }
 
-                if (chosen == null) chosen = target;
+                if (chosen == null)
+                {
+                    chosen = MonsterManager.GetRandomMonster();
+                }
             }
+
+            if (chosen == null) continue;
 
             Vector3 spawnPos = transform.position
                              + new Vector3((i - (skillData.ProjectilesNum - 1) / 2f) * 0.2f, 0, 0);
+            Vector3 targetPos = chosen.transform.position;
+            Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
 
             GameObject obj = Instantiate(Skillpre, spawnPos, Quaternion.identity);
             Skill skill = obj.GetComponent<Skill>();
@@ -282,20 +274,11 @@ public class Character : MonoBehaviour
                 skill.InitWithData(skillId, skillData);
                 skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
 
-                // 널 안전 + 우선 타깃/선택 타깃 좌표
-                Vector3 targetPos = (chosen != null ? chosen.transform.position : target.transform.position);
-
-                // (원래 하던) 방향 계산
-                Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
-
-                if (skill.AttackType == AttackTypeID.Area)
-                    skill.CastAreaDamage();
             }
 
-            if (chosen != null)
-                chosenThisSkill.Add(chosen);
+            chosenThisSkill.Add(chosen);
         }
     }
 

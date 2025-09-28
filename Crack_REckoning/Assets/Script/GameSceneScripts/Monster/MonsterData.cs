@@ -38,9 +38,9 @@ public class MonsterDataMap : ClassMap<MonsterData>
         Map(m => m.MonsterAttack).Name("MonsterAttack");
         Map(m => m.MonsterSpeed).Name("MonsterSpeed");
         Map(m => m.MonsterAttackSpeed).Name("MonsterAttackSpeed");
-        Map(m => m.MonsterWeakness).Name("MonsterWeakness").Default(0).TypeConverterOption.NullValues("", " "); ;
-        Map(m => m.MonsterStrength).Name("MonsterStrength").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.MonsterWeakness).Name("MonsterWeakness").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(m => m.MonsterStrength).Name("MonsterStrength").Default(0).TypeConverterOption.NullValues("", " ");
         Map(m => m.MonsterExp).Name("MonsterExp");
-        Map(m => m.MonsterDec).Name("MonsterDec").Default(0).TypeConverterOption.NullValues("", " "); ;
+        Map(m => m.MonsterDec).Name("MonsterDec").Default(0).TypeConverterOption.NullValues("", " ");
     }
 }

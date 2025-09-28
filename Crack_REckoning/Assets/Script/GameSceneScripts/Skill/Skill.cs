@@ -1,11 +1,6 @@
-using JetBrains.Annotations;
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.TextCore.Text;
-using UnityEngine.U2D;
 using Random = UnityEngine.Random;
 
 public class Skill : MonoBehaviour
@@ -20,6 +15,7 @@ public class Skill : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private Character character;
+    private Sprite TypeSprite;
 
     private SkillTable skillTable;
     private SkillData skillData;
@@ -37,52 +33,86 @@ public class Skill : MonoBehaviour
     public AttackTypeID AttackType { get; private set; }
     public string SkillDescription { get; set; }
 
+    public float ExplosionRange { get; set; }
+    public float ExplosionDamage { get; set; }
+    public float FreezeTime { get; set; }
+    public float StunTime { get; set; }
+    public float Duration { get; set; }
+    public float PerSecond { get; set; }
+    public float KonckBack { get; set; }
+    public float Strain { get; set; }
+
     public Sprite sprite { get; private set; }
     public RuntimeAnimatorController controller { get; private set; }
 
     public float Speed = 5f;
-    private int characterAttack;
     private int characterCri;
     private float characterCriDamage;
 
-    private readonly HashSet<MonsterBase> alreadyHit = new(); // ★ 이 발사체가 이미 때린 적들
+    private readonly HashSet<MonsterBase> alreadyHit = new();
+
+    private bool areaFired = false;
+
+    private GameObject particlePrefab;
+    private Transform areaVisualRoot;
+    private float areaVisualBaseRadius = 1f;
+
+    private LineRenderer line;
+
+    private float laserElapsed = 0f;
+    private float laserTickAcc = 0f;
+    private bool laserStarted = false;
+
+    private Material LaserMaterial;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        if (!line) line = GetComponent<LineRenderer>();
+        if (line) line.enabled = false;
+
+        if (areaVisualBaseRadius <= 0.01f && spriteRenderer != null)
+        {
+            float approx = Mathf.Max(spriteRenderer.bounds.size.x, spriteRenderer.bounds.size.y) * 0.5f;
+            areaVisualBaseRadius = Mathf.Max(0.1f, approx);
+        }
     }
 
     private void FixedUpdate()
     {
-        if (AttackType != AttackTypeID.Projectile || dir == Vector2.zero) 
-            return;
+        float dt = Time.fixedDeltaTime;
 
-        Vector2 nextPos = rb.position + dir * Speed * Time.fixedDeltaTime;
-        var hits = Physics2D.RaycastAll(rb.position, dir,
-                                        (nextPos - rb.position).magnitude,
-                                        LayerMask.GetMask(Monster));
-        foreach (var hit in hits)
+        switch (AttackType)
         {
-            var m = hit.collider.GetComponent<MonsterBase>();
-            if (m == null || m.isdead) continue;
+            case AttackTypeID.Projectile:
+                if (dir == Vector2.zero) return;
+                CastProjectile(dt);   // ← 지금 쓰던 레이캐스트/관통 로직 그대로 이전
+                break;
+            case AttackTypeID.Area:
+                CastArea();
+                break;
+            case AttackTypeID.Mine:
 
-            // ★ 같은 몬스터는 한 번만 타격
-            if (alreadyHit.Contains(m)) continue;
+                break;
 
-            alreadyHit.Add(m);     // 기록
-            TryAttack(m);          // 1회만 데미지
-            PenetratingPower--;    // 관통력 1 소모
-
-            if (PenetratingPower <= 0) { Destroy(gameObject); break; }
+            case AttackTypeID.Laser:
+                line.enabled = true;
+                CastLaser(dt);
+                break;
+            case AttackTypeID.Explosion:
+                CastExplosion(dt);
+                break;
+            case AttackTypeID.Haeil:
+                break;
+            case AttackTypeID.IceSheet:
+                break;
+            case AttackTypeID.BlackHole:
+                break;
+            case AttackTypeID.ElectricSphere:
+                break;
         }
-
-        rb.MovePosition(nextPos);
-
-        // 화면 밖 정리
-        if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
-            Destroy(gameObject);
     }
 
     private void TryAttack(MonsterBase m)
@@ -98,7 +128,7 @@ public class Skill : MonoBehaviour
             typeMultiplier = 1.5f;
         }
 
-        float damage = (SkillDamage + characterAttack)
+        float damage = SkillDamage
                        * typeMultiplier
                        * (isCritical ? characterCriDamage : 1f);
 
@@ -128,7 +158,6 @@ public class Skill : MonoBehaviour
             }
         }
     }
-
     public void InitWithData(int id, SkillData data)
     {
         if (animator == null) animator = GetComponent<Animator>();
@@ -141,7 +170,47 @@ public class Skill : MonoBehaviour
             ApplySkillData(id, data);
         }
     }
+    private void InitFX(GameObject fx, float radius)
+    {
+        if (!fx) return;
+        radius = Mathf.Max(0.01f, radius);
 
+        var ps = fx.GetComponentInChildren<ParticleSystem>();
+        if (ps)
+        {
+            var sh = ps.shape;
+            sh.enabled = true;
+            sh.radius = radius;
+            var main = ps.main;
+            // 메모: 1회형이면 프리팹에서 Stop Action = Destroy 설정 추천
+            ps.Play();
+        }
+
+        var col = fx.GetComponentInChildren<CircleCollider2D>();
+        if (col)
+        {
+            col.isTrigger = true;
+            col.radius = radius;
+            col.enabled = true;
+        }
+    }
+    private void ApplyAreaAnimationScale(float radius)
+    {
+        radius = Mathf.Max(0.01f, radius);
+
+        // 기준 반경이 너무 작거나 0이면 sprite로 대략 추정
+        if (areaVisualBaseRadius <= 0.01f && spriteRenderer != null)
+        {
+            float approx = Mathf.Max(spriteRenderer.bounds.size.x, spriteRenderer.bounds.size.y) * 0.5f;
+            areaVisualBaseRadius = Mathf.Max(0.1f, approx);
+        }
+
+        float scale = radius / Mathf.Max(0.01f, areaVisualBaseRadius);
+
+        // 지정한 루트가 있으면 그 루트만 키우고, 없으면 전체를 키움
+        var root = areaVisualRoot != null ? areaVisualRoot : transform;
+        root.localScale = new Vector3(scale, scale, 1f);
+    }
     private void ApplySkillData(int id, SkillData data)
     {
         Id = data.SkillID;
@@ -157,9 +226,25 @@ public class Skill : MonoBehaviour
         AttackType = data.AttackType;
         SkillDescription = data.SkillDescription;
 
+        ExplosionRange = data.ExplosionRange.GetValueOrDefault();
+        ExplosionDamage = data.ExplosionDamage.GetValueOrDefault();
+        FreezeTime = data.FreezeTime.GetValueOrDefault();
+        StunTime = data.StunTime.GetValueOrDefault();
+        Duration = data.Duration.GetValueOrDefault();
+        PerSecond = data.PerSecond.GetValueOrDefault();
+        KonckBack = data.KonckBack.GetValueOrDefault();
+        Strain = data.Strain.GetValueOrDefault();
+
+        TypeSprite = data.TypeSprite;
+
+        particlePrefab = data.Particle;
+
+        LaserMaterial = data.Material;
+
         // 비주얼 리소스
         controller = data.AnimatorController;
         sprite = data.sprite;
+
 
         if (spriteRenderer != null && sprite != null)
             spriteRenderer.sprite = sprite;
@@ -186,27 +271,217 @@ public class Skill : MonoBehaviour
     {
         targetpos = position;
     }
-
-    public void CastAreaDamage()
+    private Vector3 GetHitPosition(RaycastHit2D hit, Rigidbody2D fromRb, Transform targetTf)
     {
+        if (hit.point != Vector2.zero)
+            return hit.point;
+
+        var col2d = hit.collider as Collider2D;
+        if (col2d != null)
+            return col2d.ClosestPoint(fromRb.position);
+
+        return targetTf != null ? targetTf.position : fromRb.position;
+    }
+    public void CastProjectile(float dt)
+    {
+        Vector2 nextPos = rb.position + dir * Speed * dt;
+        var hits = Physics2D.RaycastAll(rb.position, dir,
+                                        (nextPos - rb.position).magnitude,
+                                        LayerMask.GetMask(Monster));
+        foreach (var hit in hits)
+        {
+            var m = hit.collider.GetComponent<MonsterBase>();
+            if (m == null || m.isdead) continue;
+
+            if (alreadyHit.Contains(m)) continue;
+
+            alreadyHit.Add(m);
+            TryAttack(m);
+            Vector3 hitPos = GetHitPosition(hit, rb, m.transform);
+
+            if (particlePrefab != null)
+            {
+                var fx = Instantiate(particlePrefab, hitPos, Quaternion.identity);
+                InitFX(fx, Mathf.Max(0.01f, SkillDamageRange));
+            }
+
+            PenetratingPower--;
+            if (PenetratingPower <= 0) { Destroy(gameObject); break; }
+        }
+
+        rb.MovePosition(nextPos);
+
+        // 화면 밖 정리
+        if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
+            Destroy(gameObject);
+    }
+
+    public void CastArea()
+    {
+        if (areaFired)
+        {
+            return;
+        }
+        areaFired = true;
+
+        Vector2 center = targetpos;
         gameObject.transform.position = targetpos;
         gameObject.transform.rotation = Quaternion.identity;
 
-        Vector2 damagePosition = (Vector2)transform.position + new Vector2(0, -spriteRenderer.bounds.size.y * 0.9f);
-        Collider2D[] hits = Physics2D.OverlapCircleAll(
-            damagePosition,
-            SkillDamageRange,
-            LayerMask.GetMask(Monster)
-        );
-
-        foreach (var hit in hits)
+        float radius = Mathf.Max(0.01f, SkillDamageRange);
+        ApplyAreaAnimationScale(radius);
+        if (particlePrefab != null)
+        {
+            var fx = Instantiate(particlePrefab, center, Quaternion.identity);
+            InitFX(fx, radius);
+        }
+        var cols = Physics2D.OverlapCircleAll(center, radius, LayerMask.GetMask(Monster));
+        foreach (var hit in cols)
         {
             MonsterBase m = hit.GetComponent<MonsterBase>();
-            if (m != null)
-            {
-                TryAttack(m);
-            }
+            if (m == null || m.isdead) continue;
+            TryAttack(m);
         }
         Destroy(gameObject, 1f);
+    }
+    private void CastLaser(float dt)
+    {
+        if (!line) return;
+
+        if (spriteRenderer) spriteRenderer.enabled = false;
+
+        if (!laserStarted)
+        {
+            laserStarted = true;
+            line.enabled = true;
+            line.positionCount = 2;
+            line.useWorldSpace = true;
+            line.numCapVertices = 0;
+            line.numCornerVertices = 0;
+            line.textureMode = LineTextureMode.Stretch;
+            if (LaserMaterial) line.material = LaserMaterial;
+            line.sortingOrder = 200;
+        }
+
+        float width = Mathf.Max(0.01f, SkillDamageRange);
+        line.startWidth = width;
+        line.endWidth = width;
+
+        if (dir == Vector2.zero) dir = Vector2.right;
+        else dir = dir.normalized;
+
+        Vector2 basePos = rb ? rb.position : (Vector2)transform.position;
+        Vector2 origin = basePos + dir * 0.35f;
+        float maxLen = Mathf.Max(0.01f, SkillRange);
+        Vector3 endPos = origin + dir * maxLen;
+
+        line.SetPosition(0, new Vector3(origin.x, origin.y, -0.1f));
+        line.SetPosition(1, new Vector3(endPos.x, endPos.y, -0.1f));
+
+        laserElapsed += dt;
+        if (Duration > 0f && laserElapsed >= Duration)
+        { StopLaserAndDestroy(); return; }
+
+        laserTickAcc += dt;
+
+        float interval;
+        if (PerSecond > 0f)
+        {
+            interval = 1f / PerSecond;
+        }
+        else
+        {
+            interval = 0.2f;
+        }
+        while (laserTickAcc >= interval)
+        {
+            laserTickAcc -= interval;
+            float beamRadius = width * 0.5f;
+            var hits = Physics2D.CircleCastAll(
+                origin,
+                beamRadius,
+                dir,
+                maxLen,
+                LayerMask.GetMask(Monster)
+            );
+            foreach (var h in hits)
+            {
+                var m = h.collider ? h.collider.GetComponent<MonsterBase>() : null;
+                if (m == null || m.isdead) continue;
+                TryAttackLaser(m, SkillDamage);
+            }
+        }
+    }
+    private void StopLaserAndDestroy()
+    {
+        if (line) line.enabled = false;
+        Destroy(gameObject);
+    }
+
+    private void TryAttackLaser(MonsterBase m, int dmg)
+    {
+        float typeMul = 1f;
+        if (m.strength == SkillTypeID) typeMul = 0.5f;
+        else if (m.weakness == SkillTypeID) typeMul = 1.5f;
+
+        float damage = dmg * typeMul;
+        m.TakeDamage((int)damage, character);
+    }
+
+    private void CastExplosion(float dt)
+    {
+        Vector2 ndir = (dir.sqrMagnitude > 0f) ? dir.normalized : Vector2.right;
+
+        Vector2 nextPos = rb.position + ndir * Speed * dt;
+
+        var hits = Physics2D.RaycastAll(rb.position, dir,
+                                        (nextPos - rb.position).magnitude,
+                                        LayerMask.GetMask(Monster));
+        foreach (var hit in hits)
+        {
+            var m = hit.collider.GetComponent<MonsterBase>();
+            if (m == null || m.isdead) continue;
+
+            if (alreadyHit.Contains(m)) continue;
+            alreadyHit.Add(m);
+
+            Vector3 hitPos = GetHitPosition(hit, rb, m.transform);
+            DoExplosion(hitPos);
+
+            if (particlePrefab != null)
+            {
+                float r = ExplosionRange;
+                var fx = Instantiate(particlePrefab, hitPos, Quaternion.identity);
+                InitFX(fx, r);
+            }
+            PenetratingPower--;
+            if (PenetratingPower <= 0) { Destroy(gameObject); break; }
+        }
+        rb.MovePosition(nextPos);
+        // 화면 밖 정리
+        if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
+            Destroy(gameObject);
+    }
+    private void DoExplosion(Vector2 center)
+    {
+        bool isCritical = Random.Range(0, 100) < characterCri;
+        float radius = ExplosionRange;
+        int dmg = (int)(SkillDamage * ExplosionDamage * (isCritical ? characterCriDamage : 1f));
+
+        var cols = Physics2D.OverlapCircleAll(center, radius, LayerMask.GetMask(Monster));
+        foreach (var c in cols)
+        {
+            var mob = c.GetComponent<MonsterBase>();
+            if (mob == null || mob.isdead) continue;
+            TryAttackExplosion(mob, dmg);
+        }
+    }
+    private void TryAttackExplosion(MonsterBase m, int baseDamage)
+    {
+        float typeMul = 1f;
+        if (m.strength == SkillTypeID) typeMul = 0.5f;
+        else if (m.weakness == SkillTypeID) typeMul = 1.5f;
+
+        m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul), character);
     }
 }

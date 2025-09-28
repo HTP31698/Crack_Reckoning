@@ -16,9 +16,12 @@ public class LoadPlayerData : MonoBehaviour
             SaveLoadManager.Data.Gold = 0;
             SaveLoadManager.Data.OwnedSkillIds.Add(3001);
             SaveLoadManager.Data.OwnedSkillIds.Add(3002);
-            SaveLoadManager.Data.OwnedSkillIds.Add(3003);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3004);
             SaveLoadManager.Data.OwnedSkillIds.Add(3007);
             SaveLoadManager.Data.OwnedSkillIds.Add(3010);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3005);
+
+
             SaveLoadManager.Data.EquipmentSkillIds.Add(3001);
             for(int i = 0; i < 25; i++)
             {

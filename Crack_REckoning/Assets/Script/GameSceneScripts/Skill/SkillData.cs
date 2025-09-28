@@ -20,6 +20,7 @@ public enum AttackTypeID
     IceSheet,
     BlackHole,
     Mine,
+    ElectricSphere,
 }
 
 public class SkillData
@@ -37,16 +38,34 @@ public class SkillData
     public AttackTypeID AttackType { get; set; }
     public string SkillDescription { get; set; }
 
+    public float? ExplosionRange { get; set; }
+    public float? ExplosionDamage { get; set; }
+    public float? FreezeTime { get; set; }
+    public float? StunTime { get; set; }
+    public float? Duration { get; set; }
+    public float? PerSecond { get; set; }
+    public float? KonckBack { get; set; }
+    public float? Strain {  get; set; }
+
+
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription}";
-        ;
+        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription} / {ExplosionRange} / {ExplosionDamage} / {FreezeTime} / {StunTime} / {Duration} / {PerSecond} / {KonckBack} / {Strain}";
     }
 
     public Sprite sprite
         => Resources.Load<Sprite>($"SkillSprite/{SkillID}");
     public RuntimeAnimatorController AnimatorController
         => Resources.Load<RuntimeAnimatorController>($"SkillAnimator/{SkillID}");
+
+    public Sprite TypeSprite
+        => Resources.Load<Sprite>($"SkillTypeSprite/{SkillType}");
+
+    public GameObject Particle
+        => Resources.Load<GameObject>($"Particle/{SkillID}");
+
+    public Material Material
+        => Resources.Load<Material>($"SkillMarterial/{SkillID}");
 
     public SkillData Clone() => new SkillData
     {
@@ -60,7 +79,15 @@ public class SkillData
         AttackNum = AttackNum,
         PenetratingPower = PenetratingPower,
         SkillDamageRange = SkillDamageRange,
-        AttackType = AttackType
+        AttackType = AttackType,
+        ExplosionRange = ExplosionRange,
+        ExplosionDamage = ExplosionDamage,
+        FreezeTime = FreezeTime,
+        StunTime = StunTime,
+        Duration = Duration,
+        PerSecond = PerSecond,
+        KonckBack = KonckBack,
+        Strain = Strain,
     };
 }
 
@@ -80,5 +107,13 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.SkillDamageRange).Name("SkillDamageRange");
         Map(s => s.AttackType).Name("AttackType");
         Map(s => s.SkillDescription).Name("SkillDescription");
+        Map(s => s.ExplosionRange).Name("ExplosionRange").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.ExplosionDamage).Name("ExplosionDamage").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.FreezeTime).Name("FreezeTime").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.StunTime).Name("StunTime").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.Duration).Name("Duration").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.PerSecond).Name("PerSecond").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.KonckBack).Name("KonckBack").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.Strain).Name("Strain").Default(0).TypeConverterOption.NullValues("", " ");
     }
 }
