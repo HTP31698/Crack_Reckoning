@@ -27,7 +27,7 @@ public class ColdStageWindow : MonoBehaviour
     private void SetupUI()
     {
         var data = SaveLoadManager.Data;
-        for (int i = 10; i <= 14; i++)
+        for (int i = 9; i < 14; i++)
         {
             if (GetStageClear(i)) StageCount++;
         }

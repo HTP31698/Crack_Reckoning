@@ -27,7 +27,7 @@ public class WolfStageWindow : MonoBehaviour
     private void SetupUI()
     {
         var data = SaveLoadManager.Data;
-        for (int i = 15; i <= 19; i++)
+        for (int i = 14; i < 19; i++)
         {
             if (GetStageClear(i)) StageCount++;
         }

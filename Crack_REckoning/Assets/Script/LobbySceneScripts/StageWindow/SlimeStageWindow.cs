@@ -27,7 +27,7 @@ public class SlimeStageWindow : MonoBehaviour
     private void SetupUI()
     {
         var data = SaveLoadManager.Data;
-        for (int i = 5; i <= 9; i++)
+        for (int i = 4; i < 9; i++)
         {
             if (GetStageClear(i)) StageCount++;
         }

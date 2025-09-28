@@ -27,7 +27,7 @@ public class MarionetteStageWindow : MonoBehaviour
     private void SetupUI()
     {
         var data = SaveLoadManager.Data;
-        for (int i = 20; i <= 24; i++)
+        for (int i = 19; i < 24; i++)
         {
             if (GetStageClear(i)) StageCount++;
         }

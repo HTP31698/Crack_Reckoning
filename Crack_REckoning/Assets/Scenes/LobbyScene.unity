@@ -7052,6 +7052,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018870643}
   m_CullTransparentMesh: 1
+--- !u!114 &1019404474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729544596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a025e3866663383469942af0a3ab0506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageButton:
+  - {fileID: 1729544602}
+  - {fileID: 1729544601}
+  - {fileID: 1729544600}
+  - {fileID: 1729544599}
+  - {fileID: 1729544598}
+  ExitButton: {fileID: 1729544597}
 --- !u!1 &1026131717
 GameObject:
   m_ObjectHideFlags: 0
@@ -7070,7 +7089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1026131718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8661,25 +8680,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278357551}
   m_CullTransparentMesh: 1
---- !u!114 &1278553251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729544596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b24b20ccd02984b8cc628c8fdd1c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StageButton:
-  - {fileID: 1729544602}
-  - {fileID: 1729544601}
-  - {fileID: 1729544600}
-  - {fileID: 1729544599}
-  - {fileID: 1729544598}
-  ExitButton: {fileID: 1729544597}
 --- !u!1 &1286080001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11837,7 +11837,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6252806210432592048, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1278553251}
+      addedObject: {fileID: 1019404474}
   m_SourcePrefab: {fileID: 100100000, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
 --- !u!224 &1729544595 stripped
 RectTransform:
