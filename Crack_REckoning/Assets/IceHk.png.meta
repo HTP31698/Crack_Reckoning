@@ -1,0 +1,1131 @@
+fileFormatVersion: 2
+guid: 9f2f76183ed245c4ba46929b9e9f1063
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8676746717712949373
+    second: IceHk_0
+  - first:
+      213: 2412892817321194156
+    second: IceHk_1
+  - first:
+      213: -234603644800894247
+    second: IceHk_2
+  - first:
+      213: 4911316486035734433
+    second: IceHk_3
+  - first:
+      213: -9214330127840397192
+    second: IceHk_4
+  - first:
+      213: 4434389578711953597
+    second: IceHk_5
+  - first:
+      213: -6207690199653846328
+    second: IceHk_6
+  - first:
+      213: -71562627628848832
+    second: IceHk_7
+  - first:
+      213: 6234244521465919140
+    second: IceHk_8
+  - first:
+      213: 8094358866014369616
+    second: IceHk_9
+  - first:
+      213: -4954642006077663003
+    second: IceHk_10
+  - first:
+      213: 1072545364193625655
+    second: IceHk_11
+  - first:
+      213: -3509805104050994170
+    second: IceHk_12
+  - first:
+      213: 3391105572016360610
+    second: IceHk_13
+  - first:
+      213: 8870270980033178435
+    second: IceHk_14
+  - first:
+      213: 1810320282978434297
+    second: IceHk_15
+  - first:
+      213: 7093213236384034602
+    second: IceHk_16
+  - first:
+      213: 4877256373566194714
+    second: IceHk_17
+  - first:
+      213: 4275107517890211904
+    second: IceHk_18
+  - first:
+      213: -3969751370857397078
+    second: IceHk_19
+  - first:
+      213: 3189610008225072188
+    second: IceHk_20
+  - first:
+      213: -3916190730815184298
+    second: IceHk_21
+  - first:
+      213: 4215883877915189380
+    second: IceHk_22
+  - first:
+      213: -6247334194713297977
+    second: IceHk_23
+  - first:
+      213: -6720603617764309432
+    second: IceHk_24
+  - first:
+      213: -1553108239639475421
+    second: IceHk_25
+  - first:
+      213: -5563092297371214595
+    second: IceHk_26
+  - first:
+      213: -6227565909611395384
+    second: IceHk_27
+  - first:
+      213: 7978923869758100973
+    second: IceHk_28
+  - first:
+      213: -2608623709753653244
+    second: IceHk_29
+  - first:
+      213: 1129853364131606898
+    second: IceHk_30
+  - first:
+      213: 1357016722692823397
+    second: IceHk_31
+  - first:
+      213: -5948964107751784964
+    second: IceHk_32
+  - first:
+      213: -2192597929227133535
+    second: IceHk_33
+  - first:
+      213: 5859443368661259613
+    second: IceHk_34
+  - first:
+      213: -5973838522101856579
+    second: IceHk_35
+  - first:
+      213: 7043658354398986486
+    second: IceHk_36
+  - first:
+      213: 1357486927471134824
+    second: IceHk_37
+  - first:
+      213: -8266987411769346579
+    second: IceHk_38
+  - first:
+      213: -2037135006738195591
+    second: IceHk_39
+  - first:
+      213: 2435753138349228352
+    second: IceHk_40
+  - first:
+      213: 773963249654989577
+    second: IceHk_41
+  - first:
+      213: 4735565104900858927
+    second: IceHk_42
+  - first:
+      213: -3487063354860901296
+    second: IceHk_43
+  - first:
+      213: 6677436051771899252
+    second: IceHk_44
+  - first:
+      213: -477421701886446575
+    second: IceHk_45
+  - first:
+      213: 904539526308611309
+    second: IceHk_46
+  - first:
+      213: -6489204868814957856
+    second: IceHk_47
+  - first:
+      213: 3247651965622450671
+    second: IceHk_48
+  - first:
+      213: -2407064145815626766
+    second: IceHk_49
+  - first:
+      213: -8243806686993981472
+    second: IceHk_50
+  - first:
+      213: -3247264837899984299
+    second: IceHk_51
+  - first:
+      213: -1644423005984871644
+    second: IceHk_52
+  - first:
+      213: 4655978928499781101
+    second: IceHk_53
+  - first:
+      213: 6550060272179703132
+    second: IceHk_54
+  - first:
+      213: -6260021891899704939
+    second: IceHk_55
+  - first:
+      213: 473506927933177211
+    second: IceHk_56
+  - first:
+      213: 4147313161644958459
+    second: IceHk_57
+  - first:
+      213: -1055786241055470800
+    second: IceHk_58
+  - first:
+      213: -1370429013128532595
+    second: IceHk_59
+  - first:
+      213: -7565179693458242119
+    second: IceHk_60
+  - first:
+      213: 6571616049174310745
+    second: IceHk_61
+  - first:
+      213: -5708042108728004104
+    second: IceHk_62
+  - first:
+      213: 709681515579562044
+    second: IceHk_63
+  - first:
+      213: -2428382674156578665
+    second: IceHk_64
+  - first:
+      213: -5480981144012218863
+    second: IceHk_65
+  - first:
+      213: 8737220440457317513
+    second: IceHk_66
+  - first:
+      213: 1100712745101668373
+    second: IceHk_67
+  - first:
+      213: -8033702046542862861
+    second: IceHk_68
+  - first:
+      213: 428060986595467825
+    second: IceHk_69
+  - first:
+      213: -1927417098984093124
+    second: IceHk_70
+  - first:
+      213: -2292173076309246473
+    second: IceHk_71
+  - first:
+      213: 7990142968322356021
+    second: IceHk_72
+  - first:
+      213: 4857605003363361162
+    second: IceHk_73
+  - first:
+      213: -7432474879859351789
+    second: IceHk_74
+  - first:
+      213: 2372999763990160355
+    second: IceHk_75
+  - first:
+      213: 7215442950746056258
+    second: IceHk_76
+  - first:
+      213: 8523837818745946039
+    second: IceHk_77
+  - first:
+      213: 258008491217685497
+    second: IceHk_78
+  - first:
+      213: 7253560950105286465
+    second: IceHk_79
+  - first:
+      213: -509974596856779140
+    second: IceHk_80
+  - first:
+      213: -4288301896114631397
+    second: IceHk_81
+  - first:
+      213: 2571095362092980251
+    second: IceHk_82
+  - first:
+      213: 8853146226184008260
+    second: IceHk_83
+  - first:
+      213: 3658456075783781075
+    second: IceHk_84
+  - first:
+      213: -4249981890899516680
+    second: IceHk_85
+  - first:
+      213: 5467877842298045770
+    second: IceHk_86
+  - first:
+      213: -8446416735047080796
+    second: IceHk_87
+  - first:
+      213: 8459733469896361756
+    second: IceHk_88
+  - first:
+      213: 1141305577715491999
+    second: IceHk_89
+  - first:
+      213: -8576097446703596339
+    second: IceHk_90
+  - first:
+      213: -4988722373826103320
+    second: IceHk_91
+  - first:
+      213: 1683342731086898823
+    second: IceHk_92
+  - first:
+      213: -3118428014441395171
+    second: IceHk_93
+  - first:
+      213: -6030716814873836187
+    second: IceHk_94
+  - first:
+      213: 7706707060541251827
+    second: IceHk_95
+  - first:
+      213: 5705345004048869402
+    second: IceHk_96
+  - first:
+      213: -5832333073184719085
+    second: IceHk_97
+  - first:
+      213: 5903476458619426865
+    second: IceHk_98
+  - first:
+      213: -1924539638518495928
+    second: IceHk_99
+  - first:
+      213: -5095614629992103204
+    second: IceHk_100
+  - first:
+      213: -8781858340285116122
+    second: IceHk_101
+  - first:
+      213: 8709220007653754141
+    second: IceHk_102
+  - first:
+      213: 4776871727161078401
+    second: IceHk_103
+  - first:
+      213: 3850460906378447728
+    second: IceHk_104
+  - first:
+      213: 7089292499008711295
+    second: IceHk_105
+  - first:
+      213: -4190180050280409043
+    second: IceHk_106
+  - first:
+      213: -6013720601922220748
+    second: IceHk_107
+  - first:
+      213: -3104413129159764108
+    second: IceHk_108
+  - first:
+      213: 3195695342157449588
+    second: IceHk_109
+  - first:
+      213: 981725297726882608
+    second: IceHk_110
+  - first:
+      213: 4419671161554273589
+    second: IceHk_111
+  - first:
+      213: 58213509206983842
+    second: IceHk_112
+  - first:
+      213: 9093985272176609510
+    second: IceHk_113
+  - first:
+      213: -927122934746546864
+    second: IceHk_114
+  - first:
+      213: 6441870311672306140
+    second: IceHk_115
+  - first:
+      213: -4248569027545834482
+    second: IceHk_116
+  - first:
+      213: 495925817732426913
+    second: IceHk_117
+  - first:
+      213: 8213482566000092543
+    second: IceHk_118
+  - first:
+      213: 8198000485353674697
+    second: IceHk_119
+  - first:
+      213: 6134848032992354207
+    second: IceHk_120
+  - first:
+      213: -2742162805757534508
+    second: IceHk_121
+  - first:
+      213: 2595080728623785219
+    second: IceHk_122
+  - first:
+      213: -5942707543251574261
+    second: IceHk_123
+  - first:
+      213: -7603370127157296260
+    second: IceHk_124
+  - first:
+      213: -2751372483257984946
+    second: IceHk_125
+  - first:
+      213: -4974777564799776863
+    second: IceHk_126
+  - first:
+      213: 7314963492950920276
+    second: IceHk_127
+  - first:
+      213: 8238594370040728972
+    second: IceHk_128
+  - first:
+      213: 4696580920784657161
+    second: IceHk_129
+  - first:
+      213: 5394060851458324286
+    second: IceHk_130
+  - first:
+      213: 2202959152935195756
+    second: IceHk_131
+  - first:
+      213: -7120245390409683746
+    second: IceHk_132
+  - first:
+      213: -6232608691147825824
+    second: IceHk_133
+  - first:
+      213: -6123675637514427931
+    second: IceHk_134
+  - first:
+      213: 189541979231507982
+    second: IceHk_135
+  - first:
+      213: -9059372949929941341
+    second: IceHk_136
+  - first:
+      213: 1406841102542404085
+    second: IceHk_137
+  - first:
+      213: 8935286071617098669
+    second: IceHk_138
+  - first:
+      213: -1971196457448338424
+    second: IceHk_139
+  - first:
+      213: 2627469189712767451
+    second: IceHk_140
+  - first:
+      213: -3254172842331382393
+    second: IceHk_141
+  - first:
+      213: -5994761061024921381
+    second: IceHk_142
+  - first:
+      213: 885485330601001764
+    second: IceHk_143
+  - first:
+      213: -132157366785496145
+    second: IceHk_144
+  - first:
+      213: 3173616060071559385
+    second: IceHk_145
+  - first:
+      213: -3898261450911935564
+    second: IceHk_146
+  - first:
+      213: 5261728592767544893
+    second: IceHk_147
+  - first:
+      213: 6294474151213506803
+    second: IceHk_148
+  - first:
+      213: 3266996954648549331
+    second: IceHk_149
+  - first:
+      213: -5971267529200038365
+    second: IceHk_150
+  - first:
+      213: 1727958132633224554
+    second: IceHk_151
+  - first:
+      213: -8742385645241988761
+    second: IceHk_152
+  - first:
+      213: 1381031981509548853
+    second: IceHk_153
+  - first:
+      213: 8530829942157731166
+    second: IceHk_154
+  - first:
+      213: -9036051306874131413
+    second: IceHk_155
+  - first:
+      213: 6637683782331107047
+    second: IceHk_156
+  - first:
+      213: -432935171476707328
+    second: IceHk_157
+  - first:
+      213: 830699642304169509
+    second: IceHk_158
+  - first:
+      213: 7748586416316683230
+    second: IceHk_159
+  - first:
+      213: -6280938420772235088
+    second: IceHk_160
+  - first:
+      213: 3059498029343142577
+    second: IceHk_161
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IceHk_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 795
+        width: 177
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d70215b1b2ff96870800000000000000
+      internalID: 8676746717712949373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 798
+        width: 181
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca27589bb315c7120800000000000000
+      internalID: 2412892817321194156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_2
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 786
+        width: 186
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9da71a06a358ebcf0800000000000000
+      internalID: -234603644800894247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_3
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 785
+        width: 186
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1affda1a250882440800000000000000
+      internalID: 4911316486035734433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 580
+        width: 178
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 878b4ee719f102080800000000000000
+      internalID: -9214330127840397192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_5
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 569
+        width: 196
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0f1d2d3dd1a8d30800000000000000
+      internalID: 4434389578711953597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_6
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 564
+        width: 192
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c275f537aad9d9a0800000000000000
+      internalID: -6207690199653846328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_7
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 563
+        width: 193
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0492df85b22c10ff0800000000000000
+      internalID: -71562627628848832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_8
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 358
+        width: 191
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6b6e0ac5c748650800000000000000
+      internalID: 6234244521465919140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_9
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 355
+        width: 196
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057f15db080f45070800000000000000
+      internalID: 8094358866014369616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 358
+        width: 195
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e81386a8539d3bb0800000000000000
+      internalID: -4954642006077663003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_11
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 354
+        width: 213
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736c04e735272ee00800000000000000
+      internalID: 1072545364193625655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 142
+        width: 214
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60400368adaaa4fc0800000000000000
+      internalID: -3509805104050994170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_13
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 142
+        width: 211
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac02e70d80af0f20800000000000000
+      internalID: 3391105572016360610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_14
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 142
+        width: 213
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b655aa578891b70800000000000000
+      internalID: 8870270980033178435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceHk_15
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 142
+        width: 216
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc3d94b4bc8f1910800000000000000
+      internalID: 1810320282978434297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: de345eeb9d3025d45bf06c718e843e01
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      IceHk_0: 8676746717712949373
+      IceHk_1: 2412892817321194156
+      IceHk_10: -4954642006077663003
+      IceHk_100: -5095614629992103204
+      IceHk_101: -8781858340285116122
+      IceHk_102: 8709220007653754141
+      IceHk_103: 4776871727161078401
+      IceHk_104: 3850460906378447728
+      IceHk_105: 7089292499008711295
+      IceHk_106: -4190180050280409043
+      IceHk_107: -6013720601922220748
+      IceHk_108: -3104413129159764108
+      IceHk_109: 3195695342157449588
+      IceHk_11: 1072545364193625655
+      IceHk_110: 981725297726882608
+      IceHk_111: 4419671161554273589
+      IceHk_112: 58213509206983842
+      IceHk_113: 9093985272176609510
+      IceHk_114: -927122934746546864
+      IceHk_115: 6441870311672306140
+      IceHk_116: -4248569027545834482
+      IceHk_117: 495925817732426913
+      IceHk_118: 8213482566000092543
+      IceHk_119: 8198000485353674697
+      IceHk_12: -3509805104050994170
+      IceHk_120: 6134848032992354207
+      IceHk_121: -2742162805757534508
+      IceHk_122: 2595080728623785219
+      IceHk_123: -5942707543251574261
+      IceHk_124: -7603370127157296260
+      IceHk_125: -2751372483257984946
+      IceHk_126: -4974777564799776863
+      IceHk_127: 7314963492950920276
+      IceHk_128: 8238594370040728972
+      IceHk_129: 4696580920784657161
+      IceHk_13: 3391105572016360610
+      IceHk_130: 5394060851458324286
+      IceHk_131: 2202959152935195756
+      IceHk_132: -7120245390409683746
+      IceHk_133: -6232608691147825824
+      IceHk_134: -6123675637514427931
+      IceHk_135: 189541979231507982
+      IceHk_136: -9059372949929941341
+      IceHk_137: 1406841102542404085
+      IceHk_138: 8935286071617098669
+      IceHk_139: -1971196457448338424
+      IceHk_14: 8870270980033178435
+      IceHk_140: 2627469189712767451
+      IceHk_141: -3254172842331382393
+      IceHk_142: -5994761061024921381
+      IceHk_143: 885485330601001764
+      IceHk_144: -132157366785496145
+      IceHk_145: 3173616060071559385
+      IceHk_146: -3898261450911935564
+      IceHk_147: 5261728592767544893
+      IceHk_148: 6294474151213506803
+      IceHk_149: 3266996954648549331
+      IceHk_15: 1810320282978434297
+      IceHk_150: -5971267529200038365
+      IceHk_151: 1727958132633224554
+      IceHk_152: -8742385645241988761
+      IceHk_153: 1381031981509548853
+      IceHk_154: 8530829942157731166
+      IceHk_155: -9036051306874131413
+      IceHk_156: 6637683782331107047
+      IceHk_157: -432935171476707328
+      IceHk_158: 830699642304169509
+      IceHk_159: 7748586416316683230
+      IceHk_16: 7093213236384034602
+      IceHk_160: -6280938420772235088
+      IceHk_161: 3059498029343142577
+      IceHk_162: 1799213847
+      IceHk_17: 4877256373566194714
+      IceHk_18: 4275107517890211904
+      IceHk_19: -3969751370857397078
+      IceHk_2: -234603644800894247
+      IceHk_20: 3189610008225072188
+      IceHk_21: -3916190730815184298
+      IceHk_22: 4215883877915189380
+      IceHk_23: -6247334194713297977
+      IceHk_24: -6720603617764309432
+      IceHk_25: -1553108239639475421
+      IceHk_26: -5563092297371214595
+      IceHk_27: -6227565909611395384
+      IceHk_28: 7978923869758100973
+      IceHk_29: -2608623709753653244
+      IceHk_3: 4911316486035734433
+      IceHk_30: 1129853364131606898
+      IceHk_31: 1357016722692823397
+      IceHk_32: -5948964107751784964
+      IceHk_33: -2192597929227133535
+      IceHk_34: 5859443368661259613
+      IceHk_35: -5973838522101856579
+      IceHk_36: 7043658354398986486
+      IceHk_37: 1357486927471134824
+      IceHk_38: -8266987411769346579
+      IceHk_39: -2037135006738195591
+      IceHk_4: -9214330127840397192
+      IceHk_40: 2435753138349228352
+      IceHk_41: 773963249654989577
+      IceHk_42: 4735565104900858927
+      IceHk_43: -3487063354860901296
+      IceHk_44: 6677436051771899252
+      IceHk_45: -477421701886446575
+      IceHk_46: 904539526308611309
+      IceHk_47: -6489204868814957856
+      IceHk_48: 3247651965622450671
+      IceHk_49: -2407064145815626766
+      IceHk_5: 4434389578711953597
+      IceHk_50: -8243806686993981472
+      IceHk_51: -3247264837899984299
+      IceHk_52: -1644423005984871644
+      IceHk_53: 4655978928499781101
+      IceHk_54: 6550060272179703132
+      IceHk_55: -6260021891899704939
+      IceHk_56: 473506927933177211
+      IceHk_57: 4147313161644958459
+      IceHk_58: -1055786241055470800
+      IceHk_59: -1370429013128532595
+      IceHk_6: -6207690199653846328
+      IceHk_60: -7565179693458242119
+      IceHk_61: 6571616049174310745
+      IceHk_62: -5708042108728004104
+      IceHk_63: 709681515579562044
+      IceHk_64: -2428382674156578665
+      IceHk_65: -5480981144012218863
+      IceHk_66: 8737220440457317513
+      IceHk_67: 1100712745101668373
+      IceHk_68: -8033702046542862861
+      IceHk_69: 428060986595467825
+      IceHk_7: -71562627628848832
+      IceHk_70: -1927417098984093124
+      IceHk_71: -2292173076309246473
+      IceHk_72: 7990142968322356021
+      IceHk_73: 4857605003363361162
+      IceHk_74: -7432474879859351789
+      IceHk_75: 2372999763990160355
+      IceHk_76: 7215442950746056258
+      IceHk_77: 8523837818745946039
+      IceHk_78: 258008491217685497
+      IceHk_79: 7253560950105286465
+      IceHk_8: 6234244521465919140
+      IceHk_80: -509974596856779140
+      IceHk_81: -4288301896114631397
+      IceHk_82: 2571095362092980251
+      IceHk_83: 8853146226184008260
+      IceHk_84: 3658456075783781075
+      IceHk_85: -4249981890899516680
+      IceHk_86: 5467877842298045770
+      IceHk_87: -8446416735047080796
+      IceHk_88: 8459733469896361756
+      IceHk_89: 1141305577715491999
+      IceHk_9: 8094358866014369616
+      IceHk_90: -8576097446703596339
+      IceHk_91: -4988722373826103320
+      IceHk_92: 1683342731086898823
+      IceHk_93: -3118428014441395171
+      IceHk_94: -6030716814873836187
+      IceHk_95: 7706707060541251827
+      IceHk_96: 5705345004048869402
+      IceHk_97: -5832333073184719085
+      IceHk_98: 5903476458619426865
+      IceHk_99: -1924539638518495928
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
