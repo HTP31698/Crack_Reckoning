@@ -29,22 +29,22 @@ public class Skill : MonoBehaviour
     public int Id { get; private set; }
     public string SkillName { get; private set; }
     public SkillTypeID SkillTypeID { get; private set; }
-    public float SkillRange { get; private set; }          // 레이저 길이 등
+    public float SkillRange { get; private set; }
     public int SkillDamage { get; set; }
     public float SkillCoolTime { get; set; }
     public int ProjectilesNum { get; set; }
     public int AttackNum { get; set; }
     public int PenetratingPower { get; set; }
-    public float SkillDamageRange { get; set; }            // 원형 영역/장판 반경
+    public float SkillDamageRange { get; set; }
     public AttackTypeID AttackType { get; private set; }
     public string SkillDescription { get; set; }
 
-    public float ExplosionRange { get; set; }              // 폭발 반경
+    public float ExplosionRange { get; set; }
     public float ExplosionDamage { get; set; }
     public float FreezeTime { get; set; }
     public float StunTime { get; set; }
     public float Duration { get; set; }
-    public float PerSecond { get; set; }                   // DoT/레이저 틱 속도
+    public float PerSecond { get; set; }
     public float KonckBack { get; set; }
     public float Strain { get; set; }
 
@@ -53,28 +53,27 @@ public class Skill : MonoBehaviour
     public Sprite sprite { get; private set; }
     public RuntimeAnimatorController controller { get; private set; }
 
-    public float Speed = 5f;                               // 투사체 속도
+    public float Speed = 5f;
     private int characterCri;
     private float characterCriDamage;
 
-    private readonly HashSet<MonsterBase> alreadyHit = new(); // 같은 몬스터 중복타격 방지
+    private readonly HashSet<MonsterBase> alreadyHit = new();
     private bool areaFired = false;
 
-    private GameObject particlePrefab;                     // 히트/폭발 FX 프리팹
-    private Transform areaVisualRoot;                      // (선택) 장판 애니 전용 루트
-    private float areaVisualBaseRadius = 1f;               // 루트=1일 때 기본 반경(자동 추정)
+    private GameObject particlePrefab;
+    private Transform areaVisualRoot;
+    private float areaVisualBaseRadius = 1f;
 
-    private LineRenderer line;                             // 레이저용
+    private LineRenderer line;
     private float Elapsed = 0f;
     private float TickAcc = 0f;
     private bool laserStarted = false;
     private bool sphereStarted = false;
 
     private Material LaserMaterial;
-    private GameObject sphereFX;                           // 도트 영역 FX 인스턴스
+    private GameObject sphereFX;                  
     private Vector2 sphereCenter;
 
-    // ====== Unity 기본 생명주기 ======
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -102,30 +101,28 @@ public class Skill : MonoBehaviour
                 if (dir == Vector2.zero) return;
                 CastProjectile(dt);
                 break;
-
             case AttackTypeID.Area:
                 CastArea();
                 break;
-
-            case AttackTypeID.Mine:
-                break;
-
             case AttackTypeID.Laser:
                 if (line) line.enabled = true;
                 CastLaser(dt);
                 break;
-
             case AttackTypeID.Explosion:
                 CastExplosion(dt);
                 break;
-
-            case AttackTypeID.Haeil:
-                break;
-
-            case AttackTypeID.IceSheet:
-            case AttackTypeID.BlackHole:
             case AttackTypeID.ElectricSphere:
                 CastDotArea(dt);
+                break;
+            case AttackTypeID.IceSheet:
+                CastDotArea(dt);
+                break;
+            case AttackTypeID.BlackHole:
+                CastDotArea(dt);
+                break;
+            case AttackTypeID.Mine:
+                break;
+            case AttackTypeID.Haeil:
                 break;
         }
     }
@@ -210,9 +207,6 @@ public class Skill : MonoBehaviour
 
     public void SetTargetPosition(Vector3 position) => targetpos = position;
 
-    // ====== 핵심 1: FX를 '원하는 반경'에 정확히 맞추는 함수 ======
-    // - desiredRadius: 이 스킬이 '지금' 보여줘야 하는 월드 반경(레벨업 반영)
-    // - authorRadius : 이 프리팹이 localScale (1,1,1)일 때의 기준 반경(보통 1). 다르면 인자로 넘겨.
     private void InitFX(
         GameObject fx,
         float desiredRadius,
@@ -239,8 +233,8 @@ public class Skill : MonoBehaviour
         foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>(true))
         {
             var main = ps.main;
-            main.simulationSpace = ParticleSystemSimulationSpace.Local;     // 로컬 기준
-            main.scalingMode = ParticleSystemScalingMode.Hierarchy;     // Transform 스케일 반영
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             main.stopAction = ParticleSystemStopAction.None;
             main.gravityModifier = 0f;
 
@@ -282,7 +276,6 @@ public class Skill : MonoBehaviour
             ps.Play();
     }
 
-    // (선택) 장판 애니메이션 루트만 스케일하고 싶을 때 사용
     private void ApplyAreaAnimationScale(float radius)
     {
         radius = Mathf.Max(0.01f, radius);
@@ -298,16 +291,13 @@ public class Skill : MonoBehaviour
         root.localScale = new Vector3(scale, scale, 1f);
     }
 
-    // ====== 핵심 2: '보이는 반경'과 1:1로 맞게 판정하는 헬퍼 ======
-    // - 콜라이더 중심이 원(center, radius) 안에 있어야 true
     private static bool IsInsideByCenter(Collider2D col, Vector2 center, float radius, float shrink = 0f)
     {
-        float r = Mathf.Max(0f, radius - shrink);  // 살짝 보수적으로 쓰고 싶으면 shrink>0
-        Vector2 c = col.bounds.center;             // 콜라이더 중심(피벗 편차 무시)
+        float r = Mathf.Max(0f, radius - shrink);
+        Vector2 c = col.bounds.center;
         return (c - center).sqrMagnitude <= r * r;
     }
 
-    // ====== 데미지 계산 공통 ======
     private void TryAttack(MonsterBase m)
     {
         bool isCritical = Random.Range(0, 100) < characterCri;
@@ -336,9 +326,7 @@ public class Skill : MonoBehaviour
         m.TakeDamage((int)(dmg * typeMul), character);
     }
 
-    // ====== 각 공격 타입 구현 ======
-
-    // 투사체: 전진 중 레이캐스트로 히트 체크, 히트 지점에 FX 생성
+    //Cast1
     public void CastProjectile(float dt)
     {
         Vector2 nextPos = rb.position + dir * Speed * dt;
@@ -373,7 +361,7 @@ public class Skill : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // 즉발 원형: 타겟 지점에서 한 번만 터짐
+    //Cast2
     public void CastArea()
     {
         if (areaFired) return;
@@ -403,7 +391,7 @@ public class Skill : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-    // 레이저: LineRenderer 폭=SkillDamageRange, 길이=SkillRange
+    //Cast3
     private void CastLaser(float dt)
     {
         if (!line) return;
@@ -457,7 +445,7 @@ public class Skill : MonoBehaviour
         }
     }
 
-    // 폭발: 히트 지점에서 원형으로 판정 + FX
+    //Cast4
     private void CastExplosion(float dt)
     {
         Vector2 ndir = (dir.sqrMagnitude > 0f) ? dir.normalized : Vector2.right;
@@ -476,11 +464,9 @@ public class Skill : MonoBehaviour
             if (alreadyHit.Contains(m)) continue;
             alreadyHit.Add(m);
 
-            // 폭발
             Vector3 hitPos = GetHitPosition(hit, rb, m.transform);
             DoExplosion(hitPos);
 
-            // FX: 폭발 반경에 딱 맞추기
             if (particlePrefab)
             {
                 float r = Mathf.Max(0.01f, ExplosionRange);
@@ -510,14 +496,13 @@ public class Skill : MonoBehaviour
             var mob = c.GetComponent<MonsterBase>();
             if (!mob || mob.isdead) continue;
 
-            // 중심이 반경 안일 때만 히트 → 보이는 링과 1:1 일치
-            if (!IsInsideByCenter(c, center, radius /*, shrink: 0.0f*/)) continue;
+            if (!IsInsideByCenter(c, center, radius)) continue;
 
             TryAttackExplosion(mob, dmg);
         }
     }
 
-    // 지속 도트/블랙홀/얼음장판 등
+    //Cast5
     private void CastDotArea(float dt)
     {
         if (AttackType != AttackTypeID.BlackHole)
@@ -571,7 +556,9 @@ public class Skill : MonoBehaviour
         }
     }
 
-    // 유틸: 레이캐스트 히트 지점 계산
+    //Cast6
+    
+
     private Vector3 GetHitPosition(RaycastHit2D hit, Rigidbody2D fromRb, Transform targetTf)
     {
         if (hit.point != Vector2.zero) return hit.point;
