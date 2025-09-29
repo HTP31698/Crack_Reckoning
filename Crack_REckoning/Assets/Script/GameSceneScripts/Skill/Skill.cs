@@ -2,14 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-/// <summary>
-/// 스킬 한 발(투사체/폭발/장판/레이저 등)을 담당하는 컴포넌트
-/// - FX 프리팹은 InitFX()에서 '스킬 반경'에 정확히 맞도록 스케일
-/// - 데미지 판정은 OverlapCircleAll + "중심이 반경 안" 필터로 '보이는 링'과 1:1 일치
-/// </summary>
 public class Skill : MonoBehaviour
 {
-    // ====== 상수/필드 ======
     private static readonly string SkillTableName = "SkillTable";
     private static readonly string MonsterLayerName = "Monster";
 
@@ -25,7 +19,6 @@ public class Skill : MonoBehaviour
     private SkillTable skillTable;
     private SkillData skillData;
 
-    // === 데이터에서 들어오는 속성들 ===
     public int Id { get; private set; }
     public string SkillName { get; private set; }
     public SkillTypeID SkillTypeID { get; private set; }
@@ -120,14 +113,16 @@ public class Skill : MonoBehaviour
             case AttackTypeID.BlackHole:
                 CastDotArea(dt);
                 break;
-            case AttackTypeID.Mine:
-                break;
             case AttackTypeID.Haeil:
+                CastProjectile(dt);
                 break;
+            case AttackTypeID.Mine:
+
+                break;
+
         }
     }
 
-    // ====== 초기화/데이터 바인딩 ======
     public void Init(int id)
     {
         Id = id;
@@ -341,8 +336,11 @@ public class Skill : MonoBehaviour
             if (alreadyHit.Contains(m)) continue;
             alreadyHit.Add(m);
 
+            if(KonckBack > 0f)
+            {
+                m.ApplyNuckBack(KonckBack);
+            }
             TryAttack(m);
-
             Vector3 hitPos = GetHitPosition(hit, rb, m.transform);
 
             if (particlePrefab)
@@ -556,8 +554,6 @@ public class Skill : MonoBehaviour
         }
     }
 
-    //Cast6
-    
 
     private Vector3 GetHitPosition(RaycastHit2D hit, Rigidbody2D fromRb, Transform targetTf)
     {

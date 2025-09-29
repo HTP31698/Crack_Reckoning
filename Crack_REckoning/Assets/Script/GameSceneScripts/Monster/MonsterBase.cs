@@ -100,12 +100,10 @@ public abstract class MonsterBase : MonoBehaviour
             }
         }
 
-        // ★ stoppingDistance 기준으로 공격 시작/정지 (타겟/이동 로직은 건드리지 않음)
         if (!isStunned && target != null)
         {
             bool inRangeToStart = IsWithinStopDistance(startEpsilon);
-            bool inRangeToStay = IsWithinStopDistance(-stopEpsilon) || inRangeToStart; // 약간 더 관대
-
+            bool inRangeToStay = IsWithinStopDistance(-stopEpsilon) || inRangeToStart;
             if (attackCoroutine == null && inRangeToStart)
             {
                 var war = target.GetComponent<War>();
@@ -123,7 +121,6 @@ public abstract class MonsterBase : MonoBehaviour
         if (target == null) return;
         if (isStunned) return;
 
-        // 네 원본 이동 로직 그대로 유지
         Vector3 movepos = new Vector3(posX, target.position.y + agent.stoppingDistance, posZ);
         if (!isStrain)
         {
@@ -131,7 +128,6 @@ public abstract class MonsterBase : MonoBehaviour
         }
     }
 
-    // 트리거로 들어와도 stoppingDistance 안이면만 시작 (범용성↑)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == null) return;
@@ -144,7 +140,6 @@ public abstract class MonsterBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // 트리거가 벗어나더라도 범위 내면 계속 때리도록
         if (!IsWithinStopDistance(-stopEpsilon))
             StopAttack();
     }
@@ -216,6 +211,10 @@ public abstract class MonsterBase : MonoBehaviour
         }
         strainRemain = Mathf.Max(strainRemain, duration);
     }
+    public void ApplyNuckBack(float nuckback)
+    {
+       agent.gameObject.transform.position = new Vector3(posX, gameObject.transform.position.y + nuckback, posZ); 
+    }
 
     public virtual void Die()
     {
@@ -254,24 +253,20 @@ public abstract class MonsterBase : MonoBehaviour
     {
         if (agent == null || target == null) return false;
 
-        // stoppingDistance가 0이면 근접 여유거리 사용
         float sd = agent.stoppingDistance > 0f ? agent.stoppingDistance : meleeRangeFallback;
         float range = Mathf.Max(0f, sd + extra);
 
         if (agent.updateUpAxis == false)
         {
-            // 2D(Top-down): 라인 진행축(Y)만 비교 (네 movepos 로직과 일치)
             return Mathf.Abs(transform.position.y - target.position.y) <= range;
         }
         else
         {
-            // 3D: 라인 진행축(Z) 비교 (필요 시 Y로 변경)
             return Mathf.Abs(transform.position.z - target.position.z) <= range;
         }
     }
 
 
-    // ====== ★ 유틸: 공격 시작/정지 공통 처리 ======
     private void StartAttack(War war)
     {
         if (war == null || isStunned) return;
