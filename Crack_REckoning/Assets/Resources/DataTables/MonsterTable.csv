@@ -2,11 +2,11 @@ MonsterID,MonsterName,MonsterRange,MonsterHp,MonsterAttack,MonsterSpeed,MonsterA
 2001,돼지,0,100,10,0.2,0.5,Water,Fire,20,20
 2003,회색 쥐,0,100,10,0.2,0.5,Water,Fire,20,20
 2004,왕쥐,0,100,10,0.2,0.5,Water,Fire,20,20
-2105,외눈 유령,1,100,10,0.2,0.5,Water,Fire,20,20
+2005,외눈 유령,1,100,10,0.2,0.5,Water,Fire,20,20
 2006,걷눈유령,0,100,10,0.2,0.5,Water,Fire,20,20
 2007,보라박쥐,0,100,10,0.2,0.5,Water,Fire,20,20
 2008,호박눈박쥐,0,100,10,0.2,0.5,Water,Fire,20,20
-2110,기관슬라임,1,100,10,0.2,0.5,Dark,Lightning,20,20
+2010,기관슬라임,1,100,10,0.2,0.5,Dark,Lightning,20,20
 2011,새슬라임,0,100,10,0.2,0.5,Dark,Lightning,20,20
 2014,외눈슬라임,0,100,10,0.2,0.5,Dark,Lightning,20,20
 2015,큐티슬라임,0,100,10,0.2,0.5,Dark,Lightning,20,20
@@ -27,9 +27,9 @@ MonsterID,MonsterName,MonsterRange,MonsterHp,MonsterAttack,MonsterSpeed,MonsterA
 2033,까마귀,0,100,10,0.2,0.5,Ice,Dark,20,20
 2034,갈색전갈,0,100,10,0.2,0.5,Ice,Dark,20,20
 2035,검은전갈,0,100,10,0.2,0.5,Ice,Dark,20,20
-2136,기관오리너구리,1,100,10,0.2,0.5,Ice,Dark,20,20
+2036,기관오리너구리,1,100,10,0.2,0.5,Ice,Dark,20,20
 2037,해골개,0,100,10,0.2,0.5,Lightning,Water,20,20
-2138,해골마녀,1,100,10,0.2,0.5,Lightning,Water,20,20
+2038,해골마녀,1,100,10,0.2,0.5,Lightning,Water,20,20
 2039,그림자,0,100,10,0.2,0.5,Lightning,Water,20,20
 2040,유령,0,100,10,0.2,0.5,Lightning,Water,20,20
 2041,호박기수,0,100,10,0.2,0.5,Lightning,Water,20,20
