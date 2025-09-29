@@ -267,19 +267,86 @@ public class Character : MonoBehaviour
             Vector3 targetPos = chosen.transform.position;
             Vector2 dir = ((Vector2)targetPos - (Vector2)spawnPos).normalized;
 
+            Vector3 haeilPos = new Vector3(targetPos.x, spawnPos.y, targetPos.z);
+            Vector2 haeildir = ((Vector2)targetPos - (Vector2)haeilPos).normalized;
+
             GameObject obj = Instantiate(Skillpre, spawnPos, Quaternion.identity);
             Skill skill = obj.GetComponent<Skill>();
+
             if (skill != null)
             {
                 skill.InitWithData(skillId, skillData);
-                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
 
+                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
+                if (skill.AttackType == AttackTypeID.Haeil)
+                {
+                    obj.gameObject.transform.position = haeilPos;
+                    skill.SetTargetDirection(haeildir);
+                }
+                if(skill.AttackType == AttackTypeID.Mine)
+                {
+                    obj.gameObject.transform.position = RandomInBoxThenClampToSafe(obj);
+                }
             }
 
             chosenThisSkill.Add(chosen);
         }
     }
+    private static Vector3 RandomInBoxThenClampToSafe(
+     GameObject prefab, float zDepth = 0f, float marginPct = 0.05f)
+    {
+        // 1) 박스에서 먼저 랜덤 (요구 범위)
+        float rawX = Random.Range(-2.7f, 2.7f);
+        float rawY = Random.Range(-1.5f, 4.0f);
+
+        var cam = Camera.main;
+        if (!cam) return new Vector3(rawX, rawY, zDepth);
+
+        // 2) 안전영역 월드 사각형
+        Rect safe = Screen.safeArea;
+        float zDist = Mathf.Abs(cam.transform.position.z - zDepth);
+        Vector3 bl = cam.ScreenToWorldPoint(new Vector3(safe.xMin, safe.yMin, zDist));
+        Vector3 tr = cam.ScreenToWorldPoint(new Vector3(safe.xMax, safe.yMax, zDist));
+
+        // 3) 프리팹 반폭/반높이(루트 스케일 기준)
+        float halfW = 0f, halfH = 0f;
+        if (prefab)
+        {
+            var sr = prefab.GetComponentInChildren<SpriteRenderer>();
+            if (sr && sr.sprite)
+            {
+                Vector3 s = prefab.transform.localScale;
+                halfW = sr.sprite.bounds.extents.x * Mathf.Abs(s.x);
+                halfH = sr.sprite.bounds.extents.y * Mathf.Abs(s.y);
+            }
+        }
+
+        // 4) 여백 반영 + 클램프 범위 계산
+        float marginX = (tr.x - bl.x) * Mathf.Clamp01(marginPct);
+        float marginY = (tr.y - bl.y) * Mathf.Clamp01(marginPct);
+
+
+        float randhx = Random.Range(0.25f, 0.5f);
+
+        float minX = bl.x + halfW * 0.5f + marginX;
+        float maxX = tr.x - halfW * 0.5f - marginX;
+        float minY = bl.y + halfH * 0.5f + marginY;
+        float maxY = tr.y - halfH * 0.5f - marginY;
+
+        // 5) 안전장치: 범위가 너무 좁으면 중앙 기준 최소 폭 확보
+        const float kMinSpan = 0.05f;
+        if (maxX - minX < kMinSpan) { float mid = (bl.x + tr.x) * 0.5f; minX = mid - kMinSpan * 0.5f; maxX = mid + kMinSpan * 0.5f; }
+        if (maxY - minY < kMinSpan) { float mid = (bl.y + tr.y) * 0.5f; minY = mid - kMinSpan * 0.5f; maxY = mid + kMinSpan * 0.5f; }
+
+        // 6) ‘안으로 끌어들이기’
+        float x = Mathf.Clamp(rawX, minX, maxX);
+        float y = Mathf.Clamp(rawY, minY, maxY);
+
+        return new Vector3(x, y, zDepth);
+    }
+
+
 
 }

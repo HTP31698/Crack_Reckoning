@@ -32,4 +32,6 @@ public static class PlaySetting
         data.StageClear[index] = true;
         SaveLoadManager.Save();
     }
+
+   
 }

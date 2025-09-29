@@ -64,8 +64,16 @@ public class Skill : MonoBehaviour
     private bool sphereStarted = false;
 
     private Material LaserMaterial;
-    private GameObject sphereFX;                  
+    private GameObject sphereFX;
     private Vector2 sphereCenter;
+
+    private bool mineDetonated = false;
+    public float MineDetonateAfter = 3f;
+    private float mineTimer = 0f;
+    private float beforeMinerTimer = 0f;
+    private bool armed = false;
+    private float armedTimer = 0f;
+
 
     private void Awake()
     {
@@ -116,10 +124,15 @@ public class Skill : MonoBehaviour
             case AttackTypeID.Haeil:
                 CastProjectile(dt);
                 break;
-            case AttackTypeID.Mine:
+        }
+    }
 
-                break;
-
+    private void Update()
+    {
+        float dt = Time.deltaTime;
+        if (AttackType == AttackTypeID.Mine)
+        { 
+            CastMine(dt); 
         }
     }
 
@@ -215,11 +228,9 @@ public class Skill : MonoBehaviour
         desiredRadius = Mathf.Max(0.01f, desiredRadius);
         authorRadius = Mathf.Max(0.01f, authorRadius);
 
-        // 위치(Z만 앞으로)
         var p = fx.transform.position;
         fx.transform.position = new Vector3(p.x, p.y, zFront);
 
-        // 렌더러 정렬
         foreach (var r in fx.GetComponentsInChildren<ParticleSystemRenderer>(true))
         {
             r.sortingLayerName = sortingLayer;
@@ -230,10 +241,21 @@ public class Skill : MonoBehaviour
             var main = ps.main;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
             main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            main.stopAction = ParticleSystemStopAction.None;
+            main.useUnscaledTime = false;
+            main.stopAction = ParticleSystemStopAction.Destroy;
+            main.startDelay = 0f;
+            main.loop = false;
             main.gravityModifier = 0f;
 
             var em = ps.emission; em.enabled = true;
+            int n = em.burstCount;
+            if (n > 0)
+            {
+                var bursts = new ParticleSystem.Burst[n];
+                em.GetBursts(bursts);
+                for (int i = 0; i < n; i++) bursts[i].time = 0f; // ★
+                em.SetBursts(bursts);
+            }
         }
         float s = desiredRadius / authorRadius;
 
@@ -267,8 +289,14 @@ public class Skill : MonoBehaviour
             trails.widthOverTrail = w;
         }
 
+        float startOffsetSec = 1f;
         foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>(true))
+        {
+            if (startOffsetSec > 0f && AttackType == AttackTypeID.Mine)
+                ps.Simulate(startOffsetSec, true, true, false);
+
             ps.Play();
+        }
     }
 
     private void ApplyAreaAnimationScale(float radius)
@@ -336,10 +364,11 @@ public class Skill : MonoBehaviour
             if (alreadyHit.Contains(m)) continue;
             alreadyHit.Add(m);
 
-            if(KonckBack > 0f)
+            if (KonckBack > 0f)
             {
                 m.ApplyNuckBack(KonckBack);
             }
+
             TryAttack(m);
             Vector3 hitPos = GetHitPosition(hit, rb, m.transform);
 
@@ -551,6 +580,67 @@ public class Skill : MonoBehaviour
 
                 TryAttackLaser(m, SkillDamage);
             }
+        }
+    }
+    //Cast6
+    private void CastMine(float dt)
+    {
+        if (mineDetonated) return;
+
+        var center = (Vector2)transform.position;
+
+        float detectRadius = Mathf.Max(0.01f, SkillDamageRange);
+        ApplyAreaAnimationScale(detectRadius);
+
+        beforeMinerTimer += dt;
+        if (Duration > 0f && beforeMinerTimer > Duration)
+        {
+            StopAndDestroy();
+            return;
+        }
+
+        bool hasLive = false;
+        var cols = Physics2D.OverlapCircleAll(center, detectRadius, LayerMask.GetMask(MonsterLayerName));
+        if (cols != null && cols.Length > 0)
+        {
+            for (int i = 0; i < cols.Length; i++)
+            {
+                var m = cols[i].GetComponent<MonsterBase>();
+                if (m != null && !m.isdead) { hasLive = true; break; }
+            }
+        }
+
+        if (!armed)
+        {
+            if (hasLive)
+            {
+                armed = true;
+                armedTimer = 0f;
+            }
+            return;
+        }
+
+        if (!hasLive)
+        {
+            armed = false;
+            armedTimer = 0f;
+            return;
+        }
+
+        armedTimer += dt;
+        if (armedTimer >= MineDetonateAfter)
+        {
+            mineDetonated = true;
+
+            if (particlePrefab)
+            {
+                var fx = Instantiate(particlePrefab, center, Quaternion.identity);
+                InitFX(fx, Mathf.Max(0.01f, ExplosionRange), AuthorRadius);
+                Destroy(fx, 1f);
+            }
+
+            DoExplosion(center);
+            StopAndDestroy();
         }
     }
 
