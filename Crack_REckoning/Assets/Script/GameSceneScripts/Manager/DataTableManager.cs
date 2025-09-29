@@ -46,6 +46,18 @@ public static class DataTableManager
         var skillEnforceTable = new SkillEnforceTable();
         skillEnforceTable.Load(DataTableIds.SkillEnforceTable);
         tables.Add(DataTableIds.SkillEnforceTable, skillEnforceTable);
+
+        var petTable = new PetTable();
+        petTable.Load(DataTableIds.PetTable);
+        tables.Add(DataTableIds.PetTable, petTable);
+
+        var petEnforceTable = new PetEnforceTable();
+        petEnforceTable.Load(DataTableIds.PetEnfoceTable);
+        tables.Add(DataTableIds.PetEnfoceTable, petEnforceTable);
+
+        var characterEnforceTable = new CharacterEnforceTable();
+        characterEnforceTable.Load(DataTableIds.CharacterEnforceTable);
+        tables.Add(DataTableIds.CharacterEnforceTable, characterEnforceTable);
     }
 
     public static MonsterTable MonsterTable
@@ -109,6 +121,30 @@ public static class DataTableManager
         get
         {
             return Get<SkillEnforceTable>(DataTableIds.SkillEnforceTable);
+        }
+    }
+
+    public static PetTable PetTable
+    {
+        get
+        {
+            return Get<PetTable>(DataTableIds.PetTable);
+        }
+    }
+
+    public static PetEnforceTable PetEnforceTable
+    {
+        get
+        {
+            return Get<PetEnforceTable>(DataTableIds.PetEnfoceTable);
+        }
+    }
+
+    public static CharacterEnforceTable CharacterEnforceTable
+    {
+        get
+        {
+            return Get<CharacterEnforceTable>(DataTableIds.CharacterEnforceTable);
         }
     }
 

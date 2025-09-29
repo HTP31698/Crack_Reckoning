@@ -11,6 +11,9 @@ public static class DataTableIds
     public static readonly string LevelUpTable = "LevelUpTable";
     public static readonly string BossTable = "BossTable";
     public static readonly string SkillEnforceTable = "SkillEnforceTable";
+    public static readonly string PetTable = "PetTable";
+    public static readonly string PetEnfoceTable = "PetEnforceTable";
+    public static readonly string CharacterEnforceTable = "CharacterEnforceTable";
 }
 
 public static class PlaySetting

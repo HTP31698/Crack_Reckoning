@@ -54,7 +54,7 @@ public class Skill : MonoBehaviour
     private bool areaFired = false;
 
     private GameObject particlePrefab;
-    private Transform areaVisualRoot;
+    private Transform areaVisualRoot = null;
     private float areaVisualBaseRadius = 1f;
 
     private LineRenderer line;
@@ -69,7 +69,6 @@ public class Skill : MonoBehaviour
 
     private bool mineDetonated = false;
     public float MineDetonateAfter = 3f;
-    private float mineTimer = 0f;
     private float beforeMinerTimer = 0f;
     private bool armed = false;
     private float armedTimer = 0f;
@@ -84,7 +83,6 @@ public class Skill : MonoBehaviour
         line = GetComponent<LineRenderer>();
         if (line) line.enabled = false;
 
-        // areaVisualBaseRadius 자동 추정(스프라이트 기준)
         if (areaVisualBaseRadius <= 0.01f && spriteRenderer != null)
         {
             float approx = Mathf.Max(spriteRenderer.bounds.size.x, spriteRenderer.bounds.size.y) * 0.5f;
