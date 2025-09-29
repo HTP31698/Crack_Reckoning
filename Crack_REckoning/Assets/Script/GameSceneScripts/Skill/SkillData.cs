@@ -47,10 +47,12 @@ public class SkillData
     public float? KonckBack { get; set; }
     public float? Strain {  get; set; }
 
+    public float AuthorRadius { get; set; }
+
 
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription} / {ExplosionRange} / {ExplosionDamage} / {FreezeTime} / {StunTime} / {Duration} / {PerSecond} / {KonckBack} / {Strain}";
+        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription} / {ExplosionRange} / {ExplosionDamage} / {FreezeTime} / {StunTime} / {Duration} / {PerSecond} / {KonckBack} / {Strain} / {AuthorRadius}";
     }
 
     public Sprite sprite
@@ -88,6 +90,7 @@ public class SkillData
         PerSecond = PerSecond,
         KonckBack = KonckBack,
         Strain = Strain,
+        AuthorRadius= AuthorRadius,
     };
 }
 
@@ -115,5 +118,6 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.PerSecond).Name("PerSecond").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.KonckBack).Name("KonckBack").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.Strain).Name("Strain").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.AuthorRadius).Name("AuthorRadius").Default(0).TypeConverterOption.NullValues("", " ");
     }
 }

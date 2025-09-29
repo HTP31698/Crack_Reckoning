@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -42,6 +43,11 @@ public abstract class MonsterBase : MonoBehaviour
     private float strainRemain = 0f;
     private float cachedSpeed = -1f;
 
+    // ★ stoppingDistance 히스테리시스(너무 잦은 on/off 방지)
+    [SerializeField] private float startEpsilon = 0.01f; // 시작 여유
+    [SerializeField] private float stopEpsilon = 0.05f; // 정지 여유(조금 더 크게)
+    private float meleeRangeFallback = 0.5f; // stoppingDistance가 0일 때 최소 근접 판정 거리
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -55,6 +61,7 @@ public abstract class MonsterBase : MonoBehaviour
 
     private void OnEnable() => MonsterManager.AddMonster(this);
     private void OnDisable() => MonsterManager.RemoveMonster(this);
+
     protected virtual void Update()
     {
         if (isStunned)
@@ -92,62 +99,79 @@ public abstract class MonsterBase : MonoBehaviour
                 isStrain = false;
             }
         }
+
+        // ★ stoppingDistance 기준으로 공격 시작/정지 (타겟/이동 로직은 건드리지 않음)
+        if (!isStunned && target != null)
+        {
+            bool inRangeToStart = IsWithinStopDistance(startEpsilon);
+            bool inRangeToStay = IsWithinStopDistance(-stopEpsilon) || inRangeToStart; // 약간 더 관대
+
+            if (attackCoroutine == null && inRangeToStart)
+            {
+                var war = target.GetComponent<War>();
+                if (war != null) StartAttack(war);
+            }
+            else if (attackCoroutine != null && !inRangeToStay)
+            {
+                StopAttack();
+            }
+        }
     }
+
     protected virtual void FixedUpdate()
     {
         if (target == null) return;
         if (isStunned) return;
+
+        // 네 원본 이동 로직 그대로 유지
         Vector3 movepos = new Vector3(posX, target.position.y + agent.stoppingDistance, posZ);
-        if(!isStrain)
+        if (!isStrain)
         {
             agent.SetDestination(movepos);
         }
     }
 
+    // 트리거로 들어와도 stoppingDistance 안이면만 시작 (범용성↑)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == null) return;
-
-        War war = collision.GetComponent<War>();
+        var war = collision.GetComponent<War>();
         if (war == null) return;
 
-        if (attackCoroutine == null)
-        {
-            isattack = true;
-            attackCoroutine = StartCoroutine(AttackCoroutine(war));
-        }
-
+        if (IsWithinStopDistance(startEpsilon))
+            StartAttack(war);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
-        }
-        isattack = false;
+        // 트리거가 벗어나더라도 범위 내면 계속 때리도록
+        if (!IsWithinStopDistance(-stopEpsilon))
+            StopAttack();
     }
 
-    private IEnumerator AttackCoroutine(War target)
+    private IEnumerator AttackCoroutine(War targetWar)
     {
+        float period = Mathf.Max(0.05f, attackSpeed); // 0/음수 방지
         while (true)
         {
             if (!isStunned)
             {
-                target.TakeDamage(damage);
+                // ★ 실제 데미지도 stoppingDistance 기준으로 게이팅
+                if (IsWithinStopDistance(0f) && targetWar != null)
+                {
+                    targetWar.TakeDamage(damage);
+                }
+
                 if (animator != null && animator.runtimeAnimatorController != null)
                 {
                     animator.SetTrigger(Attack);
                 }
             }
-            yield return new WaitForSeconds(attackSpeed);
+            yield return new WaitForSeconds(period);
         }
     }
-    public void SetTarget(Transform Target)
-    {
-        target = Target;
-    }
+
+    public void SetTarget(Transform Target) => target = Target;
 
     public void TakeDamage(int amount, Character attacker)
     {
@@ -181,6 +205,7 @@ public abstract class MonsterBase : MonoBehaviour
 
         stunRemain = Mathf.Max(stunRemain, duration);
     }
+
     public void ApplyPool(Vector2 pos, float duration)
     {
         if (duration <= 0f || agent == null) return;
@@ -210,27 +235,62 @@ public abstract class MonsterBase : MonoBehaviour
                 agent.speed = cachedSpeed;
             }
         }
+        StopAttack();
+        StartCoroutine(DestroyGameObject());
+    }
+
+    private IEnumerator DestroyGameObject()
+    {
+        float wait = (animator != null) ? animator.GetCurrentAnimatorStateInfo(0).length * 0.5f : 0.3f;
+        yield return new WaitForSeconds(wait);
+        Destroy(gameObject);
+    }
+
+    public abstract void Init(int id);
+    protected abstract void InitData();
+    protected abstract void OnDeath(Character attacker);
+
+    private bool IsWithinStopDistance(float extra)
+    {
+        if (agent == null || target == null) return false;
+
+        // stoppingDistance가 0이면 근접 여유거리 사용
+        float sd = agent.stoppingDistance > 0f ? agent.stoppingDistance : meleeRangeFallback;
+        float range = Mathf.Max(0f, sd + extra);
+
+        if (agent.updateUpAxis == false)
+        {
+            // 2D(Top-down): 라인 진행축(Y)만 비교 (네 movepos 로직과 일치)
+            return Mathf.Abs(transform.position.y - target.position.y) <= range;
+        }
+        else
+        {
+            // 3D: 라인 진행축(Z) 비교 (필요 시 Y로 변경)
+            return Mathf.Abs(transform.position.z - target.position.z) <= range;
+        }
+    }
+
+
+    // ====== ★ 유틸: 공격 시작/정지 공통 처리 ======
+    private void StartAttack(War war)
+    {
+        if (war == null || isStunned) return;
+        if (attackCoroutine != null) return;
+
+        isattack = true;
+        attackCoroutine = StartCoroutine(AttackCoroutine(war));
+    }
+
+    private void StopAttack()
+    {
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
         isattack = false;
-
-        StartCoroutine(DestroyGameObject());
     }
-
-    private IEnumerator DestroyGameObject()
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);
-        Destroy(gameObject);
-    }
-
-    public abstract void Init(int id);
-
-
-    protected abstract void InitData();
-    protected abstract void OnDeath(Character attacker);
 }
+
 
 
