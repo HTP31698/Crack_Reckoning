@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class Skill : MonoBehaviour
@@ -59,11 +60,16 @@ public class Skill : MonoBehaviour
 
     private LineRenderer line;
 
-    private float laserElapsed = 0f;
-    private float laserTickAcc = 0f;
+    private float Elapsed = 0f;
+    private float TickAcc = 0f;
     private bool laserStarted = false;
+    private bool sphereStarted = false;
 
     private Material LaserMaterial;
+    private GameObject sphereFX;
+
+    private Vector2 sphereCenter;
+    private float monsterSpeed;
 
     private void Awake()
     {
@@ -107,10 +113,13 @@ public class Skill : MonoBehaviour
             case AttackTypeID.Haeil:
                 break;
             case AttackTypeID.IceSheet:
+                CastDotArea(dt);
                 break;
             case AttackTypeID.BlackHole:
+                CastDotArea(dt);
                 break;
             case AttackTypeID.ElectricSphere:
+                CastDotArea(dt);
                 break;
         }
     }
@@ -170,30 +179,46 @@ public class Skill : MonoBehaviour
             ApplySkillData(id, data);
         }
     }
-    private void InitFX(GameObject fx, float radius)
+    private void InitFX(
+     GameObject fx,
+     float desiredRadius,
+     float authorRadius = 1f,
+     string sortingLayer = "Skill",
+     int sortingOrder = 300,
+     float zFront = -0.2f)
     {
         if (!fx) return;
-        radius = Mathf.Max(0.01f, radius);
 
-        var ps = fx.GetComponentInChildren<ParticleSystem>();
-        if (ps)
+        desiredRadius = Mathf.Max(0.01f, desiredRadius);
+        authorRadius = Mathf.Max(0.01f, authorRadius);
+
+        var p = fx.transform.position;
+        fx.transform.position = new Vector3(p.x, p.y, zFront);
+
+        foreach (var r in fx.GetComponentsInChildren<ParticleSystemRenderer>(true))
         {
-            var sh = ps.shape;
-            sh.enabled = true;
-            sh.radius = radius;
+            r.sortingLayerName = sortingLayer;
+            r.sortingOrder = sortingOrder;
+        }
+
+        foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>(true))
+        {
             var main = ps.main;
-            // 메모: 1회형이면 프리팹에서 Stop Action = Destroy 설정 추천
-            ps.Play();
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+            main.stopAction = ParticleSystemStopAction.None;
+            main.gravityModifier = 0f;
+
+            var em = ps.emission;
+            em.enabled = true;
         }
 
-        var col = fx.GetComponentInChildren<CircleCollider2D>();
-        if (col)
-        {
-            col.isTrigger = true;
-            col.radius = radius;
-            col.enabled = true;
-        }
+        float scale = desiredRadius / authorRadius;
+        fx.transform.localScale = new Vector3(scale, scale, 1f);
+
+        foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>(true))
+            ps.Play();
     }
+
     private void ApplyAreaAnimationScale(float radius)
     {
         radius = Mathf.Max(0.01f, radius);
@@ -237,7 +262,7 @@ public class Skill : MonoBehaviour
 
         TypeSprite = data.TypeSprite;
 
-        particlePrefab = data.Particle;
+        particlePrefab = data.SkillParticle;
 
         LaserMaterial = data.Material;
 
@@ -282,6 +307,8 @@ public class Skill : MonoBehaviour
 
         return targetTf != null ? targetTf.position : fromRb.position;
     }
+
+    //Cast1
     public void CastProjectile(float dt)
     {
         Vector2 nextPos = rb.position + dir * Speed * dt;
@@ -311,11 +338,11 @@ public class Skill : MonoBehaviour
 
         rb.MovePosition(nextPos);
 
-        // 화면 밖 정리
         if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
             Destroy(gameObject);
     }
 
+    //Cast2
     public void CastArea()
     {
         if (areaFired)
@@ -344,6 +371,8 @@ public class Skill : MonoBehaviour
         }
         Destroy(gameObject, 1f);
     }
+
+    //Cast3
     private void CastLaser(float dt)
     {
         if (!line) return;
@@ -378,11 +407,11 @@ public class Skill : MonoBehaviour
         line.SetPosition(0, new Vector3(origin.x, origin.y, -0.1f));
         line.SetPosition(1, new Vector3(endPos.x, endPos.y, -0.1f));
 
-        laserElapsed += dt;
-        if (Duration > 0f && laserElapsed >= Duration)
-        { StopLaserAndDestroy(); return; }
+        Elapsed += dt;
+        if (Duration > 0f && Elapsed >= Duration)
+        { StopAndDestroy(); return; }
 
-        laserTickAcc += dt;
+        TickAcc += dt;
 
         float interval;
         if (PerSecond > 0f)
@@ -393,9 +422,9 @@ public class Skill : MonoBehaviour
         {
             interval = 0.2f;
         }
-        while (laserTickAcc >= interval)
+        while (TickAcc >= interval)
         {
-            laserTickAcc -= interval;
+            TickAcc -= interval;
             float beamRadius = width * 0.5f;
             var hits = Physics2D.CircleCastAll(
                 origin,
@@ -412,9 +441,10 @@ public class Skill : MonoBehaviour
             }
         }
     }
-    private void StopLaserAndDestroy()
+    private void StopAndDestroy()
     {
-        if (line) line.enabled = false;
+        if (line)
+            line.enabled = false;
         Destroy(gameObject);
     }
 
@@ -428,6 +458,7 @@ public class Skill : MonoBehaviour
         m.TakeDamage((int)damage, character);
     }
 
+    //Cast4
     private void CastExplosion(float dt)
     {
         Vector2 ndir = (dir.sqrMagnitude > 0f) ? dir.normalized : Vector2.right;
@@ -458,7 +489,7 @@ public class Skill : MonoBehaviour
             if (PenetratingPower <= 0) { Destroy(gameObject); break; }
         }
         rb.MovePosition(nextPos);
-        // 화면 밖 정리
+
         if (nextPos.y > 7 || nextPos.y < -7 || nextPos.x > 10 || nextPos.x < -10)
             Destroy(gameObject);
     }
@@ -483,5 +514,79 @@ public class Skill : MonoBehaviour
         else if (m.weakness == SkillTypeID) typeMul = 1.5f;
 
         m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul), character);
+    }
+
+    //Cast5
+    private void CastDotArea(float dt)
+    {
+        if(AttackType != AttackTypeID.BlackHole)
+        {
+            if (spriteRenderer) spriteRenderer.enabled = false;
+        }
+
+        if (!sphereStarted)
+        {
+            sphereStarted = true;
+
+            Elapsed = 0f;
+            TickAcc = 0f;
+
+            sphereCenter = targetpos;
+
+            transform.position = sphereCenter;
+            transform.rotation = Quaternion.identity;
+
+            float radius0 = Mathf.Max(0.01f, SkillDamageRange);
+            ApplyAreaAnimationScale(radius0);
+
+            if (particlePrefab != null)
+            {
+                sphereFX = Instantiate(particlePrefab, sphereCenter, Quaternion.identity);
+                sphereFX.transform.SetParent(transform, true);
+                InitFX(sphereFX, radius0);
+            }
+        }
+
+        Vector2 center = sphereCenter;
+        float radius = Mathf.Max(0.01f, SkillDamageRange);
+
+        Elapsed += dt;
+        if (Duration > 0f && Elapsed >= Duration)
+        { StopAndDestroy(); return; }
+
+        TickAcc += dt;
+
+        float interval;
+        if (PerSecond > 0f)
+        {
+            interval = 1f / PerSecond;
+        }
+        else
+        {
+            interval = 0.2f;
+        }
+        while (TickAcc >= interval)
+        {
+            TickAcc -= interval;
+            var cols = Physics2D.OverlapCircleAll(center, radius, LayerMask.GetMask(Monster));
+            foreach (var c in cols)
+            {
+                var m = c.GetComponent<MonsterBase>();
+                if (m == null || m.isdead) continue;
+                if(StunTime > 0f)
+                {
+                    m.ApplyStop(StunTime);
+                }
+                if(FreezeTime > 0f)
+                {
+                    m.ApplyStop(FreezeTime);
+                }
+                if(Strain > 0f)
+                {
+                    m.ApplyPool(sphereCenter, Strain);
+                }
+                TryAttackLaser(m, SkillDamage);
+            }
+        }
     }
 }

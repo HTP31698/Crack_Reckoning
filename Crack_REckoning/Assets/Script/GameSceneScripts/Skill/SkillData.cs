@@ -61,8 +61,8 @@ public class SkillData
     public Sprite TypeSprite
         => Resources.Load<Sprite>($"SkillTypeSprite/{SkillType}");
 
-    public GameObject Particle
-        => Resources.Load<GameObject>($"Particle/{SkillID}");
+    public GameObject SkillParticle
+        => Resources.Load<GameObject>($"SkillParticle/{SkillID}");
 
     public Material Material
         => Resources.Load<Material>($"SkillMarterial/{SkillID}");

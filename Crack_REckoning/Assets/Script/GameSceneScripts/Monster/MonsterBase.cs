@@ -36,6 +36,12 @@ public abstract class MonsterBase : MonoBehaviour
     public bool isdead { get; set; } = false;
     public bool isattack { get; set; } = false;
 
+    private bool isStunned = false;
+    private bool isStrain = false;
+    private float stunRemain = 0f;
+    private float strainRemain = 0f;
+    private float cachedSpeed = -1f;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -49,13 +55,55 @@ public abstract class MonsterBase : MonoBehaviour
 
     private void OnEnable() => MonsterManager.AddMonster(this);
     private void OnDisable() => MonsterManager.RemoveMonster(this);
+    protected virtual void Update()
+    {
+        if (isStunned)
+        {
+            stunRemain -= Time.deltaTime;
+            if (stunRemain <= 0f)
+            {
+                isStunned = false;
+                stunRemain = 0f;
 
+                if (agent != null)
+                {
+                    agent.isStopped = false;
+                    if (cachedSpeed >= 0f) agent.speed = cachedSpeed;
+                }
+            }
+            if (isStrain)
+            {
+                isStunned = false;
+                stunRemain = 0f;
+
+                if (agent != null)
+                {
+                    agent.isStopped = false;
+                    if (cachedSpeed >= 0f) agent.speed = cachedSpeed;
+                }
+            }
+        }
+        if (isStrain)
+        {
+            strainRemain -= Time.deltaTime;
+            if (strainRemain <= 0f)
+            {
+                strainRemain = 0f;
+                isStrain = false;
+            }
+        }
+    }
     protected virtual void FixedUpdate()
     {
         if (target == null) return;
+        if (isStunned) return;
         Vector3 movepos = new Vector3(posX, target.position.y + agent.stoppingDistance, posZ);
-        agent.SetDestination(movepos);
+        if(!isStrain)
+        {
+            agent.SetDestination(movepos);
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == null) return;
@@ -68,7 +116,7 @@ public abstract class MonsterBase : MonoBehaviour
             isattack = true;
             attackCoroutine = StartCoroutine(AttackCoroutine(war));
         }
-            
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -85,10 +133,13 @@ public abstract class MonsterBase : MonoBehaviour
     {
         while (true)
         {
-            target.TakeDamage(damage);
-            if (animator != null && animator.runtimeAnimatorController != null)
+            if (!isStunned)
             {
-                animator.SetTrigger(Attack);
+                target.TakeDamage(damage);
+                if (animator != null && animator.runtimeAnimatorController != null)
+                {
+                    animator.SetTrigger(Attack);
+                }
             }
             yield return new WaitForSeconds(attackSpeed);
         }
@@ -97,6 +148,7 @@ public abstract class MonsterBase : MonoBehaviour
     {
         target = Target;
     }
+
     public void TakeDamage(int amount, Character attacker)
     {
         currentHp -= amount;
@@ -110,13 +162,54 @@ public abstract class MonsterBase : MonoBehaviour
         }
     }
 
+    public void ApplyStop(float duration)
+    {
+        if (duration <= 0f || agent == null) return;
+
+        if (!isStunned)
+        {
+            cachedSpeed = agent.speed;
+            isStunned = true;
+
+            agent.speed = 0f;
+            agent.isStopped = true;
+            if (isStrain)
+            {
+                isStunned = false;
+            }
+        }
+
+        stunRemain = Mathf.Max(stunRemain, duration);
+    }
+    public void ApplyPool(Vector2 pos, float duration)
+    {
+        if (duration <= 0f || agent == null) return;
+        if (!isStrain)
+        {
+            isStrain = true;
+            agent.SetDestination(pos);
+        }
+        strainRemain = Mathf.Max(strainRemain, duration);
+    }
+
     public virtual void Die()
     {
         if (animator != null && animator.runtimeAnimatorController != null)
             animator.SetTrigger(IsDead);
         isdead = true;
         agent.isStopped = true;
-
+        isStunned = false;
+        isStrain = false;
+        stunRemain = 0f;
+        strainRemain = 0f;
+        if (agent)
+        {
+            agent.isStopped = true;
+            if (cachedSpeed >= 0f)
+            {
+                agent.speed = cachedSpeed;
+            }
+        }
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
@@ -134,6 +227,8 @@ public abstract class MonsterBase : MonoBehaviour
     }
 
     public abstract void Init(int id);
+
+
     protected abstract void InitData();
     protected abstract void OnDeath(Character attacker);
 }
