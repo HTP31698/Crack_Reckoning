@@ -44,6 +44,8 @@ public class Skill : MonoBehaviour
     public float Strain { get; set; }
 
     public float AuthorRadius { get; set; } = 1f;
+    public int SoundAttackID { get; set; }
+    public int SoundHitID { get; set; }
 
     public Sprite sprite { get; private set; }
     public Sprite Typesprite { get; private set; }
@@ -76,12 +78,18 @@ public class Skill : MonoBehaviour
     private bool armed = false;
     private float armedTimer = 0f;
 
+    public AudioSource audioSource;
+    public AudioClip attackAudioClip;
+    private AudioClip hitAudioClip;
+
+    public bool skillend { get; private set; } = false;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
 
         line = GetComponent<LineRenderer>();
         if (line) line.enabled = false;
@@ -189,6 +197,9 @@ public class Skill : MonoBehaviour
         KonckBack = data.KonckBack.GetValueOrDefault();
         Strain = data.Strain.GetValueOrDefault();
 
+        SoundAttackID = data.SoundAttackID;
+        SoundHitID = data.SoundHitID;
+
         particlePrefab = data.SkillParticle;
         LaserMaterial = data.Material;
         controller = data.AnimatorController;
@@ -197,6 +208,12 @@ public class Skill : MonoBehaviour
         Typesprite = data.TypeSprite;
 
         AuthorRadius = data.AuthorRadius;
+
+
+
+        attackAudioClip = data.attackaudioClip;
+        hitAudioClip = data.hitaudioClip;
+
 
         if (spriteRenderer && sprite) spriteRenderer.sprite = sprite;
         if (animator && controller) animator.runtimeAnimatorController = controller;
@@ -334,6 +351,8 @@ public class Skill : MonoBehaviour
 
         float dmg = SkillDamage * typeMul * (isCritical ? characterCriDamage : 1f);
         m.TakeDamage((int)dmg, character);
+        if (Time.timeScale > 0f && hitAudioClip)
+            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }
 
     private void TryAttackExplosion(MonsterBase m, int baseDamage)
@@ -342,6 +361,8 @@ public class Skill : MonoBehaviour
         if (m.strength == skillTypeID) typeMul = 0.8f;
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul), character);
+        if (Time.timeScale > 0f && hitAudioClip)
+            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }
 
     private void TryAttackLaser(MonsterBase m, int dmg)
@@ -352,6 +373,8 @@ public class Skill : MonoBehaviour
         if (m.strength == skillTypeID) typeMul = 0.8f;
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage((int)((dmg * typeMul)* (isCritical ? characterCriDamage : 1f)), character);
+        if (Time.timeScale > 0f && hitAudioClip)
+            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }
 
     //Cast1

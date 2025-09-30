@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -24,6 +25,8 @@ public class Character : MonoBehaviour
 
     private List<bool> skillReady;
 
+    private AudioSource audioSource;
+
     private readonly Dictionary<int, SkillData> skillInstances = new();
 
     // 캐릭터 기본 속성
@@ -38,7 +41,6 @@ public class Character : MonoBehaviour
     private int currentExp = 0;
 
     public Slider expSlider;
-
     public bool isUseSkill { get; set; } = false;
 
     private void Awake()
@@ -47,7 +49,7 @@ public class Character : MonoBehaviour
         skillReady = new List<bool>();
         for (int i = 0; i < 5; i++)
             skillReady.Add(false);
-
+        audioSource = GetComponent<AudioSource>();
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
         var data = SaveLoadManager.Data;
@@ -145,7 +147,7 @@ public class Character : MonoBehaviour
         if (skillData.PeneTratingPower.GetValueOrDefault() > 0)
             s.PenetratingPower += skillData.PeneTratingPower.Value;
 
-        if(skillData.Duration.GetValueOrDefault() > 0)
+        if (skillData.Duration.GetValueOrDefault() > 0)
         {
             s.Duration += skillData.Duration.Value;
         }
@@ -276,7 +278,6 @@ public class Character : MonoBehaviour
             if (skill != null)
             {
                 skill.InitWithData(skillId, skillData);
-
                 skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
@@ -285,12 +286,15 @@ public class Character : MonoBehaviour
                     obj.gameObject.transform.position = haeilPos;
                     skill.SetTargetDirection(haeildir);
                 }
-                if(skill.AttackType == AttackTypeID.Mine)
+                if (skill.AttackType == AttackTypeID.Mine)
                 {
                     obj.gameObject.transform.position = RandomInBoxThenClampToSafe(obj);
                 }
-            }
+                audioSource.spatialBlend = 0f;
+                audioSource.priority = 32;
+                audioSource.PlayOneShot(skill.attackAudioClip);
 
+            }
             chosenThisSkill.Add(chosen);
         }
     }

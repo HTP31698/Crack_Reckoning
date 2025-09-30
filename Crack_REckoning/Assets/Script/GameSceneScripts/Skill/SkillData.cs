@@ -49,10 +49,13 @@ public class SkillData
 
     public float AuthorRadius { get; set; }
 
+    public int SoundAttackID { get; set; }
+    public int SoundHitID { get; set; }
+
 
     public override string ToString()
     {
-        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription} / {ExplosionRange} / {ExplosionDamage} / {FreezeTime} / {StunTime} / {Duration} / {PerSecond} / {KonckBack} / {Strain} / {AuthorRadius}";
+        return $"{SkillID} / {SkillName} / {SkillType} / {SkillRange} / {SkillDamage} / {SkillCoolTime} / {ProjectilesNum} / {AttackNum} / {PenetratingPower} / {SkillDamageRange} / {AttackType} / {SkillDescription} / {ExplosionRange} / {ExplosionDamage} / {FreezeTime} / {StunTime} / {Duration} / {PerSecond} / {KonckBack} / {Strain} / {AuthorRadius} / {SoundAttackID} / {SoundHitID}";
     }
 
     public Sprite sprite
@@ -69,6 +72,10 @@ public class SkillData
     public Material Material
         => Resources.Load<Material>($"SkillMarterial/{SkillID}");
 
+    public AudioClip attackaudioClip
+        => Resources.Load<AudioClip>($"SoundAttack/{SoundAttackID}");
+    public AudioClip hitaudioClip
+        => Resources.Load<AudioClip>($"SoundHit/{SoundHitID}");
 
     public SkillData Clone() => new SkillData
     {
@@ -120,5 +127,7 @@ public class SkillDataMap : ClassMap<SkillData>
         Map(s => s.KonckBack).Name("KonckBack").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.Strain).Name("Strain").Default(0).TypeConverterOption.NullValues("", " ");
         Map(s => s.AuthorRadius).Name("AuthorRadius").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(s => s.SoundAttackID).Name("SoundAttackID");
+        Map(s => s.SoundHitID).Name("SoundHitID");
     }
 }
