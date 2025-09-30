@@ -9,10 +9,11 @@ public class PetData
     public float? WaveTime { get; set; }
     public int? WallHpUp { get; set; }
     public int? AttBuff { get; set; }
+    public string PetDesc { get; set; }
 
     public override string ToString()
     {
-        return $"{PetID} / {PetName} / {GoldUp} / {WaveTime} / {WallHpUp} / {AttBuff}";
+        return $"{PetID} / {PetName} / {GoldUp} / {WaveTime} / {WallHpUp} / {AttBuff} / {PetDesc}";
     }
 
     public Sprite sprite
@@ -31,5 +32,6 @@ public class PetDataMap : ClassMap<PetData>
         Map(p => p.WaveTime).Name("WaveTime").Default(0).TypeConverterOption.NullValues("", " ");
         Map(p => p.WallHpUp).Name("WallHpUp").Default(0).TypeConverterOption.NullValues("", " ");
         Map(p => p.AttBuff).Name("AttBuff").Default(0).TypeConverterOption.NullValues("", " ");
+        Map(p => p.PetDesc).Name("PetDesc");
     }
 }

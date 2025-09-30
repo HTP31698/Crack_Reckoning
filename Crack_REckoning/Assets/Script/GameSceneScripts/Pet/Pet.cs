@@ -9,6 +9,7 @@ public class Pet : MonoBehaviour
     public float WaveTime { get; private set; }
     public int WallHpUp { get; private set; }
     public int AttBuff { get; private set; }
+    public string PetDesc { get; private set; }
 
     private PetData petData;
 
@@ -36,6 +37,7 @@ public class Pet : MonoBehaviour
             WaveTime = petData.WaveTime.GetValueOrDefault();
             WallHpUp = petData.WallHpUp.GetValueOrDefault();
             AttBuff = petData.AttBuff.GetValueOrDefault();
+            PetDesc = petData.PetDesc;
 
             sprite = petData.sprite;
             runanimator = petData.AnimatorController;

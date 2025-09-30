@@ -11,6 +11,8 @@ public class LobbyManager : MonoBehaviour
     public GameObject CrackOpenWindow;
     public GameObject ChWindow;
     public GameObject ChEnforceWindow;
+    public GameObject PetWindow;
+    public GameObject PetEnforceWindow;
 
     [Header("CrackWindows")]
     public GameObject PigCrackWindow;
@@ -48,6 +50,8 @@ public class LobbyManager : MonoBehaviour
         SkillEnforceWindow.SetActive(false);
         ChWindow.SetActive(false);
         ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
 
@@ -58,6 +62,7 @@ public class LobbyManager : MonoBehaviour
         HomeButton.onClick.AddListener(HomeButtonClick);
         SkillButton.onClick.AddListener(SkillButtonClick);
         CharacterButton.onClick.AddListener(CharacterButtonClick);
+        PetButton.onClick.AddListener(PetButtonClick);
 
         Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
@@ -70,6 +75,8 @@ public class LobbyManager : MonoBehaviour
         SkillEnforceWindow.SetActive(false);
         ChWindow.SetActive(false);
         ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -82,6 +89,8 @@ public class LobbyManager : MonoBehaviour
         SkillEnforceWindow.SetActive(false);
         ChWindow.SetActive(false);
         ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -94,6 +103,8 @@ public class LobbyManager : MonoBehaviour
         SkillEnforceWindow.SetActive(false);
         ChWindow.SetActive(false);
         ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -106,6 +117,22 @@ public class LobbyManager : MonoBehaviour
         SkillEnforceWindow.SetActive(false);
         ChWindow.SetActive(true);
         ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
+        CrackWindowSetFalse();
+        StageWindowSetFalse();
+    }
+
+    public void PetButtonClick()
+    {
+        HomeWindow.SetActive(false);
+        CrackOpenWindow.SetActive(false);
+        SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(true);
+        PetEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }

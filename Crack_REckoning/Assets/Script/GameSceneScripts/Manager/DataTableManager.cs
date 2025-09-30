@@ -52,8 +52,8 @@ public static class DataTableManager
         tables.Add(DataTableIds.PetTable, petTable);
 
         var petEnforceTable = new PetEnforceTable();
-        petEnforceTable.Load(DataTableIds.PetEnfoceTable);
-        tables.Add(DataTableIds.PetEnfoceTable, petEnforceTable);
+        petEnforceTable.Load(DataTableIds.PetEnforceTable);
+        tables.Add(DataTableIds.PetEnforceTable, petEnforceTable);
 
         var characterEnforceTable = new CharacterEnforceTable();
         characterEnforceTable.Load(DataTableIds.CharacterEnforceTable);
@@ -136,7 +136,7 @@ public static class DataTableManager
     {
         get
         {
-            return Get<PetEnforceTable>(DataTableIds.PetEnfoceTable);
+            return Get<PetEnforceTable>(DataTableIds.PetEnforceTable);
         }
     }
 

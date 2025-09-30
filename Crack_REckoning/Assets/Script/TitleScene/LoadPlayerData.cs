@@ -22,7 +22,13 @@ public class LoadPlayerData : MonoBehaviour
             SaveLoadManager.Data.OwnedSkillIds.Add(3001);
             SaveLoadManager.Data.OwnedSkillIds.Add(3010);
 
+            SaveLoadManager.Data.OwnedPetIds.Add(7001);
+            SaveLoadManager.Data.OwnedPetIds.Add(7002);
+            SaveLoadManager.Data.OwnedPetIds.Add(7003);
+            SaveLoadManager.Data.OwnedPetIds.Add(7004);
+
             SaveLoadManager.Data.EquipmentSkillIds.Add(3007);
+            SaveLoadManager.Data.EquipmentPetId = 7001;
 
             for (int i = 0; i < 25; i++)
             {
@@ -38,7 +44,6 @@ public class LoadPlayerData : MonoBehaviour
             }
             SaveLoadManager.Data.CurrentCrack = 1;
             SaveLoadManager.Save(0);
-
         }
         else
         {
