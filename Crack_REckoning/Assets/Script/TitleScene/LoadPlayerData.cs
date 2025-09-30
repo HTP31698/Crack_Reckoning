@@ -27,6 +27,10 @@ public class LoadPlayerData : MonoBehaviour
             {
                 SaveLoadManager.Data.StageClear[i] = false;
             }
+            for(int i = 0; i < 25; i++)
+            {
+
+            }
             SaveLoadManager.Data.CurrentCrack = 1;
 
             SaveLoadManager.Save(0);
