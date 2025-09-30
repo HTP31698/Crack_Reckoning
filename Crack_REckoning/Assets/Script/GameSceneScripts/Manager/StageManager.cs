@@ -215,7 +215,7 @@ public class StageManager : MonoBehaviour
             int clear = Random.Range(ClearGoldMin, ClearGoldMax);
             data.Gold += clear;
             Gold.text = $"+{clear}";
-            data.StageClear[PlaySetting.SelectStage] = true;
+            data.StageClear[PlaySetting.SelectStage - 1] = true;
             GetNewSkill();
             SaveLoadManager.Save();
         }
