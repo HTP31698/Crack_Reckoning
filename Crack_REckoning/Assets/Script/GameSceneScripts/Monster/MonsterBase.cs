@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public abstract class MonsterBase : MonoBehaviour
@@ -13,6 +14,7 @@ public abstract class MonsterBase : MonoBehaviour
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     protected NavMeshAgent agent;
+    protected AudioSource audioSource;
 
     protected int id;
     public string monsterName;
@@ -54,6 +56,7 @@ public abstract class MonsterBase : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         sliderHp = GetComponentInChildren<Slider>();
+        audioSource = GetComponent<AudioSource>();
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -174,6 +177,7 @@ public abstract class MonsterBase : MonoBehaviour
         sliderHp.value = (float)currentHp / (float)maxHp;
         if (currentHp <= 0)
         {
+            audioSource.Play();
             currentHp = 0;
             sliderHp.value = (float)currentHp / (float)maxHp;
             OnDeath(attacker);

@@ -16,9 +16,9 @@ public class StageManager : MonoBehaviour
     private static readonly string PrefabBoss = "Prefabs/Boss";
     private static readonly string MonsterTable = "MonsterTable";
 
-    public Transform target;
-    public GameManager gameManager;
-    public Pet pet;
+    [SerializeField] private Transform target;
+    [SerializeField] private GameManager gameManager;
+
 
     private GameObject monsterPrefab;
     private GameObject bossPrefab;
@@ -46,7 +46,8 @@ public class StageManager : MonoBehaviour
     [Header("Images")]
     public Image[] monsterSlots;
 
-    public GameObject ClearWindow;
+    [SerializeField] private GameObject ClearWindow;
+    [SerializeField] private Pet pet;
     public bool wave20Spawned { get; set; } = false;
 
     private List<int> currentMonsterIds = new List<int>();

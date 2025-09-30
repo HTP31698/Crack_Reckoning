@@ -9,11 +9,15 @@ public class PigCrackWindow : MonoBehaviour
     public Button PigCrackOpen;
     public Button NextCrackButton;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         PigCrackOpen.onClick.AddListener(PigCrackOpenButtonClick);
         NextCrackButton.onClick.AddListener(NextCrackButtonClick);
-}
+        PigCrackOpen.onClick.AddListener(ButtonAudio.PlayClickSound);
+        NextCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+    }
 
     private void PigCrackOpenButtonClick()
     {

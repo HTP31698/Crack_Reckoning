@@ -33,6 +33,8 @@ public class PetWindowManager : MonoBehaviour
     private List<int> _owned;
     private int _selectedPetId = -1;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void OnEnable()
     {
         if (PetEnforceWindow)
@@ -74,6 +76,7 @@ public class PetWindowManager : MonoBehaviour
             if (PetEnforceWindow)
                 PetEnforceWindow.SetActive(false);
         });
+        ExitButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void BindPetButtons()
@@ -125,6 +128,7 @@ public class PetWindowManager : MonoBehaviour
             int currentSid = _owned[capturedSlot];
             OnPetSelected(currentSid);
         });
+        btn.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void OnPetSelected(int id)
@@ -137,11 +141,13 @@ public class PetWindowManager : MonoBehaviour
         {
             PetEnforceButton.onClick.RemoveAllListeners();
             PetEnforceButton.onClick.AddListener(TryEnforceSelected);
+            PetEnforceButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
         if (PetEquipButton)
         {
             PetEquipButton.onClick.RemoveAllListeners();
             PetEquipButton.onClick.AddListener(TryEquipSelected);
+            PetEquipButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
 
         RefreshUI(id);

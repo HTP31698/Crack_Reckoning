@@ -33,6 +33,8 @@ public class CharacterWindowManager : MonoBehaviour
     private List<int> _owned;
     private int _selectedCharacterId = -1;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void OnEnable()
     {
         if (CharacterEnforceWindow)
@@ -74,6 +76,7 @@ public class CharacterWindowManager : MonoBehaviour
             if (CharacterEnforceWindow) 
                 CharacterEnforceWindow.SetActive(false);
         });
+        ExitButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void BindCharacterButtons()
@@ -83,7 +86,7 @@ public class CharacterWindowManager : MonoBehaviour
         int fillCount = Mathf.Min(CharacterSelectButtons.Length, _owned.Count);
 
         for (int i = 0; i < fillCount; i++)
-            RebindButtonSlot(i);   // ← 슬롯별 바인딩
+            RebindButtonSlot(i);
 
         for (int i = fillCount; i < CharacterSelectButtons.Length; i++)
         {
@@ -125,6 +128,7 @@ public class CharacterWindowManager : MonoBehaviour
             int currentSid = _owned[capturedSlot];
             OnCharacterSelected(currentSid);
         });
+        btn.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void OnCharacterSelected(int id)
@@ -137,11 +141,13 @@ public class CharacterWindowManager : MonoBehaviour
         {
             CharacterEnforceButton.onClick.RemoveAllListeners();
             CharacterEnforceButton.onClick.AddListener(TryEnforceSelected);
+            CharacterEnforceButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
         if (CharacterEquipButton)
         {
             CharacterEquipButton.onClick.RemoveAllListeners();
             CharacterEquipButton.onClick.AddListener(TryEquipSelected);
+            CharacterEquipButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
 
         RefreshUI(id);

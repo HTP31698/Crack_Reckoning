@@ -10,11 +10,16 @@ public class ExtremColdCrackWindow : MonoBehaviour
     public Button BeforeCrackButton;
     public Button NextCrackButton;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         ExtremColdCrackOpen.onClick.AddListener(ExtremColdCrackOpenButtonClick);
         NextCrackButton.onClick.AddListener(NextCrackButtonClick);
         BeforeCrackButton.onClick.AddListener(BeforeCrackButtonClick);
+        ExtremColdCrackOpen.onClick.AddListener(ButtonAudio.PlayClickSound);
+        NextCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        BeforeCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void ExtremColdCrackOpenButtonClick()

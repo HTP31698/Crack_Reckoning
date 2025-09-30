@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     private static readonly string Background = "Background";
     private static readonly string Enforce = "Enforce";
 
-    public Character character;
-    public StageManager stageManager;
+    [SerializeField] private Character character;
+    [SerializeField] private StageManager stageManager;
 
     public Button[] Buttons;
     public Toggle toggle;
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, int> skillIndex;
     private Dictionary<int, int> enforceLevel;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         StageSkillList = new List<int>();
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
             Buttons[i].gameObject.SetActive(false);
             int index = i;
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
+            Buttons[i].onClick.AddListener(ButtonAudio.PlayClickSound);
         }
         for (int i = 1; i < sliderSkills.Length; i++)
         {
@@ -71,6 +74,14 @@ public class GameManager : MonoBehaviour
         NextStageButton.onClick.AddListener(NextStageButtonClick);
         RetryStageButton.onClick.AddListener(RetryButtonClick);
         ExitStageButton.onClick.AddListener(ExitStageButtonClick);
+
+        SettingButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        TryagainButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        GiveupButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+
+        NextStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        RetryStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        ExitStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void Start()
@@ -106,12 +117,12 @@ public class GameManager : MonoBehaviour
         {
             if (!stageManager.wave20Spawned && MonsterManager.HasMonster())
             {
-                stageManager.wave20Spawned = true; // 몬스터가 생성된 걸 확인
+                stageManager.wave20Spawned = true;
             }
 
             if (stageManager.wave20Spawned && !MonsterManager.HasMonster() && !isClear)
             {
-                ClearWindowPause(); // 몬스터 다 잡았을 때만 클리어
+                ClearWindowPause();
                 return;
             }
         }
@@ -167,18 +178,15 @@ public class GameManager : MonoBehaviour
 
     public void ShowLevelUpSkills()
     {
-        // 현재 장착/보유 목록
-        var equipped = character.GetSkillIdList(); // 전투 중 장착(최대 5)
+        var equipped = character.GetSkillIdList();
         var data = SaveLoadManager.Data;
 
-        // 방어 코드
         if (data == null || data.OwnedSkillIds == null || equipped == null)
             return;
 
-        // 후보 분리
         List<int> owned = data.OwnedSkillIds;
-        List<int> unlockables = new List<int>(); // 새로 장착 가능
-        List<int> upgradables = new List<int>(); // 업그레이드(이미 장착됨)
+        List<int> unlockables = new List<int>();
+        List<int> upgradables = new List<int>();
 
         foreach (var id in owned)
         {
@@ -193,10 +201,8 @@ public class GameManager : MonoBehaviour
         int maxSlots = 5;
         bool hasEmptySlot = equipped.Count < maxSlots;
 
-        // 최대 3개 선택
         int want = 3;
 
-        // 1) 슬롯 남으면 unlockables에서 랜덤 추가
         if (hasEmptySlot && unlockables.Count > 0)
         {
             int take = Mathf.Min(want - pendingSkillOptions.Count, unlockables.Count);
@@ -207,21 +213,19 @@ public class GameManager : MonoBehaviour
                 if (!pendingSkillOptions.Contains(id))
                 {
                     pendingSkillOptions.Add(id);
-                    pendingPickIds.Add(0); // 0 = 새 장착
+                    pendingPickIds.Add(0);
                 }
                 unlockables.RemoveAt(idx);
                 if (pendingSkillOptions.Count >= want) break;
             }
         }
 
-        // 2) 나머지는 업그레이드 후보에서 채우기
         while (pendingSkillOptions.Count < want && upgradables.Count > 0)
         {
             int idx = Random.Range(0, upgradables.Count);
             int id = upgradables[idx];
             if (!pendingSkillOptions.Contains(id))
             {
-                // 업그레이드는 pickId를 뽑아둔다 (테이블 범위에 맞춰 1..5 예시)
                 int pickId = Random.Range(1, 6);
                 pendingSkillOptions.Add(id);
                 pendingPickIds.Add(pickId);
@@ -229,10 +233,8 @@ public class GameManager : MonoBehaviour
             upgradables.RemoveAt(idx);
         }
 
-        // 후보가 하나도 없으면 종료
         if (pendingSkillOptions.Count == 0) return;
 
-        // 버튼 세팅
         for (int i = 0; i < Buttons.Length; i++)
             Buttons[i].gameObject.SetActive(false);
 
@@ -251,12 +253,10 @@ public class GameManager : MonoBehaviour
 
             if (pickId > 0)
             {
-                // 업그레이드면 Selection 이름 채우기
                 var ss = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable).Get(skillId, pickId);
                 if (ss != null && !string.IsNullOrEmpty(ss.SkillPickName))
                     label = ss.SkillPickName;
             }
-            // 새 장착(pickId==0)일 때는 스킬 기본 이름 표시
 
             if (tmpText != null) tmpText.text = label;
             if (img != null && s != null) img.sprite = s.sprite;
@@ -264,6 +264,7 @@ public class GameManager : MonoBehaviour
             int index = i;
             Buttons[i].onClick.RemoveAllListeners();
             Buttons[i].onClick.AddListener(() => OnSkillButtonClick(index));
+            Buttons[i].onClick.AddListener(ButtonAudio.PlayClickSound);
         }
 
         PauseGame();
@@ -281,34 +282,29 @@ public class GameManager : MonoBehaviour
 
         if (pickId == 0)
         {
-            // 새로 장착 (슬롯 남을 때만)
             if (equipped.Count < 5 && !equipped.Contains(skillId))
             {
                 character.AddSkill(skillId);
-                // 방금 추가된 스킬이 리스트 끝에 들어가므로 index = 기존 count (추가 전)
                 SetSkillStat(equipped.Count, skillId);
             }
             else
             {
-                // 슬롯이 없거나 이미 장착되어 있으면 무시
             }
         }
         else
         {
-            // 업그레이드 (이미 장착되어 있어야 함)
             if (equipped.Contains(skillId))
             {
                 var selectionTable = DataTableManager.Get<SkillSelectionTable>(SkillSelectionTable);
                 var skillData = selectionTable.Get(skillId, pickId);
                 if (skillData != null)
                 {
-                    character.IncreaseSkill(skillId, skillData); // 인게임 임시 레벨업
-                    UpdateSkillStat(skillId);                    // UI +n 갱신
+                    character.IncreaseSkill(skillId, skillData);
+                    UpdateSkillStat(skillId);
                 }
             }
         }
 
-        // 창 닫기
         foreach (var btn in Buttons) btn.gameObject.SetActive(false);
         ResumeGame();
     }
@@ -365,7 +361,6 @@ public class GameManager : MonoBehaviour
     private void ExitStageButtonClick()
     {
         Time.timeScale = 1f;
-        // 씬 경로로 빌드 인덱스 확인 (프로젝트 실제 경로)
         const string scenePath = "Assets/Scenes/LobbyScene.unity";
         int index = SceneUtility.GetBuildIndexByScenePath(scenePath);
 
@@ -378,7 +373,6 @@ public class GameManager : MonoBehaviour
     }
     private bool IsLevelUpUIOpen()
     {
-        // 레벨업 선택 버튼(0~2) 중 하나라도 켜져 있으면 레벨업 창이 열린 상태
         for (int i = 0; i < 3 && i < Buttons.Length; i++)
             if (Buttons[i].gameObject.activeSelf)
                 return true;

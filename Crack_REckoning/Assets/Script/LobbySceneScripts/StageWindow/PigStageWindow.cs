@@ -12,6 +12,8 @@ public class PigStageWindow : MonoBehaviour
     public Button[] StageButton;
     public Button ExitButton;
 
+    [SerializeField] private ButtonAudio buttonAudio;
+
     private int StageCount = 1;
 
     private void Awake()
@@ -43,9 +45,11 @@ public class PigStageWindow : MonoBehaviour
             int idx = i;
             StageButton[i].interactable = true;
             StageButton[i].onClick.AddListener(() => StageButtonClick(idx));
+            StageButton[i].onClick.AddListener(buttonAudio.PlayClickSound);
         }
 
         ExitButton.onClick.RemoveAllListeners();
+        ExitButton.onClick.AddListener(buttonAudio.PlayClickSound);
         ExitButton.onClick.AddListener(ExitButtonClick);
     }
 

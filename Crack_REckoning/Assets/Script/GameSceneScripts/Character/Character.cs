@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     private CharacterData characterData;
     private LevelUpData levelUpData;
 
-    public GameManager gm;
+    [SerializeField] private GameManager gm;
 
     private List<int> SkillIDs;
 
@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
     private Animator animator;
     private RuntimeAnimatorController runtimeAnimatorController;
 
-    public Pet pet;
+    [SerializeField] private Pet pet;
 
     private void Awake()
     {

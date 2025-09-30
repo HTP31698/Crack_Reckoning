@@ -156,6 +156,8 @@ MonoBehaviour:
   skillID: 0
   Speed: 5
   MineDetonateAfter: 3
+  audioSource: {fileID: 0}
+  attackAudioClip: {fileID: 0}
 --- !u!120 &3439104200458322765
 LineRenderer:
   serializedVersion: 2
@@ -271,7 +273,7 @@ AudioSource:
   m_GameObject: {fileID: 1889186910705336721}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5870479927455809492, guid: e5d2c61fb423ad84ea0a2b870ba6dcfb, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

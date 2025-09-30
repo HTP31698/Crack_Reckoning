@@ -5,7 +5,7 @@ public class War : MonoBehaviour
 {
     public Slider warHpSlider;
     public StageManager stageManager;
-    public Pet pet;
+    [SerializeField] private Pet pet;
 
     private int currentHp;
     private int maxHp;

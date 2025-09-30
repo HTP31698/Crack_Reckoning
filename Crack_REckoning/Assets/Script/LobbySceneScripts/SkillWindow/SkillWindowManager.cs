@@ -34,6 +34,8 @@ public class SkillWindowManager : MonoBehaviour
     private List<int> _owned;
     private int _selectedSkillId = -1;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void OnEnable()
     {
         if (SkillEnforceWindow) SkillEnforceWindow.SetActive(false);
@@ -73,6 +75,7 @@ public class SkillWindowManager : MonoBehaviour
         {
             if (SkillEnforceWindow) SkillEnforceWindow.SetActive(false);
         });
+        ExitButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void BindSkillButtons()
@@ -82,7 +85,7 @@ public class SkillWindowManager : MonoBehaviour
         int fillCount = Mathf.Min(SkillSelectButtons.Length, _owned.Count);
 
         for (int i = 0; i < fillCount; i++)
-            RebindButtonSlot(i);   // ← 슬롯별 바인딩
+            RebindButtonSlot(i);
 
         for (int i = fillCount; i < SkillSelectButtons.Length; i++)
         {
@@ -98,7 +101,7 @@ public class SkillWindowManager : MonoBehaviour
         var btn = SkillSelectButtons[slot];
         if (btn == null) return;
 
-        int sid = _owned[slot];                    // ← 현재 슬롯의 “최신” 스킬ID
+        int sid = _owned[slot];
         var sdata = _skillTable.Get(sid);
 
         if (sdata == null || sdata.sprite == null)
@@ -118,13 +121,13 @@ public class SkillWindowManager : MonoBehaviour
         btn.interactable = true;
         btn.onClick.RemoveAllListeners();
 
-        int capturedSlot = slot;                   // ← 인덱스만 캡쳐
+        int capturedSlot = slot;
         btn.onClick.AddListener(() =>
         {
-            // 클릭 시점에 최신 ID를 읽어서 열기
             int currentSid = _owned[capturedSlot];
             OnSkillSelected(currentSid);
         });
+        btn.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void OnSkillSelected(int id)
@@ -136,15 +139,14 @@ public class SkillWindowManager : MonoBehaviour
         {
             SkillEnforceButton.onClick.RemoveAllListeners();
             SkillEnforceButton.onClick.AddListener(TryEnforceSelected);
+            SkillEnforceButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
         if (SkillEquipButton)
         {
             SkillEquipButton.onClick.RemoveAllListeners();
             SkillEquipButton.onClick.AddListener(TryEquipSelected);
+            SkillEquipButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         }
-
-        // 테스트 코드는 개발 중에만
-        // SaveLoadManager.Data.Gold = 99999999;
 
         RefreshUI(id);
     }

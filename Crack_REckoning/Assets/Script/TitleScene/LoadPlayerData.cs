@@ -12,7 +12,6 @@ public class LoadPlayerData : MonoBehaviour
     {
         if (!SaveLoadManager.Load(0))
         {
-
             SaveLoadManager.Data.OwnedCharacterIds.Add(1001);
             SaveLoadManager.Data.PlayerID = 1001;
             SaveLoadManager.Data.Gold = 0;

@@ -9,6 +9,7 @@ public class Monster : MonsterBase
 
     public Sprite getSprite { get; private set; }
 
+
     public override void Init(int id)
     {
         this.id = id;

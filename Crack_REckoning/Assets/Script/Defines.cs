@@ -19,7 +19,6 @@ public static class DataTableIds
 public static class PlaySetting
 {
     public static int SelectStage { get; private set; }
-
     public static void SetSelectStage(int Stage)
     {
         SelectStage = Stage;
@@ -28,13 +27,10 @@ public static class PlaySetting
     { 
         SelectStage = 0;
     }
-
     public static void SetStageClear(int index)
     {
         var data = SaveLoadManager.Data;
         data.StageClear[index] = true;
         SaveLoadManager.Save();
     }
-
-   
 }

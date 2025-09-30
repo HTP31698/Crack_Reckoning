@@ -10,11 +10,16 @@ public class SlimeCrackWindow : MonoBehaviour
     public Button BeforeCrackButton;
     public Button NextCrackButton;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         SlimeCrackOpen.onClick.AddListener(SlimeCrackOpenButtonClick);
         NextCrackButton.onClick.AddListener(NextCrackButtonClick);
         BeforeCrackButton.onClick.AddListener(BeforeCrackButtonClick);
+        SlimeCrackOpen.onClick.AddListener(ButtonAudio.PlayClickSound);
+        NextCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        BeforeCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void SlimeCrackOpenButtonClick()

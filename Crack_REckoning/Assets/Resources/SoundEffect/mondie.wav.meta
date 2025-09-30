@@ -1,5 +1,12 @@
 fileFormatVersion: 2
-guid: 4e8e6053d9d53934b8388193594c89ba
+guid: d0a779fc1b016524fa76ded2edc682d1
+AssetOrigin:
+  serializedVersion: 1
+  productId: 304937
+  packageName: Stylized Sound Effects Bundle
+  packageVersion: 1.0.1
+  assetPath: Assets/Vefects/Stylized Sound Effects Bundle/Combat Flipbook VFX/Audio/WAV/Sergi/SFX_Vefects_Radial_Burst_One_Shot_02.wav
+  uploadId: 772784
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -19,10 +26,10 @@ AudioImporter:
       sampleRateSetting: 1
       sampleRateOverride: 44100
       compressionFormat: 1
-      quality: 0.59999996
+      quality: 0.5
       conversionMode: 0
       preloadAudioData: 1
-  forceToMono: 1
+  forceToMono: 0
   normalize: 1
   loadInBackground: 0
   ambisonic: 0

@@ -13,6 +13,8 @@ public class LobbyManager : MonoBehaviour
     public GameObject ChEnforceWindow;
     public GameObject PetWindow;
     public GameObject PetEnforceWindow;
+    public GameObject SettingWindow;
+    public GameObject NewIdWindow;
 
     [Header("CrackWindows")]
     public GameObject PigCrackWindow;
@@ -35,11 +37,13 @@ public class LobbyManager : MonoBehaviour
     public Button HomeButton;
     public Button PetButton;
     public Button EnforceButton;
+    public Button MenuButton;
 
     [Header("Texts")]
     public TextMeshProUGUI Gold;
 
-    
+    [SerializeField] private ButtonAudio ButtonAudio;
+
 
 
     public void Awake()
@@ -52,17 +56,25 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(false);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
 
 
         StageChallengeButton.onClick.AddListener(StageChallengeButtonClick);
-
-
         HomeButton.onClick.AddListener(HomeButtonClick);
         SkillButton.onClick.AddListener(SkillButtonClick);
         CharacterButton.onClick.AddListener(CharacterButtonClick);
         PetButton.onClick.AddListener(PetButtonClick);
+        MenuButton.onClick.AddListener(MenuButtonClick);
+
+        StageChallengeButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        HomeButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        SkillButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        CharacterButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        PetButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        MenuButton.onClick.AddListener(ButtonAudio.PlayClickSound);
 
         Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
@@ -77,6 +89,8 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(false);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -91,6 +105,8 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(false);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -105,6 +121,8 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(false);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -119,6 +137,8 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(false);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -133,6 +153,24 @@ public class LobbyManager : MonoBehaviour
         ChEnforceWindow.SetActive(false);
         PetWindow.SetActive(true);
         PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(false);
+        NewIdWindow.SetActive(false);
+        CrackWindowSetFalse();
+        StageWindowSetFalse();
+    }
+
+    public void MenuButtonClick()
+    {
+        HomeWindow.SetActive(true);
+        CrackOpenWindow.SetActive(false);
+        SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
+        PetWindow.SetActive(false);
+        PetEnforceWindow.SetActive(false);
+        SettingWindow.SetActive(true);
+        NewIdWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }

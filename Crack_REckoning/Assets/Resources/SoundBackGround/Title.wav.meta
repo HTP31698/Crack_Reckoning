@@ -1,5 +1,12 @@
 fileFormatVersion: 2
-guid: 4e8e6053d9d53934b8388193594c89ba
+guid: 00379ff33019bab4c9495c70aa3c3ff7
+AssetOrigin:
+  serializedVersion: 1
+  productId: 196147
+  packageName: 8Bit Music Album - 051321
+  packageVersion: 1.0
+  assetPath: Assets/8Bit Music Album - 051321/1. Track 1.wav
+  uploadId: 435476
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -11,20 +18,20 @@ AudioImporter:
     compressionFormat: 1
     quality: 1
     conversionMode: 0
-    preloadAudioData: 0
+    preloadAudioData: 1
   platformSettingOverrides:
     Android:
       serializedVersion: 2
-      loadType: 0
+      loadType: 2
       sampleRateSetting: 1
       sampleRateOverride: 44100
       compressionFormat: 1
-      quality: 0.59999996
+      quality: 0.7
       conversionMode: 0
       preloadAudioData: 1
-  forceToMono: 1
+  forceToMono: 0
   normalize: 1
-  loadInBackground: 0
+  loadInBackground: 1
   ambisonic: 0
   3D: 1
   userData: 

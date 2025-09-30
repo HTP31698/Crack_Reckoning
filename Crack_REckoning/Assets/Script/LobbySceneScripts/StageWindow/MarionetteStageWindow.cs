@@ -12,6 +12,8 @@ public class MarionetteStageWindow : MonoBehaviour
 
     private int StageCount = 0;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         var data = SaveLoadManager.Data;
@@ -40,10 +42,12 @@ public class MarionetteStageWindow : MonoBehaviour
             int idx = i;
             StageButton[i].interactable = true;
             StageButton[i].onClick.AddListener(() => StageButtonClick(idx));
+            StageButton[i].onClick.AddListener(ButtonAudio.PlayClickSound);
         }
 
         ExitButton.onClick.RemoveAllListeners();
         ExitButton.onClick.AddListener(ExitButtonClick);
+        ExitButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private bool GetStageClear(int index)

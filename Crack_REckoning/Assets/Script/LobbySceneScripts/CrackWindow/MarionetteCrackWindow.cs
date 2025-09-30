@@ -10,11 +10,16 @@ public class MarionetteCrackWindow : MonoBehaviour
     public Button BeforeCrackButton;
     public Button NextCrackButton;
 
+    [SerializeField] private ButtonAudio ButtonAudio;
+
     private void Awake()
     {
         MarionetteCrackOpen.onClick.AddListener(MarionetteCrackOpenButtonClick);
         NextCrackButton.onClick.AddListener(NextCrackButtonClick);
         BeforeCrackButton.onClick.AddListener(BeforeCrackButtonClick);
+        MarionetteCrackOpen.onClick.AddListener(ButtonAudio.PlayClickSound);
+        NextCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
+        BeforeCrackButton.onClick.AddListener(ButtonAudio.PlayClickSound);
     }
 
     private void MarionetteCrackOpenButtonClick()
