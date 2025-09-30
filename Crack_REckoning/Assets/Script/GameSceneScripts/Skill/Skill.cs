@@ -83,6 +83,7 @@ public class Skill : MonoBehaviour
     private AudioClip hitAudioClip;
 
     public bool skillend { get; private set; } = false;
+    private int petdamage = 0;
 
     private void Awake()
     {
@@ -225,11 +226,12 @@ public class Skill : MonoBehaviour
         if (animator && controller) animator.runtimeAnimatorController = controller;
     }
 
-    public void SetCharacter(Character c, int cri, float criDmg)
+    public void SetCharacter(Character c, int cri, float criDmg, int damage)
     {
         character = c;
         characterCri = cri;
         characterCriDamage = criDmg;
+        petdamage = damage;
     }
 
     public void SetTargetDirection(Vector2 direction)
@@ -356,7 +358,7 @@ public class Skill : MonoBehaviour
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
 
         float dmg = SkillDamage * typeMul * (isCritical ? characterCriDamage : 1f);
-        m.TakeDamage((int)dmg, character);
+        m.TakeDamage((int)dmg + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
             AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }
@@ -366,7 +368,7 @@ public class Skill : MonoBehaviour
         float typeMul = 1f;
         if (m.strength == skillTypeID) typeMul = 0.8f;
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
-        m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul), character);
+        m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul) + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
             AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }
@@ -378,7 +380,7 @@ public class Skill : MonoBehaviour
         float typeMul = 1f;
         if (m.strength == skillTypeID) typeMul = 0.8f;
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
-        m.TakeDamage((int)((dmg * typeMul) * (isCritical ? characterCriDamage : 1f)), character);
+        m.TakeDamage((int)((dmg * typeMul) * (isCritical ? characterCriDamage : 1f)) + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
             AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }

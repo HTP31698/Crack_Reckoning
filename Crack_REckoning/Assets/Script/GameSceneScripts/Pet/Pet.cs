@@ -22,6 +22,13 @@ public class Pet : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        var data = SaveLoadManager.Data;
+        if(data.EquipmentPetId != 0)
+        {
+            Init(data.EquipmentPetId);
+        }
+        
     }
 
     public void Init(int id)

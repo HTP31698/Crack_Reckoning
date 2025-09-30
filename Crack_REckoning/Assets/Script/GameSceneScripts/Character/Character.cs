@@ -53,6 +53,8 @@ public class Character : MonoBehaviour
 
     private RuntimeAnimatorController runtimeAnimatorController;
 
+    public Pet pet;
+
     private void Awake()
     {
         SkillIDs = new List<int>();
@@ -306,7 +308,7 @@ public class Character : MonoBehaviour
                 skill.InitWithData(skillId, skillData);
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
-                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
+                skill.SetCharacter(this, CharacterCri, CharacterCriDamage, pet.GetAttBuff());
 
                 audioSource.spatialBlend = 0f;
                 audioSource.priority = 32;

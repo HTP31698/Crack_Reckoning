@@ -5,6 +5,7 @@ public class War : MonoBehaviour
 {
     public Slider warHpSlider;
     public StageManager stageManager;
+    public Pet pet;
 
     private int currentHp;
     private int maxHp;
@@ -12,7 +13,7 @@ public class War : MonoBehaviour
 
     private void Awake()
     {
-        maxHp = 3000;
+        maxHp = 3000 + pet.GetWallHpUp();
         currentHp = maxHp;
         isDead = false;
     }

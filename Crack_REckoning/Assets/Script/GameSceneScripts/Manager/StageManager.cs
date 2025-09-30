@@ -18,6 +18,7 @@ public class StageManager : MonoBehaviour
 
     public Transform target;
     public GameManager gameManager;
+    public Pet pet;
 
     private GameObject monsterPrefab;
     private GameObject bossPrefab;
@@ -112,7 +113,7 @@ public class StageManager : MonoBehaviour
             if (currentStageData.MiniBossID.HasValue && currentStageData.MiniBossNum.GetValueOrDefault() > 0)
                 StartCoroutine(SpawnBossGroup(currentStageData.MiniBossID.Value, currentStageData.MiniBossNum.Value));
 
-            yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault());
+            yield return new WaitForSeconds(currentStageData.WaveTime.GetValueOrDefault() - pet.GetWaveTime());
         }
     }
 
@@ -213,10 +214,14 @@ public class StageManager : MonoBehaviour
         if(data != null)
         {
             int clear = Random.Range(ClearGoldMin, ClearGoldMax);
-            data.Gold += clear;
-            Gold.text = $"+{clear}";
-            data.StageClear[PlaySetting.SelectStage - 1] = true;
-            GetNewSkill();
+            if (data != null)
+            {
+                data.Gold += (int)(clear * pet.GetGoldUp());
+                Gold.text = $"+{clear}";
+                data.StageClear[PlaySetting.SelectStage - 1] = true;
+                GetNewSkill();
+            }
+
             SaveLoadManager.Save();
         }
 
@@ -233,7 +238,7 @@ public class StageManager : MonoBehaviour
         {
             int Failed = Random.Range(FailGoldMin, FailGoldMax);
             Gold.text = $"+{Failed}";
-            data.Gold += Failed;
+            data.Gold += (int)(Failed * pet.GetGoldUp());
             SaveLoadManager.Save();
         }
         gameManager.PauseGame();
