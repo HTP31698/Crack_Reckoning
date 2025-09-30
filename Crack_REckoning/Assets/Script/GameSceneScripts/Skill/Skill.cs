@@ -140,8 +140,8 @@ public class Skill : MonoBehaviour
     {
         float dt = Time.deltaTime;
         if (AttackType == AttackTypeID.Mine)
-        { 
-            CastMine(dt); 
+        {
+            CastMine(dt);
         }
     }
 
@@ -211,9 +211,15 @@ public class Skill : MonoBehaviour
 
 
 
-        attackAudioClip = data.attackaudioClip;
-        hitAudioClip = data.hitaudioClip;
+        if(data.attackAudioClip != null)
+        {
+            attackAudioClip = data.attackAudioClip;
+        }
 
+        if (data.hitaudioClip != null)
+        {
+            hitAudioClip = data.hitaudioClip;
+        }
 
         if (spriteRenderer && sprite) spriteRenderer.sprite = sprite;
         if (animator && controller) animator.runtimeAnimatorController = controller;
@@ -372,7 +378,7 @@ public class Skill : MonoBehaviour
         float typeMul = 1f;
         if (m.strength == skillTypeID) typeMul = 0.8f;
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
-        m.TakeDamage((int)((dmg * typeMul)* (isCritical ? characterCriDamage : 1f)), character);
+        m.TakeDamage((int)((dmg * typeMul) * (isCritical ? characterCriDamage : 1f)), character);
         if (Time.timeScale > 0f && hitAudioClip)
             AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
     }

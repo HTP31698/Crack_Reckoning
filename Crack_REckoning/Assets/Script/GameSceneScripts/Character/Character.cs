@@ -35,6 +35,8 @@ public class Character : MonoBehaviour
     public int CharacterCri { get; private set; }
     public float CharacterCriDamage { get; private set; }
 
+    public string ChDesc { get; private set; }
+
     public int skillActiveCount { get; private set; } = 0;
     private int level = 1;
     public int expToNextLevel { get; private set; }
@@ -43,6 +45,14 @@ public class Character : MonoBehaviour
     public Slider expSlider;
     public bool isUseSkill { get; set; } = false;
 
+    private Sprite sprite;
+
+    private SpriteRenderer spriteRenderer;
+
+    private Animator animator;
+
+    private RuntimeAnimatorController runtimeAnimatorController;
+
     private void Awake()
     {
         SkillIDs = new List<int>();
@@ -50,6 +60,7 @@ public class Character : MonoBehaviour
         for (int i = 0; i < 5; i++)
             skillReady.Add(false);
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
         var data = SaveLoadManager.Data;
@@ -85,6 +96,19 @@ public class Character : MonoBehaviour
             CharacterName = characterData.ChName;
             CharacterCri = characterData.ChCri;
             CharacterCriDamage = characterData.ChCriDam;
+            ChDesc = characterData.ChDesc;
+
+            sprite = characterData.sprite;
+            runtimeAnimatorController = characterData.runanimator;
+
+            if (runtimeAnimatorController != null & animator != null)
+            {
+                animator.runtimeAnimatorController = runtimeAnimatorController;
+            }
+            if (sprite != null && spriteRenderer)
+            {
+                spriteRenderer.sprite = sprite;
+            }
         }
 
         ExpToNextLevel(level);
@@ -151,6 +175,8 @@ public class Character : MonoBehaviour
         {
             s.Duration += skillData.Duration.Value;
         }
+
+
     }
 
     public void AddExp(int amount)
@@ -278,9 +304,14 @@ public class Character : MonoBehaviour
             if (skill != null)
             {
                 skill.InitWithData(skillId, skillData);
-                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
                 skill.SetTargetPosition(targetPos);
                 skill.SetTargetDirection(dir);
+                skill.SetCharacter(this, CharacterCri, CharacterCriDamage);
+
+                audioSource.spatialBlend = 0f;
+                audioSource.priority = 32;
+                audioSource.PlayOneShot(skill.attackAudioClip, 1f);
+
                 if (skill.AttackType == AttackTypeID.Haeil)
                 {
                     obj.gameObject.transform.position = haeilPos;
@@ -290,9 +321,7 @@ public class Character : MonoBehaviour
                 {
                     obj.gameObject.transform.position = RandomInBoxThenClampToSafe(obj);
                 }
-                audioSource.spatialBlend = 0f;
-                audioSource.priority = 32;
-                audioSource.PlayOneShot(skill.attackAudioClip);
+
 
             }
             chosenThisSkill.Add(chosen);

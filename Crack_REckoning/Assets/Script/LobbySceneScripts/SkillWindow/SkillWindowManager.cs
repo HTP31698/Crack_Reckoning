@@ -283,7 +283,39 @@ public class SkillWindowManager : MonoBehaviour
             if (SkillStats[2]) SkillStats[2].text = $"투사체 개수\n{sdata.ProjectilesNum}";
             if (SkillStats[3]) SkillStats[3].text = $"공격 횟수\n{sdata.AttackNum}";
             if (SkillStats[4]) SkillStats[4].text = $"관통력\n{sdata.PenetratingPower}";
-            if (SkillStats[5]) SkillStats[5].text = (sdata.AttackType == AttackTypeID.Projectile) ? "투사체 공격" : "범위 공격";
+            if (SkillStats[5])
+            {
+                switch(sdata.AttackType)
+                {
+                    case AttackTypeID.Projectile:
+                        SkillStats[5].text = "투사체 공격";
+                        break;
+                    case AttackTypeID.Area:
+                        SkillStats[5].text = "범위 공격";
+                        break;
+                    case AttackTypeID.Laser:
+                        SkillStats[5].text = "레이저 공격";
+                        break;
+                    case AttackTypeID.Explosion:
+                        SkillStats[5].text = "폭발 공격";
+                        break;
+                    case AttackTypeID.ElectricSphere:
+                        SkillStats[5].text = "도트 공격";
+                        break;
+                    case AttackTypeID.IceSheet:
+                        SkillStats[5].text = "도트 공격";
+                        break;
+                    case AttackTypeID.BlackHole:
+                        SkillStats[5].text = "도트 공격";
+                        break;
+                    case AttackTypeID.Haeil:
+                        SkillStats[5].text = "밀치기 공격";
+                        break;
+                    case AttackTypeID.Mine:
+                        SkillStats[5].text = "설치 공격";
+                        break;
+                }
+            }
         }
 
         if (hasNext && nextsdata != null)

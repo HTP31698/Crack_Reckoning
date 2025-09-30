@@ -7,7 +7,13 @@ public class CharacterData
     public string ChName { get; set; }
     public int ChCri { get; set; }
     public float ChCriDam { get; set; }
+    
+    public string ChDesc { get; set; }
 
+    public Sprite sprite
+        => Resources.Load<Sprite>($"CharacterSprite/{ChID}");
+    public RuntimeAnimatorController runanimator
+        => Resources.Load<RuntimeAnimatorController>($"CharacterAnimator/{ChID}");
 
 }
 
@@ -20,5 +26,6 @@ public class CharacterDataMap : ClassMap<CharacterData>
         Map(c => c.ChName).Name("ChName");
         Map(c => c.ChCri).Name("ChCri");
         Map(c => c.ChCriDam).Name("ChCriDam");
+        Map(c => c.ChDesc).Name("ChDesc");
     }
 }

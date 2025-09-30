@@ -72,7 +72,7 @@ public class SkillData
     public Material Material
         => Resources.Load<Material>($"SkillMarterial/{SkillID}");
 
-    public AudioClip attackaudioClip
+    public AudioClip attackAudioClip
         => Resources.Load<AudioClip>($"SoundAttack/{SoundAttackID}");
     public AudioClip hitaudioClip
         => Resources.Load<AudioClip>($"SoundHit/{SoundHitID}");
@@ -99,6 +99,8 @@ public class SkillData
         KonckBack = KonckBack,
         Strain = Strain,
         AuthorRadius= AuthorRadius,
+        SoundAttackID = SoundAttackID,
+        SoundHitID = SoundHitID,
     };
 }
 

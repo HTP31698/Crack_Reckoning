@@ -1,7 +1,5 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
@@ -11,6 +9,8 @@ public class LobbyManager : MonoBehaviour
     public GameObject SkillWindow;
     public GameObject SkillEnforceWindow;
     public GameObject CrackOpenWindow;
+    public GameObject ChWindow;
+    public GameObject ChEnforceWindow;
 
     [Header("CrackWindows")]
     public GameObject PigCrackWindow;
@@ -46,6 +46,8 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
 
@@ -55,6 +57,7 @@ public class LobbyManager : MonoBehaviour
 
         HomeButton.onClick.AddListener(HomeButtonClick);
         SkillButton.onClick.AddListener(SkillButtonClick);
+        CharacterButton.onClick.AddListener(CharacterButtonClick);
 
         Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
@@ -65,6 +68,8 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(true);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -75,6 +80,8 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -85,6 +92,20 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(true);
         SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(false);
+        ChEnforceWindow.SetActive(false);
+        CrackWindowSetFalse();
+        StageWindowSetFalse();
+    }
+
+    public void CharacterButtonClick()
+    {
+        HomeWindow.SetActive(false);
+        CrackOpenWindow.SetActive(false);
+        SkillWindow.SetActive(false);
+        SkillEnforceWindow.SetActive(false);
+        ChWindow.SetActive(true);
+        ChEnforceWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
