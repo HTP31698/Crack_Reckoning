@@ -26,7 +26,9 @@ public class SkillWindowManager : MonoBehaviour
     public TextMeshProUGUI EnforceNeedGold;
     public TextMeshProUGUI Gold;
 
+    [Header("Images")]
     public Image SkillImage;
+    public Image SkillTypeImage;
 
     private SkillTable _skillTable;
     private List<int> _owned;
@@ -261,10 +263,13 @@ public class SkillWindowManager : MonoBehaviour
             {
                 SkillImage.enabled = true;
                 SkillImage.sprite = sdata.sprite;
+                SkillTypeImage.enabled = true;
+                SkillTypeImage.sprite = sdata.TypeSprite;
             }
             else
             {
                 SkillImage.enabled = false;
+                SkillTypeImage.enabled = false;
             }
         }
 
@@ -305,7 +310,7 @@ public class SkillWindowManager : MonoBehaviour
                 else if (data.Gold < endata.GoldNum)
                     EnforceCurrentGold.text = $"<color=#FF2000>{data.Gold}</color>";
             }
-              
+
             if (EnforceNeedGold)
             { EnforceNeedGold.text = $"<color=#6D8AA5>/</color>{endata.GoldNum}"; }
 

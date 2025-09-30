@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,7 +23,7 @@ public class Skill : MonoBehaviour
 
     public int Id { get; private set; }
     public string SkillName { get; private set; }
-    public SkillTypeID SkillTypeID { get; private set; }
+    public SkillTypeID skillTypeID { get; private set; }
     public float SkillRange { get; private set; }
     public int SkillDamage { get; set; }
     public float SkillCoolTime { get; set; }
@@ -44,6 +46,7 @@ public class Skill : MonoBehaviour
     public float AuthorRadius { get; set; } = 1f;
 
     public Sprite sprite { get; private set; }
+    public Sprite Typesprite { get; private set; }
     public RuntimeAnimatorController controller { get; private set; }
 
     public float Speed = 5f;
@@ -166,7 +169,7 @@ public class Skill : MonoBehaviour
     {
         Id = data.SkillID;
         SkillName = data.SkillName;
-        SkillTypeID = data.SkillType;
+        skillTypeID = (SkillTypeID)data.SkillType;
         SkillRange = data.SkillRange;
         SkillDamage = data.SkillDamage;
         SkillCoolTime = data.SkillCoolTime;
@@ -190,6 +193,8 @@ public class Skill : MonoBehaviour
         LaserMaterial = data.Material;
         controller = data.AnimatorController;
         sprite = data.sprite;
+
+        Typesprite = data.TypeSprite;
 
         AuthorRadius = data.AuthorRadius;
 
@@ -324,8 +329,8 @@ public class Skill : MonoBehaviour
         bool isCritical = Random.Range(0, 100) < characterCri;
 
         float typeMul = 1f;
-        if (m.strength == SkillTypeID) typeMul = 0.8f;
-        else if (m.weakness == SkillTypeID) typeMul = 1.3f;
+        if (m.strength == skillTypeID) typeMul = 0.8f;
+        else if (m.weakness == skillTypeID) typeMul = 1.3f;
 
         float dmg = SkillDamage * typeMul * (isCritical ? characterCriDamage : 1f);
         m.TakeDamage((int)dmg, character);
@@ -334,8 +339,8 @@ public class Skill : MonoBehaviour
     private void TryAttackExplosion(MonsterBase m, int baseDamage)
     {
         float typeMul = 1f;
-        if (m.strength == SkillTypeID) typeMul = 0.8f;
-        else if (m.weakness == SkillTypeID) typeMul = 1.3f;
+        if (m.strength == skillTypeID) typeMul = 0.8f;
+        else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul), character);
     }
 
@@ -344,8 +349,8 @@ public class Skill : MonoBehaviour
         bool isCritical = Random.Range(0, 100) < characterCri;
 
         float typeMul = 1f;
-        if (m.strength == SkillTypeID) typeMul = 0.8f;
-        else if (m.weakness == SkillTypeID) typeMul = 1.3f;
+        if (m.strength == skillTypeID) typeMul = 0.8f;
+        else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage((int)((dmg * typeMul)* (isCritical ? characterCriDamage : 1f)), character);
     }
 

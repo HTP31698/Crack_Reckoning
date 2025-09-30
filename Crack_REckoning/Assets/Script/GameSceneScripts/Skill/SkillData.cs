@@ -3,11 +3,11 @@ using UnityEngine;
 
 public enum SkillTypeID
 {
-    Fire,
-    Water,
-    Ice,
-    Lightning,
-    Dark,
+    Fire = 1,
+    Water = 2,
+    Ice = 3,
+    Lightning = 4,
+    Dark = 5,
 }
 
 public enum AttackTypeID
@@ -27,7 +27,7 @@ public class SkillData
 {
     public int SkillID { get; set; }
     public string SkillName { get; set; }
-    public SkillTypeID SkillType { get; set; }
+    public int SkillType { get; set; }
     public float SkillRange { get; set; }
     public int SkillDamage { get; set; }
     public float SkillCoolTime { get; set; }
@@ -68,6 +68,7 @@ public class SkillData
 
     public Material Material
         => Resources.Load<Material>($"SkillMarterial/{SkillID}");
+
 
     public SkillData Clone() => new SkillData
     {
