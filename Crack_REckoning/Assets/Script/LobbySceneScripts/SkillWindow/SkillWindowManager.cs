@@ -80,28 +80,7 @@ public class SkillWindowManager : MonoBehaviour
         int fillCount = Mathf.Min(SkillSelectButtons.Length, _owned.Count);
 
         for (int i = 0; i < fillCount; i++)
-        {
-            var btn = SkillSelectButtons[i];
-            if (btn == null || btn.image == null) continue;
-
-            int skillId = _owned[i];
-
-            var sdata = _skillTable.Get(skillId);
-            if (sdata == null || sdata.sprite == null)
-            {
-                btn.image.enabled = false;
-                btn.interactable = false;
-                btn.onClick.RemoveAllListeners();
-                continue;
-            }
-
-            btn.image.enabled = true;
-            btn.image.sprite = sdata.sprite;
-            btn.interactable = true;
-
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => OnSkillSelected(skillId));
-        }
+            RebindButtonSlot(i);   // ← 슬롯별 바인딩
 
         for (int i = fillCount; i < SkillSelectButtons.Length; i++)
         {
@@ -111,6 +90,39 @@ public class SkillWindowManager : MonoBehaviour
             btn.interactable = false;
             btn.onClick.RemoveAllListeners();
         }
+    }
+    private void RebindButtonSlot(int slot)
+    {
+        var btn = SkillSelectButtons[slot];
+        if (btn == null) return;
+
+        int sid = _owned[slot];                    // ← 현재 슬롯의 “최신” 스킬ID
+        var sdata = _skillTable.Get(sid);
+
+        if (sdata == null || sdata.sprite == null)
+        {
+            if (btn.image) btn.image.enabled = false;
+            btn.interactable = false;
+            btn.onClick.RemoveAllListeners();
+            return;
+        }
+
+        if (btn.image)
+        {
+            btn.image.enabled = true;
+            btn.image.sprite = sdata.sprite;
+        }
+
+        btn.interactable = true;
+        btn.onClick.RemoveAllListeners();
+
+        int capturedSlot = slot;                   // ← 인덱스만 캡쳐
+        btn.onClick.AddListener(() =>
+        {
+            // 클릭 시점에 최신 ID를 읽어서 열기
+            int currentSid = _owned[capturedSlot];
+            OnSkillSelected(currentSid);
+        });
     }
 
     private void OnSkillSelected(int id)
@@ -199,10 +211,12 @@ public class SkillWindowManager : MonoBehaviour
             data.OwnedSkillIds[ownedIdx] = next;
 
             int equipIdx = data.EquipmentSkillIds.IndexOf(currentId);
-            if (equipIdx >= 0)
-                data.EquipmentSkillIds[equipIdx] = next;
+            if (equipIdx >= 0) data.EquipmentSkillIds[equipIdx] = next;
 
             _selectedSkillId = next;
+
+            RebindButtonSlot(ownedIdx);
+
             RefreshUI(next);
         }
         else
