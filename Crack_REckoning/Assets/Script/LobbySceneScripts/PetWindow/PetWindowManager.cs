@@ -308,7 +308,7 @@ public class PetWindowManager : MonoBehaviour
                 }
                 if (sdata.AttBuff < nextsdata.AttBuff)
                 {
-                    EnforceDamage.text = $"추가 피해량 증가\n{nextsdata.GoldUp - sdata.GoldUp}";
+                    EnforceDamage.text = $"추가 피해량 증가\n{nextsdata.AttBuff - sdata.AttBuff}";
                 }
             }
 
