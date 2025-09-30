@@ -216,6 +216,7 @@ public class StageManager : MonoBehaviour
             data.Gold += clear;
             Gold.text = $"+{clear}";
             data.StageClear[PlaySetting.SelectStage] = true;
+            GetNewSkill();
             SaveLoadManager.Save();
         }
 
@@ -236,5 +237,60 @@ public class StageManager : MonoBehaviour
             SaveLoadManager.Save();
         }
         gameManager.PauseGame();
+    }
+
+    private void GetNewSkill()
+    {
+        var data = SaveLoadManager.Data;
+        if (data.StageClear[0] && data.GetSkills[0] == false)
+        {
+            data.OwnedSkillIds.Add(3006);
+            data.GetSkills[0] = true;
+        }
+        if (data.StageClear[1] && data.GetSkills[1] == false)
+        {
+            data.OwnedSkillIds.Add(3009);
+            data.GetSkills[1] = true;
+        }
+        if (data.StageClear[2] && data.GetSkills[2] == false)
+        {
+            data.OwnedSkillIds.Add(3014);
+            data.GetSkills[2] = true;
+        }
+        if (data.StageClear[3] && data.GetSkills[3] == false)
+        {
+            data.OwnedSkillIds.Add(3015);
+            data.GetSkills[3] = true;
+        }
+        if (data.StageClear[4] && data.GetSkills[4] == false)
+        {
+            data.OwnedSkillIds.Add(3011);
+            data.GetSkills[4] = true;
+        }
+        if (data.StageClear[5] && data.GetSkills[5] == false)
+        {
+            data.OwnedSkillIds.Add(3012);
+            data.GetSkills[5] = true;
+        }
+        if (data.StageClear[6] && data.GetSkills[6] == false)
+        {
+            data.OwnedSkillIds.Add(3004);
+            data.GetSkills[6] = true;
+        }
+        if (data.StageClear[7] && data.GetSkills[7] == false)
+        {
+            data.OwnedSkillIds.Add(3005);
+            data.GetSkills[7] = true;
+        }
+        if (data.StageClear[8] && data.GetSkills[8] == false)
+        {
+            data.OwnedSkillIds.Add(3013);
+            data.GetSkills[8] = true;
+        }
+        if (data.StageClear[9] && data.GetSkills[9] == false)
+        {
+            data.OwnedSkillIds.Add(3008);
+            data.GetSkills[9] = true;
+        }
     }
 }

@@ -12,29 +12,32 @@ public class LoadPlayerData : MonoBehaviour
     {
         if (!SaveLoadManager.Load(0))
         {
-            SaveLoadManager.Data.PlayerID = 11001;
+            SaveLoadManager.Data.PlayerID = 1001;
             SaveLoadManager.Data.Gold = 0;
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3001);
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3002);
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3004);
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3010);
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3005);
-            //SaveLoadManager.Data.OwnedSkillIds.Add(3008);
-            SaveLoadManager.Data.OwnedSkillIds = DataTableManager.SkillTable.GetSkillsWithoutPlus();
+            SaveLoadManager.Data.OwnedSkillIds.Add(3007);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3002);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3003);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3001);
+            SaveLoadManager.Data.OwnedSkillIds.Add(3010);
 
-            SaveLoadManager.Data.EquipmentSkillIds.Add(3001);
-            for(int i = 0; i < 25; i++)
+            SaveLoadManager.Data.EquipmentSkillIds.Add(3007);
+            for (int i = 0; i < 25; i++)
             {
                 SaveLoadManager.Data.StageClear[i] = false;
             }
-            for(int i = 0; i < 25; i++)
+            for (int i = 0; i < 10; i++)
             {
-
+                SaveLoadManager.Data.GetSkills[i] = false;
             }
-            SaveLoadManager.Data.CurrentCrack = 1;
+            for (int i = 0; i < 4; i++)
+            {
+                SaveLoadManager.Data.GetPets[i] = false;
+            }
 
+
+            SaveLoadManager.Data.CurrentCrack = 1;
             SaveLoadManager.Save(0);
-            
+
         }
         else
         {

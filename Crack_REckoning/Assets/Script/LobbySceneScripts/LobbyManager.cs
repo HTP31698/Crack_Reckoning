@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,8 +11,6 @@ public class LobbyManager : MonoBehaviour
     public GameObject SkillWindow;
     public GameObject SkillEnforceWindow;
     public GameObject CrackOpenWindow;
-
-
 
     [Header("CrackWindows")]
     public GameObject PigCrackWindow;
@@ -27,6 +26,9 @@ public class LobbyManager : MonoBehaviour
     public GameObject WolfStageWindow;
     public GameObject MarionetteStageWindow;
 
+    [Header("GetWindow")]
+    public GameObject GetWindow;
+
     [Header("Buttons")]
     public Button StageChallengeButton;
     public Button CharacterButton;
@@ -38,6 +40,8 @@ public class LobbyManager : MonoBehaviour
     [Header("Texts")]
     public TextMeshProUGUI Gold;
 
+    
+
 
     public void Awake()
     {
@@ -45,6 +49,7 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
 
@@ -58,13 +63,13 @@ public class LobbyManager : MonoBehaviour
         Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
 
-
     public void StageChallengeButtonClick()
     {
         HomeWindow.SetActive(false);
         CrackOpenWindow.SetActive(true);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -75,6 +80,7 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
+        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -85,6 +91,7 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(true);
         SkillEnforceWindow.SetActive(false);
+        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
