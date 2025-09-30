@@ -46,11 +46,8 @@ public class Character : MonoBehaviour
     public bool isUseSkill { get; set; } = false;
 
     private Sprite sprite;
-
     private SpriteRenderer spriteRenderer;
-
     private Animator animator;
-
     private RuntimeAnimatorController runtimeAnimatorController;
 
     public Pet pet;
@@ -63,6 +60,7 @@ public class Character : MonoBehaviour
             skillReady.Add(false);
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);
 
         var data = SaveLoadManager.Data;
