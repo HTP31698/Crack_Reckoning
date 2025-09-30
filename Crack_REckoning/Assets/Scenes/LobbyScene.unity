@@ -5730,7 +5730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6252806210432592048, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6984743279235521986, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
       propertyPath: m_Sprite
@@ -11385,7 +11385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6252806210432592048, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6984743279235521986, guid: a3d4559035f10284ea11d5afaad9a287, type: 3}
       propertyPath: m_Sprite
