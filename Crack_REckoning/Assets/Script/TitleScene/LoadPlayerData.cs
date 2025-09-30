@@ -12,6 +12,8 @@ public class LoadPlayerData : MonoBehaviour
     {
         if (!SaveLoadManager.Load(0))
         {
+
+            SaveLoadManager.Data.OwnedCharacterIds.Add(1001);
             SaveLoadManager.Data.PlayerID = 1001;
             SaveLoadManager.Data.Gold = 0;
             SaveLoadManager.Data.OwnedSkillIds.Add(3007);
@@ -21,6 +23,7 @@ public class LoadPlayerData : MonoBehaviour
             SaveLoadManager.Data.OwnedSkillIds.Add(3010);
 
             SaveLoadManager.Data.EquipmentSkillIds.Add(3007);
+
             for (int i = 0; i < 25; i++)
             {
                 SaveLoadManager.Data.StageClear[i] = false;
@@ -33,8 +36,6 @@ public class LoadPlayerData : MonoBehaviour
             {
                 SaveLoadManager.Data.GetPets[i] = false;
             }
-
-
             SaveLoadManager.Data.CurrentCrack = 1;
             SaveLoadManager.Save(0);
 

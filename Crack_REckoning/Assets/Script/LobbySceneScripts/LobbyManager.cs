@@ -26,9 +26,6 @@ public class LobbyManager : MonoBehaviour
     public GameObject WolfStageWindow;
     public GameObject MarionetteStageWindow;
 
-    [Header("GetWindow")]
-    public GameObject GetWindow;
-
     [Header("Buttons")]
     public Button StageChallengeButton;
     public Button CharacterButton;
@@ -49,7 +46,6 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
-        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
 
@@ -69,7 +65,6 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(true);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
-        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -80,7 +75,6 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(false);
         SkillEnforceWindow.SetActive(false);
-        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }
@@ -91,7 +85,6 @@ public class LobbyManager : MonoBehaviour
         CrackOpenWindow.SetActive(false);
         SkillWindow.SetActive(true);
         SkillEnforceWindow.SetActive(false);
-        GetWindow.SetActive(false);
         CrackWindowSetFalse();
         StageWindowSetFalse();
     }

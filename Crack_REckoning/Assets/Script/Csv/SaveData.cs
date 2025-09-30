@@ -23,8 +23,8 @@ public class SaveDataV1 : SaveData
     public List<int> OwnedPetIds = new List<int>();
     public int EquipmentPetId { get; set; } = 0;
 
-    public List<bool> GetSkills = new List<bool>();
-    public List<bool> GetPets = new List<bool>();
+    public Dictionary<int, bool> GetSkills = new Dictionary<int, bool>();
+    public Dictionary<int, bool> GetPets = new Dictionary<int, bool>();
 
 
     public int CurrentCrack { get; set; } = 0;
