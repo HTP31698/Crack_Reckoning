@@ -63,7 +63,7 @@ public class VolumeController : MonoBehaviour
         }
 
         SetMasterVolume(msaved);
-        SetBGMVolume(msaved);
+        SetBGMVolume(bsaved);
         SetSFXVolume(ssaved);
         SetUIVolume(usaved);
     }
