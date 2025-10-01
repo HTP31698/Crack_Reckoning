@@ -411,7 +411,7 @@ public class Skill : MonoBehaviour
             if (particlePrefab)
             {
                 var fx = Instantiate(particlePrefab, hitPos, Quaternion.identity);
-                InitFX(fx, Mathf.Max(0.01f, SkillDamageRange), AuthorRadius);
+                InitFX(fx, Mathf.Max(0.01f, ExplosionRange), AuthorRadius);
             }
 
             PenetratingPower--;
@@ -503,6 +503,12 @@ public class Skill : MonoBehaviour
             {
                 var m = h.collider ? h.collider.GetComponent<MonsterBase>() : null;
                 if (!m || m.isdead) continue;
+                if (particlePrefab)
+                {
+                    float r = Mathf.Max(0.01f, ExplosionRange);
+                    var fx = Instantiate(particlePrefab, m.transform.position, Quaternion.identity);
+                    InitFX(fx, ExplosionRange, AuthorRadius);
+                }
                 TryAttackLaser(m, SkillDamage);
             }
         }
