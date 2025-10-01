@@ -281,7 +281,7 @@ public class Skill : MonoBehaviour
             {
                 var bursts = new ParticleSystem.Burst[n];
                 em.GetBursts(bursts);
-                for (int i = 0; i < n; i++) bursts[i].time = 0f; // ¡Ú
+                for (int i = 0; i < n; i++) bursts[i].time = 0f;
                 em.SetBursts(bursts);
             }
         }
@@ -412,6 +412,7 @@ public class Skill : MonoBehaviour
             {
                 var fx = Instantiate(particlePrefab, hitPos, Quaternion.identity);
                 InitFX(fx, Mathf.Max(0.01f, SkillDamageRange), AuthorRadius);
+                Destroy(fx, 1f);
             }
 
             PenetratingPower--;

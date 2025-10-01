@@ -161,18 +161,7 @@ public class LobbyManager : MonoBehaviour
 
     public void MenuButtonClick()
     {
-        HomeWindow.SetActive(true);
-        CrackOpenWindow.SetActive(false);
-        SkillWindow.SetActive(false);
-        SkillEnforceWindow.SetActive(false);
-        ChWindow.SetActive(false);
-        ChEnforceWindow.SetActive(false);
-        PetWindow.SetActive(false);
-        PetEnforceWindow.SetActive(false);
         SettingWindow.SetActive(true);
-        NewIdWindow.SetActive(false);
-        CrackWindowSetFalse();
-        StageWindowSetFalse();
     }
 
 

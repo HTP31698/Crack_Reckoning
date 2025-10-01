@@ -36,15 +36,23 @@ public class StageManager : MonoBehaviour
     private int FailGoldMax;
 
     [Header("Texts")]
-    public TextMeshProUGUI settingStageName;
     public TextMeshProUGUI StageName;
     public TextMeshProUGUI ClearOrFailed;
     public TextMeshProUGUI ClearWindowCurrentStageName;
-
     public TextMeshProUGUI Gold;
+
+    [Header("Mpas")]
+    public GameObject Map1;
+    public GameObject Map2;
+    public GameObject Map3;
+    public GameObject Map4;
+    public GameObject Map5;
+
 
     [Header("Images")]
     public Image[] monsterSlots;
+
+
 
     [SerializeField] private GameObject ClearWindow;
     [SerializeField] private Pet pet;
@@ -57,12 +65,37 @@ public class StageManager : MonoBehaviour
         monsterPrefab = Resources.Load<GameObject>(PrefabMonster);
         bossPrefab = Resources.Load<GameObject>(PrefabBoss);
         ClearWindow.gameObject.SetActive(false);
+        Map1.SetActive(false);
+        Map2.SetActive(false);
+        Map3.SetActive(false);
+        Map4.SetActive(false);
+        Map5.SetActive(false);
     }
 
     private void Start()
     {
         currentStage = PlaySetting.SelectStage;
         currentWave = 1;
+        if (currentStage <= 5)
+        {
+            Map1.SetActive(true);
+        }
+        else if (currentStage <= 10)
+        {
+            Map2.SetActive(true);
+        }
+        else if (currentStage <= 15)
+        {
+            Map3.SetActive(true);
+        }
+        else if (currentStage <= 20)
+        {
+            Map4.SetActive(true);
+        }
+        else if (currentStage <= 25)
+        {
+            Map5.SetActive(true);
+        }
         StartStage(currentStage, currentWave);
     }
 
@@ -86,7 +119,6 @@ public class StageManager : MonoBehaviour
             currentWave = wave;
             currentStageData = DataTableManager.Get<StageTable>(StageTable).Get(currentStage, currentWave);
 
-            settingStageName.text = currentStageData.StageName;
             StageName.text = currentStageData.StageName;
             ClearWindowCurrentStageName.text = currentStageData.StageName;
             StageAddMHp = currentStageData.StageAddMHp.GetValueOrDefault();
@@ -193,8 +225,9 @@ public class StageManager : MonoBehaviour
             {
                 Sprite monsterSprite = null;
                 var monsterData = DataTableManager.Get<MonsterTable>(MonsterTable).Get(monsterIds[i]);
-                if (monsterData != null) monsterSprite = monsterData.sprite;
-                monsterSlots[i].rectTransform.sizeDelta = new Vector2(240, 240);
+                if (monsterData != null)
+                    monsterSprite = monsterData.sprite;
+
                 monsterSlots[i].sprite = monsterSprite;
                 monsterSlots[i].enabled = monsterSprite != null;
             }
@@ -212,7 +245,7 @@ public class StageManager : MonoBehaviour
         ClearWindow.gameObject.SetActive(true);
 
         var data = SaveLoadManager.Data;
-        if(data != null)
+        if (data != null)
         {
             int clear = Random.Range(ClearGoldMin, ClearGoldMax);
             if (data != null)

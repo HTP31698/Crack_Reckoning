@@ -16,6 +16,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Character character;
     [SerializeField] private StageManager stageManager;
 
+    [Header("SettingWindows")]
+    public GameObject PigSet;
+    public GameObject SlimeSet;
+    public GameObject ColdSet;
+    public GameObject WolfSet;
+    public GameObject DollSet;
+
+
+
     public Button[] Buttons;
     public Toggle toggle;
     private List<int> StageSkillList;
@@ -23,10 +32,7 @@ public class GameManager : MonoBehaviour
     private List<int> pendingSkillOptions;
     private List<int> pendingPickIds;
 
-    public GameObject SettingsWindow;
     public Button SettingButton;
-    public Button TryagainButton;
-    public Button GiveupButton;
 
     public Button NextStageButton;
     public Button RetryStageButton;
@@ -65,20 +71,19 @@ public class GameManager : MonoBehaviour
             sliderSkills[i].gameObject.SetActive(false);
         }
 
-        SettingsWindow.gameObject.SetActive(false);
+        PigSet.gameObject.SetActive(false);
+        SlimeSet.gameObject.SetActive(false);
+        ColdSet.gameObject.SetActive(false);
+        WolfSet.gameObject.SetActive(false);
+        DollSet.gameObject.SetActive(false);
 
         SettingButton.onClick.AddListener(OnSetButtonClick);
-        TryagainButton.onClick.AddListener(OffsetButtonClick);
-        GiveupButton.onClick.AddListener(FailedWindowPause);
 
         NextStageButton.onClick.AddListener(NextStageButtonClick);
         RetryStageButton.onClick.AddListener(RetryButtonClick);
         ExitStageButton.onClick.AddListener(ExitStageButtonClick);
 
         SettingButton.onClick.AddListener(ButtonAudio.PlayClickSound);
-        TryagainButton.onClick.AddListener(ButtonAudio.PlayClickSound);
-        GiveupButton.onClick.AddListener(ButtonAudio.PlayClickSound);
-
         NextStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         RetryStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
         ExitStageButton.onClick.AddListener(ButtonAudio.PlayClickSound);
@@ -312,14 +317,29 @@ public class GameManager : MonoBehaviour
 
     private void OnSetButtonClick()
     {
-        SettingsWindow.gameObject.SetActive(true);
+        if (stageManager.currentStage <= 5)
+        {
+            PigSet.gameObject.SetActive(true);
+        }
+        else if (stageManager.currentStage <= 10)
+        {
+            SlimeSet.gameObject.SetActive(true);
+        }
+        else if (stageManager.currentStage <= 15)
+        {
+            ColdSet.SetActive(true);
+        }
+        else if (stageManager.currentStage <= 20)
+        {
+            WolfSet.SetActive(true);
+        }
+        else if (stageManager.currentStage <= 25)
+        {
+            DollSet.SetActive(true);
+        }
         PauseGame();
     }
-    private void OffsetButtonClick()
-    {
-        SettingsWindow.gameObject.SetActive(false);
-        ResumeGame();
-    }
+
     private void ClearWindowPause()
     {
         if (isClear) return;
@@ -331,17 +351,7 @@ public class GameManager : MonoBehaviour
         stageManager.ShowClearWindow();
         PauseGame();
     }
-    private void FailedWindowPause()
-    {
-        if (isClear) return;
-        isClear = true;
-        for (int i = 0; i < 3; i++)
-        {
-            Buttons[i].gameObject.SetActive(false);
-        }
-        stageManager.ShowFailedWindow();
-        PauseGame();
-    }
+
 
     private void RetryButtonClick()
     {
@@ -387,9 +397,6 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        if ((SettingsWindow != null && SettingsWindow.activeSelf) || IsLevelUpUIOpen() || isClear)
-            return;
-
         isStop = false;
         Time.timeScale = TimeSet;
     }
