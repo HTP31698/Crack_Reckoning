@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wolf_Grey_Attack_D
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -68,7 +68,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wolf_Grey_Move_D
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7930157679269256156}
@@ -98,7 +98,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4379230790892197569}
-    m_Position: {x: 292.48254, y: 117.992065, z: 0}
+    m_Position: {x: 290, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3032626975462940106}
     m_Position: {x: 561.53845, y: 114.67041, z: 0}

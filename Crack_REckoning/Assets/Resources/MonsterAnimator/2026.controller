@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wolf_Brown_Move_D
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8813942836715578640}
@@ -148,7 +148,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8304573689898640627}
-    m_Position: {x: 275.87415, y: 122.25212, z: 0}
+    m_Position: {x: 280, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8390395825609319216}
     m_Position: {x: 548.2518, y: 116.88655, z: 0}
@@ -174,7 +174,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wolf_Brown_Attack_D
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []

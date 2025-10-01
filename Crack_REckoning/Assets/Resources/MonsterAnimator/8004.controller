@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 8004Attack
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -144,7 +144,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 8004Move
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1556472853869173526}
@@ -177,7 +177,7 @@ AnimatorStateMachine:
     m_Position: {x: 271.9469, y: 122.7876, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8130943866739838768}
-    m_Position: {x: 537.6106, y: 112.6991, z: 0}
+    m_Position: {x: 540, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7934686547034623122}
     m_Position: {x: 585.7143, y: 25.529892, z: 0}

@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dungeon_Bat_Hoary_Attack_D
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -147,7 +147,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8256715091692297338}
-    m_Position: {x: 290.82166, y: 116.75926, z: 0}
+    m_Position: {x: 290, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4824172423006744031}
     m_Position: {x: 560, y: 110, z: 0}
@@ -173,7 +173,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dungeon_Bat_Hoary_Move_D
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 509865836850347243}

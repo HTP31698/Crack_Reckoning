@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Slime_Cannon_Attack_D
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -144,7 +144,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Slime_Cannon_Move_D
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3740863632679007686}
@@ -177,7 +177,7 @@ AnimatorStateMachine:
     m_Position: {x: 295.8042, y: 127.36888, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5777571041805707852}
-    m_Position: {x: 578.14685, y: 120.72551, z: 0}
+    m_Position: {x: 580, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5207938226423983400}
     m_Position: {x: 626.1904, y: 51.257484, z: 0}
