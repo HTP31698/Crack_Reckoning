@@ -5,6 +5,7 @@ public class GameSettingWindow : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private StageManager stageManager;
+    [SerializeField] private ButtonAudio buttonAudio;
 
     [Header("Buttons")]
     public Button ExitButton;
@@ -18,6 +19,8 @@ public class GameSettingWindow : MonoBehaviour
 
         ExitButton.onClick.AddListener(FailedWindowPause);
         CanCelButton.onClick.AddListener(CanCelButtonClick);
+        ExitButton.onClick.AddListener(buttonAudio.PlayClickSound);
+        CanCelButton.onClick.AddListener(buttonAudio.PlayClickSound);
     }
 
 
