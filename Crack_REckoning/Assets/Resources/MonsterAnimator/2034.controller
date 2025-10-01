@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Scorpion_Large_Attack_B_D
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -144,7 +144,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Scorpion_Large_Move_D
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 331518771517418881}
@@ -177,7 +177,7 @@ AnimatorStateMachine:
     m_Position: {x: 280.85663, y: 119.65292, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7589255384409210623}
-    m_Position: {x: 556.55597, y: 116.33124, z: 0}
+    m_Position: {x: 560, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2645079728051799336}
     m_Position: {x: 616.6666, y: 41.914787, z: 0}

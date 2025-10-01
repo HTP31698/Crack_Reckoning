@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 46a05924a4f4bbe48b1e8c8d0301455a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3389768311769556130
+    second: EnforceFail_0
+  - first:
+      213: 3866325244774140881
+    second: EnforceFail_1
+  - first:
+      213: -253747327087893658
+    second: EnforceFail_2
+  - first:
+      213: 734759939594209591
+    second: EnforceFail_3
+  - first:
+      213: -8294784691538609086
+    second: EnforceFail_4
+  - first:
+      213: -2768972387932492034
+    second: EnforceFail_5
+  - first:
+      213: -8022628962984383377
+    second: EnforceFail_6
+  - first:
+      213: -1846784801885113375
+    second: EnforceFail_7
+  - first:
+      213: -319613263702999558
+    second: EnforceFail_8
+  - first:
+      213: -303105797337957655
+    second: EnforceFail_9
+  - first:
+      213: -5565826818279555715
+    second: EnforceFail_10
+  - first:
+      213: -2602637155560665355
+    second: EnforceFail_11
+  - first:
+      213: -8959710320438963977
+    second: EnforceFail_12
+  - first:
+      213: -8906153063686351110
+    second: EnforceFail_13
+  - first:
+      213: -1465522557017051591
+    second: EnforceFail_14
+  - first:
+      213: -1703124142034795325
+    second: EnforceFail_15
+  - first:
+      213: -3110880631702329063
+    second: EnforceFail_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EnforceFail_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 719
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a466edd150ea0f20800000000000000
+      internalID: 3389768311769556130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_1
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 718
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db43e05352f7a530800000000000000
+      internalID: 3866325244774140881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_2
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 719
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663a83286228a7cf0800000000000000
+      internalID: -253747327087893658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 444
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73943baa544623a00800000000000000
+      internalID: 734759939594209591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 443
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24c3e7c454103ec80800000000000000
+      internalID: -8294784691538609086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_5
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 455
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe2b68a842a299d0800000000000000
+      internalID: -2768972387932492034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_6
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 185
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c2e80c675e9a090800000000000000
+      internalID: -8022628962984383377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 184
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e33c03e107ee56e0800000000000000
+      internalID: -1846784801885113375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceFail_8
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 187
+        width: 257
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afdba771e61809bf0800000000000000
+      internalID: -319613263702999558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b526dec8cfa3d384083f539f131516c4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EnforceFail_0: 3389768311769556130
+      EnforceFail_1: 3866325244774140881
+      EnforceFail_10: -5565826818279555715
+      EnforceFail_11: -2602637155560665355
+      EnforceFail_12: -8959710320438963977
+      EnforceFail_13: -8906153063686351110
+      EnforceFail_14: -1465522557017051591
+      EnforceFail_15: -1703124142034795325
+      EnforceFail_16: -3110880631702329063
+      EnforceFail_2: -253747327087893658
+      EnforceFail_3: 734759939594209591
+      EnforceFail_4: -8294784691538609086
+      EnforceFail_5: -2768972387932492034
+      EnforceFail_6: -8022628962984383377
+      EnforceFail_7: -1846784801885113375
+      EnforceFail_8: -319613263702999558
+      EnforceFail_9: -303105797337957655
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

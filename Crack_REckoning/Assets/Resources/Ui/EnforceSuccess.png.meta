@@ -1,0 +1,478 @@
+fileFormatVersion: 2
+guid: 7768a8254e0c8c446909bb1e359c1c1d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4716895197619893227
+    second: EnforceSuccese_0
+  - first:
+      213: -5336352469836766858
+    second: EnforceSuccese_1
+  - first:
+      213: 8707820034567423924
+    second: EnforceSuccese_2
+  - first:
+      213: -923923067126668647
+    second: EnforceSuccese_3
+  - first:
+      213: -4167492220527648942
+    second: EnforceSuccese_4
+  - first:
+      213: -9006351574288219117
+    second: EnforceSuccese_5
+  - first:
+      213: -2165561306308698540
+    second: EnforceSuccese_6
+  - first:
+      213: -2536325204929467594
+    second: EnforceSuccese_7
+  - first:
+      213: -5394393697933180512
+    second: EnforceSuccese_8
+  - first:
+      213: -288481471762400138
+    second: EnforceSuccese_9
+  - first:
+      213: 151871860683010112
+    second: EnforceSuccese_10
+  - first:
+      213: -4531576167671460534
+    second: EnforceSuccese_11
+  - first:
+      213: 7672053727573365360
+    second: EnforceSuccese_12
+  - first:
+      213: 2056602551343368879
+    second: EnforceSuccese_13
+  - first:
+      213: -9200093125876382980
+    second: EnforceSuccese_14
+  - first:
+      213: 3390242006030493574
+    second: EnforceSuccese_15
+  - first:
+      213: -7565162048507479359
+    second: EnforceSuccese_16
+  - first:
+      213: -5420138922231025681
+    second: EnforceSuccese_17
+  - first:
+      213: -8767351177487721835
+    second: EnforceSuccese_18
+  - first:
+      213: -1054868736710078480
+    second: EnforceSuccese_19
+  - first:
+      213: 4534061247725674658
+    second: EnforceSuccese_20
+  - first:
+      213: 8790274476789863443
+    second: EnforceSuccese_21
+  - first:
+      213: -1818102015806805895
+    second: EnforceSuccese_22
+  - first:
+      213: 5872020232748669975
+    second: EnforceSuccese_23
+  - first:
+      213: 56019087518196249
+    second: EnforceSuccese_24
+  - first:
+      213: -4566954339987917805
+    second: EnforceSuccese_25
+  - first:
+      213: 5748246898712331235
+    second: EnforceSuccese_26
+  - first:
+      213: -3904935220639571621
+    second: EnforceSuccese_27
+  - first:
+      213: 4516155103128301592
+    second: EnforceSuccese_28
+  - first:
+      213: -6656011264558306634
+    second: EnforceSuccese_29
+  - first:
+      213: 7036130515358257881
+    second: EnforceSuccese_30
+  - first:
+      213: 72557136831895818
+    second: EnforceSuccese_31
+  - first:
+      213: 5449299361876997354
+    second: EnforceSuccese_32
+  - first:
+      213: -8068422550183240739
+    second: EnforceSuccese_33
+  - first:
+      213: 8216145777964342174
+    second: EnforceSuccese_34
+  - first:
+      213: 2459419711051897787
+    second: EnforceSuccese_35
+  - first:
+      213: -5039347169884311920
+    second: EnforceSuccese_36
+  - first:
+      213: 5034217003477910728
+    second: EnforceSuccese_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EnforceSuccese_1
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 740
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cce171fc83a8eb0800000000000000
+      internalID: -4716895197619893227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_3
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 465
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 671e91fa3b771f5b0800000000000000
+      internalID: -5336352469836766858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_4
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 465
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99220289dd09d23f0800000000000000
+      internalID: -923923067126668647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_5
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 465
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25fde3fd7e71a26c0800000000000000
+      internalID: -4167492220527648942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 198
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314454cf5f2030380800000000000000
+      internalID: -9006351574288219117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 739
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e932e277162f1e0800000000000000
+      internalID: -2165561306308698540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_2
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 739
+        width: 270
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b2f450aa92dccd0800000000000000
+      internalID: -2536325204929467594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_8
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 200
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1461033834325b0800000000000000
+      internalID: -5394393697933180512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnforceSuccese_7
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 199
+        width: 270
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e534d62d92ec8cc46b580db84e6a622b
+      internalID: 683997045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9175b02bb080563428cf78ff55ea365c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EnforceSuccese_0: -2165561306308698540
+      EnforceSuccese_1: -4716895197619893227
+      EnforceSuccese_10: 151871860683010112
+      EnforceSuccese_12: 7672053727573365360
+      EnforceSuccese_13: 2056602551343368879
+      EnforceSuccese_14: -9200093125876382980
+      EnforceSuccese_15: 3390242006030493574
+      EnforceSuccese_17: -5420138922231025681
+      EnforceSuccese_18: -8767351177487721835
+      EnforceSuccese_19: -1054868736710078480
+      EnforceSuccese_2: -2536325204929467594
+      EnforceSuccese_20: 4534061247725674658
+      EnforceSuccese_21: 8790274476789863443
+      EnforceSuccese_22: -1818102015806805895
+      EnforceSuccese_23: 5872020232748669975
+      EnforceSuccese_24: 56019087518196249
+      EnforceSuccese_25: -4566954339987917805
+      EnforceSuccese_26: 5748246898712331235
+      EnforceSuccese_27: -3904935220639571621
+      EnforceSuccese_28: 4516155103128301592
+      EnforceSuccese_29: -6656011264558306634
+      EnforceSuccese_3: -5336352469836766858
+      EnforceSuccese_30: 7036130515358257881
+      EnforceSuccese_31: 72557136831895818
+      EnforceSuccese_32: 5449299361876997354
+      EnforceSuccese_33: -8068422550183240739
+      EnforceSuccese_34: 8216145777964342174
+      EnforceSuccese_35: 2459419711051897787
+      EnforceSuccese_36: -5039347169884311920
+      EnforceSuccese_37: 5034217003477910728
+      EnforceSuccese_4: -923923067126668647
+      EnforceSuccese_5: -4167492220527648942
+      EnforceSuccese_6: -9006351574288219117
+      EnforceSuccese_7: 683997045
+      EnforceSuccese_8: -5394393697933180512
+      EnforceSuccese_9: -288481471762400138
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
