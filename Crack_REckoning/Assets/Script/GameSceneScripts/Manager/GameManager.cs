@@ -381,13 +381,6 @@ public class GameManager : MonoBehaviour
         }
         SceneManager.LoadScene(index);
     }
-    private bool IsLevelUpUIOpen()
-    {
-        for (int i = 0; i < 3 && i < Buttons.Length; i++)
-            if (Buttons[i].gameObject.activeSelf)
-                return true;
-        return false;
-    }
 
     public void PauseGame()
     {

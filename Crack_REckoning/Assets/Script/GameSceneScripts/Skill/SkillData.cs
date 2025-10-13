@@ -3,11 +3,12 @@ using UnityEngine;
 
 public enum SkillTypeID
 {
-    Fire = 1,
-    Water = 2,
-    Ice = 3,
-    Lightning = 4,
-    Dark = 5,
+    None,
+    Fire,
+    Water,
+    Ice,
+    Lightning,
+    Dark,
 }
 
 public enum AttackTypeID
