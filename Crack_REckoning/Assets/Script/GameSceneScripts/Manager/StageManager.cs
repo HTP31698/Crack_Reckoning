@@ -130,9 +130,9 @@ public class StageManager : MonoBehaviour
 
             // UI °»½Å
             currentMonsterIds.Clear();
-            if (currentStageData.M1Num > 0) currentMonsterIds.Add(currentStageData.M1Id ?? 0);
-            if (currentStageData.M2Num > 0) currentMonsterIds.Add(currentStageData.M2Id ?? 0);
-            if (currentStageData.M3Num > 0) currentMonsterIds.Add(currentStageData.M3Id ?? 0);
+            if (currentStageData.M1Num.GetValueOrDefault() > 0) currentMonsterIds.Add(currentStageData.M1Id.GetValueOrDefault());
+            if (currentStageData.M2Num.GetValueOrDefault() > 0) currentMonsterIds.Add(currentStageData.M2Id.GetValueOrDefault());
+            if (currentStageData.M3Num.GetValueOrDefault() > 0) currentMonsterIds.Add(currentStageData.M3Id.GetValueOrDefault());
             UpdateMonsterUI(currentMonsterIds);
 
             if (currentStageData.M1Num > 0)
@@ -219,25 +219,41 @@ public class StageManager : MonoBehaviour
 
     private void UpdateMonsterUI(List<int> monsterIds)
     {
-        for (int i = 0; i < monsterSlots.Length; i++)
-        {
-            if (i < monsterIds.Count && monsterIds[i] > 0)
-            {
-                Sprite monsterSprite = null;
-                var monsterData = DataTableManager.Get<MonsterTable>(MonsterTable).Get(monsterIds[i]);
-                if (monsterData != null)
-                    monsterSprite = monsterData.sprite;
+        int group = Mathf.Clamp((currentStage - 1) / 5, 0, 4);
+        int baseIdx = group * 3;
 
-                monsterSlots[i].sprite = monsterSprite;
-                monsterSlots[i].enabled = monsterSprite != null;
-            }
-            else
+        for (int k = 0; k < 3; k++)
+        {
+            int idx = baseIdx + k;
+            if (monsterSlots == null || idx >= monsterSlots.Length)
             {
-                monsterSlots[i].sprite = null;
-                monsterSlots[i].enabled = false;
+                continue;
             }
+            var img = monsterSlots[idx];
+            if (img == null) { continue; }
+
+            img.sprite = null;
+            img.enabled = false;
+            if (!img.gameObject.activeInHierarchy)
+                img.gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < 3 && i < monsterIds.Count; i++)
+        {
+            int id = monsterIds[i];
+            int idx = baseIdx + i;
+            if (idx >= monsterSlots.Length) break;
+
+            var mdata = DataTableManager.Get<MonsterTable>(MonsterTable).Get(id);
+            var sprite = (mdata != null) ? mdata.sprite : null;
+            monsterSlots[idx].sprite = sprite;
+
+            bool on = sprite != null;
+            monsterSlots[idx].enabled = on;
+            monsterSlots[idx].gameObject.SetActive(on);
         }
     }
+
     public void ShowClearWindow()
     {
         ClearOrFailed.text = "Stage Clear!!!";
