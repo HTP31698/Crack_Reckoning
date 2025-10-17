@@ -330,20 +330,17 @@ public class Character : MonoBehaviour
     private static Vector3 RandomInBoxThenClampToSafe(
      GameObject prefab, float zDepth = 0f, float marginPct = 0.05f)
     {
-        // 1) 박스에서 먼저 랜덤 (요구 범위)
         float rawX = Random.Range(-2.7f, 2.7f);
         float rawY = Random.Range(-1.5f, 4.0f);
 
         var cam = Camera.main;
         if (!cam) return new Vector3(rawX, rawY, zDepth);
 
-        // 2) 안전영역 월드 사각형
         Rect safe = Screen.safeArea;
         float zDist = Mathf.Abs(cam.transform.position.z - zDepth);
         Vector3 bl = cam.ScreenToWorldPoint(new Vector3(safe.xMin, safe.yMin, zDist));
         Vector3 tr = cam.ScreenToWorldPoint(new Vector3(safe.xMax, safe.yMax, zDist));
 
-        // 3) 프리팹 반폭/반높이(루트 스케일 기준)
         float halfW = 0f, halfH = 0f;
         if (prefab)
         {
@@ -356,7 +353,6 @@ public class Character : MonoBehaviour
             }
         }
 
-        // 4) 여백 반영 + 클램프 범위 계산
         float marginX = (tr.x - bl.x) * Mathf.Clamp01(marginPct);
         float marginY = (tr.y - bl.y) * Mathf.Clamp01(marginPct);
 
@@ -368,12 +364,10 @@ public class Character : MonoBehaviour
         float minY = bl.y + halfH * 0.5f + marginY;
         float maxY = tr.y - halfH * 0.5f - marginY;
 
-        // 5) 안전장치: 범위가 너무 좁으면 중앙 기준 최소 폭 확보
         const float kMinSpan = 0.05f;
         if (maxX - minX < kMinSpan) { float mid = (bl.x + tr.x) * 0.5f; minX = mid - kMinSpan * 0.5f; maxX = mid + kMinSpan * 0.5f; }
         if (maxY - minY < kMinSpan) { float mid = (bl.y + tr.y) * 0.5f; minY = mid - kMinSpan * 0.5f; maxY = mid + kMinSpan * 0.5f; }
 
-        // 6) ‘안으로 끌어들이기’
         float x = Mathf.Clamp(rawX, minX, maxX);
         float y = Mathf.Clamp(rawY, minY, maxY);
 

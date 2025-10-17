@@ -522,7 +522,7 @@ public class Skill : MonoBehaviour
 
         var hits = Physics2D.RaycastAll(
             rb.position,
-            ndir, // ¡ç dir ´ë½Å ndir
+            ndir,
             (nextPos - rb.position).magnitude,
             LayerMask.GetMask(MonsterLayerName)
         );
@@ -591,7 +591,7 @@ public class Skill : MonoBehaviour
 
             if (particlePrefab)
             {
-                sphereFX = Instantiate(particlePrefab, sphereCenter, Quaternion.identity);
+                sphereFX = Instantiate(particlePrefab, sphereCenter, Quaternion.identity, transform);
                 InitFX(sphereFX, radius0, AuthorRadius);
             }
         }
@@ -703,7 +703,10 @@ public class Skill : MonoBehaviour
         {
             Destroy(sphereFX);
         }
-        if (line) line.enabled = false;
+        if (line)
+        {
+            line.enabled = false;
+        }
         Destroy(gameObject);
     }
 }

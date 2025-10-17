@@ -201,7 +201,6 @@ public abstract class MonsterBase : MonoBehaviour
                 isStunned = false;
             }
         }
-
         stunRemain = Mathf.Max(stunRemain, duration);
     }
 
@@ -215,6 +214,7 @@ public abstract class MonsterBase : MonoBehaviour
         }
         strainRemain = Mathf.Max(strainRemain, duration);
     }
+
     public void ApplyNuckBack(float nuckback)
     {
        agent.gameObject.transform.position = new Vector3(posX, gameObject.transform.position.y + nuckback, posZ); 
