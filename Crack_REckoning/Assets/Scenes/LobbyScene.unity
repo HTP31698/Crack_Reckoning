@@ -4009,7 +4009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07368056, y: 0.12875001}
   m_AnchorMax: {x: 0.93100005, y: 0.25375003}
-  m_AnchoredPosition: {x: -1.1634979, y: 0.49731445}
+  m_AnchoredPosition: {x: -1.1635132, y: 0.49731445}
   m_SizeDelta: {x: -1.6184998, y: -0.9732666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299413678
@@ -19296,7 +19296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055443805, y: 0.74322164}
   m_AnchorMax: {x: 0.17077786, y: 0.81877786}
-  m_AnchoredPosition: {x: -1.3300247, y: -0.80999756}
+  m_AnchoredPosition: {x: -1.3300171, y: -0.80999756}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1418240377
@@ -27029,7 +27029,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c3fc019c3eaefc14b9907e604dec8f7c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.17
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -28758,7 +28758,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
