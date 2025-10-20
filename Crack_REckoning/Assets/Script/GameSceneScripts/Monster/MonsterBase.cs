@@ -36,8 +36,8 @@ public abstract class MonsterBase : MonoBehaviour
 
     protected Coroutine attackCoroutine;
 
-    public bool isdead { get; set; } = false;
-    public bool isattack { get; set; } = false;
+    public bool isdead { get; protected set; } = false;
+    public bool isattack { get; protected set; } = false;
 
     private bool isStunned = false;
     private bool isStrain = false;

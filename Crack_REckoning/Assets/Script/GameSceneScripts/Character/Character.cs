@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     private static readonly string LevelUpTable = "LevelUpTable";
     private static readonly string SkillTable = "SkillTable";
     private static readonly string SkillPrefabs = "Prefabs/Skill";
+    private static readonly string Monster = "Monster";
 
     private GameObject Skillpre;
 
@@ -105,7 +106,7 @@ public class Character : MonoBehaviour
             {
                 animator.runtimeAnimatorController = runtimeAnimatorController;
             }
-            if (sprite != null && spriteRenderer)
+            if (sprite != null && spriteRenderer != null)
             {
                 spriteRenderer.sprite = sprite;
             }
@@ -175,8 +176,6 @@ public class Character : MonoBehaviour
         {
             s.Duration += skillData.Duration.Value;
         }
-
-
     }
 
     public void AddExp(int amount)
@@ -220,7 +219,7 @@ public class Character : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             transform.position,
             skillData.SkillRange,
-            LayerMask.GetMask("Monster")
+            LayerMask.GetMask(Monster)
         );
         foreach (Collider2D col in hits)
         {
@@ -233,12 +232,12 @@ public class Character : MonoBehaviour
         }
         if (!anyInRange) yield break;
 
-        MonsterBase priority = MonsterManager.GetAttackingWithin(transform.position, skillData.SkillRange);
+        MonsterBase monster = MonsterManager.GetAttackingWithin(transform.position, skillData.SkillRange);
         skillReady[index] = false;
         isUseSkill = true;
         for (int atk = 0; atk < skillData.AttackNum; atk++)
         {
-            UseSkill(index, priority);
+            UseSkill(index, monster);
             yield return new WaitForSeconds(0.2f);
         }
 
@@ -251,10 +250,9 @@ public class Character : MonoBehaviour
     {
         int skillId = SkillIDs[index];
         var skillData = GetSkillForUse(skillId);
-        if (skillData == null) return;
-
+        if (skillData == null)
+            return;
         var chosenThisSkill = new HashSet<MonsterBase>();
-
         for (int i = 0; i < skillData.ProjectilesNum; i++)
         {
             MonsterBase chosen = null;
@@ -264,13 +262,11 @@ public class Character : MonoBehaviour
                 if (Vector2.Distance(transform.position, priorityTarget.transform.position) <= skillData.SkillRange)
                     chosen = priorityTarget;
             }
-
             if (chosen == null)
             {
                 chosen = MonsterManager.GetRandomAliveWithin(
                     transform.position,
-                    skillData.SkillRange,
-                    chosenThisSkill
+                    skillData.SkillRange
                 );
 
                 if (chosen == null)
@@ -281,14 +277,14 @@ public class Character : MonoBehaviour
                         null
                     );
                 }
-
                 if (chosen == null)
                 {
                     chosen = MonsterManager.GetRandomMonster();
                 }
             }
 
-            if (chosen == null) continue;
+            if (chosen == null) 
+                continue;
 
             Vector3 spawnPos = transform.position
                              + new Vector3((i - (skillData.ProjectilesNum - 1) / 2f) * 0.2f, 0, 0);

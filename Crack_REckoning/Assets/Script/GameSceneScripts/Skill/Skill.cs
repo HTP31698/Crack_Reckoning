@@ -105,7 +105,6 @@ public class Skill : MonoBehaviour
     private void FixedUpdate()
     {
         float dt = Time.fixedDeltaTime;
-
         switch (AttackType)
         {
             case AttackTypeID.Projectile:
@@ -136,7 +135,6 @@ public class Skill : MonoBehaviour
                 break;
         }
     }
-
     private void Update()
     {
         float dt = Time.deltaTime;
@@ -188,7 +186,6 @@ public class Skill : MonoBehaviour
         SkillDamageRange = data.SkillDamageRange;
         AttackType = data.AttackType;
         SkillDescription = data.SkillDescription;
-
         ExplosionRange = data.ExplosionRange.GetValueOrDefault();
         ExplosionDamage = data.ExplosionDamage.GetValueOrDefault();
         FreezeTime = data.FreezeTime.GetValueOrDefault();
@@ -205,25 +202,25 @@ public class Skill : MonoBehaviour
         LaserMaterial = data.Material;
         controller = data.AnimatorController;
         sprite = data.sprite;
-
         Typesprite = data.TypeSprite;
-
         AuthorRadius = data.AuthorRadius;
-
-
 
         if(data.attackAudioClip != null)
         {
             attackAudioClip = data.attackAudioClip;
         }
-
         if (data.hitaudioClip != null)
         {
             hitAudioClip = data.hitaudioClip;
         }
-
-        if (spriteRenderer && sprite) spriteRenderer.sprite = sprite;
-        if (animator && controller) animator.runtimeAnimatorController = controller;
+        if (spriteRenderer != null && sprite != null)
+        {
+            spriteRenderer.sprite = sprite;
+        }
+        if (animator != null && controller != null)
+        {
+            animator.runtimeAnimatorController = controller;
+        }
     }
 
     public void SetCharacter(Character c, int cri, float criDmg, int damage)
@@ -627,20 +624,17 @@ public class Skill : MonoBehaviour
     //Cast6
     private void CastMine(float dt)
     {
-        if (mineDetonated) return;
-
+        if (mineDetonated)
+            return;
         var center = (Vector2)transform.position;
-
         float detectRadius = Mathf.Max(0.01f, SkillDamageRange);
         ApplyAreaAnimationScale(detectRadius);
-
         beforeMinerTimer += dt;
         if (Duration > 0f && beforeMinerTimer > Duration)
         {
             StopAndDestroy();
             return;
         }
-
         bool hasLive = false;
         var cols = Physics2D.OverlapCircleAll(center, detectRadius, LayerMask.GetMask(MonsterLayerName));
         if (cols != null && cols.Length > 0)
@@ -651,7 +645,6 @@ public class Skill : MonoBehaviour
                 if (m != null && !m.isdead) { hasLive = true; break; }
             }
         }
-
         if (!armed)
         {
             if (hasLive)
@@ -661,26 +654,22 @@ public class Skill : MonoBehaviour
             }
             return;
         }
-
         if (!hasLive)
         {
             armed = false;
             armedTimer = 0f;
             return;
         }
-
         armedTimer += dt;
         if (armedTimer >= MineDetonateAfter)
         {
             mineDetonated = true;
-
             if (particlePrefab)
             {
                 var fx = Instantiate(particlePrefab, center, Quaternion.identity);
                 InitFX(fx, Mathf.Max(0.01f, ExplosionRange), AuthorRadius);
                 Destroy(fx, 1f);
             }
-
             DoExplosion(center);
             StopAndDestroy();
         }
