@@ -16,7 +16,6 @@ public abstract class DataTable
         using (var reader = new StringReader(csvText))
         using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
-            // 타입별 ClassMap 등록
             if (typeof(T) == typeof(StageData))
                 csvReader.Context.RegisterClassMap<StageDataMap>();
             else if (typeof(T) == typeof(MonsterData))
@@ -46,3 +45,4 @@ public abstract class DataTable
         }
     }
 }
+
