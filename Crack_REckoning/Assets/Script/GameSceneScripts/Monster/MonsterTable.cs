@@ -22,7 +22,7 @@ public class MonsterTable : DataTable
             }
             else
             {
-                Debug.LogError("¸ó½ºÅÍ ¾ÆÀÌµğ Áßº¹!");
+                Debug.LogError("ëª¬ìŠ¤í„° ì•„ì´ë”” ì¤‘ë³µ!");
             }
         }
     }

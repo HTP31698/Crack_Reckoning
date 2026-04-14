@@ -152,7 +152,7 @@ public static class DataTableManager
     {
         if (!tables.ContainsKey(id))
         {
-            Debug.LogError("Å×ÀÌºí ¾øÀ½");
+            Debug.LogError("í…Œì´ë¸” ì—†ìŒ");
             return null;
         }
         return tables[id] as T;

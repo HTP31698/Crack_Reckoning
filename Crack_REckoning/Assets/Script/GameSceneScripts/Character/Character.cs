@@ -59,6 +59,7 @@ public class Character : MonoBehaviour
         for (int i = 0; i < 5; i++)
             skillReady.Add(false);
         audioSource = GetComponent<AudioSource>();
+        AudioRouter.RouteSFX(audioSource);
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         Skillpre = Resources.Load<GameObject>(SkillPrefabs);

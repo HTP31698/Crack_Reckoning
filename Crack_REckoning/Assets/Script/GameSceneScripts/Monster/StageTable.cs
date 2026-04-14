@@ -23,7 +23,7 @@ public class StageTable : DataTable
             }
             else
             {
-                Debug.LogError("¸ó½ºÅÍ ¾ÆÀÌµğ Áßº¹!");
+                Debug.LogError("ìŠ¤í…Œì´ì§€ ì•„ì´ë”” ì¤‘ë³µ!");
             }
         }
     }

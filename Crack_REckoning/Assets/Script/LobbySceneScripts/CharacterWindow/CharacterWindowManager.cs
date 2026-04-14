@@ -45,7 +45,7 @@ public class CharacterWindowManager : MonoBehaviour
 
         if (CharacterTable == null || _owned == null)
         {
-            Debug.LogWarning("[CharacterWindow] µ¥ÀÌÅÍ°¡ ÁØºñµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("[CharacterWindow] ë°ì´í„°ê°€ ì¤€ë¹„ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -177,7 +177,7 @@ public class CharacterWindowManager : MonoBehaviour
         int ownedIdx = data.OwnedCharacterIds.IndexOf(currentId);
         if (ownedIdx < 0)
         {
-            Debug.LogWarning($"[CharacterWindow] º¸À¯ÇÏÁö ¾ÊÀº Ä³¸¯ÅÍ °­È­ ½Ãµµ: {currentId}");
+            Debug.LogWarning($"[CharacterWindow] ë³´ìœ í•˜ì§€ ì•Šì€ ìºë¦­í„° ê°•í™” ì‹œë„: {currentId}");
             return;
         }
 
@@ -191,7 +191,7 @@ public class CharacterWindowManager : MonoBehaviour
         var row = table.Get(currentId);
         if (row == null)
         {
-            Debug.Log("[CharacterWindow] °­È­ ÃÖÁ¾ ´Ü°èÀÌ°Å³ª µ¥ÀÌÅÍ ¾øÀ½");
+            Debug.Log("[CharacterWindow] ê°•í™” ìµœì¢… ë‹¨ê³„ì´ê±°ë‚˜ ë°ì´í„° ì—†ìŒ");
             RefreshUI(currentId);
             return;
         }
@@ -202,7 +202,7 @@ public class CharacterWindowManager : MonoBehaviour
 
         if (data.Gold < cost)
         {
-            Debug.Log("°ñµå ºÎÁ·");
+            Debug.Log("ê³¨ë“œ ë¶€ì¡±");
             RefreshUI(currentId);
             return;
         }
@@ -269,24 +269,28 @@ public class CharacterWindowManager : MonoBehaviour
             }
         }
 
-        if (CharacterName) CharacterName.text = sdata.ChName;
+        if (CharacterName)
+        {
+            int enforceLevel = (id > 9999) ? id % 100 : 0;
+            CharacterName.text = enforceLevel > 0 ? $"{sdata.ChName} +{enforceLevel}" : sdata.ChName;
+        }
         if (CharacterDescription) CharacterDescription.text = sdata.ChDesc;
 
         if (CharacterStats != null && CharacterStats.Length >= 2)
         {
-            if (CharacterStats[0]) CharacterStats[0].text = $"Å©¸®Æ¼ÄÃ È®·ü\n{sdata.ChCri}";
-            if (CharacterStats[1]) CharacterStats[1].text = $"Å©¸®Æ¼ÄÃ ¹èÀ²\n{sdata.ChCriDam}";
+            if (CharacterStats[0]) CharacterStats[0].text = $"í¬ë¦¬í‹°ì»¬ í™•ë¥ \n{sdata.ChCri}";
+            if (CharacterStats[1]) CharacterStats[1].text = $"í¬ë¦¬í‹°ì»¬ ë°°ìœ¨\n{sdata.ChCriDam}";
         }
 
         if (hasNext && nextsdata != null)
         {
-            if (EnforcePct) EnforcePct.text = $"°­È­ È®·ü : <color=#7EE787>{endata.SuccessPercent}%</color>";
-            if (EnforceDamage) EnforceDamage.text = $"Å©¸®Æ¼ÄÃ È®·ü Áõ°¡ : +{nextsdata.ChCri - sdata.ChCri}%";
+            if (EnforcePct) EnforcePct.text = $"ê°•í™” í™•ë¥  : <color=#7EE787>{endata.SuccessPercent}%</color>";
+            if (EnforceDamage) EnforceDamage.text = $"í¬ë¦¬í‹°ì»¬ í™•ë¥  ì¦ê°€ : +{nextsdata.ChCri - sdata.ChCri}%";
             
             var sb = new StringBuilder();
             if (nextsdata.ChCriDam < sdata.ChCriDam)
-                sb.AppendLine($"Å©¸®Æ¼ÄÃ ¹èÀ² Áõ°¡ : {nextsdata.ChCriDam - sdata.ChCriDam}");
-            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "Ãß°¡ °­È­ È¿°ú º¯È­ ¾øÀ½";
+                sb.AppendLine($"í¬ë¦¬í‹°ì»¬ ë°°ìœ¨ ë³€í™” : {nextsdata.ChCriDam - sdata.ChCriDam}");
+            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "ì¶”ê°€ ê°•í™” íš¨ê³¼ ë³€í™” ì—†ìŒ";
 
 
             if (EnforceCurrentGold)
@@ -304,8 +308,8 @@ public class CharacterWindowManager : MonoBehaviour
         else
         {
             if (EnforcePct) EnforcePct.text = "-";
-            if (EnforceDamage) EnforceDamage.text = "ÃÖ´ë ·¹º§";
-            if (EnforceStat) EnforceStat.text = "ÃÖ´ë ·¹º§";
+            if (EnforceDamage) EnforceDamage.text = "ìµœëŒ€ ê°•í™”";
+            if (EnforceStat) EnforceStat.text = "ìµœëŒ€ ê°•í™”";
             if (EnforceNeedGold) EnforceNeedGold.text = "";
             if (EnforceCurrentGold) EnforceCurrentGold.text = $"{data.Gold}";
         }

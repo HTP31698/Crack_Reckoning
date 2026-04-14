@@ -21,7 +21,7 @@ public class BossTable : DataTable
             }
             else
             {
-                Debug.LogError("¸ó½ºÅÍ ¾ÆÀÌµğ Áßº¹!");
+                Debug.LogError("ë³´ìŠ¤ ì•„ì´ë”” ì¤‘ë³µ!");
             }
         }
     }

@@ -43,7 +43,6 @@ public abstract class MonsterBase : MonoBehaviour
     private bool isStrain = false;
     private float stunRemain = 0f;
     private float strainRemain = 0f;
-    private float cachedSpeed = -1f;
 
     // ★ stoppingDistance 히스테리시스(너무 잦은 on/off 방지)
     [SerializeField] private float startEpsilon = 0.01f; // 시작 여유
@@ -57,6 +56,7 @@ public abstract class MonsterBase : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         sliderHp = GetComponentInChildren<Slider>();
         audioSource = GetComponent<AudioSource>();
+        AudioRouter.RouteSFX(audioSource);
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -76,10 +76,7 @@ public abstract class MonsterBase : MonoBehaviour
                 stunRemain = 0f;
 
                 if (agent != null)
-                {
                     agent.isStopped = false;
-                    if (cachedSpeed >= 0f) agent.speed = cachedSpeed;
-                }
             }
             if (isStrain)
             {
@@ -87,10 +84,7 @@ public abstract class MonsterBase : MonoBehaviour
                 stunRemain = 0f;
 
                 if (agent != null)
-                {
                     agent.isStopped = false;
-                    if (cachedSpeed >= 0f) agent.speed = cachedSpeed;
-                }
             }
         }
         if (isStrain)
@@ -191,10 +185,8 @@ public abstract class MonsterBase : MonoBehaviour
 
         if (!isStunned)
         {
-            cachedSpeed = agent.speed;
             isStunned = true;
 
-            agent.speed = 0f;
             agent.isStopped = true;
             if (isStrain)
             {
@@ -230,14 +222,6 @@ public abstract class MonsterBase : MonoBehaviour
         isStrain = false;
         stunRemain = 0f;
         strainRemain = 0f;
-        if (agent)
-        {
-            agent.isStopped = true;
-            if (cachedSpeed >= 0f)
-            {
-                agent.speed = cachedSpeed;
-            }
-        }
         StopAttack();
         StartCoroutine(DestroyGameObject());
     }

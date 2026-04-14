@@ -113,6 +113,29 @@ public class GameManager : MonoBehaviour
             Time.timeScale = TimeSet;
         }
 
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            if (character == null)
+            {
+                Debug.LogWarning("[Cheat F12] character is null, skipped.");
+            }
+            else
+            {
+                int[] allSkills = { 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010, 3011, 3012, 3013, 3014, 3015 };
+                var current = character.GetSkillIdList();
+                int added = 0;
+                foreach (int id in allSkills)
+                {
+                    if (current.Contains(id)) continue;
+                    int before = character.GetSkillIdList().Count;
+                    character.AddSkill(id);
+                    if (character.GetSkillIdList().Count > before) added++;
+                    else break;
+                }
+                Debug.Log($"[Cheat F12] Added {added} skills (max 5 active slots).");
+            }
+        }
+
         timer += Time.deltaTime;
         int minutes = (int)(timer / 60);
         int seconds = (int)(timer % 60);
@@ -161,11 +184,11 @@ public class GameManager : MonoBehaviour
         if (!skillIndex.TryGetValue(id, out int index))
             return;
 
-        // ·ΉΊ§ Αυ°΅
+        // κ°•ν™” λ λ²¨
         if (!enforceLevel.ContainsKey(id)) enforceLevel[id] = 0;
         enforceLevel[id]++;
 
-        // UI °»½Ε
+        // UI κ°±μ‹ 
         var text = sliderSkills[index].transform.Find("Enforce")?.GetComponent<TextMeshProUGUI>();
         if (text != null) text.text = $"+{enforceLevel[id]}";
     }

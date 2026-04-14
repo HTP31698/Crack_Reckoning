@@ -44,7 +44,7 @@ public class SaveLoadManager
         }
         catch
         {
-            Debug.LogError("Save ¿¹¿Ü ¹ß»ı");
+            Debug.LogError("Save ì—ëŸ¬ ë°œìƒ");
             return false;
         }
     }
@@ -71,7 +71,7 @@ public class SaveLoadManager
         }
         catch
         {
-            Debug.LogError("Load ¿¹¿Ü ¹ß»ı");
+            Debug.LogError("Load ì—ëŸ¬ ë°œìƒ");
             return false;
         }
     }

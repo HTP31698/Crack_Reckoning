@@ -79,6 +79,66 @@ public class LobbyManager : MonoBehaviour
         Gold.text = SaveLoadManager.Data.Gold.ToString();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            var data = SaveLoadManager.Data;
+            if (data == null) return;
+
+            int[] allSkills = { 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010, 3011, 3012, 3013, 3014, 3015 };
+            int[] allPets = { 7001, 7002, 7003, 7004 };
+            const int GoldGrant = 999999;
+
+            if (data.OwnedSkillIds == null)
+                data.OwnedSkillIds = new System.Collections.Generic.List<int>();
+            if (data.EquipmentSkillIds == null)
+                data.EquipmentSkillIds = new System.Collections.Generic.List<int>();
+
+            var bestPerBase = new System.Collections.Generic.Dictionary<int, int>();
+            foreach (var owned in data.OwnedSkillIds)
+            {
+                int baseId = owned > 9999 ? owned / 100 : owned;
+                if (!bestPerBase.TryGetValue(baseId, out int cur) || owned > cur)
+                    bestPerBase[baseId] = owned;
+            }
+
+            foreach (int baseId in allSkills)
+            {
+                if (!bestPerBase.ContainsKey(baseId))
+                    bestPerBase[baseId] = baseId;
+            }
+
+            data.OwnedSkillIds.Clear();
+            foreach (var kv in bestPerBase)
+                data.OwnedSkillIds.Add(kv.Value);
+
+            for (int i = data.EquipmentSkillIds.Count - 1; i >= 0; i--)
+            {
+                int eq = data.EquipmentSkillIds[i];
+                int baseId = eq > 9999 ? eq / 100 : eq;
+                if (bestPerBase.TryGetValue(baseId, out int best))
+                    data.EquipmentSkillIds[i] = best;
+                else
+                    data.EquipmentSkillIds.RemoveAt(i);
+            }
+
+            if (data.OwnedPetIds == null)
+                data.OwnedPetIds = new System.Collections.Generic.List<int>();
+            foreach (int pid in allPets)
+            {
+                if (!data.OwnedPetIds.Contains(pid))
+                    data.OwnedPetIds.Add(pid);
+            }
+
+            data.Gold += GoldGrant;
+            if (Gold != null) Gold.text = data.Gold.ToString();
+
+            SaveLoadManager.Save();
+            Debug.Log($"[Cheat] Skills deduped & unlocked, pets unlocked, +{GoldGrant} gold. Total: {data.Gold}");
+        }
+    }
+
     public void StageChallengeButtonClick()
     {
         HomeWindow.SetActive(false);

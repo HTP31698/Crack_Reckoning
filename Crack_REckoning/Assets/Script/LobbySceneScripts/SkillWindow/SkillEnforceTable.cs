@@ -20,7 +20,7 @@ public class SkillEnforceTable :DataTable
             }
             else
             {
-                Debug.LogError($"{item.EnhanceID}½ºÅ³ ¾ÆÀÌµğ Áßº¹");
+                Debug.LogError($"{item.EnhanceID} ìŠ¤í‚¬ ì•„ì´ë”” ì¤‘ë³µ");
             }
         }
     }

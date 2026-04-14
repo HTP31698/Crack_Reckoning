@@ -20,7 +20,7 @@ public class LevelUpTable : DataTable
             }
             else
             {
-                Debug.LogError("·¹º§ Áßº¹!");
+                Debug.LogError("ë ˆë²¨ ì¤‘ë³µ!");
             }
         }
     }

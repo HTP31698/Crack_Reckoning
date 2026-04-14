@@ -20,7 +20,7 @@ public class CharacterEnforceTable : DataTable
             }
             else
             {
-                Debug.LogError("Ä³¸¯ÅÍ ¾ÆÀÌµğ Áßº¹");
+                Debug.LogError("ìºë¦­í„° ì•„ì´ë”” ì¤‘ë³µ");
             }
         }
     }

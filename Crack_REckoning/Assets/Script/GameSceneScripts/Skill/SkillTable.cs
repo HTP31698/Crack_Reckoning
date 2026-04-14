@@ -21,7 +21,7 @@ public class SkillTable : DataTable
             }
             else
             {
-                Debug.LogError("½ºÅ³ ¾ÆÀÌµğ Áßº¹");
+                Debug.LogError("ìŠ¤í‚¬ ì•„ì´ë”” ì¤‘ë³µ");
             }
         }
     }

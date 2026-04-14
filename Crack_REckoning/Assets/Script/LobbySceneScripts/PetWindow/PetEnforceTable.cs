@@ -20,7 +20,7 @@ public class PetEnforceTable : DataTable
             }
             else
             {
-                Debug.LogError("Æê ¾ÆÀÌµğ Áßº¹");
+                Debug.LogError("í« ì•„ì´ë”” ì¤‘ë³µ");
             }
         }
     }

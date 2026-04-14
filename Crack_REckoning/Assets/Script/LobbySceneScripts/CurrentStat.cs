@@ -27,10 +27,13 @@ public class CurrentStat : MonoBehaviour
         SkillImage.sprite = sdata.sprite;
         PetImage.sprite = pdata.sprite;
 
+        int chEnforceLevel = (data.PlayerID > 9999) ? data.PlayerID % 100 : 0;
+        string chName = chEnforceLevel > 0 ? $"{cdata.ChName} +{chEnforceLevel}" : cdata.ChName;
+
         var sb = new StringBuilder();
-        sb.AppendLine($"¿ë »ç: {cdata.ChName}");
-        sb.AppendLine($"½º Å³: {sdata.SkillName}");
-        sb.AppendLine($"Æê: {pdata.PetName}");
+        sb.AppendLine($"ìš©ì‚¬: {chName}");
+        sb.AppendLine($"ìŠ¤í‚¬: {sdata.SkillName}");
+        sb.AppendLine($"íŽ«: {pdata.PetName}");
 
         StatText.text = sb.ToString();
     }

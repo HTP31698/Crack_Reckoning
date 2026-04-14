@@ -45,7 +45,7 @@ public class PetWindowManager : MonoBehaviour
 
         if (PetTable == null || _owned == null)
         {
-            Debug.LogWarning("[PetWindow] µ¥ÀÌÅÍ°¡ ÁØºñµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("[PetWindow] ë°ì´í„°ê°€ ì¤€ë¹„ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -86,7 +86,7 @@ public class PetWindowManager : MonoBehaviour
         int fillCount = Mathf.Min(PetSelectButtons.Length, _owned.Count);
 
         for (int i = 0; i < fillCount; i++)
-            RebindButtonSlot(i);   // ¡ç ½½·Ôº° ¹ÙÀÎµù
+            RebindButtonSlot(i);   // í« ìŠ¬ë¡¯ë³„ ë°”ì¸ë“œ
 
         for (int i = fillCount; i < PetSelectButtons.Length; i++)
         {
@@ -177,7 +177,7 @@ public class PetWindowManager : MonoBehaviour
         int ownedIdx = data.OwnedPetIds.IndexOf(currentId);
         if (ownedIdx < 0)
         {
-            Debug.LogWarning($"[PetWindow] º¸À¯ÇÏÁö ¾ÊÀº Æê °­È­ ½Ãµµ: {currentId}");
+            Debug.LogWarning($"[PetWindow] ë³´ìœ í•˜ì§€ ì•Šì€ í« ê°•í™” ì‹œë„: {currentId}");
             return;
         }
 
@@ -191,7 +191,7 @@ public class PetWindowManager : MonoBehaviour
         var row = table.Get(currentId);
         if (row == null)
         {
-            Debug.Log("[PetWindow] °­È­ ÃÖÁ¾ ´Ü°èÀÌ°Å³ª µ¥ÀÌÅÍ ¾øÀ½");
+            Debug.Log("[PetWindow] ê°•í™” ìµœì¢… ë‹¨ê³„ì´ê±°ë‚˜ ë°ì´í„° ì—†ìŒ");
             RefreshUI(currentId);
             return;
         }
@@ -202,7 +202,7 @@ public class PetWindowManager : MonoBehaviour
 
         if (data.Gold < cost)
         {
-            Debug.Log("°ñµå ºÎÁ·");
+            Debug.Log("ê³¨ë“œ ë¶€ì¡±");
             RefreshUI(currentId);
             return;
         }
@@ -277,19 +277,19 @@ public class PetWindowManager : MonoBehaviour
             {
                 if(sdata.GoldUp > 0)
                 {
-                    PetStats[0].text = $"¸¶¼® È¹µæ·® Áõ°¡\n{sdata.GoldUp}";
+                    PetStats[0].text = $"ê³¨ë“œ íšë“ëŸ‰ ì¦ê°€\n{sdata.GoldUp}";
                 }
                 else if(sdata.WaveTime > 0)
                 {
-                    PetStats[0].text = $"¿şÀÌºê ½Ã°£ °¨¼Ò\n{sdata.WaveTime}";
+                    PetStats[0].text = $"ì›¨ì´ë¸Œ ì‹œê°„ ê°ì†Œ\n{sdata.WaveTime}";
                 }
                 else if (sdata.WallHpUp > 0)
                 {
-                    PetStats[0].text = $"¹æº® Ã¼·Â\n{sdata.WallHpUp}";
+                    PetStats[0].text = $"ì„±ë²½ ì²´ë ¥\n{sdata.WallHpUp}";
                 }
                 else if (sdata.AttBuff > 0)
                 {
-                    PetStats[0].text = $"Ãß°¡ ÇÇÇØ·®\n{sdata.AttBuff}";
+                    PetStats[0].text = $"ì¶”ê°€ ê³µê²©ë ¥\n{sdata.AttBuff}";
                 }
             }
             
@@ -297,29 +297,29 @@ public class PetWindowManager : MonoBehaviour
 
         if (hasNext && nextsdata != null)
         {
-            if (EnforcePct) EnforcePct.text = $"°­È­ È®·ü : <color=#7EE787>{endata.SuccessPercent}%</color>";
+            if (EnforcePct) EnforcePct.text = $"ê°•í™” í™•ë¥  : <color=#7EE787>{endata.SuccessPercent}%</color>";
             if (EnforceDamage)
             {
                 if (sdata.GoldUp < nextsdata.GoldUp)
                 {
-                    EnforceDamage.text = $"¸¶¼® È¹µæ·® Áõ°¡\n{nextsdata.GoldUp - sdata.GoldUp:F2}";
+                    EnforceDamage.text = $"ê³¨ë“œ íšë“ëŸ‰ ì¦ê°€\n{nextsdata.GoldUp - sdata.GoldUp:F2}";
                 }
                 if (sdata.WaveTime < nextsdata.WaveTime)
                 {
-                    EnforceDamage.text = $"¿şÀÌºê ½Ã°£ °¨¼Ò\n{nextsdata.WaveTime - sdata.WaveTime}";
+                    EnforceDamage.text = $"ì›¨ì´ë¸Œ ì‹œê°„ ê°ì†Œ\n{nextsdata.WaveTime - sdata.WaveTime}";
                 }
                 if (sdata.WallHpUp < nextsdata.WallHpUp)
                 {
-                    EnforceDamage.text = $"¹æº®Ã¼·Â Áõ°¡\n{nextsdata.WallHpUp - sdata.WallHpUp}";
+                    EnforceDamage.text = $"ì„±ë²½ì²´ë ¥ ì¦ê°€\n{nextsdata.WallHpUp - sdata.WallHpUp}";
                 }
                 if (sdata.AttBuff < nextsdata.AttBuff)
                 {
-                    EnforceDamage.text = $"Ãß°¡ ÇÇÇØ·® Áõ°¡\n{nextsdata.AttBuff - sdata.AttBuff}";
+                    EnforceDamage.text = $"ì¶”ê°€ ê³µê²©ë ¥ ì¦ê°€\n{nextsdata.AttBuff - sdata.AttBuff}";
                 }
             }
 
             var sb = new StringBuilder();
-            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "Ãß°¡ °­È­ È¿°ú º¯È­ ¾øÀ½";
+            if (EnforceStat) EnforceStat.text = sb.Length > 0 ? sb.ToString().TrimEnd() : "ì¶”ê°€ ê°•í™” íš¨ê³¼ ë³€í™” ì—†ìŒ";
 
 
             if (EnforceCurrentGold)
@@ -337,8 +337,8 @@ public class PetWindowManager : MonoBehaviour
         else
         {
             if (EnforcePct) EnforcePct.text = "-";
-            if (EnforceDamage) EnforceDamage.text = "ÃÖ´ë ·¹º§";
-            if (EnforceStat) EnforceStat.text = "ÃÖ´ë ·¹º§";
+            if (EnforceDamage) EnforceDamage.text = "ìµœëŒ€ ê°•í™”";
+            if (EnforceStat) EnforceStat.text = "ìµœëŒ€ ê°•í™”";
             if (EnforceNeedGold) EnforceNeedGold.text = "";
             if (EnforceCurrentGold) EnforceCurrentGold.text = $"{data.Gold}";
         }

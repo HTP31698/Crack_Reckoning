@@ -91,6 +91,7 @@ public class Skill : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        AudioRouter.RouteSFX(audioSource);
 
         line = GetComponent<LineRenderer>();
         if (line) line.enabled = false;
@@ -281,7 +282,7 @@ public class Skill : MonoBehaviour
             {
                 var bursts = new ParticleSystem.Burst[n];
                 em.GetBursts(bursts);
-                for (int i = 0; i < n; i++) bursts[i].time = 0f; // ¡Ú
+                for (int i = 0; i < n; i++) bursts[i].time = 0f; // ï¿½ï¿½
                 em.SetBursts(bursts);
             }
         }
@@ -360,7 +361,7 @@ public class Skill : MonoBehaviour
         float dmg = SkillDamage * typeMul * (isCritical ? characterCriDamage : 1f);
         m.TakeDamage((int)dmg + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
-            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
+            AudioRouter.PlaySFXAt(hitAudioClip, transform.position, 1f);
     }
 
     private void TryAttackExplosion(MonsterBase m, int baseDamage)
@@ -370,7 +371,7 @@ public class Skill : MonoBehaviour
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage(Mathf.RoundToInt(baseDamage * typeMul) + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
-            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
+            AudioRouter.PlaySFXAt(hitAudioClip, transform.position, 1f);
     }
 
     private void TryAttackLaser(MonsterBase m, int dmg)
@@ -382,7 +383,7 @@ public class Skill : MonoBehaviour
         else if (m.weakness == skillTypeID) typeMul = 1.3f;
         m.TakeDamage((int)((dmg * typeMul) * (isCritical ? characterCriDamage : 1f)) + petdamage, character);
         if (Time.timeScale > 0f && hitAudioClip)
-            AudioSource.PlayClipAtPoint(hitAudioClip, transform.position, 1f);
+            AudioRouter.PlaySFXAt(hitAudioClip, transform.position, 1f);
     }
 
     //Cast1
@@ -447,7 +448,7 @@ public class Skill : MonoBehaviour
         {
             var m = c.GetComponent<MonsterBase>();
             if (!m || m.isdead) continue;
-            if (!IsInsideByCenter(c, center, radius)) continue; // Áß½É ÇÊÅÍ
+            if (!IsInsideByCenter(c, center, radius)) continue; // ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½
             TryAttack(m);
         }
 

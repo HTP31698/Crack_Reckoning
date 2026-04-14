@@ -21,7 +21,7 @@ public class SkillSelectionTable : DataTable
             }
             else
             {
-                Debug.LogError("Ω∫≈≥ º±≈√ ¡ﬂ∫π!");
+                Debug.LogError("Ïä§ÌÇ¨ ÏÑ†ÌÉù Ï§ëÎ≥µ!");
             }
         }
     }
