@@ -112,3 +112,5 @@
 | 검냥이 | 골드 획득량 증가 |
 | 핑꾸문어 | 웨이브 시간 단축 |
 | 라쿤 | 용사 공격력 증가 |
+
+유튜브 : https://www.youtube.com/watch?v=v4tPUCKXwHY
