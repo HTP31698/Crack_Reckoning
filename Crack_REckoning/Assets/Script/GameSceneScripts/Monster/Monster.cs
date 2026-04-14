@@ -20,31 +20,32 @@ public class Monster : MonsterBase
     protected override void InitData()
     {
         monsterData = monsterTable.Get(id);
-        if (monsterData == null) return;
+        if (monsterData != null)
+        {
+            monsterName = monsterData.MonsterName;
+            agent.stoppingDistance = monsterData.MonsterRange;
+            agent.speed = monsterData.MonsterSpeed;
 
-        monsterName = monsterData.MonsterName;
-        agent.stoppingDistance = monsterData.MonsterRange;
-        agent.speed = monsterData.MonsterSpeed;
+            maxHp = monsterData.MonsterHp;
+            currentHp = maxHp;
+            damage = monsterData.MonsterAttack;
+            attackSpeed = monsterData.MonsterAttackSpeed;
+            exp = monsterData.MonsterExp;
+            weakness = monsterData.MonsterWeakness.GetValueOrDefault();
+            strength = monsterData.MonsterStrength.GetValueOrDefault();
 
-        maxHp = monsterData.MonsterHp;
-        currentHp = maxHp;
-        damage = monsterData.MonsterAttack;
-        attackSpeed = monsterData.MonsterAttackSpeed;
-        exp = monsterData.MonsterExp;
-        weakness = monsterData.MonsterWeakness.GetValueOrDefault();
-        strength = monsterData.MonsterStrength.GetValueOrDefault();
+            controller = monsterData.AnimatorController;
+            sprite = monsterData.sprite;
+            getSprite = monsterData.sprite;
 
-        controller = monsterData.AnimatorController;
-        sprite = monsterData.sprite;
-        getSprite = monsterData.sprite;
+            if (spriteRenderer != null && sprite != null)
+                spriteRenderer.sprite = sprite;
+            if (animator != null && controller != null)
+                animator.runtimeAnimatorController = controller;
 
-        if (spriteRenderer != null && sprite != null)
-            spriteRenderer.sprite = sprite;
-        if (animator != null && controller != null)
-            animator.runtimeAnimatorController = controller;
-
-        posX = transform.position.x;
-        posZ = transform.position.z;
+            posX = transform.position.x;
+            posZ = transform.position.z;
+        }
     }
 
     protected override void OnDeath(Character attacker)

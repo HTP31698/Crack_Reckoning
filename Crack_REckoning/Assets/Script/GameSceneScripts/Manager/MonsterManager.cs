@@ -57,7 +57,32 @@ public class MonsterManager
 
     public static MonsterBase GetNearestAliveWithin(Vector3 fromPosition, float range)
     {
-        return nearMonster(fromPosition, range);
+        MonsterBase best = null;
+        MonsterBase second = null;
+
+        float maxSqr = float.IsInfinity(range) ? float.PositiveInfinity : range * range;
+        float bestSqr = float.PositiveInfinity;
+        float secondSqr = float.PositiveInfinity;
+
+        foreach (var m in monsters)
+        {
+            if (m == null || m.isdead) continue;
+
+            float d2 = (m.transform.position - fromPosition).sqrMagnitude;
+            if (d2 > maxSqr) continue;
+
+            if (d2 < bestSqr)
+            {
+                second = best; secondSqr = bestSqr;
+                best = m; bestSqr = d2;
+            }
+            else if (m != best && d2 < secondSqr)
+            {
+                second = m; secondSqr = d2;
+            }
+        }
+
+        return second ?? best;
     }
 
     public static MonsterBase GetRandomAliveWithin(Vector3 fromPosition, float range, HashSet<MonsterBase> exclude = null)

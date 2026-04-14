@@ -226,11 +226,10 @@ public class StageManager : MonoBehaviour
         {
             int idx = baseIdx + k;
             if (monsterSlots == null || idx >= monsterSlots.Length)
-            {
                 continue;
-            }
             var img = monsterSlots[idx];
-            if (img == null) { continue; }
+            if (img == null)
+                continue;
 
             img.sprite = null;
             img.enabled = false;
@@ -242,7 +241,8 @@ public class StageManager : MonoBehaviour
         {
             int id = monsterIds[i];
             int idx = baseIdx + i;
-            if (idx >= monsterSlots.Length) break;
+            if (idx >= monsterSlots.Length)
+                break;
 
             var mdata = DataTableManager.Get<MonsterTable>(MonsterTable).Get(id);
             var sprite = (mdata != null) ? mdata.sprite : null;

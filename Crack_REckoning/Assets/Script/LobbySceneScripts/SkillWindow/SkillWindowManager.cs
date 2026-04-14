@@ -206,7 +206,6 @@ public class SkillWindowManager : MonoBehaviour
             return;
         }
 
-        // 비용 선차감 (대부분 게임이 이렇게 처리)
         data.Gold -= cost;
 
         bool success = Random.Range(0, 100) < pct; // 0~99
